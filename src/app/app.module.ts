@@ -4,22 +4,11 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
-
 import { AppComponent } from './app.component';
 
 // Import containers
 import { DefaultLayoutComponent } from './containers';
-
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -40,6 +29,21 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { DialogFieldComponent } from './views/dialog-field/dialog-field.component';
+import { UserParameterComponent } from './views/user-parameter/user-parameter.component';
+import { CostCenterParameterComponent } from './views/cost-center-parameter/cost-center-parameter.component';
+import { SlaItemParameterComponent } from './views/sla-item-parameter/sla-item-parameter.component';
+import { PgkCostsParameterComponent } from './views/pgk-costs-parameter/pgk-costs-parameter.component';
+import { ExternalCostsParameterComponent } from './views/external-costs-parameter/external-costs-parameter.component';
+import { EurTlMacroAssumptionComponent } from './views/eur-tl-macro-assumption/eur-tl-macro-assumption.component';
+import { SlaReferenceComponent } from './views/sla-reference/sla-reference.component';
+import { InternalHeadcountComponent } from './views/internal-headcount/internal-headcount.component';
+import { ExternalHeadcountComponent } from './views/external-headcount/external-headcount.component';
+import { E4RelatedCostsComponent } from './views/e4-related-costs/e4-related-costs.component';
+import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-volume.component';
+import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
+import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
 
 @NgModule({
   imports: [
@@ -59,10 +63,21 @@ import { ChartsModule } from 'ng2-charts';
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
-    P404Component,
-    P500Component,
-    LoginComponent,
-    RegisterComponent
+    DashboardComponent,
+    DialogFieldComponent,
+    UserParameterComponent,
+    CostCenterParameterComponent,
+    SlaItemParameterComponent,
+    PgkCostsParameterComponent,
+    ExternalCostsParameterComponent,
+    EurTlMacroAssumptionComponent,
+    SlaReferenceComponent,
+    InternalHeadcountComponent,
+    ExternalHeadcountComponent,
+    E4RelatedCostsComponent,
+    ActualSlaVolumeComponent,
+    OpportunitiesSlaVolumeComponent,
+    DepartmentTravelRateComponent
   ],
   providers: [{
     provide: LocationStrategy,

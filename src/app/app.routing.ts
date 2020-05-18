@@ -4,44 +4,27 @@ import { Routes, RouterModule } from '@angular/router';
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
 
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+
+import {DashboardComponent} from './views/dashboard/dashboard.component';
+import {DialogFieldComponent} from './views/dialog-field/dialog-field.component';
+import {UserParameterComponent} from './views/user-parameter/user-parameter.component';
+import {CostCenterParameterComponent} from './views/cost-center-parameter/cost-center-parameter.component';
+import {SlaItemParameterComponent} from './views/sla-item-parameter/sla-item-parameter.component';
+import {PgkCostsParameterComponent} from './views/pgk-costs-parameter/pgk-costs-parameter.component';
+import {ExternalCostsParameterComponent} from './views/external-costs-parameter/external-costs-parameter.component';
+import {EurTlMacroAssumptionComponent} from './views/eur-tl-macro-assumption/eur-tl-macro-assumption.component';
+import {DepartmentTravelRateComponent} from './views/department-travel-rate/department-travel-rate.component';
+import {InternalHeadcountComponent} from './views/internal-headcount/internal-headcount.component';
+import {ExternalHeadcountComponent} from './views/external-headcount/external-headcount.component';
+import {E4RelatedCostsComponent} from './views/e4-related-costs/e4-related-costs.component';
+import {ActualSlaVolumeComponent} from './views/actual-sla-volume/actual-sla-volume.component';
+import {OpportunitiesSlaVolumeComponent} from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: '/dashboard',
     pathMatch: 'full',
-  },
-  {
-    path: '404',
-    component: P404Component,
-    data: {
-      title: 'Page 404'
-    }
-  },
-  {
-    path: '500',
-    component: P500Component,
-    data: {
-      title: 'Page 500'
-    }
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
   },
   {
     path: '',
@@ -51,64 +34,102 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'base',
-        loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
-      },
-      {
-        path: 'buttons',
-        loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
-      },
-      {
-        path: 'charts',
-        loadChildren: () => import('./views/chartjs/chartjs.module').then(m => m.ChartJSModule)
-      },
-      {
         path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        component: DashboardComponent
       },
       {
-        path: 'editors',
-        loadChildren: () => import('./views/editors/editors.module').then(m => m.EditorsModule)
+        path: 'parameter/dialog',
+        component: DialogFieldComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'forms',
-        loadChildren: () => import('./views/forms/forms.module').then(m => m.FormsModule)
+        path: 'parameter/user',
+        component: UserParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'google-maps',
-        loadChildren: () => import('./views/google-maps/google-maps.module').then(m => m.GoogleMapsModule)
+        path: 'parameter/cost-center',
+        component: CostCenterParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'icons',
-        loadChildren: () => import('./views/icons/icons.module').then(m => m.IconsModule)
+        path: 'parameter/sla-item',
+        component: SlaItemParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'notifications',
-        loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
+        path: 'parameter/pgk-costs-per-person',
+        component: PgkCostsParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'plugins',
-        loadChildren: () => import('./views/plugins/plugins.module').then(m => m.PluginsModule)
+        path: 'parameter/external-costs-per-person',
+        component: ExternalCostsParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'tables',
-        loadChildren: () => import('./views/tables/tables.module').then(m => m.TablesModule)
+        path: 'parameter/eur-tl-macro-assumption',
+        component: EurTlMacroAssumptionComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
+        path: 'parameter/department-travel-rate',
+        component: DepartmentTravelRateComponent,
+        data: {
+          title: 'Parameter'
+        },
       },
       {
-        path: 'apps',
-        loadChildren: () => import('./views/apps/apps.module').then(m => m.AppsModule)
+        path: 'cost/int-headcount',
+        component: InternalHeadcountComponent,
+        data: {
+          title: 'Cost'
+        },
       },
       {
-        path: 'widgets',
-        loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+        path: 'cost/ext-headcount',
+        component: ExternalHeadcountComponent,
+        data: {
+          title: 'Cost'
+        },
+      },
+      {
+        path: 'cost/e4-related',
+        component: E4RelatedCostsComponent,
+        data: {
+          title: 'Cost'
+        },
+      },
+      {
+        path: 'revenue/actual-sla-vol',
+        component: ActualSlaVolumeComponent,
+        data: {
+          title: 'Revenue'
+        },
+      },
+      {
+        path: 'revenue/opportunities-sla-vol',
+        component: OpportunitiesSlaVolumeComponent,
+        data: {
+          title: 'Revenue'
+        },
       }
     ]
-  },
-  { path: '**', component: P404Component }
+  }
 ];
 
 @NgModule({
