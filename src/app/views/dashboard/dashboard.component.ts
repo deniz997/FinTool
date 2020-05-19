@@ -12,11 +12,23 @@ export class DashboardComponent implements OnInit {
   // lineChart1
   public lineChart1Data: Array<any> = [
     {
-      data: [65, 59, 84, 84, 51, 55, 40],
-      label: 'Series A'
+      data: [65, 59, 84, 84, 51, 55, 40, 35, 58, 87, 55, 41],
+
     }
   ];
-  public lineChart1Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChart1Labels: Array<any> = [
+                                        'January',
+                                        'February',
+                                        'March',
+                                        'April',
+                                        'May',
+                                        'June',
+                                        'July',
+                                        'August',
+                                        'September',
+                                        'October',
+                                        'November',
+                                        'December'];
   public lineChart1Options: any = {
     tooltips: {
       enabled: false,
@@ -39,8 +51,8 @@ export class DashboardComponent implements OnInit {
         display: false,
         ticks: {
           display: false,
-          min: 40 - 5,
-          max: 84 + 5,
+          min: 16 - 15,
+          max: 84 + 15,
         }
       }],
     },
@@ -70,11 +82,23 @@ export class DashboardComponent implements OnInit {
   // lineChart2
   public lineChart2Data: Array<any> = [
     {
-      data: [1, 18, 9, 17, 34, 22, 11],
-      label: 'Series A'
+      data: [20, 27, 29, 31, 37, 59, 24, 16, 42, 61, 52, 34],
+
     }
   ];
-  public lineChart2Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChart2Labels: Array<any> = [
+                                        'January',
+                                        'February',
+                                        'March',
+                                        'April',
+                                        'May',
+                                        'June',
+                                        'July',
+                                        'August',
+                                        'September',
+                                        'October',
+                                        'November',
+                                        'December'];
   public lineChart2Options: any = {
     tooltips: {
       enabled: false,
@@ -97,14 +121,13 @@ export class DashboardComponent implements OnInit {
         display: false,
         ticks: {
           display: false,
-          min: 1 - 5,
-          max: 34 + 5,
+          min: 16 - 15,
+          max: 84 + 15,
         }
       }],
     },
     elements: {
       line: {
-        tension: 0.00001,
         borderWidth: 1
       },
       point: {
@@ -130,11 +153,24 @@ export class DashboardComponent implements OnInit {
   // lineChart3
   public lineChart3Data: Array<any> = [
     {
-      data: [78, 81, 80, 45, 34, 12, 40],
-      label: 'Series A'
+      data: [78, 81, 80, 45, 34, 31, 40, 25, 64, 54, 41, 15],
+
     }
   ];
-  public lineChart3Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChart3Labels: Array<any> = [
+                                        'January',
+                                        'February',
+                                        'March',
+                                        'April',
+                                        'May',
+                                        'June',
+                                        'July',
+                                        'August',
+                                        'September',
+                                        'October',
+                                        'November',
+                                        'December'];
+
   public lineChart3Options: any = {
     tooltips: {
       enabled: false,
@@ -143,18 +179,31 @@ export class DashboardComponent implements OnInit {
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
-        display: false
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent'
+        },
+        ticks: {
+          fontSize: 2,
+          fontColor: 'transparent',
+        }
+
       }],
       yAxes: [{
-        display: false
-      }]
+        display: false,
+        ticks: {
+          display: false,
+          min: 16 - 15,
+          max: 84 + 15,
+        }
+      }],
     },
     elements: {
       line: {
-        borderWidth: 2
+        borderWidth: 1
       },
       point: {
-        radius: 0,
+        radius: 4,
         hitRadius: 10,
         hoverRadius: 4,
       },
@@ -165,7 +214,7 @@ export class DashboardComponent implements OnInit {
   };
   public lineChart3Colours: Array<any> = [
     {
-      backgroundColor: 'rgba(255,255,255,.2)',
+      backgroundColor: getStyle('--warning'),
       borderColor: 'rgba(255,255,255,.55)',
     }
   ];
@@ -173,16 +222,27 @@ export class DashboardComponent implements OnInit {
   public lineChart3Type = 'line';
 
 
-  // barChart1
-  public barChart1Data: Array<any> = [
+  // lineChart4
+  public lineChart4Data: Array<any> = [
     {
-      data: [78, 81, 80, 45, 34, 12, 40, 78, 81, 80, 45, 34, 12, 40, 12, 40],
-      label: 'Series A',
-      barPercentage: 0.6,
+      data: [68, 78, 68, 52, 45, 36, 45, 25, 64, 87, 20, 16],
+
     }
   ];
-  public barChart1Labels: Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
-  public barChart1Options: any = {
+  public lineChart4Labels: Array<any> = [
+                                        'January',
+                                        'February',
+                                        'March',
+                                        'April',
+                                        'May',
+                                        'June',
+                                        'July',
+                                        'August',
+                                        'September',
+                                        'October',
+                                        'November',
+                                        'December'];
+  public lineChart4Options: any = {
     tooltips: {
       enabled: false,
       custom: CustomTooltips
@@ -190,24 +250,47 @@ export class DashboardComponent implements OnInit {
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
-        display: false,
+        gridLines: {
+          color: 'transparent',
+          zeroLineColor: 'transparent'
+        },
+        ticks: {
+          fontSize: 2,
+          fontColor: 'transparent',
+        }
+
       }],
       yAxes: [{
-        display: false
-      }]
+        display: false,
+        ticks: {
+          display: false,
+          min: 16 - 15,
+          max: 84 + 15,
+        }
+      }],
+    },
+    elements: {
+      line: {
+        borderWidth: 1
+      },
+      point: {
+        radius: 4,
+        hitRadius: 10,
+        hoverRadius: 4,
+      },
     },
     legend: {
       display: false
     }
   };
-  public barChart1Colours: Array<any> = [
-    {
-      backgroundColor: 'rgba(255,255,255,.3)',
-      borderWidth: 0
+  public lineChart4Colours: Array<any> = [
+    { // grey
+      backgroundColor: getStyle('--danger'),
+      borderColor: 'rgba(255,255,255,.55)'
     }
   ];
-  public barChart1Legend = false;
-  public barChart1Type = 'bar';
+  public lineChart4Legend = false;
+  public lineChart4Type = 'line';
 
   // mainChart
 
