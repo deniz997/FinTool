@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { AppComponent } from './app.component';
@@ -44,6 +43,8 @@ import { E4RelatedCostsComponent } from './views/e4-related-costs/e4-related-cos
 import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-volume.component';
 import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
+import {FormsModule} from '@angular/forms';
+import {SelectModule} from 'ng-select';
 
 @NgModule({
   imports: [
@@ -58,7 +59,9 @@ import { DepartmentTravelRateComponent } from './views/department-travel-rate/de
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    FormsModule,
+    SelectModule
   ],
   declarations: [
     AppComponent,

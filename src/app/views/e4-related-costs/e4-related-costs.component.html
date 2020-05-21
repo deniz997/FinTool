@@ -1,1 +1,34 @@
-<p>e4-related-costs works!</p>
+<div class="card">
+  <div class="card-header">
+    <strong>E4 Related Costs</strong>
+  </div>
+  <div class="row">
+    <div class="card-body col-3">
+      <fieldset class="form-group">
+        <ng-select
+          class="bootstrap"
+          placeholder="Cost Categories"
+          [options]="costCategories"
+          [allowClear]="true"></ng-select>
+      </fieldset>
+    </div>
+    <div class="card-body col-3">
+      <fieldset class="form-group">
+        <ng-select
+          class="bootstrap"
+          placeholder="Main Costs"
+          [options]="mainCosts"
+          [allowClear]="true"></ng-select>
+      </fieldset>
+    </div>
+    <div class="card-body col-3">
+      <fieldset class="form-group">
+        <ng-select
+          class="bootstrap"
+          placeholder="Sub-Costs"
+          [options]="subCosts"
+          [allowClear]="true"></ng-select>
+      </fieldset>
+    </div>
+  </div>
+</div>
