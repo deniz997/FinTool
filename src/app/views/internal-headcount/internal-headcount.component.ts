@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-internal-headcount',
@@ -8,6 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class InternalHeadcountComponent implements OnInit {
 
   constructor() { }
+
+  // costCategories: Array<String> = ['Primary Cost', 'Project Cost Indirect Chargeable'];
+  public costCenters: Array<IOption> = [
+    {label: 'Regional Rollout E4', value: 'E4'},
+    {label: 'Regional Rollout E5', value: 'E5'},
+    {label: 'Regional Rollout Memur', value: 'Memur'},
+  ];
 
   ngOnInit(): void {
   }
