@@ -44,6 +44,7 @@ import { E4RelatedCostsComponent } from './views/e4-related-costs/e4-related-cos
 import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-volume.component';
 import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
+import {SelectModule} from 'ng-select';
 
 @NgModule({
     imports: [
