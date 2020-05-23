@@ -32,11 +32,56 @@
             </tr>
             </tbody>
           </table>
-          <button type="button">Add</button>
-          <button type="button">Edit</button>
-          <button type="button">Delete</button>
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+            <button type="button" class="btn btn-block btn-danger">DELETE</button>
+          </div>
         </div>
       </div>
+
+      <!-- add new parameter row-->
+      <div class="card">
+        <div class="card-header">
+          <strong>Add new Cost Center Parameter</strong>
+        </div>
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <th>Cost Center ID</th>
+              <th>Cost Center Name</th>
+              <th>Cost Center Typ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <label>
+                  <input class="form-control" type="text" required placeholder="Please enter a Cost Center ID">
+                </label>
+              </td>
+              <td>
+                <label>
+                  <input class="form-control" type="text" required placeholder="Please enter a Cost Center Name">
+                </label>
+              </td>
+              <td>
+                <fieldset class="form-group">
+                  <ng-select
+                    class="bootstrap"
+                    placeholder="Choose Cost Center Typ"
+                    [options]="costCenterTyp"
+                    [allowClear]="false"></ng-select>
+                </fieldset>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+            <button type="button" class="btn btn-block btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+      <!-- add new parameter row-->
     </div>
   </div>
 </div>
