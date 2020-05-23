@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {IOption} from 'ng-select';
+import {DOCUMENT} from '@angular/common';
+import {PerfectScrollbarComponent, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
+import PerfectScrollbar from 'perfect-scrollbar';
+
 
 @Component({
   selector: 'app-internal-headcount',
@@ -8,7 +12,7 @@ import {IOption} from 'ng-select';
 })
 export class InternalHeadcountComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(DOCUMENT) document) { }
 
   // costCategories: Array<String> = ['Primary Cost', 'Project Cost Indirect Chargeable'];
   public costCenters: Array<IOption> = [
@@ -17,7 +21,63 @@ export class InternalHeadcountComponent implements OnInit {
     {label: 'Regional Rollout Memur', value: 'Memur'},
   ];
 
+  public inputtedYears: Array<String> = [
+    '2007',
+    '2008',
+    '2009',
+    '2010',
+    '2011',
+    '2012',
+    '2013',
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    '2020',
+    '2021',
+    '2022',
+    '2023',
+    '2024',
+    '2025',
+    '2026',
+  ];
+
   ngOnInit(): void {
+    this.tableResized();
   }
 
+  showYear(year: string, event) {
+    console.log(year);
+
+    const myDom = this.getDomElementFromEvent(event);
+    const children = myDom.parentElement.parentElement.children;
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      if (child.classList.contains('active')) {
+        child.classList.remove('active');
+        break;
+      }
+    }
+    myDom.parentElement.classList.add('active');
+  }
+
+  tableResized() {
+    const table = document.getElementById('internalHeadcountTable');
+    const ps = new PerfectScrollbar('#yearScrollbar');
+    const tableHeight = table.offsetHeight;
+    const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
+    const newHeight = `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
+    document.getElementById('yearScrollbar').style.height = newHeight;
+    ps.update();
+  }
+
+  getDomElementFromEvent(event): HTMLElement {
+    const target = event.target || event.srcElement || event.currentTarget;
+    const idAttr = target.attributes.id;
+    const value = idAttr.nodeValue;
+    return document.getElementById(value);
+
+  }
 }

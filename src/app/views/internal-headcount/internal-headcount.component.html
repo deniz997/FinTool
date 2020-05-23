@@ -49,109 +49,136 @@
 </div>
 <!--/Header!-->
 
-<!--Table!-->
-<div class="card">
-  <div class="card-header">
-    <strong>Internal Headcount</strong>
+<div class="row">
+  <div class="col-2" style="padding-right: 0px;">
+    <div class="card" style="height: inherit">
+      <div id="yearHeader" class="card-header">
+        <strong>Years</strong>
+      </div>
+      <div class="card-body" style="padding: 2px;">
+        <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+          <table class="table table-sm">
+            <tbody>
+            <ng-container *ngFor="let year of inputtedYears">
+              <tr>
+                <td id="{{year}}Selector" (click)="showYear(year, $event)">{{year}}</td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </perfect-scrollbar>
+      </div>
+    </div>
   </div>
-  <div class="card-body">
-    <table class="table table-bordered table-striped table-sm">
-      <thead>
-      <tr>
-        <th>Cost Center</th>
-        <th>Jan</th>
-        <th>Feb</th>
-        <th>Mar</th>
-        <th>Apr</th>
-        <th>May</th>
-        <th>Jun</th>
-        <th>Jul</th>
-        <th>Aug</th>
-        <th>Sep</th>
-        <th>Oct</th>
-        <th>Nov</th>
-        <th>Dec</th>
-        <th>Avg</th>
-        <th>PGK</th>
 
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>0000036140 - Regional Rollout E4</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>1</td>
-        <td>32</td>
 
-      </tr>
-      <tr>
-        <td>0000036140 - Regional Rollout E5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>5</td>
-        <td>190</td>
 
-      </tr>
-      <tr>
-        <td>0000036140 - Regional Rollout Memur</td>
-        <td>50</td>
-        <td>49</td>
-        <td>49</td>
-        <td>49</td>
-        <td>49</td>
-        <td>49</td>
-        <td>51</td>
-        <td>54</td>
-        <td>56</td>
-        <td>57</td>
-        <td>58</td>
-        <td>59</td>
-        <td>53</td>
-        <td>1113</td>
-      </tr>
-      <tr>
-        <td>Total</td>
-        <td>56</td>
-        <td>55</td>
-        <td>55</td>
-        <td>55</td>
-        <td>55</td>
-        <td>55</td>
-        <td>57</td>
-        <td>60</td>
-        <td>62</td>
-        <td>63</td>
-        <td>64</td>
-        <td>65</td>
-        <td>59</td>
-        <td>1335</td>
-      </tr>
-      </tbody>
-    </table>
+
+  <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
+    <div id="internalHeadcountTable" class="card">
+      <div class="card-header">
+        <strong>Internal Headcount</strong>
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+          <tr>
+            <th>Cost Center</th>
+            <th>Jan</th>
+            <th>Feb</th>
+            <th>Mar</th>
+            <th>Apr</th>
+            <th>May</th>
+            <th>Jun</th>
+            <th>Jul</th>
+            <th>Aug</th>
+            <th>Sep</th>
+            <th>Oct</th>
+            <th>Nov</th>
+            <th>Dec</th>
+            <th>Avg</th>
+            <th>PGK</th>
+
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>0000036140 - Regional Rollout E4</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>1</td>
+            <td>32</td>
+
+          </tr>
+          <tr>
+            <td>0000036140 - Regional Rollout E5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>5</td>
+            <td>190</td>
+
+          </tr>
+          <tr>
+            <td>0000036140 - Regional Rollout Memur</td>
+            <td>50</td>
+            <td>49</td>
+            <td>49</td>
+            <td>49</td>
+            <td>49</td>
+            <td>49</td>
+            <td>51</td>
+            <td>54</td>
+            <td>56</td>
+            <td>57</td>
+            <td>58</td>
+            <td>59</td>
+            <td>53</td>
+            <td>1113</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>56</td>
+            <td>55</td>
+            <td>55</td>
+            <td>55</td>
+            <td>55</td>
+            <td>55</td>
+            <td>57</td>
+            <td>60</td>
+            <td>62</td>
+            <td>63</td>
+            <td>64</td>
+            <td>65</td>
+            <td>59</td>
+            <td>1335</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
-<!--/Table!-->
+
 
 <!--Input!-->
 <div>
@@ -160,86 +187,86 @@
       <strong>Input</strong>
     </div>
 
-      <div class="card-body col-12">
+    <div class="card-body col-12">
 
 
-        <form action="" method="post" class="form-horizontal">
-            <div class=" col-12" style="text-align: center">
-              <div>
-                <fieldset class="form-group">
-                  <ng-select
-                    class="bootstrap"
-                    placeholder="Pick Cost Center Category"
-                    [options]="costCenters"
-                    [allowClear]="false"></ng-select>
+      <form action="" method="post" class="form-horizontal">
+        <div class=" col-12" style="text-align: center">
+          <div>
+            <fieldset class="form-group">
+              <ng-select
+                class="bootstrap"
+                placeholder="Pick Cost Center Category"
+                [options]="costCenters"
+                [allowClear]="false"></ng-select>
 
-                  <div class="form-group row">
-                    <div class="col-md-2 col-lg-1">
-                      <label>January</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>February</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>March</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>April</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>May</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>June</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>July</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>August</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>September</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>October</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>November</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
-                    <div class="col-md-2 col-lg-1">
-                      <label>December</label>
-                      <input type="text" class="form-control" placeholder="Ex. 4">
-                    </div>
+              <div class="form-group row">
+                <div class="col-md-2 col-lg-1">
+                  <label>January</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>February</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>March</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>April</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>May</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>June</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>July</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>August</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>September</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>October</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>November</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
+                <div class="col-md-2 col-lg-1">
+                  <label>December</label>
+                  <input type="text" class="form-control" placeholder="Ex. 4">
+                </div>
 
-                  </div>
-
-                </fieldset>
               </div>
 
+            </fieldset>
           </div>
 
+        </div>
 
 
 
 
 
-        </form>
-      </div>
-      <div class="card-footer">
-        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
-      </div>
+
+      </form>
+    </div>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+    </div>
 
   </div>
   <!--InputFields-->
@@ -247,4 +274,6 @@
 
 </div>
 <!--/Input!-->
+
+
 
