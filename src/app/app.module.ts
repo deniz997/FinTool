@@ -60,7 +60,6 @@ import {SelectModule} from 'ng-select';
         BsDropdownModule.forRoot(),
         TabsModule.forRoot(),
         ChartsModule,
-        SelectModule,
     ],
   declarations: [
     AppComponent,
