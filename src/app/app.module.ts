@@ -47,20 +47,21 @@ import { DepartmentTravelRateComponent } from './views/department-travel-rate/de
 import {SelectModule} from 'ng-select';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        AppAsideModule,
-        AppBreadcrumbModule.forRoot(),
-        AppFooterModule,
-        AppHeaderModule,
-        AppSidebarModule,
-        PerfectScrollbarModule,
-        BsDropdownModule.forRoot(),
-        TabsModule.forRoot(),
-        ChartsModule,
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    AppAsideModule,
+    AppBreadcrumbModule.forRoot(),
+    AppFooterModule,
+    AppHeaderModule,
+    AppSidebarModule,
+    PerfectScrollbarModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
+    ChartsModule,
+    SelectModule,
+  ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
