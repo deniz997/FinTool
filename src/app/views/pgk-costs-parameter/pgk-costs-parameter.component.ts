@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {identifierModuleUrl} from "@angular/compiler";
+import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-pgk-costs-parameter',
