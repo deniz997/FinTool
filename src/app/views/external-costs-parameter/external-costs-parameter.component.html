@@ -44,12 +44,12 @@
                 </label>
               </td>
               <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency">
+                  [options]="CurrencyList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
                 <label>
@@ -83,12 +83,12 @@
                 </label>
               </td>
               <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency">
+                  [options]="CurrencyList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
                 <label>
@@ -121,28 +121,13 @@
                   </select>
                 </label>
               </td>
-              <!--
-              <td class="dropdown-area">
-                <ul>
-                  <li class="nav-item dropdown" dropdown>
-                  <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">Dropdown
-                  </a>
-                  <div id="your-dropdown" class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                  </li>
-                </ul>
-              </td>-->
               <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency">
+                  [options]="CurrencyList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
                 <label>

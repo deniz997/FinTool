@@ -19,77 +19,36 @@
             <tbody>
             <tr>
               <td>
-                <label class="items">
-                  <select>
-                    <option>Item 1 from Cost Center</option>
-                    <option>Item 2 from Cost Center</option>
-                    <option>Item 3 from Cost Center</option>
-                  </select>
-                </label>
+                  <ng-select
+                    class="bootstrap"
+                    placeholder="PGK Cost Definition">
+                    [options]="PGKCostDefinitionList"
+                    [allowClear]="true">
+                  </ng-select>
               </td>
               <td>
                   <ng-select
                     class="bootstrap"
                     placeholder="Status">
-                    //[options]="subCosts"
-                    //[allowClear]="true">
+                    [options]="StatusList"
+                    [allowClear]="true">
                   </ng-select>
               </td>
               <td>
-                <label>
-                  <select>
-                    <option>EA1</option>
-                    <option>EA2</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Planning Periods">
+                  [options]="PlanningPeriods"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <input class="input-area" type="text" required placeholder="Please enter a Value">
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label>
-                  <select>
-                    <option>Item 1 from Cost Center</option>
-                    <option>Item 2 from Cost Center</option>
-                    <option>Item 3 from Cost Center</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>Status 1</option>
-                    <option>Status 2</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EA1</option>
-                    <option>EA2</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency">
+                  [options]="CurrencyList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
                 <label>
@@ -99,52 +58,75 @@
             </tr>
             <tr>
               <td>
-                <label>
-                  <select>
-                    <option>Item 1 from Cost Center</option>
-                    <option>Item 2 from Cost Center</option>
-                    <option>Item 3 from Cost Center</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="PGK Cost Definition">
+                  [options]="PGKCostDefinitionList"
+                  [allowClear]="true">
+                </ng-select>
+              </td>
+              <td>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Status">
+                  [options]="StatusList"
+                  [allowClear]="true">
+                </ng-select>
+              </td>
+              <td>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Planning Periods">
+                  [options]="PlanningPeriods"
+                  [allowClear]="true">
+                </ng-select>
+              </td>
+              <td>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency">
+                  [options]="CurrencyList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
                 <label>
-                  <select>
-                    <option>Status 1</option>
-                    <option>Status 2</option>
-                  </select>
+                  <input class="input-area" type="text" required placeholder="Please enter a Value">
                 </label>
               </td>
+            </tr>
+            <tr>
               <td>
-                <label>
-                  <select>
-                    <option>EA1</option>
-                    <option>EA2</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="PGK Cost Definition">
+                  [options]="PGKCostDefinitionList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
-              <!--
-              <td class="dropdown-area">
-                <ul>
-                  <li class="nav-item dropdown" dropdown>
-                  <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">Dropdown
-                  </a>
-                  <div id="your-dropdown" class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                  </li>
-                </ul>
-              </td>-->
               <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Status">
+                  [options]="StatusList"
+                  [allowClear]="true">
+                </ng-select>
+              </td>
+              <td>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Planning Periods">
+                  [options]="PlanningPeriods"
+                  [allowClear]="true">
+                </ng-select>
+              </td>
+              <td>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency">
+                  [options]="CurrencyList"
+                  [allowClear]="true">
+                </ng-select>
               </td>
               <td>
                 <label>

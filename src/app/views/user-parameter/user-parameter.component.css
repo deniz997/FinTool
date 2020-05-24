@@ -1,0 +1,10 @@
+button{
+  width: auto;
+  margin: auto;
+  display: table-row;
+  float: right;
+}
+
+.btn-success{
+  margin-top: 8px;
+}
