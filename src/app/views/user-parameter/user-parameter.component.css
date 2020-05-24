@@ -1,10 +1,16 @@
 button{
   width: auto;
-  margin: auto;
-  display: table-row;
   float: right;
+  height: unset;
+  font-size: 12px;
 }
 
-.btn-success{
-  margin-top: 8px;
+.fa-file-excel-o{
+  width: 30%;
+  height: 30%;
+  font-size: 18px;
+}
+
+.btn-block{
+  margin-right: 2%;
 }
