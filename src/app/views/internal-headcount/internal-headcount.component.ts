@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {IOption} from 'ng-select';
 import {DOCUMENT} from '@angular/common';
-import {PerfectScrollbarComponent, PerfectScrollbarModule} from 'ngx-perfect-scrollbar';
 import PerfectScrollbar from 'perfect-scrollbar';
 
 
