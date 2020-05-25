@@ -32,72 +32,30 @@
             </tr>
             </tbody>
           </table>
-          <div class="row align-items-center">
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-primary">EDIT</button>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-warning">EDIT</button>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-danger">DELETE</button>
+          <div class="col offset-6">
+            <div class="row align-items-center">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-primary">EDIT</button>
+              </div>
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-warning">EDIT</button>
+              </div>
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-danger">DELETE</button>
+              </div>
             </div>
           </div>
         </div>
         <div class="card-footer">
-          <div class="row">
-            <div class="col-xs-12 col-12 d-sm-down-none">
-              <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+          <div class="col offset-7">
+            <div class="row">
+              <div class="col-xs-12 col-12 d-sm-down-none">
+                <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- silinebilir -->
-      <!-- add new parameter row-->
-      <!--<div class="card">
-        <div class="card-header">
-          <strong>Add new Cost Center Parameter</strong>
-        </div>
-        <div class="card-body">
-          <table class="table table-bordered table-striped table-sm">
-            <thead>
-            <tr>
-              <th>Cost Center ID</th>
-              <th>Cost Center Name</th>
-              <th>Cost Center Typ</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>
-                <label>
-                  <input class="form-control" type="text" required placeholder="Please enter a Cost Center ID">
-                </label>
-              </td>
-              <td>
-                <label>
-                  <input class="form-control" type="text" required placeholder="Please enter a Cost Center Name">
-                </label>
-              </td>
-              <td>
-                <fieldset class="form-group">
-                  <ng-select
-                    class="bootstrap"
-                    placeholder="Choose Cost Center Typ">
-                    [options]="costCenterTyp"
-                    [allowClear]="false"></ng-select>
-                </fieldset>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-            <button type="button" class="btn btn-block btn-primary">Save</button>
-          </div>
-        </div>
-      </div> -->
-      <!-- add new parameter row-->
 
       <!--Input!-->
       <div>
@@ -136,8 +94,12 @@
               </div>
             </form>
 
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-success">ADD/SAVE</button>
+            <div class="col offset-10">
+              <div class="row align-items-center">
+                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                  <button type="button" class="btn btn-block btn-success">ADD/SAVE</button>
+                </div>
+              </div>
             </div>
 
           </div>
