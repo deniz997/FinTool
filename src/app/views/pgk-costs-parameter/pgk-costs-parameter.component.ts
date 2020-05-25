@@ -12,7 +12,7 @@ export class PgkCostsParameterComponent implements OnInit {
   constructor() { }
 
   totalItems: number = 64;
-  currentPage: number   = 4;
+  currentPage: number   = 1;
   smallnumPages: number = 0;
 
   maxSize: number = 5;
@@ -20,8 +20,8 @@ export class PgkCostsParameterComponent implements OnInit {
   bigCurrentPage: number = 1;
   numPages: number = 0;
 
-  currentPager: number   = 4;
-  
+  currentPager: number   = 1;
+
   public PGKCostDefinitionList: Array<IOption> = [
     {label: 'Item 1 from Cost Center', value: 'Item1'},
     {label: 'Item 2 from Cost Center', value: 'Item2'},

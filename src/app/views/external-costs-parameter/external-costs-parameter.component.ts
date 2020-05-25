@@ -11,7 +11,7 @@ export class ExternalCostsParameterComponent implements OnInit {
   constructor() { }
 
   totalItems: number = 64;
-  currentPage: number   = 4;
+  currentPage: number   = 1;
   smallnumPages: number = 0;
 
   maxSize: number = 5;
@@ -19,7 +19,7 @@ export class ExternalCostsParameterComponent implements OnInit {
   bigCurrentPage: number = 1;
   numPages: number = 0;
 
-  currentPager: number   = 4;
+  currentPager: number   = 1;
 
   public ExternalCostDefinitionList: Array<IOption> = [
     {label: 'Definition 1', value: 'D1'},
