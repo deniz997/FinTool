@@ -9,6 +9,7 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
+              <th style="width: 1px;"> </th>
               <th>PGK Cost Definition per Person</th>
               <th>Status</th>
               <th>Planning Period</th>
@@ -18,6 +19,10 @@
             </thead>
             <tbody>
             <tr>
+              <td><div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck1" >
+                <label class="custom-control-label" for="tableDefaultCheck1"> </label>
+              </div></td>
               <td>Definition 1</td>
               <td>Status 2</td>
               <td>EA1</td>
@@ -25,6 +30,10 @@
               <td>1500</td>
             </tr>
             <tr>
+              <td><div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck2" >
+                <label class="custom-control-label" for="tableDefaultCheck2"> </label>
+              </div></td>
               <td>Definition 2</td>
               <td>Status 2</td>
               <td>EA1</td>
@@ -32,6 +41,10 @@
               <td>3000</td>
             </tr>
             <tr>
+              <td><div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck3" >
+                <label class="custom-control-label" for="tableDefaultCheck3"> </label>
+              </div></td>
               <td>Definition 1</td>
               <td>Status 1</td>
               <td>EA2</td>
@@ -42,13 +55,15 @@
           </table>
 
           <div class="row">
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-warning">UPDATE</button>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-danger">DELETE</button>
-            </div>
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+              </div>
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-danger">DELETE</button>
+              </div>
           </div>
+
+
         </div>
 
         <div class="card-footer">
@@ -66,7 +81,7 @@
           <strong>Add new PGK Cost per Person</strong>
         </div>
         <div class="card-body">
-          <div class="row align-items-center">
+          <div class="row">
             <div class="card-body col-3">
               <fieldset class="form-group">
                 <label>PGK Cost Definition per Person</label>
@@ -111,14 +126,14 @@
               <fieldset class="form-group">
                 <label>Value</label><br>
                 <label>
-                  <input class="form-control" type="text" required placeholder="Please enter a Value">
+                  <input type="number" class="form-control" required placeholder="Please enter a Value">
                 </label>
               </fieldset>
             </div>
           </div>
 
           <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-            <button type="button" class="btn btn-block btn-primary">ADD</button>
+            <button type="button" class="btn btn-block btn-success">ADD</button>
           </div>
         </div>
 
