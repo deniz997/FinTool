@@ -4,6 +4,14 @@
       <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify"></i> Cost Center Table
+          <!-- pagination -->
+          Bootstrap Pagination
+          <div class="card-header-actions">
+            <a href="https://valor-software.com/ngx-bootstrap/#/pagination" target="_blank">
+              <small className="text-muted">docs</small>
+            </a>
+          </div>
+          <!-- pagination -->
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
@@ -41,6 +49,13 @@
             </div>
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
               <button type="button" class="btn btn-block btn-danger">DELETE</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-xs-12 col-12 d-sm-down-none">
+              <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
             </div>
           </div>
         </div>
