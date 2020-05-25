@@ -45,6 +45,8 @@ import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-v
 import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
 import {SelectModule} from 'ng-select';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -61,6 +63,8 @@ import {SelectModule} from 'ng-select';
     TabsModule.forRoot(),
     ChartsModule,
     SelectModule,
+    PaginationModule.forRoot(),
+    FormsModule,
   ],
   declarations: [
     AppComponent,
