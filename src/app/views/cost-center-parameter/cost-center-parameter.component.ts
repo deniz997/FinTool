@@ -11,7 +11,7 @@ export class CostCenterParameterComponent implements OnInit {
   constructor() { }
 
   totalItems: number = 64;
-  currentPage: number   = 4;
+  currentPage: number   = 1;
   smallnumPages: number = 0;
 
   maxSize: number = 5;
