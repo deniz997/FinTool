@@ -1,0 +1,16 @@
+button{
+  width: auto;
+  float: right;
+  height: unset;
+  font-size: 12px;
+}
+
+.fa-file-excel-o{
+  width: 30%;
+  height: 30%;
+  font-size: 18px;
+}
+
+.btn-block{
+  margin-right: 2%;
+}

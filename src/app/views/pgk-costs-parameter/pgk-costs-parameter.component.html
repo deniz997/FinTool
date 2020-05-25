@@ -18,148 +18,115 @@
             </thead>
             <tbody>
             <tr>
-              <td>
-                <label class="items">
-                  <select>
-                    <option>Item 1 from Cost Center</option>
-                    <option>Item 2 from Cost Center</option>
-                    <option>Item 3 from Cost Center</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                  <ng-select
-                    class="bootstrap"
-                    placeholder="Status">
-                    //[options]="subCosts"
-                    //[allowClear]="true">
-                  </ng-select>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EA1</option>
-                    <option>EA2</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <input class="input-area" type="text" required placeholder="Please enter a Value">
-                </label>
-              </td>
+              <td>Definition 1</td>
+              <td>Status 2</td>
+              <td>EA1</td>
+              <td>EUR</td>
+              <td>1500</td>
             </tr>
             <tr>
-              <td>
-                <label>
-                  <select>
-                    <option>Item 1 from Cost Center</option>
-                    <option>Item 2 from Cost Center</option>
-                    <option>Item 3 from Cost Center</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>Status 1</option>
-                    <option>Status 2</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EA1</option>
-                    <option>EA2</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <input class="input-area" type="text" required placeholder="Please enter a Value">
-                </label>
-              </td>
+              <td>Definition 2</td>
+              <td>Status 2</td>
+              <td>EA1</td>
+              <td>TL</td>
+              <td>3000</td>
             </tr>
             <tr>
-              <td>
-                <label>
-                  <select>
-                    <option>Item 1 from Cost Center</option>
-                    <option>Item 2 from Cost Center</option>
-                    <option>Item 3 from Cost Center</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>Status 1</option>
-                    <option>Status 2</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <select>
-                    <option>EA1</option>
-                    <option>EA2</option>
-                  </select>
-                </label>
-              </td>
-              <!--
-              <td class="dropdown-area">
-                <ul>
-                  <li class="nav-item dropdown" dropdown>
-                  <a class="nav-link dropdown-toggle" href dropdownToggle (click)="false" aria-controls="your-dropdown">Dropdown
-                  </a>
-                  <div id="your-dropdown" class="dropdown-menu" *dropdownMenu>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                  </li>
-                </ul>
-              </td>-->
-              <td>
-                <label>
-                  <select>
-                    <option>EUR</option>
-                    <option>TL</option>
-                  </select>
-                </label>
-              </td>
-              <td>
-                <label>
-                  <input class="input-area" type="text" required placeholder="Please enter a Value">
-                </label>
-              </td>
+              <td>Definition 1</td>
+              <td>Status 1</td>
+              <td>EA2</td>
+              <td>EUR</td>
+              <td>400</td>
             </tr>
             </tbody>
           </table>
 
+          <div class="row">
+            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+              <button type="button" class="btn btn-block btn-warning">UPDATE</button>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+              <button type="button" class="btn btn-block btn-danger">DELETE</button>
+            </div>
+          </div>
         </div>
+
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-xs-12 col-12 d-sm-down-none">
+              <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Card-->
+
+      <div class="card">
+        <div class="card-header">
+          <strong>Add new PGK Cost per Person</strong>
+        </div>
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="card-body col-3">
+              <fieldset class="form-group">
+                <label>PGK Cost Definition per Person</label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="PGK Cost per Person Definition List"
+                  [options]="PGKCostDefinitionList"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label>Status</label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Status"
+                  [options]="StatusList"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label>Planning Period</label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Planning Period"
+                  [options]="PlanningPeriods"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label>Currency</label>
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Currency"
+                  [options]="CurrencyList"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label>Value</label><br>
+                <label>
+                  <input class="form-control" type="text" required placeholder="Please enter a Value">
+                </label>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+            <button type="button" class="btn btn-block btn-primary">ADD</button>
+          </div>
+        </div>
+
       </div>
     </div>
     <!--/.col-->
   </div>
   <!--/.row-->
 </div>
+
 

@@ -1,0 +1,16 @@
+
+.col-2{
+  padding: 16px 10px;
+  width: inherit;
+  text-align: center;
+}
+
+.col-3{
+  padding: 16px 10px;
+  width: inherit;
+  text-align: center;
+}
+
+.form-group{
+  margin: 0px;
+}
