@@ -1,10 +1,14 @@
 
-.col-6{
+.row.col-6{
   padding: 16px 10px;
   width: inherit;
 }
 
 .form-group{
   margin: 0;
+}
+
+pagination{
+  float: right;
 }
 
