@@ -1,1 +1,29 @@
-<p>actual-sla-volume works!</p>
+<div>
+  <div class="card">
+    <div class="card-header">
+      <strong>Actual SLA Volume</strong>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-12">
+          <perfect-scrollbar style="max-height: 750px">
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
+              <tr>
+                <th *ngFor="let header of rightTableHeaders">{{header}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let row of rightTableData">
+                <td *ngFor="let data of row">{{data}}</td>
+              </tr>
+
+              </tbody>
+
+            </table>
+          </perfect-scrollbar>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
