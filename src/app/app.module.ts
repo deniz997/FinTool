@@ -48,6 +48,7 @@ import {SelectModule} from 'ng-select';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {FormsModule} from '@angular/forms';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -67,6 +68,7 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
     PaginationModule.forRoot(),
     FormsModule,
     BsDatepickerModule,
+    NgbModule,
   ],
   declarations: [
     AppComponent,
