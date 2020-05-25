@@ -21,6 +21,13 @@ export class SlaItemParameterComponent implements OnInit {
 
   currentPager: number   = 4;
 
+  // Datepicker
+  minDate = new Date(2017, 5, 10);
+  maxDate = new Date(2018, 9, 15);
+
+  bsValue: Date = new Date();
+  bsRangeValue: any = [new Date(2017, 7, 4), new Date(2017, 7, 20)];
+
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
   }
@@ -29,7 +36,6 @@ export class SlaItemParameterComponent implements OnInit {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
   }
-
   ngOnInit(): void {
   }
 

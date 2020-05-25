@@ -36,9 +36,9 @@
           </thead>
           <tbody>
           <tr>
-            <td>Year ----</td>
-            <td>--/--/--</td>
-            <td>--/--/--</td>
+            <td>0000</td>
+            <td>00/00/0000</td>
+            <td>00/00/0000</td>
             <td>Manday Typ 1</td>
             <td>Manday Rate 1</td>
             <td>Travel Typ 1</td>
@@ -50,9 +50,9 @@
             <td>Fix Costs Rate 1</td>
           </tr>
           <tr>
-            <td>Year ----</td>
-            <td>--/--/--</td>
-            <td>--/--/--</td>
+            <td>0000</td>
+            <td>00/00/0000</td>
+            <td>00/00/0000</td>
             <td>Manday Typ 2</td>
             <td>Manday Rate 2</td>
             <td>Travel Typ 2</td>
@@ -71,10 +71,7 @@
         <div class="col offset-6">
           <div class="row align-items-center">
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-primary">EDIT</button>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-warning">EDIT</button>
+              <button type="button" class="btn btn-block btn-primary">UPDATE</button>
             </div>
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
               <button type="button" class="btn btn-block btn-danger">DELETE</button>
@@ -133,6 +130,8 @@
                         </div>
                         <!-- date picker -->
                         <div class="col-xs-12 col-12 col-md-6">
+                          <input type="text" ngbDatepicker #d="ngbDatepicker"/>
+                          <button (click)="d.toggle()">Toggle</button>
 
                         </div>
                         <!-- date picker -->
@@ -228,8 +227,30 @@
 
         </div>
       </div>
+
     </div>
     <!--/Input!-->
   </div>
   <!-- row -->
+
+  <!--
+
+
+          <div class="row">
+            <div class="col-xs-12 col-12 col-md-6 form-group">
+              <input type="text"
+                     class="form-control"
+                     [minDate]="minDate"
+                     [maxDate]="maxDate"
+                     #dp="bsDatepicker"
+                     bsDatepicker [(bsValue)]="bsValue">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-12 col-md-6 form-group">
+              <input class="form-control" #drp="bsDaterangepicker" bsDaterangepicker [(ngModel)]="bsRangeValue">
+            </div>
+          </div>
+
+        -->
 </div>
