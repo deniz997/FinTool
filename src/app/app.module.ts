@@ -47,6 +47,7 @@ import { DepartmentTravelRateComponent } from './views/department-travel-rate/de
 import {SelectModule} from 'ng-select';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {FormsModule} from '@angular/forms';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -66,6 +67,8 @@ import {FormsModule} from '@angular/forms';
     SelectModule,
     PaginationModule.forRoot(),
     FormsModule
+    FormsModule,
+    BsDatepickerModule,
   ],
   declarations: [
     AppComponent,
