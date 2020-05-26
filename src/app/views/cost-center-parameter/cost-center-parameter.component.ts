@@ -10,6 +10,8 @@ export class CostCenterParameterComponent implements OnInit {
 
   constructor() { }
 
+  show = false;
+
   totalItems: number = 64;
   currentPage: number   = 1;
   smallnumPages: number = 0;
@@ -33,6 +35,10 @@ export class CostCenterParameterComponent implements OnInit {
   pageChanged(event: any): void {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
+  }
+
+  ShowHide(): void {
+    this.show = !this.show;
   }
 
   ngOnInit(): void {

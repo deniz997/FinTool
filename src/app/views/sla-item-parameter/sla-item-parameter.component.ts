@@ -38,6 +38,8 @@ export class SlaItemParameterComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
+  show = false;
+
   totalItems: number = 64;
   currentPage: number   = 1;
   smallnumPages: number = 0;
@@ -100,4 +102,7 @@ export class SlaItemParameterComponent implements OnInit {
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 
+  ShowHide = (): void => {
+    this.show = !this.show;
+  }
 }
