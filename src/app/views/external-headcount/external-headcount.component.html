@@ -50,7 +50,7 @@
 <!--/Header!-->
 
 <div class="row">
-  <div class="col-2" style="padding-right: 0px;">
+  <div class="col-2" style="padding-right: 0;">
     <div class="card" style="height: inherit">
       <div id="yearHeader" class="card-header">
         <strong>Years</strong>
@@ -74,28 +74,17 @@
 
 
 
-  <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
+  <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0">
     <div id="internalHeadcountTable" class="card">
       <div class="card-header">
-        <strong>Internal Headcount</strong>
+        <strong>External Headcount</strong>
       </div>
       <div class="card-body">
         <table class="table table-bordered table-striped table-sm">
           <thead>
           <tr>
-            <th>Cost Center</th>
-            <th>Jan</th>
-            <th>Feb</th>
-            <th>Mar</th>
-            <th>Apr</th>
-            <th>May</th>
-            <th>Jun</th>
-            <th>Jul</th>
-            <th>Aug</th>
-            <th>Sep</th>
-            <th>Oct</th>
-            <th>Nov</th>
-            <th>Dec</th>
+            <th>Class</th>
+            <th *ngFor="let month of months">{{month}}</th>
 
           </tr>
           </thead>
@@ -152,59 +141,33 @@
             <fieldset class="form-group">
               <ng-select
                 class="bootstrap"
-                placeholder="Pick Table Row"
+                placeholder="Pick Class"
+                name="classPicker"
                 [options]="costCenters"
-                [allowClear]="false"></ng-select>
+                [allowClear]="false"
+                [(ngModel)]="currentClass"></ng-select>
 
-              <div class="form-group row">
-                <div class="col-md-2 col-lg-1">
-                  <label>January</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>February</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>March</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>April</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>May</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>June</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>July</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>August</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>September</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>October</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>November</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>December</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
+              <div class="form-group row" *ngIf="currentClass" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+                <perfect-scrollbar>
+                  <table class="table table-sm">
+                    <thead style="border: hidden">
+                    <tr>
+                      <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td *ngFor="let _ of months">
+                        <label style="text-align: center">
+                          <input type="text" class="form-control" placeholder="Ex. 4">
+                        </label>
+                      </td>
+                    </tr>
+
+                    </tbody>
+
+                  </table>
+                </perfect-scrollbar>
 
               </div>
 
@@ -212,15 +175,9 @@
           </div>
 
         </div>
-
-
-
-
-
-
       </form>
     </div>
-    <div class="card-footer">
+    <div *ngIf="currentClass" class="card-footer">
       <button type="submit" class="btn btn-sm btn-primary">Submit</button>
     </div>
 

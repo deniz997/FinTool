@@ -68,6 +68,8 @@ export class ExternalHeadcountComponent implements OnInit {
   public totalExternHeadCountCostFromCapaPlan = [
     '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-'
   ];
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  currentClass: any;
 
   ngOnInit(): void {
     this.tableResized();
