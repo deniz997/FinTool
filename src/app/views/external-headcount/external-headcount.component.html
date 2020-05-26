@@ -80,45 +80,47 @@
         <strong>External Headcount</strong>
       </div>
       <div class="card-body">
-        <table class="table table-bordered table-striped table-sm">
-          <thead>
-          <tr>
-            <th>Class</th>
-            <th *ngFor="let month of months">{{month}}</th>
+        <perfect-scrollbar>
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <th>Class</th>
+              <th *ngFor="let month of months">{{month}}</th>
 
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>0000036140 - Regional Rollout P</td>
-            <td *ngFor="let cost of regionalRolloutPValues">{{cost}}</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>0000036140 - Regional Rollout P</td>
+              <td *ngFor="let cost of regionalRolloutPValues">{{cost}}</td>
 
 
-          </tr>
-          <tr>
-            <td>0000036140 - Regional Rollout A</td>
-            <td *ngFor="let cost of regionalRolloutAValues">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>0000036140 - Regional Rollout A</td>
+              <td *ngFor="let cost of regionalRolloutAValues">{{cost}}</td>
 
-          </tr>
-          <tr>
-            <td>0000036140 - Regional Rollout B</td>
-            <td *ngFor="let cost of regionalRolloutBValues">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>0000036140 - Regional Rollout B</td>
+              <td *ngFor="let cost of regionalRolloutBValues">{{cost}}</td>
 
-          </tr>
-          <tr>
-            <td>0000036140 - Regional Rollout C</td>
-            <td *ngFor="let cost of regionalRolloutCValues">{{cost}}</td>
-          </tr>
-          <tr>
-            <td>Total Extern Headcount Cost per Class</td>
-            <td *ngFor="let cost of totalExternHeadCountCostPerClass">{{cost}}</td>
-          </tr>
-          <tr>
-            <td>Total Extern Headcount Cost from Capa Plan</td>
-            <td *ngFor="let cost of totalExternHeadCountCostFromCapaPlan">{{cost}}</td>
-          </tr>
-          </tbody>
-        </table>
+            </tr>
+            <tr>
+              <td>0000036140 - Regional Rollout C</td>
+              <td *ngFor="let cost of regionalRolloutCValues">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>Total Extern Headcount Cost per Class</td>
+              <td *ngFor="let cost of totalExternHeadCountCostPerClass">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>Total Extern Headcount Cost from Capa Plan</td>
+              <td *ngFor="let cost of totalExternHeadCountCostFromCapaPlan">{{cost}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </perfect-scrollbar>
       </div>
     </div>
   </div>
