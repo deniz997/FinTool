@@ -43,8 +43,9 @@
             </div>
           </div>
         </div>
-        <div class="card-footer">
-          <div class="col offset-7">
+        <!--pagination-->
+        <div class="col">
+          <div class="d-flex justify-content-end">
             <div class="row">
               <div class="col-xs-12 col-12 d-sm-down-none">
                 <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
@@ -52,6 +53,7 @@
             </div>
           </div>
         </div>
+        <!--pagination-->
       </div>
 
       <!--Input!-->
