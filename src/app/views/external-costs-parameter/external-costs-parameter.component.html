@@ -3,14 +3,14 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Extern Costs Per Person Parameter Table
+          <i class="fa fa-align-justify"></i> External Costs Per Person Parameter Table
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
               <th style="width: 1px;"> </th>
-              <th>Extern Cost Definition per Person</th>
+              <th>External Cost Definition per Person</th>
               <th>Current Level</th>
               <th>Planning Period</th>
               <th>Currency</th>
@@ -54,14 +54,20 @@
             </tbody>
           </table>
 
-          <div class="row">
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-primary">UPDATE</button>
-            </div>
-            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-              <button type="button" class="btn btn-block btn-danger">DELETE</button>
+          <div class="col">
+            <div class="row justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
+              </div>
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+              </div>
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-danger">DELETE</button>
+              </div>
             </div>
           </div>
+
         </div>
 
         <div class="card-footer">
@@ -73,7 +79,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" *ngIf="show">
         <div class="card-header">
           <strong>Add new External Cost per Person</strong>
         </div>
@@ -130,7 +136,7 @@
           </div>
 
           <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-success">ADD</button>
+            <button type="button" class="btn btn-block btn-success">ADD/SAVE</button>
           </div>
         </div>
       </div>
