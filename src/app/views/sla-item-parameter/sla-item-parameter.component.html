@@ -71,6 +71,9 @@
         <div class="col">
           <div class="row d-flex justify-content-end">
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+              <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
               <button type="button" class="btn btn-block btn-primary">UPDATE</button>
             </div>
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
@@ -96,7 +99,7 @@
 
     <!--Input!-->
     <div>
-      <div class="card">
+      <div class="card" *ngIf="show">
         <div class="card-header">
           <strong>Add New SLA Item Parameter</strong>
         </div>
@@ -113,6 +116,7 @@
                       <label><b>Year</b></label>
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
+                          <label>Year</label>
                           <select class="form-control" id="ccyear">
                             <option>2014</option>
                             <option>2015</option>
@@ -130,6 +134,7 @@
                         </div>
                         <!-- date picker -->
                         <div class="col-md-6 col-lg-6">
+                          <label>Validation</label>
                           <form class="form-inline">
                             <div class="form-group hidden">
                               <div class="input-group">
@@ -277,7 +282,7 @@
           <div class="col">
             <div class="row d-flex justify-content-end">
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-success">ADD/SAVE</button>
+                <button type="button" class="btn btn-block btn-success">SAVE</button>
               </div>
             </div>
           </div>
