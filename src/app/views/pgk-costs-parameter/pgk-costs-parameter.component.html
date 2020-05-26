@@ -54,13 +54,18 @@
             </tbody>
           </table>
 
-          <div class="row">
+          <div class="col">
+            <div class="row justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
+              </div>
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-block btn-primary">UPDATE</button>
               </div>
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-block btn-danger">DELETE</button>
               </div>
+            </div>
           </div>
 
 
@@ -76,7 +81,7 @@
       </div>
       <!--Card-->
 
-      <div class="card">
+      <div class="card" *ngIf="show">
         <div class="card-header">
           <strong>Add new PGK Cost per Person</strong>
         </div>
@@ -133,7 +138,7 @@
           </div>
 
           <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-success">ADD</button>
+            <button type="button" class="btn btn-block btn-success">ADD/SAVE</button>
           </div>
         </div>
 

@@ -11,6 +11,9 @@ export class PgkCostsParameterComponent implements OnInit {
 
   constructor() { }
 
+
+  show = false;
+
   totalItems: number = 64;
   currentPage: number   = 1;
   smallnumPages: number = 0;
@@ -52,6 +55,10 @@ export class PgkCostsParameterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ShowHide(): void{
+    this.show = !this.show;
   }
 
 }
