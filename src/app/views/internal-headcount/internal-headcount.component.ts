@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {IOption} from 'ng-select';
 import {DOCUMENT} from '@angular/common';
 import PerfectScrollbar from 'perfect-scrollbar';
+import {timer} from 'rxjs';
 
 
 @Component({
@@ -46,7 +47,9 @@ export class InternalHeadcountComponent implements OnInit {
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   ngOnInit(): void {
-    this.tableResized();
+    timer(150).subscribe(_ => {
+      this.tableResized();
+    });
   }
 
   showYear(year: string, event) {

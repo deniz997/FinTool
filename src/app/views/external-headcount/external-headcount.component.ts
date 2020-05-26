@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {IOption} from 'ng-select';
 import PerfectScrollbar from 'perfect-scrollbar';
+import {timer} from 'rxjs';
 
 @Component({
   selector: 'app-external-headcount',
@@ -72,7 +73,9 @@ export class ExternalHeadcountComponent implements OnInit {
   currentClass: any;
 
   ngOnInit(): void {
-    this.tableResized();
+    timer(150).subscribe(_ => {
+      this.tableResized();
+    });
     this.fillTable();
     this.fillCards();
   }
