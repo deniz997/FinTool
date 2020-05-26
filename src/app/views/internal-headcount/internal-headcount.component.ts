@@ -42,6 +42,8 @@ export class InternalHeadcountComponent implements OnInit {
     '2025',
     '2026',
   ];
+  currentCostCenter: any;
+  months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   ngOnInit(): void {
     this.tableResized();

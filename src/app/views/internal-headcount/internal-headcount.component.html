@@ -197,74 +197,41 @@
               <ng-select
                 class="bootstrap"
                 placeholder="Pick Cost Center Category"
+                name="costCenterPicker"
                 [options]="costCenters"
-                [allowClear]="false"></ng-select>
+                [allowClear]="false"
+                [(ngModel)]="currentCostCenter"></ng-select>
 
-              <div class="form-group row">
-                <div class="col-md-2 col-lg-1">
-                  <label>January</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>February</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>March</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>April</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>May</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>June</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>July</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>August</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>September</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>October</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>November</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
-                <div class="col-md-2 col-lg-1">
-                  <label>December</label>
-                  <input type="text" class="form-control" placeholder="Ex. 4">
-                </div>
+              <div class="form-group row" *ngIf="currentCostCenter" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+                <perfect-scrollbar>
+                  <table class="table table-sm">
+                    <thead style="border: hidden">
+                    <tr>
+                      <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td *ngFor="let _ of months">
+                        <label style="text-align: center">
+                          <input type="text" class="form-control" placeholder="Ex. 4">
+                        </label>
+                      </td>
+                    </tr>
+
+                    </tbody>
+
+                  </table>
+                </perfect-scrollbar>
 
               </div>
-
             </fieldset>
           </div>
 
         </div>
-
-
-
-
-
-
       </form>
     </div>
-    <div class="card-footer">
+    <div class="card-footer" *ngIf="currentCostCenter">
       <button type="submit" class="btn btn-sm btn-primary">Submit</button>
     </div>
 
