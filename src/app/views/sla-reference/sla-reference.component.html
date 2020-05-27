@@ -3,19 +3,18 @@
     <div class="card-header">
       SLA Reference
     </div>
-      <div class="btn-group" dropdown  id='dropdown'>
-        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-          SLA <span class="caret"></span>
-        </button>
-        <ul *dropdownMenu class="dropdown-menu" role="menu">
-          <li role="menuitem"><a class="dropdown-item">SLA 1</a></li>
-          <li role="menuitem"><a class="dropdown-item">SLA 2</a></li>
-          <li role="menuitem"><a class="dropdown-item">SLA 3</a></li>
-          <li role="menuitem"><a class="dropdown-item">SLA 4</a></li>
-        </ul>
-      </div>
-
       <div class="card-body">
+        <div class="card-body col-3">
+          <fieldset class="form-group">
+            <ng-select
+              class="bootstrap"
+              placeholder="SLA Volume"
+              [options]="SLA"
+              [allowClear]="true"></ng-select>
+          </fieldset>
+        </div>
+        
+
         <div class="row">
           <p>Manday Type </p>
           <label class="switch switch-pill switch-primary" id="switch">
