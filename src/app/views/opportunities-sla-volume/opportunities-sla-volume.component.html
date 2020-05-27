@@ -25,11 +25,11 @@
               <thead>
                 <tr>
                   <th>{{rightTableFirstCellHeader}}</th>
-                  <th *ngFor="let header of rightTableHeaders;">{{header}}</th>
+                  <th *ngFor="let header of rightTableHeaders">{{header}}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let row of rightTableData; let i = index" (click)="onTableRowClick(i)">
+                <tr *ngFor="let row of rightTableData">
                   <td *ngFor="let data of row">{{data}}</td>
                 </tr>
               </tbody>
@@ -40,8 +40,8 @@
     </div>
 
     <div class="card-footer" style="float: left">
-      <button class="btn btn-success" (click)="openAddCard()">Add</button>
-      <button class="btn btn-primary" (click)="openEditCard()">Edit</button>
+      <button class="btn btn-success" (click)="showInputField = true">Add</button>
+      <button class="btn btn-primary" (click)="showInputField = true">Edit</button>
       <button class="btn btn-danger">Delete</button>
       <span style="float: right">
         <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
@@ -59,15 +59,14 @@
       <form action="" method="post" class="form-horizontal">
         <div style="text-align: center;">
           <div>
-            <fieldset id="SLAPicker" class="form-group" style="margin-bottom: 0" name="SLAPicker">
+            <fieldset id="SLAPicker" class="form-group" style="margin-bottom: 0">
               <ng-select
                 class="bootstrap"
                 placeholder="Pick SLA"
                 name="SLAPicker"
                 [options]="SLANos"
                 [allowClear]="false"
-                [(ngModel)]="currentSLA" *ngIf="showPicker"
-                (ngModelChange)="onSelect()"></ng-select>
+                [(ngModel)]="currentSLA"></ng-select>
 
               <div *ngIf="currentSLA" class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
                 <perfect-scrollbar>
@@ -81,7 +80,7 @@
                     <tr>
                       <td *ngFor="let _ of rightTableHeaders; let i = index">
                         <label style="text-align: center">
-                          <input type="text" [title]="getPlaceHolderForInputFields(i)" class="form-control" [placeholder]="getPlaceHolderForInputFields(i)" [disabled]="isInputDisabled(i)" [defaultValue]="clickedRow[i]">
+                          <input type="text" [title]="getPlaceHolderForInputFields(i)" class="form-control" [placeholder]="getPlaceHolderForInputFields(i)" [disabled]="isInputDisabled(i)">
                         </label>
                       </td>
                     </tr>
@@ -95,7 +94,7 @@
       </form>
     </div>
     <div *ngIf="currentSLA" class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
-      <button type="submit" class="btn btn-sm btn-primary" value="false" (click)="submit(); emptyClickedRow()">Submit</button>
+      <button type="submit" class="btn btn-sm btn-primary" value="false" (click)="submit()">Submit</button>
     </div>
 
   </div>
