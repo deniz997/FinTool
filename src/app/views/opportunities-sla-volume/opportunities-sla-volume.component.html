@@ -15,10 +15,7 @@
             </label>
           </div>
         </div>
-
-
       </div>
-
     </div>
     <div class="card-body">
       <div class="row">
@@ -26,30 +23,32 @@
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
               <thead>
-              <tr>
-                <th>{{rightTableFirstCellHeader}}</th>
-                <th *ngFor="let header of rightTableHeaders">{{header}}</th>
-              </tr>
+                <tr>
+                  <th>{{rightTableFirstCellHeader}}</th>
+                  <th *ngFor="let header of rightTableHeaders">{{header}}</th>
+                </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of rightTableData">
-                <td *ngFor="let data of row">{{data}}</td>
-              </tr>
-
+                <tr *ngFor="let row of rightTableData">
+                  <td *ngFor="let data of row">{{data}}</td>
+                </tr>
               </tbody>
-
             </table>
-
           </perfect-scrollbar>
         </div>
       </div>
     </div>
-    <div class="card-footer flex-column" style="align-self: flex-end">
-      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
 
+    <div class="card-footer" style="float: left">
+      <button class="btn btn-success" (click)="showInputField = true">Add</button>
+      <button class="btn btn-primary" (click)="showInputField = true">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+      <span style="float: right">
+        <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+      </span>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="showInputField" class="card">
     <div class="card-header">
       <strong>Input</strong>
     </div>
@@ -69,7 +68,6 @@
                 [allowClear]="false"
                 [(ngModel)]="currentSLA"></ng-select>
 
-
               <div *ngIf="currentSLA" class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
                 <perfect-scrollbar>
                   <table class="table table-sm">
@@ -86,22 +84,17 @@
                         </label>
                       </td>
                     </tr>
-
                     </tbody>
-
                   </table>
                 </perfect-scrollbar>
-
               </div>
-
             </fieldset>
           </div>
-
         </div>
       </form>
     </div>
     <div *ngIf="currentSLA" class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
-      <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+      <button type="submit" class="btn btn-sm btn-primary" value="false" (click)="submit()">Submit</button>
     </div>
 
   </div>
