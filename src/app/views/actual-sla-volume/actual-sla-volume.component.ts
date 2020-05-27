@@ -54,35 +54,19 @@ export class ActualSlaVolumeComponent implements OnInit {
     {label: 'SLA20_ITTQT_113', value: 'SLA20_ITTQT_113'},
   ];
   showInputField: boolean;
-  clickedRow = [];
-  showPicker: boolean;
+
 
   ngOnInit(): void {
-    this.clickedRow.push('');
-    this.rightTableHeaders.forEach(_ => {
-      this.clickedRow.push('');
-    });
   }
 
   isInputDisabled(i: number): boolean {
     const currentSLA = this.currentSLA;
-    if (this.currentSLA === this.getNextSLAName() && i === 0) {
-      return true;
-    }
     for (const row of this.rightTableData) {
       if (row[0] === currentSLA) {
-        return row[i] === '-';
+        return row[i + 1] === '-';
       }
     }
     return false;
-  }
-
-  getPlaceHolderForInputFields(i: number): string {
-    if (this.currentSLA === this.getNextSLAName() && i === 0) {
-      return 'SLA20_ITTQT_114';
-    } else {
-      return 'Ex. 4';
-    }
   }
 
   submit() {
@@ -91,63 +75,5 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   closeInputCard() {
     this.showInputField = false;
-  }
-
-  openInputCard() {
-    this.showInputField = true;
-  }
-
-  saveClickedRow(i: number) {
-    this.emptyClickedRow();
-    this.rightTableData[i].forEach(value => {
-      this.clickedRow.push(value);
-    });
-  }
-
-  onTableRowClick(i: number) {
-    this.currentSLA = this.rightTableData[i][0];
-    this.saveClickedRow(i);
-    this.openInputCard();
-  }
-
-  emptyClickedRow() {
-    this.clickedRow = [];
-  }
-
-  clearClickedRow() {
-    for (let i = 0; i < this.clickedRow.length; i++) {
-      this.clickedRow[i] = '';
-    }
-  }
-
-  openAddCard() {
-    this.showPicker = false;
-    this.clearClickedRow();
-    this.currentSLA = this.getNextSLAName();
-    this.openInputCard();
-  }
-
-  openEditCard() {
-    this.showPicker = true;
-    this.currentSLA = null;
-    this.openInputCard();
-  }
-
-  getNextSLAName(): string {
-    return 'SLA20_ITTQT_114';
-  }
-
-  onSelect() {
-    let index = 0;
-    if (this.currentSLA === this.getNextSLAName()) {
-      this.clearClickedRow();
-    }
-    for (const row of this.rightTableData) {
-      if (row[0] === this.currentSLA) {
-        this.saveClickedRow(index);
-        return;
-      }
-      index++;
-    }
   }
 }
