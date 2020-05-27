@@ -49,6 +49,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     {label: 'SLA20_ITTQT_106', value: 'SLA20_ITTQT_106'},
     {label: 'SLA20_ITTQT_113', value: 'SLA20_ITTQT_113'},
   ];
+  showInputField: any;
 
 
   ngOnInit(): void {
@@ -75,4 +76,11 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     }
   }
 
+  submit() {
+    this.closeInputCard();
+  }
+
+  closeInputCard() {
+    this.showInputField = false;
+  }
 }
