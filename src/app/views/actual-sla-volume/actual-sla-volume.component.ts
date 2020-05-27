@@ -53,6 +53,7 @@ export class ActualSlaVolumeComponent implements OnInit {
     {label: 'SLA20_ITTQT_106', value: 'SLA20_ITTQT_106'},
     {label: 'SLA20_ITTQT_113', value: 'SLA20_ITTQT_113'},
   ];
+  showInputField: boolean;
 
 
   ngOnInit(): void {
@@ -66,5 +67,13 @@ export class ActualSlaVolumeComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  submit() {
+    this.closeInputCard();
+  }
+
+  closeInputCard() {
+    this.showInputField = false;
   }
 }
