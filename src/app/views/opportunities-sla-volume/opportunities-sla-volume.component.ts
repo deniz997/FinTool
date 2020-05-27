@@ -29,7 +29,6 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     'Probability in %'
   ];
 
-
   rightTableData = [
     ['SLA20_ITTQT_008', 'Mercedes Me Connect Aftersales Rollout 5', 'MeConnectA', '01.01.2020', '31.12.2020', '2.420', '617.100', '185', '740', '9', '46', '-', '-', '70.000', '30%'],
     ['SLA20_ITTQT_009', 'Mercedes Me Connect 2', 'MeConnectS', '01.01.2020', '31.12.2020', '2.420', '617.100', '168', '504', '24', '120', '-', '-', '70.000', '25%'],
@@ -41,35 +40,42 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 7;
+
   public SLANos: Array<IOption> = [
-    {label: 'New SLA', value: 'new'},
+    {label: 'New SLA', value: this.getNextSLAName()},
     {label: 'SLA20_ITTQT_008', value: 'SLA20_ITTQT_008'},
     {label: 'SLA20_ITTQT_009', value: 'SLA20_ITTQT_009'},
     {label: 'SLA20_ITTQT_012', value: 'SLA20_ITTQT_012'},
     {label: 'SLA20_ITTQT_106', value: 'SLA20_ITTQT_106'},
     {label: 'SLA20_ITTQT_113', value: 'SLA20_ITTQT_113'},
   ];
-  showInputField: any;
 
+  showInputField: any;
+  clickedRow = [];
+  showPicker: boolean;
 
   ngOnInit(): void {
+    this.clickedRow.push('');
+    this.rightTableHeaders.forEach(_ => {
+      this.clickedRow.push('');
+    });
   }
 
   isInputDisabled(i: number): boolean {
     const currentSLA = this.currentSLA;
-    if (this.currentSLA === 'new' && i === 0) {
+    if (this.currentSLA === this.getNextSLAName() && i === 0) {
       return true;
     }
     for (const row of this.rightTableData) {
       if (row[0] === currentSLA) {
-        return row[i + 1] === '-';
+        return row[i] === '-';
       }
     }
     return false;
   }
 
   getPlaceHolderForInputFields(i: number): string {
-    if (this.currentSLA === 'new' && i === 0) {
+    if (this.currentSLA === this.getNextSLAName() && i === 0) {
       return 'SLA20_ITTQT_114';
     } else {
       return 'Ex. 4';
@@ -83,4 +89,63 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   closeInputCard() {
     this.showInputField = false;
   }
+
+  openInputCard() {
+    this.showInputField = true;
+  }
+
+  saveClickedRow(i: number) {
+    this.emptyClickedRow();
+    this.rightTableData[i].forEach(value => {
+      this.clickedRow.push(value);
+    });
+  }
+
+  onTableRowClick(i: number) {
+    this.currentSLA = this.rightTableData[i][0];
+    this.saveClickedRow(i);
+    this.openInputCard();
+  }
+
+  emptyClickedRow() {
+    this.clickedRow = [];
+  }
+
+  clearClickedRow() {
+    for (let i = 0; i < this.clickedRow.length; i++) {
+      this.clickedRow[i] = '';
+    }
+  }
+
+  openAddCard() {
+    this.showPicker = false;
+    this.clearClickedRow();
+    this.currentSLA = this.getNextSLAName();
+    this.openInputCard();
+  }
+
+  openEditCard() {
+    this.showPicker = true;
+    this.currentSLA = null;
+    this.openInputCard();
+  }
+
+  getNextSLAName(): string {
+    return 'SLA20_ITTQT_114';
+  }
+
+  onSelect() {
+    let index = 0;
+    if (this.currentSLA === this.getNextSLAName()) {
+      this.clearClickedRow();
+    }
+    for (const row of this.rightTableData) {
+      if (row[0] === this.currentSLA) {
+        this.saveClickedRow(index);
+        return;
+      }
+      index++;
+    }
+  }
+
 }
