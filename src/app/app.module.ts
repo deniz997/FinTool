@@ -44,6 +44,14 @@ import { E4RelatedCostsComponent } from './views/e4-related-costs/e4-related-cos
 import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-volume.component';
 import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
+import {MandayComponent} from './views/tables/manday/manday.component';
+import {CostCenterComponent} from './views/tables/cost-center/cost-center.component';
+import {CurrencyComponent} from './views/tables/currency/currency.component';
+import {StatusComponent} from './views/tables/status/status.component';
+import {PgkTableComponent} from './views/tables/pgk-table/pgk-table.component';
+import {PlanningComponent} from './views/tables/planning/planning.component';
+import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
+import {TicketComponent} from './views/tables/ticket/ticket.component';
 
 @NgModule({
   imports: [
@@ -77,7 +85,15 @@ import { DepartmentTravelRateComponent } from './views/department-travel-rate/de
     E4RelatedCostsComponent,
     ActualSlaVolumeComponent,
     OpportunitiesSlaVolumeComponent,
-    DepartmentTravelRateComponent
+    DepartmentTravelRateComponent,
+    MandayComponent,
+    CostCenterComponent,
+    CurrencyComponent,
+    StatusComponent,
+    PgkTableComponent,
+    PlanningComponent,
+    TravelTableComponent,
+    TicketComponent
   ],
   providers: [{
     provide: LocationStrategy,
