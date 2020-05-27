@@ -44,12 +44,16 @@
         </div>
       </div>
     </div>
-    <div class="card-footer flex-column" style="align-self: flex-end">
-      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
-
+    <div class="card-footer" style="float: left">
+      <button class="btn btn-success" (click)="showInputField = true">Add</button>
+      <button class="btn btn-primary" (click)="showInputField = true">Edit</button>
+      <button class="btn btn-danger">Delete</button>
+      <span style="float: right">
+        <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+      </span>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="showInputField" class="card">
     <div class="card-header">
       <strong>Input</strong>
     </div>
@@ -86,22 +90,17 @@
                         </label>
                       </td>
                     </tr>
-
                     </tbody>
-
                   </table>
                 </perfect-scrollbar>
-
               </div>
-
             </fieldset>
           </div>
-
         </div>
       </form>
     </div>
     <div *ngIf="currentSLA" class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
-      <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+      <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Submit</button>
     </div>
 
   </div>
