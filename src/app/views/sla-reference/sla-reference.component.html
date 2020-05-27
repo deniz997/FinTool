@@ -3,13 +3,60 @@
     <div class="card-header">
       SLA Reference
     </div>
+    <div class="card">
+      <div class="btn-group" dropdown  id='dropdown'>
+        <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+          SLA <span class="caret"></span>
+        </button>
+        <ul *dropdownMenu class="dropdown-menu" role="menu">
+          <li role="menuitem"><a class="dropdown-item">SLA 1</a></li>
+          <li role="menuitem"><a class="dropdown-item">SLA 2</a></li>
+          <li role="menuitem"><a class="dropdown-item">SLA 3</a></li>
+          <li role="menuitem"><a class="dropdown-item">SLA 4</a></li>
+        </ul>
+      </div>
 
-    <div class="card-body">
-      <label class="switch switch-pill switch-primary">
-        <input type="checkbox" class="switch-input" checked>
-        <span class="switch-slider"></span>
-      </label>
+      <div class="card-body">
+        <div class="row">
+          <p>Manday Type </p>
+          <label class="switch switch-pill switch-primary" id="switch">
+            <input type="checkbox" class="switch-input" >
+            <span class="switch-slider"></span>
+          </label>
+        </div>
 
+        <div class="row">
+          <p>Travel Type </p>
+          <label class="switch switch-pill switch-primary" id="switch1">
+            <input type="checkbox" class="switch-input" checked>
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="row">
+          <p>Travel Day Type </p>
+          <label class="switch switch-pill switch-primary" id="switch2">
+            <input type="checkbox" class="switch-input" checked>
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="row">
+          <p>Ticket Type </p>
+          <label class="switch switch-pill switch-primary" id="switch3">
+            <input type="checkbox" class="switch-input" >
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="row">
+          <p>Fixed Costs Type </p>
+          <label class="switch switch-pill switch-primary" id="switch4">
+            <input type="checkbox" class="switch-input" checked>
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </div><!--/.col-->
