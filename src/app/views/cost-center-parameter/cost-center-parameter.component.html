@@ -10,36 +10,39 @@
 
         <div class="card-body">
 
-          <table class="table table-bordered table-striped table-sm table-hover">
-            <thead>
-            <tr>
-              <th>Cost Center ID</th>
-              <th>Cost Center Name</th>
-              <th>Cost Center Typ</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let costcenterID of costcenters; let i = index" (click)="setClickedRow(i)" [class.active]="i==selectedRow">
-              <td>{{costcenterID.costcenterID}}</td>
-              <td>{{costcenterID.costcentername}}</td>
-              <td>{{costcenterID.costcentertyp}}</td>
-            </tr>
-            <!--
-            <tr>
-              <td>Cost Center ID 2</td>
-              <td>Cost Center Name 2</td>
-              <td>Cost Center Typ 1</td>
-            </tr>
-            <tr>
-              <td>Cost Center ID 3</td>
-              <td>Cost Center Name 3</td>
-              <td>Cost Center Typ 2</td>
-            </tr> -->
-            </tbody>
-          </table>
+          <perfect-scrollbar>
+            <table class="table table-bordered table-striped table-sm table-hover">
+              <thead>
+              <tr>
+                <th>Cost Center ID</th>
+                <th>Cost Center Name</th>
+                <th>Cost Center Typ</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let costcenterID of costcenters; let i = index" (click)="setClickedRow(i)" [class.active]="i==selectedRow">
+                <td>{{costcenterID.costcenterID}}</td>
+                <td>{{costcenterID.costcentername}}</td>
+                <td>{{costcenterID.costcentertyp}}</td>
+              </tr>
+              <!--
+              <tr>
+                <td>Cost Center ID 2</td>
+                <td>Cost Center Name 2</td>
+                <td>Cost Center Typ 1</td>
+              </tr>
+              <tr>
+                <td>Cost Center ID 3</td>
+                <td>Cost Center Name 3</td>
+                <td>Cost Center Typ 2</td>
+              </tr> -->
+              </tbody>
+            </table>
+          </perfect-scrollbar>
 
           <div class="col">
-            <div class="row d-flex justify-content-end">
+            <div class="row d-flex">
+
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
               </div>
@@ -49,22 +52,23 @@
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-block btn-danger">DELETE</button>
               </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!--pagination-->
-        <div class="col">
-          <div class="d-flex justify-content-end">
-            <div class="row">
-              <div class="col-xs-12 col-12 d-sm-down-none">
-                <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+              <div class="col-6">
+                <!--pagination-->
+                <div class="d-flex justify-content-end">
+                  <div class="row">
+                    <div class="col-xs-12 col-12 d-sm-down-none">
+                      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                    </div>
+                  </div>
+                </div>
+                <!--pagination-->
               </div>
+
+
             </div>
           </div>
+
         </div>
-        <!--pagination-->
 
       </div>
 
