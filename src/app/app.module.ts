@@ -56,6 +56,8 @@ import {PgkTableComponent} from './views/tables/pgk-table/pgk-table.component';
 import {PlanningComponent} from './views/tables/planning/planning.component';
 import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
 import {TicketComponent} from './views/tables/ticket/ticket.component';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -73,7 +75,9 @@ import {TicketComponent} from './views/tables/ticket/ticket.component';
     ChartsModule,
     SelectModule,
     PaginationModule.forRoot(),
-    FormsModule
+    FormsModule,
+    BsDatepickerModule,
+    NgbModule,
   ],
   declarations: [
     AppComponent,

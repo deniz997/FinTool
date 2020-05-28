@@ -1,0 +1,18 @@
+
+.col-2{
+  padding: 16px 10px;
+  width: inherit;
+}
+
+.col-3{
+  padding: 16px 10px;
+  width: inherit;
+}
+
+.form-group{
+  margin: 0px;
+}
+
+pagination{
+  float: right;
+}
