@@ -15,6 +15,7 @@ export class E4RelatedCostsComponent implements OnInit {
     {label: 'Primary Cost', value: 'primary'},
     {label: 'Project Cost Indirect Chargeable', value: 'project'},
   ];
+  public selectedCostCat: string;
   public mainCosts: Array<IOption> = [
     {label: 'Department Cost', value: 'dC'},
     {label: 'Outsource & Consultancy', value: 'oC'},

@@ -9,8 +9,10 @@
           class="bootstrap"
           placeholder="Cost Categories"
           [options]="costCategories"
-          [allowClear]="true"></ng-select>
+          [allowClear]="true"
+        [ngModel]="selectedCostCat"></ng-select>
       </fieldset>
+      <p>{{selectedCostCat}}</p>
     </div>
     <div class="card-body col-3">
       <fieldset class="form-group">
