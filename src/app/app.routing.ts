@@ -19,6 +19,7 @@ import {ExternalHeadcountComponent} from './views/external-headcount/external-he
 import {E4RelatedCostsComponent} from './views/e4-related-costs/e4-related-costs.component';
 import {ActualSlaVolumeComponent} from './views/actual-sla-volume/actual-sla-volume.component';
 import {OpportunitiesSlaVolumeComponent} from './views/opportunities-sla-volume/opportunities-sla-volume.component';
+import {SlaReferenceComponent} from './views/sla-reference/sla-reference.component';
 
 export const routes: Routes = [
   {
@@ -61,6 +62,13 @@ export const routes: Routes = [
       {
         path: 'parameter/sla-item',
         component: SlaItemParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/sla-reference',
+        component: SlaReferenceComponent,
         data: {
           title: 'Parameter'
         },
