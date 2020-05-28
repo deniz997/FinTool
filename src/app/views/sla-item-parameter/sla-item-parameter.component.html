@@ -8,10 +8,14 @@
       </div>
       <div class="card-body">
         <!-- table -->
-        <div class="table-responsive">
+        <perfect-scrollbar style="max-height: 750px">
           <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
+              <th><div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck0" >
+                <label class="custom-control-label" for="tableDefaultCheck0"></label>
+              </div></th>
               <th colspan="3">Time</th>
               <th colspan="2">Manday</th>
               <th colspan="3">Travel</th>
@@ -21,6 +25,7 @@
             </thead>
             <thead>
             <tr>
+              <th> </th>
               <th>Year</th>
               <th>Valid From</th>
               <th>Valid To</th>
@@ -37,6 +42,10 @@
             </thead>
             <tbody>
             <tr>
+              <td><div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck1" >
+                <label class="custom-control-label" for="tableDefaultCheck1"></label>
+              </div></td>
               <td>0000</td>
               <td>00/00/0000</td>
               <td>00/00/0000</td>
@@ -51,6 +60,10 @@
               <td>Fix Costs Rate 1</td>
             </tr>
             <tr>
+              <td><div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck2" >
+                <label class="custom-control-label" for="tableDefaultCheck2"></label>
+              </div></td>
               <td>0000</td>
               <td>00/00/0000</td>
               <td>00/00/0000</td>
@@ -66,12 +79,12 @@
             </tr>
             </tbody>
           </table>
-        </div>
+        </perfect-scrollbar>
         <!-- table -->
 
         <!-- buttons -->
         <div class="col">
-          <div class="row d-flex justify-content-end">
+          <div class="row d-flex">
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
               <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
             </div>
@@ -81,21 +94,23 @@
             <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
               <button type="button" class="btn btn-block btn-danger">DELETE</button>
             </div>
+
+            <div class="col-6">
+              <!--pagination-->
+              <div class="d-flex justify-content-end">
+                <div class="row">
+                  <div class="col-xs-12 col-12 d-sm-down-none">
+                    <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                  </div>
+                </div>
+              </div>
+              <!--pagination-->
+            </div>
             </div>
           </div>
         <!-- buttons -->
       </div>
-      <!-- pagination -->
-        <div class="col">
-          <div class="d-flex justify-content-end">
-            <div class="row">
-              <div class="col-xs-12 col-12 d-sm-down-none">
-                <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-- pagination -->
+
     </div>
     <!-- column -->
 
@@ -109,16 +124,20 @@
         <div class="card-body col-12">
 
           <form action="" method="post" class="form-horizontal">
-            <div class=" col-12" style="text-align: center">
+            <div class="col-12" style="text-align: center">
               <div>
                 <fieldset class="form-group">
 
                   <div class="form-group row">
                     <div class="col-md-6 col-lg-12 mb-5">
-                      <label><b>Year</b></label>
+                      <div class="d-flex ml-0">
+                        <label><b>Year</b></label>
+                      </div>
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
-                          <label>Year</label>
+                          <div class="d-flex ml-0">
+                            <label>Year</label>
+                          </div>
                           <select class="form-control" id="ccyear">
                             <option>2014</option>
                             <option>2015</option>
@@ -136,7 +155,9 @@
                         </div>
                         <!-- date picker -->
                         <div class="col-md-6 col-lg-6">
-                          <label>Validation</label>
+                          <div class="d-flex ml-0">
+                            <label>Validation</label>
+                          </div>
                           <form class="form-inline">
                             <div class="form-group hidden">
                               <div class="input-group">
@@ -197,18 +218,25 @@
                         <!-- date picker -->
                       </div>
                     </div>
+                    <hr style="width:100%;" class="ml-0 mr-0">
                     <div class="col-md-6 col-lg-12 mb-5">
-                      <label><b>Manday</b></label>
+                      <div class="d-flex ml-0">
+                        <label><b>Manday</b></label>
+                      </div>
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
-                          <label>Manday Typ</label>
+                          <div class="d-flex ml-0">
+                            <label>Manday Typ</label>
+                          </div>
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Manday Typ"
                             [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                          <label>Manday Rate</label>
+                          <div class="d-flex ml-0">
+                            <label>Manday Rate</label>
+                          </div>
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Manday Rate"
@@ -216,25 +244,34 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 col-lg-12 mb-5"> <!-- class="col-md-2 col-lg-1" -->
-                      <label><b>Travel</b></label>
+                    <hr style="width:100%" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Travel</b></label>
+                      </div>
                       <div class="row">
                         <div class="col-md-6 col-lg-4">
-                          <label>Travel Typ</label>
+                          <div class="d-flex ml-0">
+                            <label>Travel Typ</label>
+                          </div>
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Travel Typ"
                           [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                          <label>Travel Day Typ</label>
+                          <div class="d-flex ml-0">
+                            <label>Travel Day Typ</label>
+                          </div>
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Travel Day Typ"
                           [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                          <label>Travel Rate</label>
+                          <div class="d-flex ml-0">
+                            <label>Travel Rate</label>
+                          </div>
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Travel Rate"
@@ -242,18 +279,25 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 col-lg-12 mb-5"> <!-- class="col-md-2 col-lg-1" -->
-                      <label><b>Ticket</b></label>
+                    <hr style="width:100%" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Ticket</b></label>
+                      </div>
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
-                          <label>Ticket Typ</label>
+                          <div class="d-flex ml-0">
+                            <label>Ticket Typ</label>
+                          </div>
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Ticket Typ"
                             [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                          <label>Ticket Rate</label>
+                          <div class="d-flex ml-0">
+                            <label>Ticket Rate</label>
+                          </div>
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Ticket Rate"
@@ -261,18 +305,25 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-6 col-lg-12 mb-5"> <!-- class="col-md-2 col-lg-1" -->
-                      <label><b>Fix Costs</b></label>
+                    <hr style="width:100%" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Fix Costs</b></label>
+                      </div>
                       <div class="row">
                         <div class="col-md-6 col-lg-6">
-                          <label>Fix Costs Typ</label>
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Typ</label>
+                          </div>
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Fix Costs Typ"
                           [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-6">
-                          <label>Fix Costs Rate</label>
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Rate</label>
+                          </div>
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Fix Costs Rate"

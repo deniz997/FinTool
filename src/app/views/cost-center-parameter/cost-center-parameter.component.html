@@ -10,61 +10,84 @@
 
         <div class="card-body">
 
-          <table class="table table-bordered table-striped table-sm table-hover">
-            <thead>
-            <tr>
-              <th>Cost Center ID</th>
-              <th>Cost Center Name</th>
-              <th>Cost Center Typ</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let costcenterID of costcenters; let i = index" (click)="setClickedRow(i)" [class.active]="i==selectedRow">
-              <td>{{costcenterID.costcenterID}}</td>
-              <td>{{costcenterID.costcentername}}</td>
-              <td>{{costcenterID.costcentertyp}}</td>
-            </tr>
-            <!--
-            <tr>
-              <td>Cost Center ID 2</td>
-              <td>Cost Center Name 2</td>
-              <td>Cost Center Typ 1</td>
-            </tr>
-            <tr>
-              <td>Cost Center ID 3</td>
-              <td>Cost Center Name 3</td>
-              <td>Cost Center Typ 2</td>
-            </tr> -->
-            </tbody>
-          </table>
+          <!--table-->
+          <perfect-scrollbar style="max-height: 750px">
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
+              <tr>
+                <th><div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck0" >
+                  <label class="custom-control-label" for="tableDefaultCheck0"></label>
+                </div></th>
+                <th>Cost Center ID</th>
+                <th>Cost Center Name</th>
+                <th>Cost Center Typ</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td><div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck1" >
+                  <label class="custom-control-label" for="tableDefaultCheck1"></label>
+                </div></td>
+                <td>Cost Center ID 1</td>
+                <td>Cost Center Name 1</td>
+                <td>Cost Center Typ 1</td>
+              </tr>
+              <tr>
+                <td><div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck2" >
+                  <label class="custom-control-label" for="tableDefaultCheck2"></label>
+                </div></td>
+                <td>Cost Center ID 2</td>
+                <td>Cost Center Name 2</td>
+                <td>Cost Center Typ 1</td>
+              </tr>
+              <tr>
+                <td><div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck3" >
+                  <label class="custom-control-label" for="tableDefaultCheck3"></label>
+                </div></td>
+                <td>Cost Center ID 3</td>
+                <td>Cost Center Name 3</td>
+                <td>Cost Center Typ 2</td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+          <!table-->
 
+          <!-- buttons & pagination-->
           <div class="col">
-            <div class="row d-flex justify-content-end">
+            <div class="row d-flex">
+
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
               </div>
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-primary">EDIT</button>
+                <button type="button" class="btn btn-block btn-primary">UPDATE</button>
               </div>
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-block btn-danger">DELETE</button>
               </div>
-            </div>
-          </div>
 
-        </div>
-
-        <!--pagination-->
-        <div class="col">
-          <div class="d-flex justify-content-end">
-            <div class="row">
-              <div class="col-xs-12 col-12 d-sm-down-none">
-                <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+              <div class="col-6">
+                <!--pagination-->
+                <div class="d-flex justify-content-end">
+                  <div class="row">
+                    <div class="col-xs-12 col-12 d-sm-down-none">
+                      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                    </div>
+                  </div>
+                </div>
+                <!--pagination-->
               </div>
+
             </div>
           </div>
+          <!-- buttons & pagination-->
+
         </div>
-        <!--pagination-->
 
       </div>
 
@@ -83,16 +106,22 @@
                   <fieldset class="form-group">
 
                     <div class="form-group row">
-                      <div class="col-md-6 col-lg-4"> <!-- class="col-md-2 col-lg-1" -->
-                        <label>Cost Center ID</label>
+                      <div class="col-md-6 col-lg-4">
+                        <div class="d-flex ml-0">
+                          <label>Cost Center ID</label>
+                        </div>
                         <input type="text" class="form-control" placeholder="Enter Cost Center ID">
                       </div>
                       <div class="col-md-6 col-lg-4">
-                        <label>Cost Center Name</label>
+                        <div class="d-flex ml-0">
+                          <label>Cost Center Name</label>
+                        </div>
                         <input type="text" class="form-control" placeholder="Enter Cost Center Name">
                       </div>
                       <div class="col-md-6 col-lg-4">
-                        <label>Cost Center Typ</label>
+                        <div class="d-flex ml-0">
+                          <label>Cost Center Typ</label>
+                        </div>
                         <ng-select
                           class="bootstrap"
                           placeholder="Pick Cost Center Typ"
