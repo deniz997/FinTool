@@ -48,6 +48,14 @@ import {SelectModule} from 'ng-select';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import {FormsModule} from '@angular/forms';
 
+import {MandayComponent} from './views/tables/manday/manday.component';
+import {CostCenterComponent} from './views/tables/cost-center/cost-center.component';
+import {CurrencyComponent} from './views/tables/currency/currency.component';
+import {StatusComponent} from './views/tables/status/status.component';
+import {PgkTableComponent} from './views/tables/pgk-table/pgk-table.component';
+import {PlanningComponent} from './views/tables/planning/planning.component';
+import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
+import {TicketComponent} from './views/tables/ticket/ticket.component';
 
 @NgModule({
   imports: [
@@ -84,7 +92,15 @@ import {FormsModule} from '@angular/forms';
     E4RelatedCostsComponent,
     ActualSlaVolumeComponent,
     OpportunitiesSlaVolumeComponent,
-    DepartmentTravelRateComponent
+    DepartmentTravelRateComponent,
+    MandayComponent,
+    CostCenterComponent,
+    CurrencyComponent,
+    StatusComponent,
+    PgkTableComponent,
+    PlanningComponent,
+    TravelTableComponent,
+    TicketComponent
   ],
   providers: [{
     provide: LocationStrategy,
