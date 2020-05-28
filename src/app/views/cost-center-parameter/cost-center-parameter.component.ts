@@ -9,29 +9,7 @@ import {ngbAutoClose} from '@ng-bootstrap/ng-bootstrap/util/autoclose';
 })
 export class CostCenterParameterComponent implements OnInit {
 
-  setClickedRow: Function;
-  selectedRow: number;
-  costcenters: [{ costcenterID: string; costcentername: string; costcentertyp: string }, { costcenterID: string; costcentername: string; costcentertyp: string }, { costcenterID: string; costcentername: string; costcentertyp: string }];
-  constructor() {
-    this.costcenters = [{
-      costcenterID: 'Cost Center ID 1',
-      costcentername: 'Cost Center Name 1',
-      costcentertyp: 'Cost Center Typ 1'
-    },
-    {
-      costcenterID: 'Cost Center ID 2',
-      costcentername: 'Cost Center Name 2',
-      costcentertyp: 'Cost Center Typ 1'
-    },
-    {
-      costcenterID: 'Cost Center ID 3',
-      costcentername: 'Cost Center Name 3',
-      costcentertyp: 'Cost Center Typ 2'
-    }];
-    this.setClickedRow = function (index) {
-        this.selectedRow = index;
-    };
-  }
+  constructor() {}
 
   show = false;
 
