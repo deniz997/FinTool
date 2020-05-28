@@ -131,6 +131,13 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'parameter/sla-reference',
+        component: SlaReferenceComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
         path: 'parameter/pgk-costs-per-person',
         component: PgkCostsParameterComponent,
         data: {
