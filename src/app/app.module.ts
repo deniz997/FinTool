@@ -67,7 +67,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ChartsModule,
     SelectModule,
     PaginationModule.forRoot(),
-    FormsModule
     FormsModule,
     BsDatepickerModule,
     NgbModule,
