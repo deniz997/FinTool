@@ -6,44 +6,47 @@
           <i class="fa fa-align-justify"></i> Euro/TL Assumption Rate Table
         </div>
         <div class="card-body">
-          <table class="table table-bordered table-striped table-sm">
-            <thead>
-            <tr>
-              <th style="width: 1px;"> </th>
-              <th>Planning Period</th>
-              <th>EUR/TL Rate</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td><div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck1" >
-                <label class="custom-control-label" for="tableDefaultCheck1"> </label>
-              </div></td>
-              <td>EA2</td>
-              <td>Rate</td>
-            </tr>
-            <tr>
-              <td><div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck2" >
-                <label class="custom-control-label" for="tableDefaultCheck2"> </label>
-              </div></td>
-              <td>EA1</td>
-              <td>Rate</td>
-            </tr>
-            <tr>
-              <td><div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="tableDefaultCheck3" >
-                <label class="custom-control-label" for="tableDefaultCheck3"> </label>
-              </div></td>
-              <td>EA2</td>
-              <td>Rate</td>
-            </tr>
-            </tbody>
-          </table>
+
+          <perfect-scrollbar style="max-height: 750px">
+            <table class="table table-bordered table-striped table-sm">
+                <thead>
+                <tr>
+                  <th style="width: 1px;"> </th>
+                  <th>Planning Period</th>
+                  <th>EUR/TL Rate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="tableDefaultCheck1" >
+                    <label class="custom-control-label" for="tableDefaultCheck1"> </label>
+                  </div></td>
+                  <td>EA2</td>
+                  <td>Rate</td>
+                </tr>
+                <tr>
+                  <td><div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="tableDefaultCheck2" >
+                    <label class="custom-control-label" for="tableDefaultCheck2"> </label>
+                  </div></td>
+                  <td>EA1</td>
+                  <td>Rate</td>
+                </tr>
+                <tr>
+                  <td><div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="tableDefaultCheck3" >
+                    <label class="custom-control-label" for="tableDefaultCheck3"> </label>
+                  </div></td>
+                  <td>EA2</td>
+                  <td>Rate</td>
+                </tr>
+                </tbody>
+              </table>
+            </perfect-scrollbar>
 
           <div class="col">
-            <div class="row justify-content-end">
+            <div class="row d-flex">
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
               </div>
@@ -53,18 +56,24 @@
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
                 <button type="button" class="btn btn-block btn-danger">DELETE</button>
               </div>
+
+              <div class="col-6">
+                <!--pagination-->
+                <div class="d-flex justify-content-end">
+                  <div class="row">
+                    <div class="col-xs-12 col-12 d-sm-down-none">
+                      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+                    </div>
+                  </div>
+                </div>
+                <!--pagination-->
+              </div>
+
             </div>
           </div>
 
         </div>
 
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-xs-12 col-12 d-sm-down-none">
-              <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-            </div>
-          </div>
-        </div>
 
       </div>
 
@@ -95,7 +104,7 @@
           </div>
 
           <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-success">ADD/SAVE</button>
+            <button type="button" class="btn btn-block btn-success">SAVE</button>
           </div>
         </div>
 
