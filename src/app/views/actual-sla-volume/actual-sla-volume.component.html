@@ -15,10 +15,7 @@
             </label>
           </div>
         </div>
-
-
       </div>
-
     </div>
     <div class="card-body">
       <div class="row">
@@ -28,25 +25,22 @@
               <thead>
               <tr>
                 <th>{{rightTableFirstCellHeader}}</th>
-                <th *ngFor="let header of rightTableHeaders">{{header}}</th>
+                <th *ngFor="let header of rightTableHeaders;">{{header}}</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of rightTableData">
+              <tr *ngFor="let row of rightTableData; let i = index" (click)="onTableRowClick(i)">
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
-
               </tbody>
-
             </table>
-
           </perfect-scrollbar>
         </div>
       </div>
     </div>
     <div class="card-footer" style="float: left">
-      <button class="btn btn-success" (click)="showInputField = true">Add</button>
-      <button class="btn btn-primary" (click)="showInputField = true">Edit</button>
+      <button class="btn btn-success" (click)="openAddCard()">Add</button>
+      <button class="btn btn-primary" (click)="openEditCard()">Edit</button>
       <button class="btn btn-danger">Delete</button>
       <span style="float: right">
         <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
@@ -86,7 +80,7 @@
                     <tr>
                       <td *ngFor="let _ of rightTableHeaders; let i = index">
                         <label style="text-align: center">
-                          <input type="text" class="form-control" placeholder="Ex. 4" [disabled]="isInputDisabled(i)">
+                          <input type="text" class="form-control" [title]="getPlaceHolderForInputFields(i)" [placeholder]="getPlaceHolderForInputFields(i)" [disabled]="isInputDisabled(i)" [defaultValue]="clickedRow[i]">
                         </label>
                       </td>
                     </tr>
