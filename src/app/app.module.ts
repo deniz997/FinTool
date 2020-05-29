@@ -73,6 +73,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
+    ChartsModule,
     SelectModule,
     PaginationModule.forRoot(),
     FormsModule,
