@@ -19,6 +19,15 @@ import {ExternalHeadcountComponent} from './views/external-headcount/external-he
 import {E4RelatedCostsComponent} from './views/e4-related-costs/e4-related-costs.component';
 import {ActualSlaVolumeComponent} from './views/actual-sla-volume/actual-sla-volume.component';
 import {OpportunitiesSlaVolumeComponent} from './views/opportunities-sla-volume/opportunities-sla-volume.component';
+import {SlaReferenceComponent} from './views/sla-reference/sla-reference.component';
+import {CostCenterComponent} from './views/tables/cost-center/cost-center.component';
+import {CurrencyComponent} from './views/tables/currency/currency.component';
+import {MandayComponent} from './views/tables/manday/manday.component';
+import {PgkTableComponent} from './views/tables/pgk-table/pgk-table.component';
+import {PlanningComponent} from './views/tables/planning/planning.component';
+import {StatusComponent} from './views/tables/status/status.component';
+import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
+import {TicketComponent} from './views/tables/ticket/ticket.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +54,62 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'parameter/dialog/tables/cost-center',
+        component: CostCenterComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/travel-table',
+        component: TravelTableComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/ticket',
+        component: TicketComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/currency',
+        component: CurrencyComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/manday',
+        component: MandayComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/pgk-table',
+        component: PgkTableComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/planning',
+        component: PlanningComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/status',
+        component: StatusComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
         path: 'parameter/user',
         component: UserParameterComponent,
         data: {
@@ -61,6 +126,13 @@ export const routes: Routes = [
       {
         path: 'parameter/sla-item',
         component: SlaItemParameterComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/sla-reference',
+        component: SlaReferenceComponent,
         data: {
           title: 'Parameter'
         },
@@ -89,6 +161,13 @@ export const routes: Routes = [
       {
         path: 'parameter/department-travel-rate',
         component: DepartmentTravelRateComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/sla-reference',
+        component: SlaReferenceComponent,
         data: {
           title: 'Parameter'
         },

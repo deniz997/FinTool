@@ -1,0 +1,38 @@
+.col-lg-1 {
+  padding: 2px;
+  padding-top: 5%;
+  text-align: center;
+}
+.col-md-2 {
+  padding: 2px;
+  padding-top: 5%;
+  text-align: center;
+}
+.form-horizontal {
+
+}
+.card-footer {
+  text-align: right;
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.card-footer button {
+}
+fieldset {
+  margin-bottom: 0px;
+}
+label {
+  margin-bottom: 0px;
+}
+tr.active {
+  background-color: lightblue;
+}
+tr {
+  text-align: center;
+}
+tr td:nth-child(15n-14) {
+  text-align: left;
+}
+

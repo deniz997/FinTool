@@ -1,1 +1,194 @@
-<p>external-headcount works!</p>
+<!--Header!-->
+<div>
+  <div class="row">
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-info">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-people"></i>
+          </div>
+          <div class="h1 mb-0">{{cardValues[0]}}</div>
+          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout P</small>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-people"></i>
+          </div>
+          <div class="h1 mb-0">{{cardValues[1]}}</div>
+          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout A</small>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-warning">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-people"></i>
+          </div>
+          <div class="h1 mb-0">{{cardValues[2]}}</div>
+          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout B</small>
+        </div>
+      </div>
+    </div><!--/.col-->
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-danger">
+        <div class="card-body">
+          <div class="h1 text-muted text-right mb-4">
+            <i class="icon-people"></i>
+          </div>
+          <div class="h1 mb-0">{{cardValues[3]}}</div>
+          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout C</small>
+        </div>
+      </div>
+    </div><!--/.col-->
+  </div>
+</div>
+<!--/Header!-->
+
+<div class="row">
+  <div class="col-2" style="padding-right: 0;">
+    <div class="card" style="height: inherit">
+      <div id="yearHeader" class="card-header">
+        <strong>Years</strong>
+      </div>
+      <div class="card-body" style="padding: 2px;">
+        <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+          <table class="table table-sm">
+            <tbody>
+            <ng-container *ngFor="let year of inputtedYears">
+              <tr>
+                <td id="{{year}}Selector" (click)="showYear(year, $event)">{{year}}</td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </perfect-scrollbar>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0">
+    <div id="internalHeadcountTable" class="card">
+      <div class="card-header">
+        <strong>External Headcount</strong>
+      </div>
+      <div class="card-body">
+        <perfect-scrollbar>
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <th>Class</th>
+              <th *ngFor="let month of months">{{month}}</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>0000036140 - Regional Rollout P</td>
+              <td *ngFor="let cost of regionalRolloutPValues">{{cost}}</td>
+
+
+            </tr>
+            <tr>
+              <td>0000036140 - Regional Rollout A</td>
+              <td *ngFor="let cost of regionalRolloutAValues">{{cost}}</td>
+
+            </tr>
+            <tr>
+              <td>0000036140 - Regional Rollout B</td>
+              <td *ngFor="let cost of regionalRolloutBValues">{{cost}}</td>
+
+            </tr>
+            <tr>
+              <td>0000036140 - Regional Rollout C</td>
+              <td *ngFor="let cost of regionalRolloutCValues">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>Total Extern Headcount Cost per Class</td>
+              <td *ngFor="let cost of totalExternHeadCountCostPerClass">{{cost}}</td>
+            </tr>
+            <tr>
+              <td>Total Extern Headcount Cost from Capa Plan</td>
+              <td *ngFor="let cost of totalExternHeadCountCostFromCapaPlan">{{cost}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </perfect-scrollbar>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Input!-->
+<div>
+  <div class="card">
+    <div class="card-header">
+      <strong>Input</strong>
+    </div>
+
+    <div class="card-body col-12">
+
+
+      <form action="" method="post" class="form-horizontal">
+        <div class=" col-12" style="text-align: center">
+          <div>
+            <fieldset class="form-group">
+              <ng-select
+                class="bootstrap"
+                placeholder="Pick Class"
+                name="classPicker"
+                [options]="costCenters"
+                [allowClear]="false"
+                [(ngModel)]="currentClass"></ng-select>
+
+              <div class="form-group row" *ngIf="currentClass" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+                <perfect-scrollbar>
+                  <table class="table table-sm">
+                    <thead style="border: hidden">
+                    <tr>
+                      <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td *ngFor="let _ of months">
+                        <label style="text-align: center">
+                          <input type="text" class="form-control" placeholder="Ex. 4">
+                        </label>
+                      </td>
+                    </tr>
+
+                    </tbody>
+
+                  </table>
+                </perfect-scrollbar>
+
+              </div>
+
+            </fieldset>
+          </div>
+
+        </div>
+      </form>
+    </div>
+    <div *ngIf="currentClass" class="card-footer">
+      <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+    </div>
+
+  </div>
+  <!--InputFields-->
+
+
+</div>
+<!--/Input!-->
+
+
+

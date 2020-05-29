@@ -1,0 +1,21 @@
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+tr {
+  text-align: center;
+  vertical-align: middle;
+}
+th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+table {
+  text-align: center;
+}

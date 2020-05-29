@@ -44,9 +44,9 @@ import { E4RelatedCostsComponent } from './views/e4-related-costs/e4-related-cos
 import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-volume.component';
 import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
+import {FormsModule} from '@angular/forms';
 import {SelectModule} from 'ng-select';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
-import {FormsModule} from '@angular/forms';
 
 import {MandayComponent} from './views/tables/manday/manday.component';
 import {CostCenterComponent} from './views/tables/cost-center/cost-center.component';
