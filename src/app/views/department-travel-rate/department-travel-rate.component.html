@@ -17,7 +17,7 @@
           </div>
           <div class="col-sm-8">
             <label for="rate">Department Travel Rate</label>
-            <input id="rate" type="number" class="form-control" [(ngModel)]="rate" (ngModelChange)="saved = false"  placeholder="Enter a Numeric value">
+            <input id="rate" type="text" class="form-control" placeholder="Enter a Numeric value">
           </div>
         </div>
 
@@ -25,8 +25,7 @@
 
           <div class="float-right my-3">
 
-
-            <button type="button" (click)="onSave()" class="btn my-1 {{saved === true ? 'btn-outline-success' : 'btn-success'}}" [disabled]="saved">{{saved === true ? 'Saved' : 'Save'}}</button>
+            <button type="button" (click)="onSave()" class="btn my-1 btn-success">Save</button>
 
           </div>
 
