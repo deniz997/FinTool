@@ -1,1 +1,35 @@
-<p>department-travel-rate works!</p>
+
+<div class="animated fadeIn">
+  <div class="col">
+    <div class="card">
+      <div class="card-header">
+        <strong>Department Travel Rate</strong>
+      </div>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col-sm-4">
+            <label for="selectYear">Year</label>
+            <select class="form-control" name="selectYear" id="selectYear">
+              <option [value]="null">Select Year</option>
+              <option *ngFor="let y of years">{{y}}</option>
+            </select>
+          </div>
+          <div class="col-sm-8">
+            <label for="rate">Department Travel Rate</label>
+            <input id="rate" type="text" class="form-control" placeholder="Enter a Numeric value">
+          </div>
+        </div>
+
+
+
+          <div class="float-right my-3">
+
+            <button type="button" (click)="onSave()" class="btn my-1 btn-success">Save</button>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>
