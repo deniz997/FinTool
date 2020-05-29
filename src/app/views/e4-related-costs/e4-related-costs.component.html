@@ -2,34 +2,32 @@
   <div class="card-header">
     <strong>E4 Related Costs</strong>
   </div>
-  <div class="row">
-    <div class="card-body col-3">
-      <fieldset class="form-group">
+  <div class="card-body">
+    <div class="row">
+      <fieldset class="form-group col-xs-12 col-md-3">
         <ng-select
           class="bootstrap"
           placeholder="Cost Categories"
           [options]="costCategories"
-          [allowClear]="true"
-        [ngModel]="selectedCostCat"></ng-select>
+          [allowClear]="false"
+          (selected)="selectedCostCategory($event)"></ng-select>
       </fieldset>
-      <p>{{selectedCostCat}}</p>
-    </div>
-    <div class="card-body col-3">
-      <fieldset class="form-group">
+      <fieldset class="form-group col-xs-12 col-md-3">
         <ng-select
           class="bootstrap"
           placeholder="Main Costs"
+          [disabled]="mainCostSelectDisabled"
           [options]="mainCosts"
-          [allowClear]="true"></ng-select>
+          [allowClear]="false"
+          (selected)="selectedMainCost($event)"></ng-select>
       </fieldset>
-    </div>
-    <div class="card-body col-3">
-      <fieldset class="form-group">
+      <fieldset class="form-group col-xs-12 col-md-3">
         <ng-select
           class="bootstrap"
           placeholder="Sub-Costs"
           [options]="subCosts"
-          [allowClear]="true"></ng-select>
+          [disabled]="subCostSelectDisabled"
+          [allowClear]="false"></ng-select>
       </fieldset>
     </div>
   </div>
