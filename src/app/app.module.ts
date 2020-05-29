@@ -78,6 +78,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     BsDatepickerModule,
     NgbModule,
+    ChartsModule,
+    CommonModule
   ],
   declarations: [
     AppComponent,
