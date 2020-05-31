@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./department-travel-rate.component.css']
 })
 export class DepartmentTravelRateComponent implements OnInit {
+
   years: number[];
+  saved: boolean = true;
+  rate: number;
 
   constructor() {}
 
@@ -18,6 +21,7 @@ export class DepartmentTravelRateComponent implements OnInit {
   }
 
   onSave() {
+    this.saved = true;
   }
 
 }
