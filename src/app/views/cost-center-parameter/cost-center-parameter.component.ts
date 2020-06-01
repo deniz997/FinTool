@@ -52,4 +52,12 @@ export class CostCenterParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeAddCard() {
+    this.show = false;
+  }
+
+  save() {
+    this.closeAddCard();
+  }
+
 }
