@@ -9,30 +9,28 @@
         </div>
 
         <div class="card-body">
-
           <!--table-->
           <perfect-scrollbar style="max-height: 750px">
-            <table class="table table-bordered table-striped table-sm">
+            <table class="table table-bordered table-striped table-sm" >
               <thead>
               <tr>
                 <th>{{rightTableFirstCellHeader}}</th>
                 <th *ngFor="let header of rightTableHeaders">{{header}}</th>
               </tr>
               </thead>
-              <tbody>
-              <tr *ngFor="let row of rightTableData">
+              <tbody >
+              <tr *ngFor="let row of rightTableData; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
           <!--table-->
-
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
-          <button class="btn btn-primary">UPDATE</button>
+          <button class="btn btn-success" (click)="showAddCard()">ADD NEW</button>
+          <button class="btn btn-primary" (click)="showUpdateCard()">UPDATE</button>
           <button class="btn btn-danger">DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
@@ -41,61 +39,116 @@
 
       </div>
 
-      <!--Input!-->
-      <div>
-        <div class="card" *ngIf="show">
-          <div class="card-header">
-            <strong>Add New Cost Center Parameter</strong>
-          </div>
+      <!--add-->
+      <div class="card" *ngIf="showAdd">
+        <div class="card-header">
+          <strong>Add New Cost Center Parameter</strong>
+        </div>
 
-          <div class="card-body col-12">
+        <div class="card-body col-12">
 
-            <form action="" method="post" class="form-horizontal">
-              <div class=" col-12" style="text-align: center">
-                <div>
-                  <fieldset class="form-group">
+          <form action="" method="post" class="form-horizontal">
+            <div class=" col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
 
-                    <div class="form-group row">
-                      <div class="col-md-6 col-lg-4">
-                        <div class="d-flex ml-0">
-                          <label>Cost Center ID</label>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter Cost Center ID">
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center ID</label>
                       </div>
-                      <div class="col-md-6 col-lg-4">
-                        <div class="d-flex ml-0">
-                          <label>Cost Center Name</label>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter Cost Center Name">
-                      </div>
-                      <div class="col-md-6 col-lg-4">
-                        <div class="d-flex ml-0">
-                          <label>Cost Center Typ</label>
-                        </div>
-                        <ng-select
-                          class="bootstrap"
-                          placeholder="Pick Cost Center Typ"
-                          [options]="costCenterTyp"
-                          [allowClear]="false"></ng-select>
-                      </div>
+                      <input type="text" class="form-control" placeholder="Enter Cost Center ID">
                     </div>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-
-            <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-block btn-success" (click)="save()">SAVE</button>
-                </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Name</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter Cost Center Name">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Typ</label>
+                      </div>
+                      <ng-select
+                        class="bootstrap"
+                        placeholder="Pick Cost Center Typ"
+                        [options]="costCenterTyp"
+                        [allowClear]="false"></ng-select>
+                    </div>
+                  </div>
+                </fieldset>
               </div>
             </div>
+          </form>
 
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="saveAdd()">SAVE</button>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
-      <!--/Input!-->
+      <!--add-->
+
+      <!-- update -->
+      <div class="card" *ngIf="showUpdate">
+
+        <div class="card-header">
+          <strong>Update Cost Center Parameter</strong>
+        </div>
+
+
+        <div class="card-body col-12">
+
+          <form action="" method="post" class="form-horizontal">
+            <div class=" col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
+
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center ID</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter Cost Center ID">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Name</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter Cost Center Name">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Typ</label>
+                      </div>
+                      <ng-select
+                        class="bootstrap"
+                        placeholder="Pick Cost Center Typ"
+                        [options]="costCenterTyp"
+                        [allowClear]="false"></ng-select>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="saveUpdate()">SAVE</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- update -->
 
     </div>
   </div>
