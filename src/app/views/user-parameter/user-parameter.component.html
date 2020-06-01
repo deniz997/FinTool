@@ -22,13 +22,20 @@
             </table>
           </perfect-scrollbar>
 
-            <button type="button" class="btn btn-block btn-success">
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-success">
               <i class="fa fa-file-excel-o"></i><br>EXPORT
             </button>
+          </div>
         </div>
 
-        <div class="card-footer flex-column" style="align-self: flex-end">
-          <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="ShowHide()">ADD</button>
+          <button class="btn btn-primary">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+          <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
         </div>
 
       </div>
