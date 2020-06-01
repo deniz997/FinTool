@@ -11,7 +11,7 @@
         <div class="card-body">
           <!--table-->
           <perfect-scrollbar style="max-height: 750px">
-            <table class="table table-bordered table-striped table-sm" >
+            <table class="table table-bordered table-striped table-sm">
               <thead>
               <tr>
                 <th>{{rightTableFirstCellHeader}}</th>
@@ -19,7 +19,7 @@
               </tr>
               </thead>
               <tbody >
-              <tr *ngFor="let row of rightTableData; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <tr *ngFor="let row of rightTableData; let i = index" (click)="onTableRowClick(i)">
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
               </tbody>
@@ -108,29 +108,17 @@
               <div>
                 <fieldset class="form-group">
 
-                  <div class="form-group row">
-                    <div class="col-md-6 col-lg-4">
-                      <div class="d-flex ml-0">
-                        <label>Cost Center ID</label>
+                  <div *ngIf="currentCostCenter" class="form-group row">
+
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex col-lg-4 ml-0">
+                          <label><b>{{rightTableFirstCellHeader}}</b></label>
+                          <label *ngFor="let header of rightTableHeaders"><b>{{header}}</b></label>
+                        </div>
                       </div>
-                      <input type="text" class="form-control" placeholder="Enter Cost Center ID">
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                      <div class="d-flex ml-0">
-                        <label>Cost Center Name</label>
-                      </div>
-                      <input type="text" class="form-control" placeholder="Enter Cost Center Name">
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                      <div class="d-flex ml-0">
-                        <label>Cost Center Typ</label>
-                      </div>
-                      <ng-select
-                        class="bootstrap"
-                        placeholder="Pick Cost Center Typ"
-                        [options]="costCenterTyp"
-                        [allowClear]="false"></ng-select>
-                    </div>
+                      <input *ngFor="let _ of rightTableHeaders; let i = index" type="text" class="form-control" [title]="getPlaceHolderForUpdateFields(i)" [defaultValue]="clickedRow[i]">
+                      <ng-select class="bootstrap" [options]="costCenterTyp" [allowClear]="false" [(ngModel)]="currentCostCenter"></ng-select>
+
                   </div>
                 </fieldset>
               </div>

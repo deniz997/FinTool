@@ -10,10 +10,9 @@ import {ngbAutoClose} from '@ng-bootstrap/ng-bootstrap/util/autoclose';
 export class CostCenterParameterComponent implements OnInit {
 
   constructor() {
-    this.setClickedRow = function(index) {
-      this.selectedRow = index;
-    };
   }
+
+  currentCostCenter: any;
 
   rightTableFirstCellHeader = 'Cost Center ID';
 
@@ -41,19 +40,8 @@ export class CostCenterParameterComponent implements OnInit {
     {label: 'Typ 2', value: 'Typ2'},
   ];
 
-  selectedRow = [];
-  setClickedRow: Function;
-
-  currentCostCenter: any;
-
-  setPage(pageNo: number): void {
-    this.currentPage = pageNo;
-  }
-
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
-  }
+  showPicker: boolean;
+  clickedRow = [];
 
   showAddCard() {
     this.showAdd = !this.showAdd;
@@ -80,9 +68,38 @@ export class CostCenterParameterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedRow.push('');
+    this.clickedRow.push('');
     this.rightTableHeaders.forEach(_ => {
-      this.selectedRow.push('');
+      this.clickedRow.push('');
     });
+  }
+
+  saveClickedRow(i: number) {
+    this.emptyClickedRow();
+    this.rightTableData[i].forEach(value => {
+      this.clickedRow.push(value);
+    });
+  }
+
+  onTableRowClick(i: number) {
+    this.currentCostCenter = this.rightTableData[i][0];
+    this.saveClickedRow(i);
+    this.showUpdateCard();
+  }
+
+  emptyClickedRow() {
+    this.clickedRow = [];
+  }
+
+  getPlaceHolderForUpdateFields(i: number): string {
+    if (this.currentCostCenter === this.getNextCostCenterID() && i === 0) {
+      return 'Cost Center ID 1';
+    } else {
+      return 'Typ 1';
+    }
+  }
+
+  getNextCostCenterID(): string {
+    return 'Cost Center ID 1';
   }
 }
