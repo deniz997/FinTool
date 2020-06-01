@@ -10,49 +10,27 @@
             <table class="table table-bordered table-striped table-sm">
               <thead>
               <tr>
-                <th>Who is Who ID</th>
-                <th>Cost Center</th>
-                <th>Name</th>
-                <th>User Typ</th>
-                <th>FTE Capacity</th>
-                <th>Type of Employment</th>
-                <th>Assignment Status</th>
-                <th>Current Level</th>
-                <th>Hiring Time Frame</th>
+                <th>{{rightTableFirstCellHeader}}</th>
+                <th *ngFor="let header of rightTableHeaders">{{header}}</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>ID_001</td>
-                <td>Cost Center 1</td>
-                <td>Yavuz Saka</td>
-                <td>User Typ 1</td>
-                <td>FTE Capacity 1</td>
-                <td>Type 1</td>
-                <td>Assignment Status 1</td>
-                <td>Current Level 1</td>
-                <td>Hiring Time Frame 1</td>
-              </tr>
-              <tr>
-                <td>ID_002</td>
-                <td>Cost Center 2</td>
-                <td>Josef Aksac</td>
-                <td>User Typ 2</td>
-                <td>FTE Capacity 2</td>
-                <td>Type 2</td>
-                <td>Assignment Status 2</td>
-                <td>Current Level 2</td>
-                <td>Hiring Time Frame 2</td>
+              <tr *ngFor="let row of rightTableData">
+                <td *ngFor="let data of row">{{data}}</td>
               </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
 
-
-          <button type="button" class="btn btn-block btn-success">
-          <i class="fa fa-file-excel-o"></i><br>EXPORT
-          </button>
+            <button type="button" class="btn btn-block btn-success">
+              <i class="fa fa-file-excel-o"></i><br>EXPORT
+            </button>
         </div>
+
+        <div class="card-footer flex-column" style="align-self: flex-end">
+          <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+        </div>
+
       </div>
     </div>
     <!--/.col-->
