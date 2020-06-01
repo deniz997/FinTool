@@ -19,3 +19,8 @@ th {
 table {
   text-align: center;
 }
+
+.table tr.active td {
+  background-color:#FDD33A !important;
+  color: white;
+}

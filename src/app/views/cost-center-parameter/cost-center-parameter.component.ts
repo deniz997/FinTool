@@ -9,7 +9,11 @@ import {ngbAutoClose} from '@ng-bootstrap/ng-bootstrap/util/autoclose';
 })
 export class CostCenterParameterComponent implements OnInit {
 
-  constructor() {}
+  constructor() {
+    this.setClickedRow = function(index) {
+      this.selectedRow = index;
+    };
+  }
 
   rightTableFirstCellHeader = 'Cost Center ID';
 
@@ -19,12 +23,13 @@ export class CostCenterParameterComponent implements OnInit {
   ];
 
   rightTableData = [
-    ['Cost Center ID 1', 'Cost Center Name 1', 'Cost Center Typ 1'],
-    ['Cost Center ID 2', 'Cost Center Name 2', 'Cost Center Typ 1'],
-    ['Cost Center ID 3', 'Cost Center Name 3', 'Cost Center Typ 2'],
+    ['Cost Center ID 1', 'Cost Center Name 1', 'Typ 1'],
+    ['Cost Center ID 2', 'Cost Center Name 2', 'Typ 1'],
+    ['Cost Center ID 3', 'Cost Center Name 3', 'Typ 2'],
   ];
 
-  show = false;
+  showAdd = false;
+  showUpdate = false;
 
   totalItems: number = 60;
   currentPage: number   = 1;
@@ -36,6 +41,11 @@ export class CostCenterParameterComponent implements OnInit {
     {label: 'Typ 2', value: 'Typ2'},
   ];
 
+  selectedRow = [];
+  setClickedRow: Function;
+
+  currentCostCenter: any;
+
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
   }
@@ -45,19 +55,34 @@ export class CostCenterParameterComponent implements OnInit {
     console.log('Number items per page: ' + event.itemsPerPage);
   }
 
-  ShowHide(): void {
-    this.show = !this.show;
-  }
-
-  ngOnInit(): void {
+  showAddCard() {
+    this.showAdd = !this.showAdd;
   }
 
   closeAddCard() {
-    this.show = false;
+    this.showAdd = false;
   }
 
-  save() {
+  showUpdateCard() {
+    this.showUpdate = !this.showUpdate;
+  }
+
+  closeUpdateCard() {
+    this.showUpdate = false;
+  }
+
+  saveAdd() {
     this.closeAddCard();
   }
 
+  saveUpdate() {
+    this.closeUpdateCard();
+  }
+
+  ngOnInit(): void {
+    this.selectedRow.push('');
+    this.rightTableHeaders.forEach(_ => {
+      this.selectedRow.push('');
+    });
+  }
 }
