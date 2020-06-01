@@ -14,18 +14,41 @@ export class SlaItemParameterComponent implements OnInit {
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
+  rightTableFirstCellHeader = 'Year';
+  rightTableFirstCellSubHeader = 'Year';
+
+  rightTableHeaders = [
+    'Manday',
+    'Travel',
+    'Ticket',
+    'Fix Costs',
+  ];
+
+  rightTableSubHeaders = [
+    'Valid From',
+    'Valid To',
+    'Manday Typ',
+    'Manday Rate',
+    'Travel Typ',
+    'Travel Day Typ',
+    'Travel Rate',
+    'Ticket Typ',
+    'Ticket Rate',
+    'Fix Costs Typ',
+    'Fix Costs Rate',
+  ];
+
+  rightTableData = [
+    ['0000', '00/00/00', '00/00/00', 'Manday Typ 1', 'Manday Rate 1', 'Travel Typ 1', 'Travel Date Typ 1', 'Travel Rate 1', 'Ticket Typ 1', 'Ticket Rate 1', 'Fix Costs Typ 1', 'Fix Costs Rate 1', ],
+    ['0000', '00/00/00', '00/00/00', 'Manday Typ 2', 'Manday Rate 2', 'Travel Typ 2', 'Travel Date Typ 2', 'Travel Rate 2', 'Ticket Typ 2', 'Ticket Rate 2', 'Fix Costs Typ 2', 'Fix Costs Rate 2', ],
+  ];
+
   show = false;
 
-  totalItems: number = 64;
-  currentPage: number   = 1;
-  smallnumPages: number = 0;
-
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
-
-  currentPager: number   = 4;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
   // Datepicker
   minDate = new Date(2017, 5, 10);
