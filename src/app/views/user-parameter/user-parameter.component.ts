@@ -33,6 +33,12 @@ export class UserParameterComponent implements OnInit {
   itemPerPage: number = 5;
   maxSize: number = 7;
 
+  show = false;
+
+  ShowHide(): void {
+    this.show = !this.show;
+  }
+
   ngOnInit(): void {
   }
 

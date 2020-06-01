@@ -11,18 +11,25 @@ export class CostCenterParameterComponent implements OnInit {
 
   constructor() {}
 
+  rightTableFirstCellHeader = 'Cost Center ID';
+
+  rightTableHeaders = [
+    'Cost Center Name',
+    'Cost Center Typ',
+  ];
+
+  rightTableData = [
+    ['Cost Center ID 1', 'Cost Center Name 1', 'Cost Center Typ 1'],
+    ['Cost Center ID 2', 'Cost Center Name 2', 'Cost Center Typ 1'],
+    ['Cost Center ID 3', 'Cost Center Name 3', 'Cost Center Typ 2'],
+  ];
+
   show = false;
 
-  totalItems: number = 64;
+  totalItems: number = 60;
   currentPage: number   = 1;
-  smallnumPages: number = 0;
-
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
-
-  currentPager: number   = 4;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
   public costCenterTyp: Array<IOption> = [
     {label: 'Typ 1', value: 'Typ1'},
