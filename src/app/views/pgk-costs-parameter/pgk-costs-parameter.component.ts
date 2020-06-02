@@ -25,14 +25,32 @@ export class PgkCostsParameterComponent implements OnInit {
 
   currentPager: number   = 1;
 
+  TableHeaders = [
+    'PGK Cost Definition per Person',
+    'Status',
+    'Planning Period',
+    'Currency',
+    'Value',
+  ]
+
+  TableData = [
+    ['0000036140 - Regional Rollout','Memur','EA1','TL','50'],
+    ['SDC','E5','EA2','EUR','20'],
+    ['SDC w/o Expat','E4','EA2','EUR','30'],
+  ]
+
   public PGKCostDefinitionList: Array<IOption> = [
-    {label: 'Item 1 from Cost Center', value: 'Item1'},
-    {label: 'Item 2 from Cost Center', value: 'Item2'},
+    {label: '0000036140 - Regional Rollout', value: 'Item1'},
+    {label: 'SDC', value: 'Item2'},
+    {label: 'SDC w/o Expat', value: 'Item3'},
   ];
 
   public StatusList: Array<IOption> = [
-    {label: 'Status 1', value: 'Item1'},
-    {label: 'Status 2', value: 'Item2'},
+    {label: 'E3', value: 'E3'},
+    {label: 'E4', value: 'E4'},
+    {label: 'E5', value: 'E5'},
+    {label: 'Memur', value: 'Memur'},
+
   ];
 
   public PlanningPeriods: Array<IOption> = [

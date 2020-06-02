@@ -12,34 +12,12 @@
               <table class="table table-bordered table-striped table-sm">
                 <thead>
                 <tr>
-                  <th>PGK Cost Definition per Person</th>
-                  <th>Status</th>
-                  <th>Planning Period</th>
-                  <th>Currency</th>
-                  <th>Value</th>
+                  <th *ngFor="let Header of TableHeaders">{{Header}}</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Definition 1</td>
-                  <td>Status 2</td>
-                  <td>EA1</td>
-                  <td>EUR</td>
-                  <td>1500</td>
-                </tr>
-                <tr>
-                  <td>Definition 2</td>
-                  <td>Status 2</td>
-                  <td>EA1</td>
-                  <td>TL</td>
-                  <td>3000</td>
-                </tr>
-                <tr>
-                  <td>Definition 1</td>
-                  <td>Status 1</td>
-                  <td>EA2</td>
-                  <td>EUR</td>
-                  <td>400</td>
+                <tr *ngFor="let row of TableData">
+                  <td *ngFor="let data of row">{{data}}</td>
                 </tr>
                 </tbody>
               </table>

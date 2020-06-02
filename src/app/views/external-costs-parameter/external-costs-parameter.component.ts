@@ -23,14 +23,32 @@ export class ExternalCostsParameterComponent implements OnInit {
 
   currentPager: number   = 1;
 
+  TableHeader = [
+    'External Cost Definition per Person',
+    'Current Level',
+    'Planning Period',
+    'Currency',
+    'Value',
+  ];
+
+  TableData = [
+    ['Definition 2', 'Regional Rollout P', 'EA1', 'EUR', '30'],
+    ['Definition 3', 'Regional Rollout A', 'EA2', 'TL', '420'],
+    ['Definition 1', 'Regional Rollout B', 'EA2', 'EUR', '20'],
+    ['Definition 4', 'Regional Rollout C', 'EA1', 'EUR', '35'],
+  ];
+
   public ExternalCostDefinitionList: Array<IOption> = [
     {label: 'Definition 1', value: 'D1'},
-    {label: 'Definition 2', value: 'D2'}
+    {label: 'Definition 2', value: 'D2'},
+    {label: 'Definition 3', value: 'D2'}
   ];
 
   public CurrentLevel: Array<IOption> = [
-    {label: 'CL 1 from User Table', value: 'CL1'},
-    {label: 'CL 2 from User Table', value: 'CL2'}
+    {label: 'Regional Rollout P', value: 'P'},
+    {label: 'Regional Rollout A', value: 'A'},
+    {label: 'Regional Rollout B', value: 'B'},
+    {label: 'Regional Rollout C', value: 'C'},
   ];
 
   public PlanningPeriods: Array<IOption> = [

@@ -22,9 +22,24 @@ export class EurTlMacroAssumptionComponent implements OnInit {
   numPages: number = 0;
 
   currentPager: number   = 4;
+
+  RightTableHeaders = [
+    'Planning Period','Euro/TL Rate'
+  ];
+
+  RightTableData = [
+    ['EA1', '6,75'],
+    ['EA2', '7,50'],
+  ]
+
   public PlanningPeriods: Array<IOption> = [
     {label: 'EA1', value: 'Item1'},
     {label: 'EA2', value: 'Item2'},
+  ];
+
+  public ExchangeRate: Array<IOption> = [
+    {label: 'Euro', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
   ];
 
   setPage(pageNo: number): void {
