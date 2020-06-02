@@ -22,33 +22,15 @@
             </table>
           </perfect-scrollbar>
 
-          <div class="col">
-            <div class="row d-flex">
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
-              </div>
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-primary">UPDATE</button>
-              </div>
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-danger">DELETE</button>
-              </div>
+        </div>
 
-              <div class="col-6">
-                <!--pagination-->
-                <div class="d-flex justify-content-end">
-                  <div class="row">
-                    <div class="col-xs-12 col-12 d-sm-down-none">
-                      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-                    </div>
-                  </div>
-                </div>
-                <!--pagination-->
-              </div>
-
-            </div>
-          </div>
-
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
+          <button class="btn btn-primary">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+          <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
         </div>
 
 

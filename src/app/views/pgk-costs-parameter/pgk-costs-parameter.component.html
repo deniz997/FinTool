@@ -6,50 +6,30 @@
           <i class="fa fa-align-justify"></i> PGK Costs Per Person Parameter Table
         </div>
         <div class="card-body">
-          <div class="row">
-            <perfect-scrollbar style="max-height: 750px">
+          <perfect-scrollbar style="max-height: 750px">
 
-              <table class="table table-bordered table-striped table-sm">
-                <thead>
-                <tr>
-                  <th *ngFor="let Header of TableHeaders">{{Header}}</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let row of TableData">
-                  <td *ngFor="let data of row">{{data}}</td>
-                </tr>
-                </tbody>
-              </table>
-            </perfect-scrollbar>
-          </div>
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
+              <tr>
+                <th *ngFor="let Header of TableHeaders">{{Header}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let row of TableData">
+                <td *ngFor="let data of row">{{data}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+        </div>
 
-          <div class="col">
-            <div class="row d-flex">
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
-              </div>
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-primary">UPDATE</button>
-              </div>
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-danger">DELETE</button>
-              </div>
-
-              <div class="col-6">
-                <!--pagination-->
-                <div class="d-flex justify-content-end">
-                  <div class="row">
-                    <div class="col-xs-12 col-12 d-sm-down-none">
-                      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
-                    </div>
-                  </div>
-                </div>
-                <!--pagination-->
-              </div>
-
-            </div>
-          </div>
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
+          <button class="btn btn-primary">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+          <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
         </div>
 
       </div>
