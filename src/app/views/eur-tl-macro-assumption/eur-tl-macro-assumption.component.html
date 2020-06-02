@@ -9,28 +9,18 @@
 
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
-                <thead>
-                <tr>
-                  <th>Planning Period</th>
-                  <th>EUR/TL Rate</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>EA2</td>
-                  <td>Rate</td>
-                </tr>
-                <tr>
-                  <td>EA1</td>
-                  <td>Rate</td>
-                </tr>
-                <tr>
-                  <td>EA2</td>
-                  <td>Rate</td>
-                </tr>
-                </tbody>
-              </table>
-            </perfect-scrollbar>
+              <thead>
+              <tr>
+                <th *ngFor="let Header of RightTableHeaders">{{Header}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let row of RightTableData">
+                <td *ngFor="let data of row">{{data}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
 
           <div class="col">
             <div class="row d-flex">
