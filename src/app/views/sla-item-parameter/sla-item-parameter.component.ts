@@ -8,23 +8,38 @@ import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-boo
   styleUrls: ['./sla-item-parameter.component.css']
 })
 export class SlaItemParameterComponent implements OnInit {
+  private data = [];
+  private setClickedRow: (index) => void;
 
   constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
+    this.data = [
+      {
+        Year: '0000',
+        ValidFrom: '00/00',
+        ValidTo: '00/00',
+        MandayTyp: 'a',
+        MandayRate: 'b',
+        TravelTyp: 'c',
+        TravelDayTyp: 'd',
+        TravelRate: 'e',
+        TicketTyp: 'f',
+        TicketRate: 'g',
+        FixCostsTyp: 'h',
+        FixCostsRate: 'i'
+      },
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    };
   }
 
-  rightTableFirstCellHeader = 'Year';
-  rightTableFirstCellSubHeader = 'Year';
+  selectedRow: Function;
 
-  rightTableHeaders = [
-    'Manday',
-    'Travel',
-    'Ticket',
-    'Fix Costs',
-  ];
-
-  rightTableSubHeaders = [
+  tableSubHeaders = [
+    'Year',
     'Valid From',
     'Valid To',
     'Manday Typ',
@@ -38,12 +53,8 @@ export class SlaItemParameterComponent implements OnInit {
     'Fix Costs Rate',
   ];
 
-  rightTableData = [
-    ['0000', '00/00/00', '00/00/00', 'Manday Typ 1', 'Manday Rate 1', 'Travel Typ 1', 'Travel Date Typ 1', 'Travel Rate 1', 'Ticket Typ 1', 'Ticket Rate 1', 'Fix Costs Typ 1', 'Fix Costs Rate 1', ],
-    ['0000', '00/00/00', '00/00/00', 'Manday Typ 2', 'Manday Rate 2', 'Travel Typ 2', 'Travel Date Typ 2', 'Travel Rate 2', 'Ticket Typ 2', 'Ticket Rate 2', 'Fix Costs Typ 2', 'Fix Costs Rate 2', ],
-  ];
-
-  show = false;
+  showAdd = false;
+  showUpdate = false;
 
   currentPage: number = 1;
   totalItems: number = 60;
@@ -61,6 +72,51 @@ export class SlaItemParameterComponent implements OnInit {
 
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
+
+  public mandayTyp: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public mandayRate: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public travelTyp: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public travelDayTyp: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public travelRate: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public ticketTyp: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public ticketRate: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public fixCostsTyp: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
+
+  public fixCostsRate: Array<IOption> = [
+    {label: 'Typ 1', value: 'Typ1'},
+    {label: 'Typ 2', value: 'Typ2'},
+  ];
 
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
@@ -101,7 +157,27 @@ export class SlaItemParameterComponent implements OnInit {
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 
-  ShowHide = (): void => {
-    this.show = !this.show;
+  showAddCard() {
+    this.showAdd = !this.showAdd;
+  }
+
+  closeAddCard() {
+    this.showAdd = false;
+  }
+
+  showUpdateCard() {
+    this.showUpdate = !this.showUpdate;
+  }
+
+  closeUpdateCard() {
+    this.showUpdate = false;
+  }
+
+  saveAdd() {
+    this.closeAddCard();
+  }
+
+  saveUpdate() {
+    this.closeUpdateCard();
   }
 }

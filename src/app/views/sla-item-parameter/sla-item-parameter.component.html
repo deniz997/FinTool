@@ -6,6 +6,7 @@
       <div class="card-header">
         <i class="fa fa-align-justify"></i> SLA ITEM PARAMETERS TABLE
       </div>
+
       <div class="card-body">
         <!-- table -->
         <perfect-scrollbar style="max-height: 750px">
@@ -21,13 +22,23 @@
             </thead>
             <thead>
             <tr>
-              <th>{{rightTableFirstCellSubHeader}}</th>
-              <th *ngFor="let header of rightTableSubHeaders">{{header}}</th>
+              <th *ngFor="let Header of tableSubHeaders">{{Header}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let row of rightTableData">
-              <td *ngFor="let data of row">{{data}}</td>
+            <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <td>{{row.Year}}</td>
+              <td>{{row.ValidFrom}}</td>
+              <td>{{row.ValidTo}}</td>
+              <td>{{row.MandayTyp}}</td>
+              <td>{{row.MandayRate}}</td>
+              <td>{{row.TravelTyp}}</td>
+              <td>{{row.TravelDayTyp}}</td>
+              <td>{{row.TravelRate}}</td>
+              <td>{{row.TicketTyp}}</td>
+              <td>{{row.TicketRate}}</td>
+              <td>{{row.FixCostsTyp}}</td>
+              <td>{{row.FixCostsRate}}</td>
             </tr>
             </tbody>
           </table>
@@ -36,8 +47,8 @@
       </div>
 
       <div class="card-footer" style="float: left">
-        <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
-        <button class="btn btn-primary">UPDATE</button>
+        <button class="btn btn-success" (click)="showAddCard()">ADD NEW</button>
+        <button class="btn btn-primary" (click)="showUpdateCard()">UPDATE</button>
         <button class="btn btn-danger">DELETE</button>
         <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
@@ -46,9 +57,9 @@
     </div>
     <!-- column -->
 
-    <!--Input!-->
+    <!--add-->
     <div>
-      <div class="card" *ngIf="show">
+      <div class="card" *ngIf="showAdd">
         <div class="card-header">
           <strong>Add New SLA Item Parameter</strong>
         </div>
@@ -93,7 +104,8 @@
                           <form class="form-inline">
                             <div class="form-group hidden">
                               <div class="input-group">
-                                <input name="datepicker"
+                                <input [hidden]="true"
+                                       name="datepicker"
                                        class="form-control"
                                        ngbDatepicker
                                        #datepicker="ngbDatepicker"
@@ -163,6 +175,7 @@
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Manday Typ"
+                            [options]="mandayTyp"
                             [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-6">
@@ -172,6 +185,7 @@
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Manday Rate"
+                            [options]="mandayRate"
                             [allowClear]="false"></ng-select>
                         </div>
                       </div>
@@ -189,6 +203,7 @@
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Travel Typ"
+                          [options]="travelTyp"
                           [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-4">
@@ -198,6 +213,7 @@
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Travel Day Typ"
+                          [options]="travelDayTyp"
                           [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-4">
@@ -207,6 +223,7 @@
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Travel Rate"
+                          [options]="travelRate"
                           [allowClear]="false"></ng-select>
                         </div>
                       </div>
@@ -224,6 +241,7 @@
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Ticket Typ"
+                            [options]="ticketTyp"
                             [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-6">
@@ -233,6 +251,7 @@
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Ticket Rate"
+                            [options]="ticketRate"
                             [allowClear]="false"></ng-select>
                         </div>
                       </div>
@@ -250,6 +269,7 @@
                           <ng-select
                           class="bootstrap"
                           placeholder="Pick Fix Costs Typ"
+                          [options]="fixCostsTyp"
                           [allowClear]="false"></ng-select>
                         </div>
                         <div class="col-md-6 col-lg-6">
@@ -259,6 +279,7 @@
                           <ng-select
                             class="bootstrap"
                             placeholder="Pick Fix Costs Rate"
+                            [options]="fixCostsRate"
                             [allowClear]="false"></ng-select>
                         </div>
                       </div>
@@ -272,7 +293,7 @@
           <div class="col">
             <div class="row d-flex justify-content-end">
               <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-success">SAVE</button>
+                <button type="button" class="btn btn-block btn-success" (click)="saveAdd()">SAVE</button>
               </div>
             </div>
           </div>
@@ -281,7 +302,255 @@
       </div>
 
     </div>
-    <!--/Input!-->
+    <!--add-->
+
+    <!--update-->
+    <div>
+      <div class="card" *ngIf="showUpdate">
+        <div class="card-header">
+          <strong>Update New SLA Item Parameter</strong>
+        </div>
+
+        <div class="card-body col-12">
+
+          <form action="" method="post" class="form-horizontal">
+            <div class="col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
+
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Year</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Year</label>
+                          </div>
+                          <select class="form-control" id="ccyear">
+                            <option>2014</option>
+                            <option>2015</option>
+                            <option>2016</option>
+                            <option>2017</option>
+                            <option>2018</option>
+                            <option>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                          </select>
+                        </div>
+                        <!-- date picker -->
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Validation</label>
+                          </div>
+                          <form class="form-inline">
+                            <div class="form-group hidden">
+                              <div class="input-group">
+                                <input [hidden]="true"
+                                       name="datepicker"
+                                       class="form-control"
+                                       ngbDatepicker
+                                       #datepicker="ngbDatepicker"
+                                       [autoClose]="'outside'"
+                                       (dateSelect)="onDateSelection($event)"
+                                       [displayMonths]="2"
+                                       [dayTemplate]="t"
+                                       outsideDays="hidden"
+                                       [startDate]="fromDate!">
+                                <ng-template #t let-date let-focused="focused">
+                                  <span class="custom-day"
+                                        [class.focused]="focused"
+                                        [class.range]="isRange(date)"
+                                        [class.faded]="isHovered(date) || isInside(date)"
+                                        (mouseenter)="hoveredDate = date"
+                                        (mouseleave)="hoveredDate = null">
+                                    {{ date.day }}
+                                  </span>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="form-group ml-2">
+                                <div class="input-group">
+                                  <input #dpFromDate
+                                         class="form-control" placeholder="yyyy-mm-dd"
+                                         name="dpFromDate"
+                                         [value]="formatter.format(fromDate)"
+                                         (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                                      <i class="cui-calendar icons font d-block"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group ml-2">
+                                <div class="input-group">
+                                  <input #dpToDate
+                                         class="form-control" placeholder="yyyy-mm-dd"
+                                         name="dpToDate"
+                                         [value]="formatter.format(toDate)"
+                                         (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                                      <i class="cui-calendar icons font d-block"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                        <!-- date picker -->
+                      </div>
+                    </div>
+                    <hr style="width:100%;" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Manday</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Manday Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].MandayTyp"
+                            [options]="mandayTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Manday Rate</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].MandayRate"
+                            [options]="mandayRate"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                      </div>
+                    </div>
+                    <hr style="width:100%" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Travel</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                          <div class="d-flex ml-0">
+                            <label>Travel Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].TravelTyp"
+                            [options]="travelTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="d-flex ml-0">
+                            <label>Travel Day Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].TravelDayTyp"
+                            [options]="travelDayTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                          <div class="d-flex ml-0">
+                            <label>Travel Rate</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].TicketRate"
+                            [options]="travelRate"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                      </div>
+                    </div>
+                    <hr style="width:100%" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Ticket</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Ticket Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].TicketTyp"
+                            [options]="ticketTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Ticket Rate</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].TicketRate"
+                            [options]="ticketRate"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                      </div>
+                    </div>
+                    <hr style="width:100%" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Fix Costs</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].FixCostsTyp"
+                            [options]="fixCostsTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Rate</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            [placeholder]="data[selectedRow].FixCostsRate"
+                            [options]="fixCostsRate"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="saveUpdate()">SAVE</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!--update-->
+
   </div>
   <!-- row -->
 
