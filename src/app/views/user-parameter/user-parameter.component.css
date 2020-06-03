@@ -19,3 +19,6 @@ th {
 table {
   text-align: center;
 }
+tr td:nth-child(15n-14) {
+  text-align: left;
+}

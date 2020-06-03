@@ -9,30 +9,68 @@ import {IOption} from 'ng-select';
 })
 export class PgkCostsParameterComponent implements OnInit {
 
-  constructor() { }
 
 
-  show = false;
+  selectedRow : Number;
+  setClickedRow : Function;
+  data : [{ Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }];
 
-  totalItems: number = 64;
-  currentPage: number   = 1;
-  smallnumPages: number = 0;
+  showAdd = false;
+  showUpdate = false;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
+  constructor() {
+    this.data = [
+      {
+        PGK : '0000036140 - Regional Rollout',
+        Status : 'Memur',
+        PlannungP : 'EA1',
+        Currency : 'TL',
+        Value : 50
+       },
+      {
+        PGK : 'SDC',
+        Status : 'E5',
+        PlannungP : 'EA2',
+        Currency : 'EUR',
+        Value : 20
+      },
+      {
+        PGK : 'SDC w/o Expat',
+        Status : 'E4',
+        PlannungP : 'EA2',
+        Currency : 'EUR',
+        Value : 30
+      }
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    }
+  }
 
-  currentPager: number   = 1;
+  TableHeaders = [
+    'PGK Cost Definition per Person',
+    'Status',
+    'Planning Period',
+    'Currency',
+    'Value',
+  ]
 
   public PGKCostDefinitionList: Array<IOption> = [
-    {label: 'Item 1 from Cost Center', value: 'Item1'},
-    {label: 'Item 2 from Cost Center', value: 'Item2'},
+    {label: '0000036140 - Regional Rollout', value: 'Item1'},
+    {label: 'SDC', value: 'Item2'},
+    {label: 'SDC w/o Expat', value: 'Item3'},
   ];
 
   public StatusList: Array<IOption> = [
-    {label: 'Status 1', value: 'Item1'},
-    {label: 'Status 2', value: 'Item2'},
+    {label: 'E3', value: 'E3'},
+    {label: 'E4', value: 'E4'},
+    {label: 'E5', value: 'E5'},
+    {label: 'Memur', value: 'Memur'},
+
   ];
 
   public PlanningPeriods: Array<IOption> = [
@@ -57,8 +95,11 @@ export class PgkCostsParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ShowHide(): void{
-    this.show = !this.show;
+  ShowHideAdd(): void{
+    this.showAdd = !this.showAdd;
+  }
+  ShowHideUpdate(): void{
+    this.showUpdate = !this.showUpdate;
   }
 
 }

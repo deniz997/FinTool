@@ -12,25 +12,37 @@ export class ExternalCostsParameterComponent implements OnInit {
 
   show = false;
 
-  totalItems: number = 64;
-  currentPage: number   = 1;
-  smallnumPages: number = 0;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
+  TableHeader = [
+    'External Cost Definition per Person',
+    'Current Level',
+    'Planning Period',
+    'Currency',
+    'Value',
+  ];
 
-  currentPager: number   = 1;
+  TableData = [
+    ['Definition 2', 'Regional Rollout P', 'EA1', 'EUR', '30'],
+    ['Definition 3', 'Regional Rollout A', 'EA2', 'TL', '420'],
+    ['Definition 1', 'Regional Rollout B', 'EA2', 'EUR', '20'],
+    ['Definition 4', 'Regional Rollout C', 'EA1', 'EUR', '35'],
+  ];
 
   public ExternalCostDefinitionList: Array<IOption> = [
     {label: 'Definition 1', value: 'D1'},
-    {label: 'Definition 2', value: 'D2'}
+    {label: 'Definition 2', value: 'D2'},
+    {label: 'Definition 3', value: 'D2'}
   ];
 
   public CurrentLevel: Array<IOption> = [
-    {label: 'CL 1 from User Table', value: 'CL1'},
-    {label: 'CL 2 from User Table', value: 'CL2'}
+    {label: 'Regional Rollout P', value: 'P'},
+    {label: 'Regional Rollout A', value: 'A'},
+    {label: 'Regional Rollout B', value: 'B'},
+    {label: 'Regional Rollout C', value: 'C'},
   ];
 
   public PlanningPeriods: Array<IOption> = [
@@ -59,4 +71,5 @@ export class ExternalCostsParameterComponent implements OnInit {
   ShowHide(): void{
     this.show = !this.show;
   }
+
 }

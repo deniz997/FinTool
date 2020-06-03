@@ -24,8 +24,8 @@ export class UserParameterComponent implements OnInit {
   ];
 
   rightTableData = [
-    ['ID_001', 'Cost Center 1', 'Yavuz Saka', 'User Typ 1', 'FTE Capacity 1', 'Type 1', 'Assignment Status 1', 'Current Level 1', 'Hiring Time Frame 1'],
-    ['ID_002', 'Cost Center 2', 'Josef Aksac', 'User Typ 2', 'FTE Capacity 2', 'Type 2', 'Assignment Status 2', 'Current Level 2', 'Hiring Time Frame 2'],
+    ['ID_001', 'Cost Center 1', 'Yavuz Saka', 'E4', 'FTE Capacity 1', 'Type 1', 'Assignment Status 1', 'Current Level 1', 'Hiring Time Frame 1'],
+    ['ID_002', 'Cost Center 2', 'Josef Aksac', 'E4', 'FTE Capacity 2', 'Type 2', 'Assignment Status 2', 'Current Level 2', 'Hiring Time Frame 2'],
   ];
 
   currentPage: number = 1;
