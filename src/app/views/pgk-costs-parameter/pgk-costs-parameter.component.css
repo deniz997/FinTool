@@ -28,3 +28,8 @@ tr td:nth-child(15n-14) {
   background-color: #999999 ;
   color: black;
 }
+
+.table tr:hover{
+  background-color: #cccccc;
+}
+
