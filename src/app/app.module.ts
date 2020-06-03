@@ -58,6 +58,7 @@ import {TravelTableComponent} from './views/tables/travel-table/travel-table.com
 import {TicketComponent} from './views/tables/ticket/ticket.component';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
 
 @NgModule({
   imports: [
@@ -107,7 +108,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PgkTableComponent,
     PlanningComponent,
     TravelTableComponent,
-    TicketComponent
+    TicketComponent,
+    RateTableComponent
   ],
   providers: [{
     provide: LocationStrategy,
