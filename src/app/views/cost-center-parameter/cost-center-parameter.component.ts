@@ -9,22 +9,42 @@ import {ngbAutoClose} from '@ng-bootstrap/ng-bootstrap/util/autoclose';
 })
 export class CostCenterParameterComponent implements OnInit {
 
-  constructor() {}
+  constructor() {
+    this.data = [
+      {
+        CostCenterID: 'Cost Center ID 1',
+        CostCenterName: 'Cost Center Name 1',
+        CostCenterTyp: 'Typ 1'
+      },
+      {
+        CostCenterID: 'Cost Center ID 2',
+        CostCenterName: 'Cost Center Name 2',
+        CostCenterTyp: 'Typ 1'
+      },
+      {
+        CostCenterID: 'Cost Center ID 3',
+        CostCenterName: 'Cost Center Name 3',
+        CostCenterTyp: 'Typ 2'
+      },
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    };
+  }
 
-  rightTableFirstCellHeader = 'Cost Center ID';
-
-  rightTableHeaders = [
+  tableHeaders = [
+    'Cost Center ID',
     'Cost Center Name',
     'Cost Center Typ',
   ];
 
-  rightTableData = [
-    ['Cost Center ID 1', 'Cost Center Name 1', 'Cost Center Typ 1'],
-    ['Cost Center ID 2', 'Cost Center Name 2', 'Cost Center Typ 1'],
-    ['Cost Center ID 3', 'Cost Center Name 3', 'Cost Center Typ 2'],
-  ];
+  data: [{CostCenterID: string; CostCenterName: string; CostCenterTyp: string}, {CostCenterID: string; CostCenterName: string; CostCenterTyp: string}, {CostCenterID: string; CostCenterName: string; CostCenterTyp: string}];
 
-  show = false;
+  selectedRow: Number;
+  setClickedRow: Function;
+
+  showAdd = false;
+  showUpdate = false;
 
   totalItems: number = 60;
   currentPage: number   = 1;
@@ -36,20 +56,30 @@ export class CostCenterParameterComponent implements OnInit {
     {label: 'Typ 2', value: 'Typ2'},
   ];
 
-  setPage(pageNo: number): void {
-    this.currentPage = pageNo;
+  showAddCard() {
+    this.showAdd = !this.showAdd;
   }
 
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
+  closeAddCard() {
+    this.showAdd = false;
   }
 
-  ShowHide(): void {
-    this.show = !this.show;
+  showUpdateCard() {
+    this.showUpdate = !this.showUpdate;
+  }
+
+  closeUpdateCard() {
+    this.showUpdate = false;
+  }
+
+  saveAdd() {
+    this.closeAddCard();
+  }
+
+  saveUpdate() {
+    this.closeUpdateCard();
   }
 
   ngOnInit(): void {
   }
-
 }
