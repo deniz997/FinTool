@@ -33,6 +33,10 @@ export const navItems: INavData[] = [
             url: '/parameter/dialog/tables/planning'
           },
           {
+            name: 'Rate-Table',
+            url: '/parameter/dialog/tables/rate-table'
+          },
+          {
             name: 'Status',
             url: '/parameter/dialog/tables/status'
           },
@@ -137,5 +141,4 @@ export const navItems: INavData[] = [
     ]
 
   }
-
-];
+  ];

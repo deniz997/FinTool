@@ -52,6 +52,7 @@ import {PgkTableComponent} from './views/tables/pgk-table/pgk-table.component';
 import {PlanningComponent} from './views/tables/planning/planning.component';
 import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
 import {TicketComponent} from './views/tables/ticket/ticket.component';
+import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
 
 @NgModule({
   imports: [
@@ -93,7 +94,8 @@ import {TicketComponent} from './views/tables/ticket/ticket.component';
     PgkTableComponent,
     PlanningComponent,
     TravelTableComponent,
-    TicketComponent
+    TicketComponent,
+    RateTableComponent
   ],
   providers: [{
     provide: LocationStrategy,
