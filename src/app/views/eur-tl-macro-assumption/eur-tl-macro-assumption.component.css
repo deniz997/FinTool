@@ -16,3 +16,11 @@
 tr {
   text-align: center;
 }
+
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+.table tr:hover{
+  background-color: #cccccc;
+}
