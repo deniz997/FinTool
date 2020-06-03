@@ -38,7 +38,7 @@ export class CostCenterParameterComponent implements OnInit {
     'Cost Center Typ',
   ];
 
-  data: [{CostCenterID: string; CostCenterName: string; CostCenterTyp: string}, {CostCenterID: string; CostCenterName: string; CostCenterTyp: string}, {CostCenterID: string; CostCenterName: string; CostCenterTyp: string}];
+  data = [];
 
   selectedRow: Number;
   setClickedRow: Function;
