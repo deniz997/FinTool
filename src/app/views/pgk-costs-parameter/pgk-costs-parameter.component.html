@@ -14,9 +14,14 @@
                 <th *ngFor="let Header of TableHeaders">{{Header}}</th>
               </tr>
               </thead>
+
               <tbody>
-              <tr *ngFor="let row of TableData">
-                <td *ngFor="let data of row">{{data}}</td>
+              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                <td>{{row.PGK}}</td>
+                <td>{{row.Status}}</td>
+                <td>{{row.PlannungP}}</td>
+                <td>{{row.Currency}}</td>
+                <td>{{row.Value}}</td>
               </tr>
               </tbody>
             </table>
@@ -24,8 +29,8 @@
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
-          <button class="btn btn-primary">UPDATE</button>
+          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
+          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
           <button class="btn btn-danger">DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
@@ -35,10 +40,11 @@
       </div>
       <!--Card-->
 
-      <div class="card" *ngIf="show">
+      <div class="card" *ngIf="showAdd">
         <div class="card-header">
           <strong>Add new PGK Cost per Person</strong>
         </div>
+
         <div class="card-body">
           <div class="row">
             <div class="card-body col-3">
@@ -91,12 +97,74 @@
             </div>
           </div>
 
-          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
             <button type="button" class="btn btn-block btn-success">SAVE</button>
-          </div>
         </div>
 
       </div>
+
+      <!-- Add card finish -->
+      <div class="card" *ngIf="showUpdate">
+        <div class="card-header">
+          <strong>Update PGK Cost per Person</strong>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="card-body col-3">
+              <fieldset class="form-group">
+                <label> PGK Cost Definition per Person</label>
+                <ng-select
+                  class="bootstrap"
+                  [placeholder]="data[selectedRow].PGK"
+                  [options]="PGKCostDefinitionList"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label> Status</label>
+                <ng-select
+                  class="bootstrap"
+                  [placeholder]="data[selectedRow].Status"
+                  [options]="StatusList"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label> Planning Period</label>
+                <ng-select
+                  class="bootstrap"
+                  [placeholder]="data[selectedRow].PlannungP"
+                  [options]="PlanningPeriods"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label> Currency</label>
+                <ng-select
+                  class="bootstrap"
+                  [placeholder]="data[selectedRow].Currency"
+                  [options]="CurrencyList"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-2">
+              <fieldset class="form-group">
+                <label> Value</label><br>
+                <label>
+                  <input type="number" class="form-control" [placeholder]="data[selectedRow].Value">
+                </label>
+              </fieldset>
+            </div>
+          </div>
+
+            <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+        </div>
+
+      </div>
+
     </div>
     <!--/.col-->
   </div>

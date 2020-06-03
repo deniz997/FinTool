@@ -9,14 +9,47 @@ import {IOption} from 'ng-select';
 })
 export class PgkCostsParameterComponent implements OnInit {
 
-  constructor() { }
 
 
-  show = false;
+  selectedRow : Number;
+  setClickedRow : Function;
+  data : [{ Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }];
+
+  showAdd = false;
+  showUpdate = false;
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 7;
+
+  constructor() {
+    this.data = [
+      {
+        PGK : '0000036140 - Regional Rollout',
+        Status : 'Memur',
+        PlannungP : 'EA1',
+        Currency : 'TL',
+        Value : 50
+       },
+      {
+        PGK : 'SDC',
+        Status : 'E5',
+        PlannungP : 'EA2',
+        Currency : 'EUR',
+        Value : 20
+      },
+      {
+        PGK : 'SDC w/o Expat',
+        Status : 'E4',
+        PlannungP : 'EA2',
+        Currency : 'EUR',
+        Value : 30
+      }
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    }
+  }
 
   TableHeaders = [
     'PGK Cost Definition per Person',
@@ -24,12 +57,6 @@ export class PgkCostsParameterComponent implements OnInit {
     'Planning Period',
     'Currency',
     'Value',
-  ]
-
-  TableData = [
-    ['0000036140 - Regional Rollout','Memur','EA1','TL','50'],
-    ['SDC','E5','EA2','EUR','20'],
-    ['SDC w/o Expat','E4','EA2','EUR','30'],
   ]
 
   public PGKCostDefinitionList: Array<IOption> = [
@@ -68,8 +95,11 @@ export class PgkCostsParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ShowHide(): void{
-    this.show = !this.show;
+  ShowHideAdd(): void{
+    this.showAdd = !this.showAdd;
+  }
+  ShowHideUpdate(): void{
+    this.showUpdate = !this.showUpdate;
   }
 
 }
