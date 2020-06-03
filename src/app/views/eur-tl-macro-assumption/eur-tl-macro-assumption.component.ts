@@ -8,23 +8,37 @@ import {IOption} from "ng-select";
 })
 export class EurTlMacroAssumptionComponent implements OnInit {
 
-  constructor() { }
 
-  show = false;
+  selectedRow : Number;
+  setClickedRow : Function;
+  data : [{ PlanningP: string; Rate: number; }, { PlanningP: string; Rate: number; }];
 
+  showAdd = false;
+  showUpdate = false;
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 7;
 
+  constructor() {
+    this.data = [
+      {
+        PlanningP : 'EA1',
+        Rate : 6.75
+      },
+      {
+        PlanningP : 'EA2',
+        Rate : 7.50
+      }
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    }
+  }
+
   RightTableHeaders = [
     'Planning Period','Euro/TL Rate'
   ];
-
-  RightTableData = [
-    ['EA1', '6,75'],
-    ['EA2', '7,50'],
-  ]
 
   public PlanningPeriods: Array<IOption> = [
     {label: 'EA1', value: 'Item1'},
@@ -48,8 +62,10 @@ export class EurTlMacroAssumptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ShowHide(): void{
-    this.show = !this.show;
+  ShowHideAdd(): void{
+    this.showAdd = !this.showAdd;
   }
-
+  ShowHideUpdate(): void{
+    this.showUpdate = !this.showUpdate;
+  }
 }

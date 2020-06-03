@@ -8,14 +8,48 @@ import {IOption} from "ng-select";
 })
 export class ExternalCostsParameterComponent implements OnInit {
 
-  constructor() { }
 
-  show = false;
+  selectedRow : Number;
+  setClickedRow : Function;
+  data : [{ CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }];
+
+  showAdd = false;
+  showUpdate = false;
 
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 7;
+
+  constructor() {
+    this.data = [
+      {
+        ExternalC : 'Definition 2',
+        CurrentL : 'Regional Rollout P',
+        PlanningP : 'EA1',
+        Currency : 'TL',
+        Value : 50
+      },
+      {
+        ExternalC : 'Definition 3',
+        CurrentL : 'Regional Rollout A',
+        PlanningP : 'EA2',
+        Currency : 'EUR',
+        Value : 20
+      },
+      {
+        ExternalC : 'Definition 1',
+        CurrentL : 'Regional Rollout B',
+        PlanningP : 'EA2',
+        Currency : 'EUR',
+        Value : 30
+      }
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    }
+  }
+
 
   TableHeader = [
     'External Cost Definition per Person',
@@ -68,8 +102,10 @@ export class ExternalCostsParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ShowHide(): void{
-    this.show = !this.show;
+  ShowHideAdd(): void{
+    this.showAdd = !this.showAdd;
   }
-
+  ShowHideUpdate(): void{
+    this.showUpdate = !this.showUpdate;
+  }
 }

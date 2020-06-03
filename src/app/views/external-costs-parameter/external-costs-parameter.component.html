@@ -15,8 +15,12 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of TableData">
-                <td *ngFor="let data of row">{{data}}</td>
+              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                <td>{{row.ExternalC}}</td>
+                <td>{{row.CurrentL}}</td>
+                <td>{{row.PlanningP}}</td>
+                <td>{{row.Currency}}</td>
+                <td>{{row.Value}}</td>
               </tr>
               </tbody>
             </table>
@@ -25,7 +29,7 @@
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
+          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
           <button class="btn btn-primary">UPDATE</button>
           <button class="btn btn-danger">DELETE</button>
           <span style="float: right">
@@ -38,7 +42,7 @@
 
 
 
-      <div class="card" *ngIf="show">
+      <div class="card" *ngIf="showAdd">
         <div class="card-header">
           <strong>Add new External Cost per Person</strong>
         </div>
