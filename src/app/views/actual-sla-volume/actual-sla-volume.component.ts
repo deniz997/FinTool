@@ -9,10 +9,9 @@ import {IOption} from 'ng-select';
 export class ActualSlaVolumeComponent implements OnInit {
 
   constructor() { }
-  currentSLA: any;
-  rightTableFirstCellHeader = 'SLA No';
 
   rightTableHeaders = [
+    'SLA No',
     'SLA Name',
     'Template Name',
     'Service Department',
@@ -30,9 +29,8 @@ export class ActualSlaVolumeComponent implements OnInit {
     'Fix Costs',
     'SLA Volume',
     'SLA Consumption',
-    'SLA Consumption in %',
+    'SLA Consumption in %'
   ];
-
 
   rightTableData = [
     ['SLA20_ITTQT_008', 'Mercedes Me Connect Aftersales Rollout 5', 'MeConnectA', 'RO', '01.01.2020', '31.12.2020', '2.420', '617.100', '185', '740', '9', '46', '-', '-', '194', '70.000', '946.002', '251.554', '30%'],
@@ -46,40 +44,22 @@ export class ActualSlaVolumeComponent implements OnInit {
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 7;
-  public SLANos: Array<IOption> = [
-    {label: 'SLA20_ITTQT_008', value: 'SLA20_ITTQT_008'},
-    {label: 'SLA20_ITTQT_009', value: 'SLA20_ITTQT_009'},
-    {label: 'SLA20_ITTQT_012', value: 'SLA20_ITTQT_012'},
-    {label: 'SLA20_ITTQT_106', value: 'SLA20_ITTQT_106'},
-    {label: 'SLA20_ITTQT_113', value: 'SLA20_ITTQT_113'},
-  ];
+
   showInputField: boolean;
-  clickedRow = [];
-  showPicker: boolean;
+  selectedRowNumber: number;
 
-  ngOnInit(): void {
-    this.clickedRow.push('');
-    this.rightTableHeaders.forEach(_ => {
-      this.clickedRow.push('');
-    });
-  }
+  ngOnInit(): void {}
 
-  isInputDisabled(i: number): boolean {
-    const currentSLA = this.currentSLA;
-    if (this.currentSLA === this.getNextSLAName() && i === 0) {
+  isInputDisabled(columnNumber: number): boolean {
+    if (this.selectedRowNumber >= this.rightTableData.length) {
       return true;
     }
-    for (const row of this.rightTableData) {
-      if (row[0] === currentSLA) {
-        return row[i] === '-';
-      }
-    }
-    return false;
+    return this.rightTableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
-  getPlaceHolderForInputFields(i: number): string {
-    if (this.currentSLA === this.getNextSLAName() && i === 0) {
-      return 'SLA20_ITTQT_114';
+  getPlaceHolderForInputFields(columnNumber: number): string {
+    if (this.selectedRowNumber >= this.rightTableData.length && columnNumber === 0) {
+      return this.getNextSLAName();
     } else {
       return 'Ex. 4';
     }
@@ -98,56 +78,28 @@ export class ActualSlaVolumeComponent implements OnInit {
   }
 
   saveClickedRow(i: number) {
-    this.emptyClickedRow();
-    this.rightTableData[i].forEach(value => {
-      this.clickedRow.push(value);
-    });
+    this.selectedRowNumber = i;
   }
 
   onTableRowClick(i: number) {
-    this.currentSLA = this.rightTableData[i][0];
     this.saveClickedRow(i);
     this.openInputCard();
   }
 
-  emptyClickedRow() {
-    this.clickedRow = [];
-  }
-
   clearClickedRow() {
-    for (let i = 0; i < this.clickedRow.length; i++) {
-      this.clickedRow[i] = '';
-    }
+    this.selectedRowNumber = -1;
   }
 
   openAddCard() {
-    this.showPicker = false;
     this.clearClickedRow();
-    this.currentSLA = this.getNextSLAName();
     this.openInputCard();
   }
 
   openEditCard() {
-    this.showPicker = true;
-    this.currentSLA = null;
     this.openInputCard();
   }
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';
-  }
-
-  onSelect() {
-    let index = 0;
-    if (this.currentSLA === this.getNextSLAName()) {
-      this.clearClickedRow();
-    }
-    for (const row of this.rightTableData) {
-      if (row[0] === this.currentSLA) {
-        this.saveClickedRow(index);
-        return;
-      }
-      index++;
-    }
   }
 }

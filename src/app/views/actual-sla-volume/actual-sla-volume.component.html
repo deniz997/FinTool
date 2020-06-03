@@ -23,15 +23,14 @@
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
               <thead>
-              <tr>
-                <th>{{rightTableFirstCellHeader}}</th>
-                <th *ngFor="let header of rightTableHeaders;">{{header}}</th>
-              </tr>
+                <tr class="hoverable">
+                  <th *ngFor="let header of rightTableHeaders;">{{header}}</th>
+                </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of rightTableData; let i = index" (click)="onTableRowClick(i)">
-                <td *ngFor="let data of row">{{data}}</td>
-              </tr>
+                <tr class="hoverable" *ngFor="let row of rightTableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+                  <td *ngFor="let data of row">{{data}}</td>
+                </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
@@ -53,22 +52,12 @@
     </div>
 
     <div class="card-body col-12">
-
-
       <form action="" method="post" class="form-horizontal">
         <div style="text-align: center;">
           <div>
             <fieldset id="SLAPicker" class="form-group" style="margin-bottom: 0px">
-              <ng-select
-                class="bootstrap"
-                placeholder="Pick SLA"
-                name="SLAPicker"
-                [options]="SLANos"
-                [allowClear]="false"
-                [(ngModel)]="currentSLA"></ng-select>
 
-
-              <div *ngIf="currentSLA" class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+              <div class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
                 <perfect-scrollbar>
                   <table class="table table-sm">
                     <thead style="border: hidden">
@@ -78,9 +67,9 @@
                     </thead>
                     <tbody>
                     <tr>
-                      <td *ngFor="let _ of rightTableHeaders; let i = index">
+                      <td *ngFor="let _ of rightTableHeaders; let columnNumber = index">
                         <label style="text-align: center">
-                          <input type="text" class="form-control" [title]="getPlaceHolderForInputFields(i)" [placeholder]="getPlaceHolderForInputFields(i)" [disabled]="isInputDisabled(i)" [defaultValue]="clickedRow[i]">
+                          <input type="text" class="form-control" [title]="getPlaceHolderForInputFields(columnNumber)" [placeholder]="getPlaceHolderForInputFields(columnNumber)" [disabled]="isInputDisabled(columnNumber)" [defaultValue]="rightTableData[selectedRowNumber][columnNumber]">
                         </label>
                       </td>
                     </tr>
@@ -93,9 +82,8 @@
         </div>
       </form>
     </div>
-    <div *ngIf="currentSLA" class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
+    <div class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
       <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Submit</button>
     </div>
-
   </div>
 </div>
