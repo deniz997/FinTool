@@ -19,3 +19,11 @@ th {
 table {
   text-align: center;
 }
+.table tr.hoverable:hover {
+  background-color: #cccccc;
+}
+
+.table tr.active td{
+  background-color: #999999;
+  color: black;
+}
