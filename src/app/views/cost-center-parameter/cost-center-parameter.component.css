@@ -19,4 +19,7 @@ th {
 table {
   text-align: center;
 }
-
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
