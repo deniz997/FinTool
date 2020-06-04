@@ -24,11 +24,11 @@
             <table class="table table-bordered table-striped table-sm">
               <thead>
                 <tr>
-                  <th *ngFor="let header of rightTableHeaders;">{{header}}</th>
+                  <th *ngFor="let header of tableHeaders;">{{header}}</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="hoverable" *ngFor="let row of rightTableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+                <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                   <td *ngFor="let data of row">{{data}}</td>
                 </tr>
               </tbody>
@@ -62,14 +62,14 @@
                   <table class="table table-sm">
                     <thead style="border: hidden">
                     <tr>
-                      <th style="min-width: 110px" *ngFor="let header of rightTableHeaders">{{header}}</th>
+                      <th style="min-width: 110px" *ngFor="let header of tableHeaders">{{header}}</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td *ngFor="let _ of rightTableHeaders; let columnNumber = index">
+                      <td *ngFor="let _ of tableHeaders; let columnNumber = index">
                         <label style="text-align: center">
-                          <input type="text" class="form-control" [title]="getPlaceHolderForInputFields(columnNumber)" [placeholder]="getPlaceHolderForInputFields(columnNumber)" [disabled]="isInputDisabled(columnNumber)" [defaultValue]="rightTableData[selectedRowNumber][columnNumber]">
+                          <input type="text" class="form-control" [title]="getPlaceHolderForInputFields(columnNumber)" [placeholder]="getPlaceHolderForInputFields(columnNumber)" [disabled]="isInputDisabled(columnNumber)" [defaultValue]="tableData[selectedRowNumber][columnNumber]">
                         </label>
                       </td>
                     </tr>
