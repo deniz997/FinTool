@@ -4,3 +4,20 @@ button{
   display: table-row;
 }
 
+
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.row.col-6{
+  padding: 16px 10px;
+  width: inherit;
+}
+
+.form-group{
+  margin: 0;
+}
+
+

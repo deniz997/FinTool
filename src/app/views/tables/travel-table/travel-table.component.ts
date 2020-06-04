@@ -34,9 +34,6 @@ export class TravelTableComponent implements OnInit {
     'Travel Table'
   ];
 
-  LaterTableHeaders = [
-    'Travel Day Typ'
-  ];
 
   public TravelTable: Array<IOption> = [
     {label: 'Regional', value: 'Item1'},

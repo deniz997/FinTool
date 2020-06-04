@@ -9,23 +9,16 @@ import {IOption} from 'ng-select';
 export class RateTableComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ rate: string; }, { rate: string; }, { rate: string; }];
+  data: [{ rate: string, number: number }];
+  currency: string[];
+  saved: boolean = true;
+  rate: number;
 
   showAdd = false;
   showUpdate = false;
 
   constructor() {
-    this.data = [
-      {
-        rate : 'Regional'
-      },
-      {
-        rate : 'Domestic'
-      },
-      {
-        rate : 'Overseas'
-      }
-    ];
+
     this.setClickedRow = function (index) {
       this.selectedRow = index;
     };
@@ -43,6 +36,12 @@ export class RateTableComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.currency = ['EUR', 'TL'];
+
+  }
+
+  onSave() {
+    this.saved = true;
   }
 
   ShowHideAdd(): void {
