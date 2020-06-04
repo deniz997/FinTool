@@ -47,22 +47,25 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   showInputField: boolean;
   selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
+
 
   ngOnInit(): void {}
 
   isInputDisabled(columnNumber: number): boolean {
-    if (this.selectedRowNumber >= this.tableData.length) {
-      return true;
+    if (!this.isSelectedRowNumberValid()) {
+      return columnNumber === 0;
     }
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
   getPlaceHolderForInputFields(columnNumber: number): string {
-    if (this.selectedRowNumber >= this.tableData.length && columnNumber === 0) {
-      return this.getNextSLAName();
-    } else {
-      return 'Ex. 4';
+    if (!this.isSelectedRowNumberValid()) {
+      if (columnNumber === 0) {
+        return this.getNextSLAName();
+      }
     }
+    return 'Ex. 4';
   }
 
   submit() {
@@ -79,18 +82,29 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
   }
 
   onTableRowClick(i: number) {
     this.saveClickedRow(i);
-    this.openInputCard();
+    this.closeInputCard();
+  }
+
+  isSelectedRowNumberValid() {
+    this.updateValidSelectedRowNumber();
+    return this.validSelectedRowNumber;
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
   }
 
   clearClickedRow() {
-    this.selectedRowNumber = -1;
+    this.saveClickedRow(-1);
   }
 
   openAddCard() {
+    this.saveClickedRow(this.tableData.length);
     this.clearClickedRow();
     this.openInputCard();
   }
@@ -101,5 +115,15 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';
+  }
+  getDefaultValueForInput(columnNumber: number) {
+    if (!this.isSelectedRowNumberValid()) {
+      if (columnNumber === 0) {
+        return this.getNextSLAName();
+      } else {
+        return ' ';
+      }
+    }
+    return this.tableData[this.selectedRowNumber][columnNumber];
   }
 }
