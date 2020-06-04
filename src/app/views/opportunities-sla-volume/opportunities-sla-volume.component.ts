@@ -55,7 +55,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   getPlaceHolderForInputFields(columnNumber: number): string {
     if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
-      if(columnNumber === 0) {
+      if (columnNumber === 0) {
         return this.getNextSLAName();
       }
     }
