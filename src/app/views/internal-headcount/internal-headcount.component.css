@@ -12,11 +12,14 @@
 
 }
 .card-footer {
-  text-align: right;
   background-color: white;
   border-left: none;
   border-right: none;
   border-top: none;
+}
+
+.input-footer {
+  text-align: right;
 }
 .card-footer button {
 }
@@ -34,5 +37,13 @@ tr {
 }
 tr td:nth-child(15n-14) {
   text-align: left;
+}
+.table tr.hoverable:hover {
+  background-color: #cccccc;
+}
+
+.table tr.active td{
+  background-color: #999999;
+  color: black;
 }
 
