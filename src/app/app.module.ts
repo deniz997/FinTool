@@ -53,22 +53,25 @@ import {PlanningComponent} from './views/tables/planning/planning.component';
 import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
 import {TicketComponent} from './views/tables/ticket/ticket.component';
 import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
+import {SelectModule} from 'ng-select';
+import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-typ.component';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    AppAsideModule,
-    AppBreadcrumbModule.forRoot(),
-    AppFooterModule,
-    AppHeaderModule,
-    AppSidebarModule,
-    PerfectScrollbarModule,
-    BsDropdownModule.forRoot(),
-    TabsModule.forRoot(),
-    ChartsModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        AppAsideModule,
+        AppBreadcrumbModule.forRoot(),
+        AppFooterModule,
+        AppHeaderModule,
+        AppSidebarModule,
+        PerfectScrollbarModule,
+        BsDropdownModule.forRoot(),
+        TabsModule.forRoot(),
+        ChartsModule,
+        SelectModule
+    ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
@@ -95,7 +98,8 @@ import {RateTableComponent} from './views/tables/rate-table/rate-table.component
     PlanningComponent,
     TravelTableComponent,
     TicketComponent,
-    RateTableComponent
+    RateTableComponent,
+    TravelDayTypComponent
   ],
   providers: [{
     provide: LocationStrategy,

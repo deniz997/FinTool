@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-rate-table',
-  templateUrl: './rate-table.component.html',
-  styleUrls: ['./rate-table.component.css']
+  selector: 'app-travel-day-typ',
+  templateUrl: './travel-day-typ.component.html',
+  styleUrls: ['./travel-day-typ.component.css']
 })
-export class RateTableComponent implements OnInit {
+export class TravelDayTypComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ rate: string; }, { rate: string; }, { rate: string; }];
+  data: [{ traveltable: string; }, { traveltable: string; }, { traveltable: string; }];
 
   showAdd = false;
   showUpdate = false;
@@ -17,13 +17,13 @@ export class RateTableComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        rate : 'Regional'
+        traveltable : 'Regional'
       },
       {
-        rate : 'Domestic'
+        traveltable : 'Domestic'
       },
       {
-        rate : 'Overseas'
+        traveltable : 'Overseas'
       }
     ];
     this.setClickedRow = function (index) {
@@ -31,11 +31,11 @@ export class RateTableComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Rate Table'
+    'Travel Day Typ'
   ];
 
 
-  public Rate: Array<IOption> = [
+  public TravelTable: Array<IOption> = [
     {label: 'Regional', value: 'Item1'},
     {label: 'Domestic', value: 'Item2'},
     {label: 'Overseas', value: 'Item3'}
@@ -51,5 +51,4 @@ export class RateTableComponent implements OnInit {
   ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
   }
-
 }
