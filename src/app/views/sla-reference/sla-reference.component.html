@@ -9,10 +9,14 @@
         <fieldset class="form-group">
           <ng-select
             class="bootstrap"
-            placeholder="SLA Volume"
+            placeholder="SLA No"
+            [(ngModel)]="selectedLevel" (change)="selected()"
             [options]="SLA"
-            [allowClear]="true"></ng-select>
+            [allowClear]="true">
+          </ng-select>
         </fieldset>
+        <h6>SLA Name: {{selectedLevel}}</h6>
+        <br>
         </thead>
         <tbody>
         <tr>
@@ -27,7 +31,7 @@
         <tr>
           <td>Regional Travel Flight</td>
           <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
+            <input type="checkbox" class="switch-input" >
             <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
           </label></td>
         </tr>
@@ -47,7 +51,7 @@
             <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
           </label></td>
         </tr>
-        
+
         <tr>
           <td>Regional Travel Day</td>
           <td><label class="switch-lg switch-label switch-pill switch-primary">
@@ -58,7 +62,7 @@
         <tr>
           <td>Long Distance Travel Day</td>
           <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
+            <input type="checkbox" class="switch-input">
             <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
           </label></td>
         </tr>
@@ -90,9 +94,6 @@
       </table>
 
       <div class="row align-items-center">
-        <div class="col-6 col-sm-4 col-md-2 col-sm mb-3 mb-xl-0">
-          <button type="button" class="btn btn-block btn-primary" >Edit</button>
-        </div>
         <div class="col-6 col-sm-4 col-md-2 col-sm mb-3 mb-xl-0">
           <button type="button" class="btn btn-block btn-success">Save</button>
         </div>
