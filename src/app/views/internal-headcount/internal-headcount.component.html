@@ -93,79 +93,15 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td>0000036140 - Regional Rollout E4</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>1</td>
-                <td>32</td>
-
-              </tr>
-              <tr>
-                <td>0000036140 - Regional Rollout E5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>5</td>
-                <td>190</td>
-
-              </tr>
-              <tr>
-                <td>0000036140 - Regional Rollout Memur</td>
-                <td>50</td>
-                <td>49</td>
-                <td>49</td>
-                <td>49</td>
-                <td>49</td>
-                <td>49</td>
-                <td>51</td>
-                <td>54</td>
-                <td>56</td>
-                <td>57</td>
-                <td>58</td>
-                <td>59</td>
-                <td>53</td>
-                <td>1113</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td>56</td>
-                <td>55</td>
-                <td>55</td>
-                <td>55</td>
-                <td>55</td>
-                <td>55</td>
-                <td>57</td>
-                <td>60</td>
-                <td>62</td>
-                <td>63</td>
-                <td>64</td>
-                <td>65</td>
-                <td>59</td>
-                <td>1335</td>
-              </tr>
+                <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+                  <td *ngFor="let column of row">{{column}}</td>
+                </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
+        </div>
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openEditCard()">Edit</button>
         </div>
       </div>
     </div>
@@ -173,7 +109,7 @@
 
 
   <!--Input!-->
-  <div>
+  <div *ngIf="showInputField">
     <div class="card">
       <div class="card-header">
         <strong>Input</strong>
@@ -186,45 +122,36 @@
           <div class=" col-12" style="text-align: center">
             <div>
               <fieldset class="form-group">
-                <ng-select
-                  class="bootstrap"
-                  placeholder="Pick Cost Center Category"
-                  name="costCenterPicker"
-                  [options]="costCenters"
-                  [allowClear]="false"
-                  [(ngModel)]="currentCostCenter"></ng-select>
-
-                <div class="form-group row" *ngIf="currentCostCenter" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+                <div class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
                   <perfect-scrollbar>
                     <table class="table table-sm">
                       <thead style="border: hidden">
-                      <tr>
-                        <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
-                      </tr>
+                        <tr>
+                          <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
+                        </tr>
                       </thead>
                       <tbody>
                       <tr>
-                        <td *ngFor="let _ of months">
+                        <td *ngFor="let _ of months; let columnNumber = index">
                           <label style="text-align: center">
-                            <input type="text" class="form-control" placeholder="Ex. 4">
+                            <input type="text" class="form-control"
+                                   [title]="getPlaceHolderForInputFields(columnNumber)"
+                                   [placeholder]="getPlaceHolderForInputFields(columnNumber)"
+                                   [defaultValue]="getDefaultValueForInput(columnNumber)">
                           </label>
                         </td>
                       </tr>
-
                       </tbody>
-
                     </table>
                   </perfect-scrollbar>
-
                 </div>
               </fieldset>
             </div>
-
           </div>
         </form>
       </div>
-      <div class="card-footer" *ngIf="currentCostCenter">
-        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+      <div class="card-footer input-footer">
+        <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Submit</button>
       </div>
 
     </div>
