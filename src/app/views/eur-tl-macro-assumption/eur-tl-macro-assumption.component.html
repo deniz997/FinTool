@@ -28,8 +28,8 @@
 
         <div class="card-footer" style="float: left">
           <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
-          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
-          <button class="btn btn-danger">DELETE</button>
+          <button class="btn btn-primary" [disabled]="!selectedRow"  (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-danger" [disabled]="!selectedRow"  >DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
@@ -63,8 +63,8 @@
             </div>
           </div>
 
-          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-success">SAVE</button>
+          <div class="card-footer" style="float: left">
+            <button type="button" class="btn btn-block btn-primary">SAVE</button>
           </div>
         </div>
 
@@ -97,8 +97,8 @@
             </div>
           </div>
 
-          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+          <div class="card-footer" style="float: left">
+            <button type="button" class="btn btn-block btn-primary">SAVE</button>
           </div>
         </div>
 

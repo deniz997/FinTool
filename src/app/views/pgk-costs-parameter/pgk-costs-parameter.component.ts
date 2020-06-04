@@ -10,10 +10,9 @@ import {IOption} from 'ng-select';
 export class PgkCostsParameterComponent implements OnInit {
 
 
-
-  selectedRow : Number;
+  selectedRow : Number = null;
   setClickedRow : Function;
-  data : [{ Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlannungP: string }];
+  data : [{ Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }];
 
   showAdd = false;
   showUpdate = false;
@@ -27,21 +26,21 @@ export class PgkCostsParameterComponent implements OnInit {
       {
         PGK : '0000036140 - Regional Rollout',
         Status : 'Memur',
-        PlannungP : 'EA1',
+        PlanningP : 'EA1',
         Currency : 'TL',
         Value : 50
        },
       {
         PGK : 'SDC',
         Status : 'E5',
-        PlannungP : 'EA2',
+        PlanningP : 'EA2',
         Currency : 'EUR',
         Value : 20
       },
       {
         PGK : 'SDC w/o Expat',
         Status : 'E4',
-        PlannungP : 'EA2',
+        PlanningP : 'EA2',
         Currency : 'EUR',
         Value : 30
       }
