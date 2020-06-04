@@ -88,8 +88,6 @@ export class ExternalHeadcountComponent implements OnInit {
   }
 
   showYear(year: string, event) {
-    console.log(year);
-
     const myDom = this.getDomElementFromEvent(event);
     const children = myDom.parentElement.parentElement.children;
     for (let i = 0; i < children.length; i++) {
