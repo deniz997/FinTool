@@ -9,13 +9,18 @@ import {IOption} from 'ng-select';
 export class SlaReferenceComponent implements OnInit {
 
   constructor() { }
-
+  selectedLevel;
   public SLA: Array<IOption> = [
-    {label: 'SLA 1', value: '1'},
-    {label: 'SLA 2', value: '2'},
-    {label: 'SLA 3', value: '3'},
-    {label: 'SLA 4', value: '4'},
+    {label: 'SLA20_ITTQT_008', value: 'Mercedes Me Connect Aftersales Rollout 5'},
+    {label: 'SLA20_ITTQT_009', value: 'Mercedes Me Connect 2'},
+    {label: 'SLA20_ITTQT_009', value: 'Mercedes Me Connect 1'},
+    {label: 'SLA20_ITTQT_106', value: 'Cyber Security Lighthouse Program'},
+    {label: 'SLA20_ITTQT_113', value: 'EPA Coordination'},
   ];
+
+  selected() {
+    console.log(this.selectedLevel);
+  }
 
   ngOnInit(): void {
   }
