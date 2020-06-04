@@ -10,7 +10,7 @@ import {IOption} from 'ng-select';
 export class PgkCostsParameterComponent implements OnInit {
 
 
-  selectedRow : Number = null;
+  selectedRow : Number;
   setClickedRow : Function;
   data : [{ Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }];
 
