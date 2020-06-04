@@ -87,6 +87,15 @@ export class SlaItemParameterComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
+  public year: Array<IOption> = [
+    {label: '2020', value: 'Year1'},
+    {label: '2019', value: 'Year2'},
+    {label: '2018', value: 'Year3'},
+    {label: '2017', value: 'Year4'},
+    {label: '2016', value: 'Year5'},
+    {label: '2015', value: 'Year6'},
+  ];
+
   public mandayTyp: Array<IOption> = [
     {label: 'Manday Typ 1', value: 'MandayTyp1'},
     {label: 'Manday Typ 2', value: 'MandayTyp2'},

@@ -82,20 +82,10 @@
                             <div class="d-flex ml-0">
                               <label>Year</label>
                             </div>
-                            <select class="form-control" id="ccyear">
-                              <option>2014</option>
-                              <option>2015</option>
-                              <option>2016</option>
-                              <option>2017</option>
-                              <option>2018</option>
-                              <option>2019</option>
-                              <option>2020</option>
-                              <option>2021</option>
-                              <option>2022</option>
-                              <option>2023</option>
-                              <option>2024</option>
-                              <option>2025</option>
-                            </select>
+                            <ng-select class="bootstrap"
+                                       [placeholder]="data[selectedRow].Year"
+                                       [options]="year"
+                                       [allowClear]="false"></ng-select>
                           </div>
                           <!-- date picker -->
                           <div class="col-md-6 col-lg-6">
@@ -328,20 +318,10 @@
                             <div class="d-flex ml-0">
                               <label>Year</label>
                             </div>
-                            <select class="form-control" id="cc year">
-                              <option>2014</option>
-                              <option>2015</option>
-                              <option>2016</option>
-                              <option>2017</option>
-                              <option>2018</option>
-                              <option>2019</option>
-                              <option>2020</option>
-                              <option>2021</option>
-                              <option>2022</option>
-                              <option>2023</option>
-                              <option>2024</option>
-                              <option>2025</option>
-                            </select>
+                            <ng-select class="bootstrap"
+                                       [placeholder]="data[selectedRow].Year"
+                                       [options]="year"
+                                       [allowClear]="false"></ng-select>
                           </div>
                           <!-- date picker -->
                           <div class="col-md-6 col-lg-6">
