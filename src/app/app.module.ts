@@ -45,7 +45,6 @@ import { ActualSlaVolumeComponent } from './views/actual-sla-volume/actual-sla-v
 import { OpportunitiesSlaVolumeComponent } from './views/opportunities-sla-volume/opportunities-sla-volume.component';
 import { DepartmentTravelRateComponent } from './views/department-travel-rate/department-travel-rate.component';
 import {FormsModule} from '@angular/forms';
-import {SelectModule} from 'ng-select';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 import {MandayComponent} from './views/tables/manday/manday.component';
@@ -59,6 +58,8 @@ import {TicketComponent} from './views/tables/ticket/ticket.component';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
+import {SelectModule} from 'ng-select';
+import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-typ.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,6 @@ import {RateTableComponent} from './views/tables/rate-table/rate-table.component
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule,
     ChartsModule,
     SelectModule,
     PaginationModule.forRoot(),
@@ -109,7 +109,8 @@ import {RateTableComponent} from './views/tables/rate-table/rate-table.component
     PlanningComponent,
     TravelTableComponent,
     TicketComponent,
-    RateTableComponent
+    RateTableComponent,
+    TravelDayTypComponent
   ],
   providers: [{
     provide: LocationStrategy,

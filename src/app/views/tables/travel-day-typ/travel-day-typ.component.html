@@ -1,5 +1,5 @@
 <div class="animated fadeIn">
-  <!--/.row-->
+
   <div class="row">
     <!--/.col-->
     <div class="col-lg-12">
@@ -13,11 +13,11 @@
             </thead>
             <tbody>
             <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
-              <td>{{row.ticket}}</td>
+              <td>{{row.traveltable}}</td>
             </tr>
             </tbody>
           </table>
-         </div>
+        </div>
         <div class="card-footer" style="float: left">
           <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
           <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
@@ -34,9 +34,9 @@
 
             <div class="card-body col-6">
               <fieldset class="form-group">
-                <label> Ticket</label><br>
+                <label> Travel Day Typ</label><br>
                 <label>
-                  <input class="form-control" type="text" required placeholder="Please enter new Ticket">
+                  <input class="form-control" type="text" required placeholder="Please enter new Travel Day Typ">
                 </label>
               </fieldset>
             </div>
@@ -46,23 +46,21 @@
             <button type="button" class="btn btn-block btn-success">SAVE</button>
           </div>
         </div>
-
       </div>
-
 
       <div class="card" *ngIf="showUpdate">
         <div class="card-header">
-          <strong>Update Ticket </strong>
+          <strong>Update Travel Day Typ </strong>
         </div>
         <div class="card-body">
           <div class="row align-items-center">
             <div class="card-body col-6">
               <fieldset class="form-group">
-                <label> Ticket</label>
+                <label> Travel Day Typ</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].ticket"
-                  [options]="Ticket"
+                  [placeholder]="data[selectedRow].traveltable"
+                  [options]="TravelTable"
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
@@ -79,6 +77,8 @@
         </div>
 
       </div>
+
     </div>
   </div>
+
 </div>
