@@ -43,18 +43,19 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   showInputField: boolean;
   selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
 
   ngOnInit(): void {}
 
   isInputDisabled(columnNumber: number): boolean {
-    if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
+    if (!this.isSelectedRowNumberValid()) {
       return columnNumber === 0;
     }
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
   getPlaceHolderForInputFields(columnNumber: number): string {
-    if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
+    if (!this.isSelectedRowNumberValid()) {
       if (columnNumber === 0) {
         return this.getNextSLAName();
       }
@@ -76,19 +77,29 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
   }
 
   onTableRowClick(i: number) {
     this.saveClickedRow(i);
-    this.openInputCard();
+    this.closeInputCard();
+  }
+
+  isSelectedRowNumberValid() {
+    this.updateValidSelectedRowNumber();
+    return this.validSelectedRowNumber;
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
   }
 
   clearClickedRow() {
-    this.selectedRowNumber = -1;
+    this.saveClickedRow(-1);
   }
 
   openAddCard() {
-    this.selectedRowNumber = this.tableData.length;
+    this.saveClickedRow(this.tableData.length);
     this.clearClickedRow();
     this.openInputCard();
   }
@@ -102,7 +113,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   }
 
   getDefaultValueForInput(columnNumber: number) {
-    if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
+    if (!this.isSelectedRowNumberValid()) {
       if (columnNumber === 0) {
         return this.getNextSLAName();
       } else {
