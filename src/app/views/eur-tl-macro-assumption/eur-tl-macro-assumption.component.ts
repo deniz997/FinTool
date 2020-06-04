@@ -9,7 +9,7 @@ import {IOption} from "ng-select";
 export class EurTlMacroAssumptionComponent implements OnInit {
 
 
-  selectedRow : Number;
+  selectedRow : Number = -1;
   setClickedRow : Function;
   data : [{ PlanningP: string; Rate: number; }, { PlanningP: string; Rate: number; }];
 

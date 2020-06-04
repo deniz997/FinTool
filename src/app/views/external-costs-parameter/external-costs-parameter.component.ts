@@ -9,7 +9,7 @@ import {IOption} from "ng-select";
 export class ExternalCostsParameterComponent implements OnInit {
 
 
-  selectedRow : Number;
+  selectedRow : Number = -1;
   setClickedRow : Function;
   data : [{ CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }];
 

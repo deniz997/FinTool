@@ -29,7 +29,7 @@ tr td:nth-child(15n-14) {
   color: black;
 }
 
-.table tr:hover{
+tbody tr:hover{
   background-color: #cccccc;
 }
 

@@ -19,7 +19,7 @@
               <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
                 <td>{{row.PGK}}</td>
                 <td>{{row.Status}}</td>
-                <td>{{row.PlannungP}}</td>
+                <td>{{row.PlanningP}}</td>
                 <td>{{row.Currency}}</td>
                 <td>{{row.Value}}</td>
               </tr>
@@ -30,8 +30,8 @@
 
         <div class="card-footer" style="float: left">
           <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
-          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
-          <button class="btn btn-danger">DELETE</button>
+          <button class="btn btn-primary" [disabled]="!selectedRow" (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-danger" [disabled]="!selectedRow"  >DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
@@ -138,7 +138,7 @@
                 <label> Planning Period</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].PlannungP"
+                  [placeholder]="data[selectedRow].PlanningP"
                   [options]="PlanningPeriods"
                   [allowClear]="true"></ng-select>
               </fieldset>
@@ -164,7 +164,7 @@
           </div>
 
           <div class="card-footer" style="float: left">
-            <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+            <button type="button" class="btn btn-block btn-primary">SAVE</button>
           </div>
 
         </div>

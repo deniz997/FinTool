@@ -8,19 +8,16 @@
   padding: 16px 10px;
   width: inherit;
 }
-
 .form-group{
   margin: 0;
 }
-
 tr {
   text-align: center;
 }
-
 .table tr.active td{
   background-color: #999999 ;
   color: black;
 }
-.table tr:hover{
+tbody tr:hover{
   background-color: #cccccc;
 }
