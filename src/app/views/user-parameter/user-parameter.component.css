@@ -31,3 +31,18 @@ tr td:nth-child(15n-14) {
 tbody tr:hover{
   background-color: #cccccc;
 }
+
+input[type="file"]{
+  visibility: hidden;
+}
+label.file-upload{
+  display: inline-block;
+  width: 3px;
+  height: auto;
+  float: right;
+}
+label.file-upload.btn{
+  height: 3px;
+  padding: 3px;
+  margin-right: 7%;
+}
