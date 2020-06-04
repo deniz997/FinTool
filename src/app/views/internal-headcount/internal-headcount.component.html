@@ -1,237 +1,240 @@
-<!--Header!-->
-<div>
+<div class="fadeIn">
+  <!--Header!-->
+  <div>
+    <div class="row">
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-white bg-info">
+          <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+              <i class="icon-people"></i>
+            </div>
+            <div class="h1 mb-0">32</div>
+            <small class="text-muted text-uppercase font-weight-bold">Regional Rollout E4</small>
+          </div>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-white bg-primary">
+          <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+              <i class="icon-people"></i>
+            </div>
+            <div class="h1 mb-0">190</div>
+            <small class="text-muted text-uppercase font-weight-bold">Regional Rollout E5</small>
+          </div>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-white bg-warning">
+          <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+              <i class="icon-people"></i>
+            </div>
+            <div class="h1 mb-0">1113</div>
+            <small class="text-muted text-uppercase font-weight-bold">Regional Rollout Memur</small>
+          </div>
+        </div>
+      </div><!--/.col-->
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-white bg-danger">
+          <div class="card-body">
+            <div class="h1 text-muted text-right mb-4">
+              <i class="icon-people"></i>
+            </div>
+            <div class="h1 mb-0">1335</div>
+            <small class="text-muted text-uppercase font-weight-bold">Total</small>
+          </div>
+        </div>
+      </div><!--/.col-->
+    </div>
+  </div>
+  <!--/Header!-->
+
   <div class="row">
-    <div class="col-sm-6 col-md-3">
-      <div class="card text-white bg-info">
-        <div class="card-body">
-          <div class="h1 text-muted text-right mb-4">
-            <i class="icon-people"></i>
-          </div>
-          <div class="h1 mb-0">32</div>
-          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout E4</small>
+    <div class="col-2" style="padding-right: 0px;">
+      <div class="card" style="height: inherit">
+        <div id="yearHeader" class="card-header">
+          <strong>Years</strong>
+        </div>
+        <div class="card-body" style="padding: 2px;">
+          <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+            <table class="table table-sm">
+              <tbody>
+              <ng-container *ngFor="let year of inputtedYears">
+                <tr>
+                  <td id="{{year}}Selector" (click)="showYear(year, $event)">{{year}}</td>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
         </div>
       </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-3">
-      <div class="card text-white bg-primary">
-        <div class="card-body">
-          <div class="h1 text-muted text-right mb-4">
-            <i class="icon-people"></i>
-          </div>
-          <div class="h1 mb-0">190</div>
-          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout E5</small>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-3">
-      <div class="card text-white bg-warning">
-        <div class="card-body">
-          <div class="h1 text-muted text-right mb-4">
-            <i class="icon-people"></i>
-          </div>
-          <div class="h1 mb-0">1113</div>
-          <small class="text-muted text-uppercase font-weight-bold">Regional Rollout Memur</small>
-        </div>
-      </div>
-    </div><!--/.col-->
-    <div class="col-sm-6 col-md-3">
-      <div class="card text-white bg-danger">
-        <div class="card-body">
-          <div class="h1 text-muted text-right mb-4">
-            <i class="icon-people"></i>
-          </div>
-          <div class="h1 mb-0">1335</div>
-          <small class="text-muted text-uppercase font-weight-bold">Total</small>
-        </div>
-      </div>
-    </div><!--/.col-->
-  </div>
-</div>
-<!--/Header!-->
+    </div>
 
-<div class="row">
-  <div class="col-2" style="padding-right: 0px;">
-    <div class="card" style="height: inherit">
-      <div id="yearHeader" class="card-header">
-        <strong>Years</strong>
-      </div>
-      <div class="card-body" style="padding: 2px;">
-        <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
-          <table class="table table-sm">
-            <tbody>
-            <ng-container *ngFor="let year of inputtedYears">
+
+
+
+    <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
+      <div id="internalHeadcountTable" class="card">
+        <div class="card-header">
+          <strong>Internal Headcount</strong>
+        </div>
+        <div class="card-body">
+          <perfect-scrollbar>
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
               <tr>
-                <td id="{{year}}Selector" (click)="showYear(year, $event)">{{year}}</td>
+                <th>Cost Center</th>
+                <th *ngFor="let month of months">{{month}}</th>
+                <th>Avg</th>
+                <th>PGK</th>
+
               </tr>
-            </ng-container>
-            </tbody>
-          </table>
-        </perfect-scrollbar>
-      </div>
-    </div>
-  </div>
+              </thead>
+              <tbody>
+              <tr>
+                <td>0000036140 - Regional Rollout E4</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+                <td>32</td>
 
+              </tr>
+              <tr>
+                <td>0000036140 - Regional Rollout E5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>5</td>
+                <td>190</td>
 
-
-
-  <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
-    <div id="internalHeadcountTable" class="card">
-      <div class="card-header">
-        <strong>Internal Headcount</strong>
-      </div>
-      <div class="card-body">
-        <perfect-scrollbar>
-          <table class="table table-bordered table-striped table-sm">
-            <thead>
-            <tr>
-              <th>Cost Center</th>
-              <th *ngFor="let month of months">{{month}}</th>
-              <th>Avg</th>
-              <th>PGK</th>
-
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-              <td>0000036140 - Regional Rollout E4</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>32</td>
-
-            </tr>
-            <tr>
-              <td>0000036140 - Regional Rollout E5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>5</td>
-              <td>190</td>
-
-            </tr>
-            <tr>
-              <td>0000036140 - Regional Rollout Memur</td>
-              <td>50</td>
-              <td>49</td>
-              <td>49</td>
-              <td>49</td>
-              <td>49</td>
-              <td>49</td>
-              <td>51</td>
-              <td>54</td>
-              <td>56</td>
-              <td>57</td>
-              <td>58</td>
-              <td>59</td>
-              <td>53</td>
-              <td>1113</td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>56</td>
-              <td>55</td>
-              <td>55</td>
-              <td>55</td>
-              <td>55</td>
-              <td>55</td>
-              <td>57</td>
-              <td>60</td>
-              <td>62</td>
-              <td>63</td>
-              <td>64</td>
-              <td>65</td>
-              <td>59</td>
-              <td>1335</td>
-            </tr>
-            </tbody>
-          </table>
-        </perfect-scrollbar>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!--Input!-->
-<div>
-  <div class="card">
-    <div class="card-header">
-      <strong>Input</strong>
-    </div>
-
-    <div class="card-body col-12">
-
-
-      <form action="" method="post" class="form-horizontal">
-        <div class=" col-12" style="text-align: center">
-          <div>
-            <fieldset class="form-group">
-              <ng-select
-                class="bootstrap"
-                placeholder="Pick Cost Center Category"
-                name="costCenterPicker"
-                [options]="costCenters"
-                [allowClear]="false"
-                [(ngModel)]="currentCostCenter"></ng-select>
-
-              <div class="form-group row" *ngIf="currentCostCenter" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
-                <perfect-scrollbar>
-                  <table class="table table-sm">
-                    <thead style="border: hidden">
-                    <tr>
-                      <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td *ngFor="let _ of months">
-                        <label style="text-align: center">
-                          <input type="text" class="form-control" placeholder="Ex. 4">
-                        </label>
-                      </td>
-                    </tr>
-
-                    </tbody>
-
-                  </table>
-                </perfect-scrollbar>
-
-              </div>
-            </fieldset>
-          </div>
-
+              </tr>
+              <tr>
+                <td>0000036140 - Regional Rollout Memur</td>
+                <td>50</td>
+                <td>49</td>
+                <td>49</td>
+                <td>49</td>
+                <td>49</td>
+                <td>49</td>
+                <td>51</td>
+                <td>54</td>
+                <td>56</td>
+                <td>57</td>
+                <td>58</td>
+                <td>59</td>
+                <td>53</td>
+                <td>1113</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>56</td>
+                <td>55</td>
+                <td>55</td>
+                <td>55</td>
+                <td>55</td>
+                <td>55</td>
+                <td>57</td>
+                <td>60</td>
+                <td>62</td>
+                <td>63</td>
+                <td>64</td>
+                <td>65</td>
+                <td>59</td>
+                <td>1335</td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
         </div>
-      </form>
+      </div>
     </div>
-    <div class="card-footer" *ngIf="currentCostCenter">
-      <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+  </div>
+
+
+  <!--Input!-->
+  <div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Input</strong>
+      </div>
+
+      <div class="card-body col-12">
+
+
+        <form action="" method="post" class="form-horizontal">
+          <div class=" col-12" style="text-align: center">
+            <div>
+              <fieldset class="form-group">
+                <ng-select
+                  class="bootstrap"
+                  placeholder="Pick Cost Center Category"
+                  name="costCenterPicker"
+                  [options]="costCenters"
+                  [allowClear]="false"
+                  [(ngModel)]="currentCostCenter"></ng-select>
+
+                <div class="form-group row" *ngIf="currentCostCenter" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+                  <perfect-scrollbar>
+                    <table class="table table-sm">
+                      <thead style="border: hidden">
+                      <tr>
+                        <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                        <td *ngFor="let _ of months">
+                          <label style="text-align: center">
+                            <input type="text" class="form-control" placeholder="Ex. 4">
+                          </label>
+                        </td>
+                      </tr>
+
+                      </tbody>
+
+                    </table>
+                  </perfect-scrollbar>
+
+                </div>
+              </fieldset>
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="card-footer" *ngIf="currentCostCenter">
+        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+      </div>
+
     </div>
+    <!--InputFields-->
+
 
   </div>
-  <!--InputFields-->
-
-
+  <!--/Input!-->
 </div>
-<!--/Input!-->
+
 
 
 
