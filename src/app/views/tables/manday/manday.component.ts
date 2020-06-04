@@ -36,10 +36,6 @@ export class MandayComponent implements OnInit {
     {label: 'Standard', value: 'Item2'}
   ];
 
-  public ExchangeRate: Array<IOption> = [
-    {label: 'Euro', value: 'EUR'},
-    {label: 'TL', value: 'TL'},
-  ];
 
   ngOnInit(): void {
   }

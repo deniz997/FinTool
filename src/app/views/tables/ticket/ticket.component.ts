@@ -40,10 +40,6 @@ export class TicketComponent implements OnInit {
     {label: 'Platinium', value: 'Item3'}
   ];
 
-  public ExchangeRate: Array<IOption> = [
-    {label: 'Euro', value: 'EUR'},
-    {label: 'TL', value: 'TL'},
-  ];
 
   ngOnInit(): void {
   }

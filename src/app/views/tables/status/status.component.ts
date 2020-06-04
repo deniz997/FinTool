@@ -40,10 +40,7 @@ export class StatusComponent implements OnInit {
     {label: 'Status 3', value: 'Item3'}
   ];
 
-  public ExchangeRate: Array<IOption> = [
-    {label: 'Euro', value: 'EUR'},
-    {label: 'TL', value: 'TL'},
-  ];
+
 
   ngOnInit(): void {
   }

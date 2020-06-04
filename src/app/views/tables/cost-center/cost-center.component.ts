@@ -40,10 +40,6 @@ export class CostCenterComponent implements OnInit {
     {label: 'Cost Center 3', value: 'Item3'},
   ];
 
-  public ExchangeRate: Array<IOption> = [
-    {label: 'Euro', value: 'EUR'},
-    {label: 'TL', value: 'TL'},
-  ];
 
   ngOnInit(): void {
   }

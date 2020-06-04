@@ -8,8 +8,23 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
-              <th *ngFor="let Header of RightTableHeaders">{{Header}}</th>
+              <div class="row align-items-center">
+
+                <div class="col-sm-4">
+                  <label for="currencyy">Currency</label>
+                  <select class="form-control" name="selectYear" id="currencyy">
+                    <option [value]="null">Select Currency</option>
+                    <option *ngFor="let y of currency">{{y}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label for="ratee">Travel Rate</label>
+                  <input id="ratee" type="number" class="form-control"  placeholder="Enter a Numeric value">
+                </div>
+
+              </div>
             </tr>
+            <tr>
             </thead>
             <tbody>
             <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
@@ -17,7 +32,7 @@
             </tr>
             </tbody>
           </table>
-        </div>
+
         <div class="card-footer" style="float: left">
           <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
           <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
@@ -31,14 +46,18 @@
         <div class="card-body">
           <div class="row align-items-center">
 
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-                <label> Rate</label><br>
-                <label>
-                  <input class="form-control" type="text" required placeholder="Please enter new Rate">
-                </label>
-              </fieldset>
-            </div>
+              <div class="col-sm-4">
+                <label for="currencyy">Currency</label>
+                <select class="form-control" name="selectYear" id="currencyy">
+                  <option [value]="null">Select Currency</option>
+                  <option *ngFor="let y of currency">{{y}}</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label for="ratee">Travel Rate</label>
+                <input id="ratee" type="number" class="form-control"  placeholder="Enter a Numeric value">
+              </div>
+
           </div>
 
           <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
@@ -53,15 +72,16 @@
         </div>
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-                <label> Rate</label>
-                <ng-select
-                  class="bootstrap"
-                  [placeholder]="data[selectedRow].rate"
-                  [options]="Rate"
-                  [allowClear]="true"></ng-select>
-              </fieldset>
+            <div class="col-sm-4">
+              <label for="currency">Currency</label>
+              <select class="form-control" name="selectYear" id="currency">
+                <option [value]="null">Select Currency</option>
+                <option *ngFor="let y of currency">{{y}}</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label for="rateee">Travel Rate</label>
+              <input id="rateee" type="number" class="form-control"   placeholder="Enter a Numeric value">
             </div>
             <div class="card-body col-6">
               <fieldset class="form-group">
@@ -79,4 +99,5 @@
     </div>
   </div>
 
+</div>
 </div>

@@ -36,10 +36,6 @@ export class PgkTableComponent implements OnInit {
     {label: 'Item 2 from Cost Center', value: 'Item2'}
   ];
 
-  public ExchangeRate: Array<IOption> = [
-    {label: 'Euro', value: 'EUR'},
-    {label: 'TL', value: 'TL'},
-  ];
 
   ngOnInit(): void {
   }

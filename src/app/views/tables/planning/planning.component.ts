@@ -36,10 +36,6 @@ export class PlanningComponent implements OnInit {
     {label: 'EA2', value: 'Item2'}
   ];
 
-  public ExchangeRate: Array<IOption> = [
-    {label: 'Euro', value: 'EUR'},
-    {label: 'TL', value: 'TL'},
-  ];
 
   ngOnInit(): void {
   }
