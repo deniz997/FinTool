@@ -105,8 +105,7 @@
                             <form class="form-inline">
                               <div class="form-group hidden">
                                 <div class="input-group">
-                                  <input [hidden]="true"
-                                         name="datepicker"
+                                  <input name="datepicker"
                                          class="form-control"
                                          ngbDatepicker
                                          #datepicker="ngbDatepicker"
@@ -329,7 +328,7 @@
                             <div class="d-flex ml-0">
                               <label>Year</label>
                             </div>
-                            <select class="form-control" id="ccyear">
+                            <select class="form-control" id="cc year">
                               <option>2014</option>
                               <option>2015</option>
                               <option>2016</option>
@@ -352,8 +351,7 @@
                             <form class="form-inline">
                               <div class="form-group hidden">
                                 <div class="input-group">
-                                  <input [hidden]="true"
-                                         name="datepicker"
+                                  <input name="datepicker"
                                          class="form-control"
                                          ngbDatepicker
                                          #datepicker="ngbDatepicker"
@@ -379,7 +377,8 @@
                                 <div class="form-group ml-2">
                                   <div class="input-group">
                                     <input #dpFromDate
-                                           class="form-control" placeholder="yyyy-mm-dd"
+                                           class="form-control"
+                                           [placeholder]="data[selectedRow].ValidFrom"
                                            name="dpFromDate"
                                            [value]="formatter.format(fromDate)"
                                            (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
@@ -393,7 +392,8 @@
                                 <div class="form-group ml-2">
                                   <div class="input-group">
                                     <input #dpToDate
-                                           class="form-control" placeholder="yyyy-mm-dd"
+                                           class="form-control"
+                                           [placeholder]="data[selectedRow].ValidTo"
                                            name="dpToDate"
                                            [value]="formatter.format(toDate)"
                                            (input)="toDate = validateInput(toDate, dpToDate.value)">
