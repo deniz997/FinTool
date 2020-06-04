@@ -69,7 +69,11 @@
                     <tr>
                       <td *ngFor="let _ of tableHeaders; let columnNumber = index">
                         <label style="text-align: center">
-                          <input type="text" class="form-control" [title]="getPlaceHolderForInputFields(columnNumber)" [placeholder]="getPlaceHolderForInputFields(columnNumber)" [disabled]="isInputDisabled(columnNumber)" [defaultValue]="tableData[selectedRowNumber][columnNumber]">
+                          <input type="text" class="form-control"
+                                 [title]="getPlaceHolderForInputFields(columnNumber)"
+                                 [placeholder]="getPlaceHolderForInputFields(columnNumber)"
+                                 [disabled]="isInputDisabled(columnNumber)"
+                                 [defaultValue]="getDefaultValueForInput(columnNumber)">
                         </label>
                       </td>
                     </tr>

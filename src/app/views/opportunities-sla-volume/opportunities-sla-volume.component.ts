@@ -11,6 +11,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   constructor() {}
 
   tableHeaders = [
+    'SLA No',
     'SLA Name',
     'Template Name',
     'SLA Start Date',
@@ -46,18 +47,19 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   ngOnInit(): void {}
 
   isInputDisabled(columnNumber: number): boolean {
-    if (this.selectedRowNumber >= this.tableData.length) {
-      return true;
+    if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
+      return columnNumber === 0;
     }
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
   getPlaceHolderForInputFields(columnNumber: number): string {
-    if (this.selectedRowNumber >= this.tableData.length && columnNumber === 0) {
-      return this.getNextSLAName();
-    } else {
-      return 'Ex. 4';
+    if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
+      if(columnNumber === 0) {
+        return this.getNextSLAName();
+      }
     }
+    return 'Ex. 4';
   }
 
   submit() {
@@ -86,6 +88,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   }
 
   openAddCard() {
+    this.selectedRowNumber = this.tableData.length;
     this.clearClickedRow();
     this.openInputCard();
   }
@@ -96,5 +99,16 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';
+  }
+
+  getDefaultValueForInput(columnNumber: number) {
+    if (this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0) {
+      if (columnNumber === 0) {
+        return this.getNextSLAName();
+      } else {
+        return ' ';
+      }
+    }
+    return this.tableData[this.selectedRowNumber][columnNumber];
   }
 }
