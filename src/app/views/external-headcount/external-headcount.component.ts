@@ -114,7 +114,6 @@ export class ExternalHeadcountComponent implements OnInit {
 
   }
 
-
   sleep(ms: number): Observable<number> {
     return timer(ms);
   }
@@ -147,15 +146,12 @@ export class ExternalHeadcountComponent implements OnInit {
 
   updateSizeOnUpdateButtonAppearanceChange() {
     this.tableResized();
-    this.sleep(25).subscribe(() => {
+    this.sleep(5).subscribe(() => {
       if (this.getYearScrollbarNewHeight() !== document.getElementById('yearScrollbar').style.height) {
-        this.sleep(25).subscribe(() => {
-          this.updateSizeOnUpdateButtonAppearanceChange();
-        });
+        this.updateSizeOnUpdateButtonAppearanceChange();
       }
     });
   }
-
 
   openUpdateCard() {
     this.openInputCard();
