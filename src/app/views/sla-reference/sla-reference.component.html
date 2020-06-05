@@ -1,107 +1,113 @@
-<div class="col-lg-12">
-  <div class="card">
-    <div class="card-header">
-       SLA Reference
-    </div>
-    <div class="card-body">
-      <table class="table">
-        <thead>
-        <fieldset class="form-group">
-          <ng-select
-            class="bootstrap"
-            placeholder="SLA No"
-            [(ngModel)]="selectedLevel" (change)="selected()"
-            [options]="SLA"
-            [allowClear]="true">
-          </ng-select>
-        </fieldset>
-        <h6>SLA Name: {{selectedLevel}}</h6>
-        <br>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Manday Type</td>
-          <td>
-            <label class="switch-lg switch-label switch-pill switch-primary">
+<div class="animated fadeIn">
+
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        SLA Reference
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+          <fieldset class="form-group">
+            <ng-select
+              class="bootstrap"
+              placeholder="SLA No"
+              [(ngModel)]="selectedLevel" (change)="selected()"
+              [options]="SLA"
+              [allowClear]="true">
+            </ng-select>
+          </fieldset>
+          <h6 *ngIf="isSelected">SLA Name: {{selectedLevel}}</h6>
+          <br>
+          </thead>
+          <tbody *ngIf="isSelected" >
+          <tr>
+            <td>Manday Type</td>
+            <td>
+              <label class="switch-lg switch-label switch-pill switch-primary">
+                <input type="checkbox" class="switch-input" checked>
+                <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>Regional Travel Flight</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input" >
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
+
+          <tr>
+            <td>Long Distance Flight</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
               <input type="checkbox" class="switch-input" checked>
               <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-            </label>
-          </td>
-        </tr>
-        <tr>
-          <td>Regional Travel Flight</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" >
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
+            </label></td>
+          </tr>
 
-        <tr>
-          <td>Long Distance Flight</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
+          <tr>
+            <td>Domestic Travel Flight</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input" checked>
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
 
-        <tr>
-          <td>Domestic Travel Flight</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
+          <tr>
+            <td>Regional Travel Day</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input" checked>
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
+          <tr>
+            <td>Long Distance Travel Day</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input">
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
 
-        <tr>
-          <td>Regional Travel Day</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
-        <tr>
-          <td>Long Distance Travel Day</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input">
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
+          <tr>
+            <td>Domestic Travel Day</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input" checked>
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
 
-        <tr>
-          <td>Domestic Travel Day</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
+          <tr>
+            <td>Ticket Type</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input" checked>
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
 
-        <tr>
-          <td>Ticket Type</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
+          <tr>
+            <td>Fixed Costs Type</td>
+            <td><label class="switch-lg switch-label switch-pill switch-primary">
+              <input type="checkbox" class="switch-input" checked>
+              <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
+            </label></td>
+          </tr>
+          </tbody>
+        </table>
 
-        <tr>
-          <td>Fixed Costs Type</td>
-          <td><label class="switch-lg switch-label switch-pill switch-primary">
-            <input type="checkbox" class="switch-input" checked>
-            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
-          </label></td>
-        </tr>
-        </tbody>
-      </table>
-
-      <div class="row align-items-center">
-        <div class="col-6 col-sm-4 col-md-2 col-sm mb-3 mb-xl-0">
-          <button type="button" class="btn btn-block btn-success">Save</button>
+        <div class="row align-items-center">
+          <div class="col-6 col-sm-4 col-md-2 col-sm mb-3 mb-xl-0">
+            <button type="button" class="btn btn-block btn-success">Save</button>
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
-</div> <!-- END -->
+  </div> <!-- END -->
+
+</div>
+
+
 
 
 
