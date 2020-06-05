@@ -49,7 +49,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   isInputDisabled(columnNumber: number): boolean {
     if (!this.isSelectedRowNumberValid()) {
-      return columnNumber === 0;
+      return false;
     }
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
