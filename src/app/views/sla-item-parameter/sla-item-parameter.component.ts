@@ -8,24 +8,72 @@ import {NgbDate, NgbCalendar, NgbDateParserFormatter} from '@ng-bootstrap/ng-boo
   styleUrls: ['./sla-item-parameter.component.css']
 })
 export class SlaItemParameterComponent implements OnInit {
+  private data = [];
+  private setClickedRow: (index) => void;
 
   constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
+    this.data = [
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/10/01',
+        MandayTyp: 'Manday Typ 1',
+        MandayRate: 'Manday Rate 1',
+        TravelTyp: 'Travel Typ 1',
+        TravelDayTyp: 'Travel Day Typ 1',
+        TravelRate: 'Travel Rate 2',
+        TicketTyp: 'Ticket Typ 2',
+        TicketRate: 'Ticket Rate 2',
+        FixCostsTyp: 'Fix Costs Typ 1',
+        FixCostsRate: 'Fix Costs Rate 2'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/01',
+        MandayTyp: 'Manday Typ 2',
+        MandayRate: 'Manday Rate 2',
+        TravelTyp: 'Travel Typ 2',
+        TravelDayTyp: 'Travel Day Typ 2',
+        TravelRate: 'Travel Rate 1',
+        TicketTyp: 'Ticket Typ 1',
+        TicketRate: 'Ticket Rate 1',
+        FixCostsTyp: 'Fix Costs Typ 2',
+        FixCostsRate: 'Fix Costs Rate 1'
+      },
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    };
   }
 
-  show = false;
+  selectedRow: Function;
 
-  totalItems: number = 64;
-  currentPage: number   = 1;
-  smallnumPages: number = 0;
+  tableSubHeaders = [
+    'Year',
+    'Valid From',
+    'Valid To',
+    'Manday Typ',
+    'Manday Rate',
+    'Travel Typ',
+    'Travel Day Typ',
+    'Travel Rate',
+    'Ticket Typ',
+    'Ticket Rate',
+    'Fix Costs Typ',
+    'Fix Costs Rate',
+  ];
 
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
+  showAdd = false;
+  showUpdate = false;
 
-  currentPager: number   = 4;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
   // Datepicker
   minDate = new Date(2017, 5, 10);
@@ -38,6 +86,60 @@ export class SlaItemParameterComponent implements OnInit {
 
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
+
+  public year: Array<IOption> = [
+    {label: '2020', value: 'Year1'},
+    {label: '2019', value: 'Year2'},
+    {label: '2018', value: 'Year3'},
+    {label: '2017', value: 'Year4'},
+    {label: '2016', value: 'Year5'},
+    {label: '2015', value: 'Year6'},
+  ];
+
+  public mandayTyp: Array<IOption> = [
+    {label: 'Manday Typ 1', value: 'MandayTyp1'},
+    {label: 'Manday Typ 2', value: 'MandayTyp2'},
+  ];
+
+  public mandayRate: Array<IOption> = [
+    {label: 'Manday Rate 1', value: 'MandayRate1'},
+    {label: 'Manday Rate 2', value: 'MandayRate2'},
+  ];
+
+  public travelTyp: Array<IOption> = [
+    {label: 'Travel Typ 1', value: 'TravelTyp1'},
+    {label: 'Travel Typ 2', value: 'TravelTyp2'},
+  ];
+
+  public travelDayTyp: Array<IOption> = [
+    {label: 'Travel Day Typ 1', value: 'TravelDayTyp1'},
+    {label: 'Travel Day Typ 2', value: 'TravelDayTyp2'},
+  ];
+
+  public travelRate: Array<IOption> = [
+    {label: 'Travel Rate 1', value: 'TravelRate1'},
+    {label: 'Travel Rate 2', value: 'TravelRate2'},
+  ];
+
+  public ticketTyp: Array<IOption> = [
+    {label: 'Ticket Typ 1', value: 'TicketTyp1'},
+    {label: 'Ticket Typ 2', value: 'TicketTyp2'},
+  ];
+
+  public ticketRate: Array<IOption> = [
+    {label: 'Ticket Rate 1', value: 'TicketRate1'},
+    {label: 'Ticket Rate 2', value: 'TicketRate2'},
+  ];
+
+  public fixCostsTyp: Array<IOption> = [
+    {label: 'Fix Costs Typ 1', value: 'FixCostsTyp1'},
+    {label: 'Fix Costs Typ 2', value: 'FixCostsTyp2'},
+  ];
+
+  public fixCostsRate: Array<IOption> = [
+    {label: 'Fix Costs Rate 1', value: 'FixCostsRate1'},
+    {label: 'Fix Costs Rate 2', value: 'FixCostsRate2'},
+  ];
 
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
@@ -78,7 +180,27 @@ export class SlaItemParameterComponent implements OnInit {
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 
-  ShowHide = (): void => {
-    this.show = !this.show;
+  showAddCard() {
+    this.showAdd = !this.showAdd;
+  }
+
+  closeAddCard() {
+    this.showAdd = false;
+  }
+
+  showUpdateCard() {
+    this.showUpdate = !this.showUpdate;
+  }
+
+  closeUpdateCard() {
+    this.showUpdate = false;
+  }
+
+  saveAdd() {
+    this.closeAddCard();
+  }
+
+  saveUpdate() {
+    this.closeUpdateCard();
   }
 }

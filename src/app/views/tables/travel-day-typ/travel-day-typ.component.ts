@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-status',
-  templateUrl: './status.component.html',
-  styleUrls: ['./status.component.css']
+  selector: 'app-travel-day-typ',
+  templateUrl: './travel-day-typ.component.html',
+  styleUrls: ['./travel-day-typ.component.css']
 })
-export class StatusComponent implements OnInit {
+export class TravelDayTypComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ status: string; }, { status: string; }, { status: string; }];
+  data: [{ traveltable: string; }, { traveltable: string; }, { traveltable: string; }];
 
   showAdd = false;
   showUpdate = false;
@@ -17,13 +17,13 @@ export class StatusComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        status : 'Status 1'
+        traveltable : 'Regional'
       },
       {
-        status : 'Status 2'
+        traveltable : 'Domestic'
       },
       {
-        status : 'Status 3'
+        traveltable : 'Overseas'
       }
     ];
     this.setClickedRow = function (index) {
@@ -31,15 +31,15 @@ export class StatusComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Status'
+    'Travel Day Typ'
   ];
 
-  public Status: Array<IOption> = [
-    {label: 'Status 1', value: 'Item1'},
-    {label: 'Status 2', value: 'Item2'},
-    {label: 'Status 3', value: 'Item3'}
-  ];
 
+  public TravelTable: Array<IOption> = [
+    {label: 'Regional', value: 'Item1'},
+    {label: 'Domestic', value: 'Item2'},
+    {label: 'Overseas', value: 'Item3'}
+  ];
 
 
   ngOnInit(): void {
@@ -51,6 +51,4 @@ export class StatusComponent implements OnInit {
   ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
   }
-
-
 }

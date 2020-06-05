@@ -1,3 +1,10 @@
+button{
+  width: auto;
+  margin: auto;
+  display: table-row;
+}
+
+
 .card-footer {
   background-color: white;
   border-left: none;
@@ -8,16 +15,9 @@
   padding: 16px 10px;
   width: inherit;
 }
+
 .form-group{
   margin: 0;
 }
-tr {
-  text-align: center;
-}
-.table tr.active td{
-  background-color: #999999 ;
-  color: black;
-}
-tbody tr:hover{
-  background-color: #cccccc;
-}
+
+

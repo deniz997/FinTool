@@ -2,31 +2,82 @@
   <!--/.row-->
   <div class="row">
     <!--/.col-->
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i> Planning Period Table
-        </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
             <thead>
             <tr>
-              <th>Planning Period</th>
+              <th *ngFor="let Header of RightTableHeaders">{{Header}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>EA1</td>
-            </tr>
-            <tr>
-              <td>EA2</td>
+            <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <td>{{row.planning}}</td>
             </tr>
             </tbody>
           </table>
-          <button type="button" class="btn btn-block btn-success">Add</button>
-          <button type="button" class="btn btn-block btn-warning">Update</button>
-          <button type="button" class="btn btn-block btn-danger">Delete</button>
         </div>
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
+          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+        </div>
+      </div>
+
+      <div class="card" *ngIf="showAdd">
+        <div class="card-header">
+          <strong>Add New Planning</strong>
+        </div>
+        <div class="card-body">
+          <div class="row align-items-center">
+
+            <div class="card-body col-6">
+              <fieldset class="form-group">
+                <label> Planning</label><br>
+                <label>
+                  <input class="form-control" type="text" required placeholder="Please enter new Planning">
+                </label>
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
+            <button type="button" class="btn btn-block btn-success">SAVE</button>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="card" *ngIf="showUpdate">
+        <div class="card-header">
+          <strong>Update Planning </strong>
+        </div>
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="card-body col-6">
+              <fieldset class="form-group">
+                <label> Planning</label>
+                <ng-select
+                  class="bootstrap"
+                  [placeholder]="data[selectedRow].planning"
+                  [options]="Planning"
+                  [allowClear]="true"></ng-select>
+              </fieldset>
+            </div>
+            <div class="card-body col-6">
+              <fieldset class="form-group">
+
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
+            <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

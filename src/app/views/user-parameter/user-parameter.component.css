@@ -1,16 +1,48 @@
-button{
-  width: auto;
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+tr {
+  text-align: center;
+  vertical-align: middle;
+}
+th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+table {
+  text-align: center;
+}
+tr td:nth-child(15n-14) {
+  text-align: left;
+}
+
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+
+tbody tr:hover{
+  background-color: #cccccc;
+}
+
+input[type="file"]{
+  visibility: hidden;
+}
+label.file-upload{
+  display: inline-block;
+  width: 3px;
+  height: auto;
   float: right;
-  height: unset;
-  font-size: 12px;
 }
-
-.fa-file-excel-o{
-  width: 30%;
-  height: 30%;
-  font-size: 18px;
-}
-
-.btn-block{
-  margin-right: 2%;
+label.file-upload.btn{
+  height: 3px;
+  padding: 3px;
+  margin-right: 7%;
 }

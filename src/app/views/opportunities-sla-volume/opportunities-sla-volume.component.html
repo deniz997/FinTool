@@ -1,10 +1,10 @@
-<div>
+<div class="fadeIn">
   <div class="card">
     <div class="card-header">
       <div class="row">
         <div class="col-11">
           <div>
-            <strong style="text-align: left">Opportunities Volume</strong>
+            <strong style="text-align: left">Opportunities SLA Volume</strong>
           </div>
         </div>
         <div class="col-1">
@@ -15,10 +15,7 @@
             </label>
           </div>
         </div>
-
-
       </div>
-
     </div>
     <div class="card-body">
       <div class="row">
@@ -27,82 +24,70 @@
             <table class="table table-bordered table-striped table-sm">
               <thead>
               <tr>
-                <th>{{rightTableFirstCellHeader}}</th>
-                <th *ngFor="let header of rightTableHeaders">{{header}}</th>
+                <th *ngFor="let header of tableHeaders;">{{header}}</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of rightTableData">
+              <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
-
               </tbody>
-
             </table>
-
           </perfect-scrollbar>
         </div>
       </div>
     </div>
-    <div class="card-footer flex-column" style="align-self: flex-end">
-      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
-
+    <div class="card-footer" style="float: left">
+      <button class="btn btn-success" (click)="openAddCard()">ADD</button>
+      <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
+      <button class="btn btn-danger" [hidden]="!validSelectedRowNumber">DELETE</button>
+      <span style="float: right">
+        <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+      </span>
     </div>
   </div>
-  <div class="card">
+  <div *ngIf="showInputField" class="card">
     <div class="card-header">
       <strong>Input</strong>
     </div>
 
     <div class="card-body col-12">
-
-
       <form action="" method="post" class="form-horizontal">
         <div style="text-align: center;">
           <div>
-            <fieldset id="SLAPicker" class="form-group" style="margin-bottom: 0">
-              <ng-select
-                class="bootstrap"
-                placeholder="Pick SLA"
-                name="SLAPicker"
-                [options]="SLANos"
-                [allowClear]="false"
-                [(ngModel)]="currentSLA"></ng-select>
+            <fieldset id="SLAPicker" class="form-group" style="margin-bottom: 0px">
 
-
-              <div *ngIf="currentSLA" class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+              <div class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
                 <perfect-scrollbar>
                   <table class="table table-sm">
                     <thead style="border: hidden">
                     <tr>
-                      <th style="min-width: 110px" *ngFor="let header of rightTableHeaders">{{header}}</th>
+                      <th style="min-width: 110px" *ngFor="let header of tableHeaders">{{header}}</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                      <td *ngFor="let _ of rightTableHeaders; let i = index">
+                      <td *ngFor="let _ of tableHeaders; let columnNumber = index">
                         <label style="text-align: center">
-                          <input type="text" [title]="getPlaceHolderForInputFields(i)" class="form-control" [placeholder]="getPlaceHolderForInputFields(i)" [disabled]="isInputDisabled(i)">
+                          <input type="text" class="form-control"
+                                 [title]="getPlaceHolderForInputFields(columnNumber)"
+                                 [placeholder]="getPlaceHolderForInputFields(columnNumber)"
+                                 [disabled]="isInputDisabled(columnNumber)"
+                                 [defaultValue]="getDefaultValueForInput(columnNumber)">
                         </label>
                       </td>
                     </tr>
-
                     </tbody>
-
                   </table>
                 </perfect-scrollbar>
-
               </div>
-
             </fieldset>
           </div>
-
         </div>
       </form>
     </div>
-    <div *ngIf="currentSLA" class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
-      <button type="submit" class="btn btn-sm btn-primary">Submit</button>
+    <div class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
+      <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">SUBMIT</button>
     </div>
-
   </div>
 </div>

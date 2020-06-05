@@ -28,6 +28,8 @@ import {PlanningComponent} from './views/tables/planning/planning.component';
 import {StatusComponent} from './views/tables/status/status.component';
 import {TravelTableComponent} from './views/tables/travel-table/travel-table.component';
 import {TicketComponent} from './views/tables/ticket/ticket.component';
+import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
+import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-typ.component';
 
 export const routes: Routes = [
   {
@@ -68,6 +70,13 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'parameter/dialog/tables/travel-day-typ',
+        component: TravelDayTypComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
         path: 'parameter/dialog/tables/ticket',
         component: TicketComponent,
         data: {
@@ -100,6 +109,13 @@ export const routes: Routes = [
         component: PlanningComponent,
         data: {
           title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/rate-table',
+        component: RateTableComponent,
+        data: {
+          title: 'Rate-Table'
         },
       },
       {

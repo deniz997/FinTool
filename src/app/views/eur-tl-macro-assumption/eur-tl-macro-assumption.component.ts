@@ -8,23 +8,46 @@ import {IOption} from "ng-select";
 })
 export class EurTlMacroAssumptionComponent implements OnInit {
 
-  constructor() { }
 
-  show = false;
+  selectedRow : Number = -1;
+  setClickedRow : Function;
+  data : [{ PlanningP: string; Rate: number; }, { PlanningP: string; Rate: number; }];
 
-  totalItems: number = 64;
-  currentPage: number   = 1;
-  smallnumPages: number = 0;
+  showAdd = false;
+  showUpdate = false;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
+  constructor() {
+    this.data = [
+      {
+        PlanningP : 'EA1',
+        Rate : 6.75
+      },
+      {
+        PlanningP : 'EA2',
+        Rate : 7.50
+      }
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    }
+  }
 
-  currentPager: number   = 4;
+  RightTableHeaders = [
+    'Planning Period','Euro/TL Rate'
+  ];
+
   public PlanningPeriods: Array<IOption> = [
     {label: 'EA1', value: 'Item1'},
     {label: 'EA2', value: 'Item2'},
+  ];
+
+  public ExchangeRate: Array<IOption> = [
+    {label: 'Euro', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
   ];
 
   setPage(pageNo: number): void {
@@ -39,8 +62,10 @@ export class EurTlMacroAssumptionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ShowHide(): void{
-    this.show = !this.show;
+  ShowHideAdd(): void{
+    this.showAdd = !this.showAdd;
   }
-
+  ShowHideUpdate(): void{
+    this.showUpdate = !this.showUpdate;
+  }
 }

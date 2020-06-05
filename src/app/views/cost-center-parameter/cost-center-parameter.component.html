@@ -9,143 +9,147 @@
         </div>
 
         <div class="card-body">
-
           <!--table-->
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
               <thead>
               <tr>
-                <th><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck0" >
-                  <label class="custom-control-label" for="tableDefaultCheck0"></label>
-                </div></th>
-                <th>Cost Center ID</th>
-                <th>Cost Center Name</th>
-                <th>Cost Center Typ</th>
+                <th *ngFor="let Header of tableHeaders">{{Header}}</th>
               </tr>
               </thead>
               <tbody>
-              <tr>
-                <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck1" >
-                  <label class="custom-control-label" for="tableDefaultCheck1"></label>
-                </div></td>
-                <td>Cost Center ID 1</td>
-                <td>Cost Center Name 1</td>
-                <td>Cost Center Typ 1</td>
-              </tr>
-              <tr>
-                <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck2" >
-                  <label class="custom-control-label" for="tableDefaultCheck2"></label>
-                </div></td>
-                <td>Cost Center ID 2</td>
-                <td>Cost Center Name 2</td>
-                <td>Cost Center Typ 1</td>
-              </tr>
-              <tr>
-                <td><div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="tableDefaultCheck3" >
-                  <label class="custom-control-label" for="tableDefaultCheck3"></label>
-                </div></td>
-                <td>Cost Center ID 3</td>
-                <td>Cost Center Name 3</td>
-                <td>Cost Center Typ 2</td>
+              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                <td>{{row.CostCenterID}}</td>
+                <td>{{row.CostCenterName}}</td>
+                <td>{{row.CostCenterTyp}}</td>
               </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
-          <!table-->
+          <!--table-->
+        </div>
 
-          <!-- buttons & pagination-->
-          <div class="col">
-            <div class="row d-flex">
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="showAddCard()">ADD NEW</button>
+          <button class="btn btn-primary" (click)="showUpdateCard()">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+          <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
+        </div>
 
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button (click)="ShowHide()" type="button" class="btn btn-block btn-success">ADD NEW</button>
-              </div>
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-primary">UPDATE</button>
-              </div>
-              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                <button type="button" class="btn btn-block btn-danger">DELETE</button>
-              </div>
+      </div>
 
-              <div class="col-6">
-                <!--pagination-->
-                <div class="d-flex justify-content-end">
-                  <div class="row">
-                    <div class="col-xs-12 col-12 d-sm-down-none">
-                      <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" (pageChanged)="pageChanged($event)"></pagination>
+      <!--add-->
+      <div class="card" *ngIf="showAdd">
+        <div class="card-header">
+          <strong>Add New Cost Center Parameter</strong>
+        </div>
+
+        <div class="card-body col-12">
+
+          <form action="" method="post" class="form-horizontal">
+            <div class=" col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
+
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center ID</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter Cost Center ID">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Name</label>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Enter Cost Center Name">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Typ</label>
+                      </div>
+                      <ng-select
+                        class="bootstrap"
+                        placeholder="Pick Cost Center Typ"
+                        [options]="costCenterTyp"
+                        [allowClear]="false"></ng-select>
                     </div>
                   </div>
-                </div>
-                <!--pagination-->
+                </fieldset>
               </div>
+            </div>
+          </form>
 
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="saveAdd()">SAVE</button>
+              </div>
             </div>
           </div>
-          <!-- buttons & pagination-->
 
         </div>
-
       </div>
+      <!--add-->
 
-      <!--Input!-->
-      <div>
-        <div class="card" *ngIf="show">
-          <div class="card-header">
-            <strong>Add New Cost Center Parameter</strong>
-          </div>
+      <!-- update -->
+      <div class="card" *ngIf="showUpdate">
 
-          <div class="card-body col-12">
+        <div class="card-header">
+          <strong>Update Cost Center Parameter</strong>
+        </div>
 
-            <form action="" method="post" class="form-horizontal">
-              <div class=" col-12" style="text-align: center">
-                <div>
-                  <fieldset class="form-group">
 
-                    <div class="form-group row">
-                      <div class="col-md-6 col-lg-4">
-                        <div class="d-flex ml-0">
-                          <label>Cost Center ID</label>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter Cost Center ID">
+        <div class="card-body col-12">
+
+          <form action="" method="post" class="form-horizontal">
+            <div class=" col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
+
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center ID</label>
                       </div>
-                      <div class="col-md-6 col-lg-4">
-                        <div class="d-flex ml-0">
-                          <label>Cost Center Name</label>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Enter Cost Center Name">
-                      </div>
-                      <div class="col-md-6 col-lg-4">
-                        <div class="d-flex ml-0">
-                          <label>Cost Center Typ</label>
-                        </div>
-                        <ng-select
-                          class="bootstrap"
-                          placeholder="Pick Cost Center Typ"
-                          [options]="costCenterTyp"
-                          [allowClear]="false"></ng-select>
-                      </div>
+                      <input type="text" class="form-control" [placeholder]="data[selectedRow].CostCenterID">
                     </div>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-
-            <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-block btn-success">SAVE</button>
-                </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Name</label>
+                      </div>
+                      <input type="text" class="form-control" [placeholder]="data[selectedRow].CostCenterName">
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div class="d-flex ml-0">
+                        <label>Cost Center Typ</label>
+                      </div>
+                      <ng-select
+                        class="bootstrap"
+                        [placeholder]="data[selectedRow].CostCenterTyp"
+                        [options]="costCenterTyp"
+                        [allowClear]="false"></ng-select>
+                    </div>
+                  </div>
+                </fieldset>
               </div>
             </div>
+          </form>
 
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="saveUpdate()">SAVE</button>
+              </div>
+            </div>
           </div>
+
         </div>
+
       </div>
-      <!--/Input!-->
+      <!-- update -->
 
     </div>
   </div>

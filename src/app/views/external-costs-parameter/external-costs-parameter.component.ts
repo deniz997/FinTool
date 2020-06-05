@@ -8,29 +8,75 @@ import {IOption} from "ng-select";
 })
 export class ExternalCostsParameterComponent implements OnInit {
 
-  constructor() { }
 
-  show = false;
+  selectedRow : Number = -1;
+  setClickedRow : Function;
+  data : [{ CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }];
 
-  totalItems: number = 64;
-  currentPage: number   = 1;
-  smallnumPages: number = 0;
+  showAdd = false;
+  showUpdate = false;
 
-  maxSize: number = 5;
-  bigTotalItems: number = 675;
-  bigCurrentPage: number = 1;
-  numPages: number = 0;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 7;
 
-  currentPager: number   = 1;
+  constructor() {
+    this.data = [
+      {
+        ExternalC : 'Definition 2',
+        CurrentL : 'Regional Rollout P',
+        PlanningP : 'EA1',
+        Currency : 'TL',
+        Value : 50
+      },
+      {
+        ExternalC : 'Definition 3',
+        CurrentL : 'Regional Rollout A',
+        PlanningP : 'EA2',
+        Currency : 'EUR',
+        Value : 20
+      },
+      {
+        ExternalC : 'Definition 1',
+        CurrentL : 'Regional Rollout B',
+        PlanningP : 'EA2',
+        Currency : 'EUR',
+        Value : 30
+      }
+    ];
+    this.setClickedRow = function (index) {
+      this.selectedRow = index;
+    }
+  }
+
+
+  TableHeader = [
+    'External Cost Definition per Person',
+    'Current Level',
+    'Planning Period',
+    'Currency',
+    'Value',
+  ];
+
+  TableData = [
+    ['Definition 2', 'Regional Rollout P', 'EA1', 'EUR', '30'],
+    ['Definition 3', 'Regional Rollout A', 'EA2', 'TL', '420'],
+    ['Definition 1', 'Regional Rollout B', 'EA2', 'EUR', '20'],
+    ['Definition 4', 'Regional Rollout C', 'EA1', 'EUR', '35'],
+  ];
 
   public ExternalCostDefinitionList: Array<IOption> = [
     {label: 'Definition 1', value: 'D1'},
-    {label: 'Definition 2', value: 'D2'}
+    {label: 'Definition 2', value: 'D2'},
+    {label: 'Definition 3', value: 'D2'}
   ];
 
   public CurrentLevel: Array<IOption> = [
-    {label: 'CL 1 from User Table', value: 'CL1'},
-    {label: 'CL 2 from User Table', value: 'CL2'}
+    {label: 'Regional Rollout P', value: 'P'},
+    {label: 'Regional Rollout A', value: 'A'},
+    {label: 'Regional Rollout B', value: 'B'},
+    {label: 'Regional Rollout C', value: 'C'},
   ];
 
   public PlanningPeriods: Array<IOption> = [
@@ -56,7 +102,10 @@ export class ExternalCostsParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ShowHide(): void{
-    this.show = !this.show;
+  ShowHideAdd(): void{
+    this.showAdd = !this.showAdd;
+  }
+  ShowHideUpdate(): void{
+    this.showUpdate = !this.showUpdate;
   }
 }

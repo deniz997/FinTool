@@ -19,40 +19,6 @@ export const navItems: INavData[] = [
         name: 'Dialog Fields',
         url: '/parameter/dialog',
         icon: 'icon-puzzle',
-        children: [
-          {
-            name: 'Manday',
-            url: '/parameter/dialog/tables/manday'
-          },
-          {
-            name: 'PGK',
-            url: '/parameter/dialog/tables/pgk-table'
-          },
-          {
-            name: 'Planning',
-            url: '/parameter/dialog/tables/planning'
-          },
-          {
-            name: 'Status',
-            url: '/parameter/dialog/tables/status'
-          },
-          {
-            name: 'Travel Table',
-            url: '/parameter/dialog/tables/travel-table'
-          },
-          {
-            name: 'Ticket Table',
-            url: '/parameter/dialog/tables/ticket'
-          },
-          {
-            name: 'Currency',
-            url: '/parameter/dialog/tables/currency'
-          },
-          {
-            name: 'Cost',
-            url: '/parameter/dialog/tables/cost-center'
-          }
-        ]
       },
       {
         name: 'User',
@@ -137,5 +103,4 @@ export const navItems: INavData[] = [
     ]
 
   }
-
-];
+  ];

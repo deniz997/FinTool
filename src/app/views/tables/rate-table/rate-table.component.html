@@ -1,0 +1,103 @@
+<div class="animated fadeIn">
+  <!--/.row-->
+  <div class="row">
+    <!--/.col-->
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+            <tr>
+              <div class="row align-items-center">
+
+                <div class="col-sm-4">
+                  <label for="currency">Currency</label>
+                  <select class="form-control"  id="currency">
+                    <option [value]="null">Select Currency</option>
+                    <option *ngFor="let y of currency">{{y}}</option>
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label for="rate">Travel Rate</label>
+                  <input id="rate" type="number" class="form-control"  placeholder="Enter a Numeric value">
+                </div>
+
+              </div>
+            </tr>
+            <tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <td>{{row.rate}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
+          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+        </div>
+      </div>
+      <div class="card" *ngIf="showAdd">
+        <div class="card-header">
+          <strong>Add New Rate</strong>
+        </div>
+        <div class="card-body">
+          <div class="row align-items-center">
+
+              <div class="col-sm-4">
+                <label for="currencyy">Currency</label>
+                <select class="form-control"  id="currencyy">
+                  <option [value]="null">Select Currency</option>
+                  <option *ngFor="let y of currency">{{y}}</option>
+                </select>
+              </div>
+              <div class="col-sm-6">
+                <label for="ratee">Travel Rate</label>
+                <input id="ratee" type="number" class="form-control"  placeholder="Enter a Numeric value">
+              </div>
+
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
+            <button type="button" class="btn btn-block btn-success">SAVE</button>
+          </div>
+        </div>
+
+      </div>
+      <div class="card" *ngIf="showUpdate">
+        <div class="card-header">
+          <strong>Update Rate </strong>
+        </div>
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-sm-4">
+              <label for="currencyyy">Currency</label>
+              <select class="form-control"  id="currencyyy">
+                <option [value]="null">Select Currency</option>
+                <option *ngFor="let y of currency">{{y}}</option>
+              </select>
+            </div>
+            <div class="col-sm-6">
+              <label for="rateee">Travel Rate</label>
+              <input id="rateee" type="number" class="form-control"   placeholder="Enter a Numeric value">
+            </div>
+            <div class="card-body col-6">
+              <fieldset class="form-group">
+
+              </fieldset>
+            </div>
+          </div>
+
+          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
+            <button type="button" class="btn btn-block btn-primary">UPDATE</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

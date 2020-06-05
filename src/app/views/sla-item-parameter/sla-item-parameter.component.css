@@ -21,3 +21,33 @@
 .custom-day.faded {
   background-color: rgba(2, 117, 216, 0.5);
 }
+
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+tr {
+  text-align: center;
+  vertical-align: middle;
+}
+th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+table {
+  text-align: center;
+}
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+
+tbody tr:hover{
+  background-color: #cccccc;
+}

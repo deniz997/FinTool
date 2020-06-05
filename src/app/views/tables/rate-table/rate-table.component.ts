@@ -2,40 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-travel-table',
-  templateUrl: './travel-table.component.html',
-  styleUrls: ['./travel-table.component.css']
+  selector: 'app-rate-table',
+  templateUrl: './rate-table.component.html',
+  styleUrls: ['./rate-table.component.css']
 })
-export class TravelTableComponent implements OnInit {
+export class RateTableComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ traveltable: string; }, { traveltable: string; }, { traveltable: string; }];
+  data: [{ rate: string, number: number }];
+  currency: string[];
+  saved: boolean = true;
+  rate: number;
 
   showAdd = false;
   showUpdate = false;
 
   constructor() {
-    this.data = [
-      {
-        traveltable : 'Regional'
-      },
-      {
-        traveltable : 'Domestic'
-      },
-      {
-        traveltable : 'Overseas'
-      }
-    ];
+
     this.setClickedRow = function (index) {
       this.selectedRow = index;
     };
   }
   RightTableHeaders = [
-    'Travel Table'
+    'Rate Table'
   ];
 
 
-  public TravelTable: Array<IOption> = [
+  public Rate: Array<IOption> = [
     {label: 'Regional', value: 'Item1'},
     {label: 'Domestic', value: 'Item2'},
     {label: 'Overseas', value: 'Item3'}
@@ -43,6 +36,12 @@ export class TravelTableComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.currency = ['EUR', 'TL'];
+
+  }
+
+  onSave() {
+    this.saved = true;
   }
 
   ShowHideAdd(): void {
@@ -51,4 +50,5 @@ export class TravelTableComponent implements OnInit {
   ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
   }
+
 }

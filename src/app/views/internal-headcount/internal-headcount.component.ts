@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {IOption} from 'ng-select';
 import {DOCUMENT} from '@angular/common';
 import PerfectScrollbar from 'perfect-scrollbar';
-import {timer} from 'rxjs';
+import {Observable, timer} from 'rxjs';
 
 
 @Component({
@@ -13,13 +12,6 @@ import {timer} from 'rxjs';
 export class InternalHeadcountComponent implements OnInit {
 
   constructor(@Inject(DOCUMENT) document) { }
-
-  // costCategories: Array<String> = ['Primary Cost', 'Project Cost Indirect Chargeable'];
-  public costCenters: Array<IOption> = [
-    {label: 'Regional Rollout E4', value: 'E4'},
-    {label: 'Regional Rollout E5', value: 'E5'},
-    {label: 'Regional Rollout Memur', value: 'Memur'},
-  ];
 
   public inputtedYears: Array<String> = [
     '2007',
@@ -45,9 +37,24 @@ export class InternalHeadcountComponent implements OnInit {
   ];
   currentCostCenter: any;
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  tableData = [
+    ['0000036140 - Regional Rollout E4', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '32'],
+    ['0000036140 - Regional Rollout E5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '190'],
+    ['0000036140 - Regional Rollout Memur', '50', '49', '49', '49', '49', '49', '51', '54', '56', '57', '58', '59', '53', '1113'],
+    ['Total', '56', '55', '55', '55', '55', '55', '57', '60', '62', '63', '64', '65', '59', '1335']
+  ];
+
+  showInputField: boolean;
+  selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
+
+  sleep(ms: number): Observable<number> {
+    return timer(ms);
+  }
+
 
   ngOnInit(): void {
-    timer(150).subscribe(_ => {
+    this.sleep(150).subscribe(_ => {
       this.tableResized();
     });
   }
@@ -68,13 +75,16 @@ export class InternalHeadcountComponent implements OnInit {
   }
 
   tableResized() {
-    const table = document.getElementById('internalHeadcountTable');
     const ps = new PerfectScrollbar('#yearScrollbar');
+    document.getElementById('yearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    ps.update();
+  }
+
+  getYearScrollbarNewHeight(): string {
+    const table = document.getElementById('internalHeadcountTable');
     const tableHeight = table.offsetHeight;
     const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
-    const newHeight = `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
-    document.getElementById('yearScrollbar').style.height = newHeight;
-    ps.update();
+    return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
   }
 
   getDomElementFromEvent(event): HTMLElement {
@@ -83,5 +93,61 @@ export class InternalHeadcountComponent implements OnInit {
     const value = idAttr.nodeValue;
     return document.getElementById(value);
 
+  }
+
+  closeInputCard() {
+    this.showInputField = false;
+  }
+
+  openInputCard() {
+    this.showInputField = true;
+  }
+
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
+    this.closeInputCard();
+    this.updateSizeOnUpdateButtonAppearanceChange();
+  }
+
+  updateSizeOnUpdateButtonAppearanceChange() {
+    this.tableResized();
+    this.sleep(5).subscribe(() => {
+      if (this.getYearScrollbarNewHeight() !== document.getElementById('yearScrollbar').style.height) {
+        this.updateSizeOnUpdateButtonAppearanceChange();
+      }
+    });
+  }
+
+
+  openUpdateCard() {
+    this.openInputCard();
+  }
+
+  clearClickedRow() {
+    this.saveClickedRow(-1);
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
+  }
+
+  getDefaultValueForInput(columnNumber: number) {
+    return this.tableData[this.selectedRowNumber][columnNumber + 1];
+  }
+
+  getPlaceHolderForInputFields(columnNumber: number): string {
+
+    return 'Ex. 4';
+  }
+
+  submit() {
+    this.closeInputCard();
+    this.clearClickedRow();
+    this.updateSizeOnUpdateButtonAppearanceChange();
   }
 }
