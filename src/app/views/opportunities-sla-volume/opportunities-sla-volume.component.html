@@ -38,9 +38,9 @@
       </div>
     </div>
     <div class="card-footer" style="float: left">
-      <button class="btn btn-success" (click)="openAddCard()">Add</button>
-      <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openEditCard()">Edit</button>
-      <button class="btn btn-danger" [hidden]="!validSelectedRowNumber">Delete</button>
+      <button class="btn btn-success" (click)="openAddCard()">ADD</button>
+      <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openEditCard()">EDIT</button>
+      <button class="btn btn-danger" [hidden]="!validSelectedRowNumber">DELETE</button>
       <span style="float: right">
         <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
       </span>
@@ -87,7 +87,7 @@
       </form>
     </div>
     <div class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
-      <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Submit</button>
+      <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">SUBMIT</button>
     </div>
   </div>
 </div>
