@@ -1,4 +1,9 @@
-
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
 .col-2{
   padding: 16px 10px;
   width: inherit;
@@ -12,7 +17,18 @@
 .form-group{
   margin: 0;
 }
-
-pagination{
-  float: right;
+tr {
+  text-align: center;
 }
+tr td:nth-child(15n-14) {
+  text-align: left;
+}
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+
+tbody tr:hover{
+  background-color: #cccccc;
+}
+

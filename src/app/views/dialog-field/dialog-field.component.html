@@ -1,48 +1,39 @@
-
-<tabset>
-
-  <tab>
-    <ng-template tabHeading>Cost Center</ng-template>
-    <app-cost-center></app-cost-center>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>Currency</ng-template>
-    <app-currency></app-currency>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>Manday</ng-template>
-    <app-manday></app-manday>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>PGK</ng-template>
-    <app-pgk-table></app-pgk-table>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>Planning</ng-template>
-    <app-planning></app-planning>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>Status</ng-template>
-    <app-status></app-status>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>Ticket</ng-template>
-    <app-ticket></app-ticket>
-  </tab>
-
-  <tab>
-    <ng-template tabHeading>Travel</ng-template>
-    <app-travel-table></app-travel-table>
-  </tab>
-
-</tabset>
-
-
-
-
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 mb-4">
+      <!-- Nav tabs -->
+      <tabset>
+        <tab heading="Manday">
+          <app-manday></app-manday>
+        </tab>
+        <tab heading="Cost Center">
+          <app-cost-center></app-cost-center>
+        </tab>
+        <tab heading="Curreny">
+          <app-currency></app-currency>
+        </tab>
+        <tab heading="PGK Table">
+          <app-pgk-table></app-pgk-table>
+        </tab>
+        <tab heading="Planning">
+          <app-planning></app-planning>
+        </tab>
+        <tab heading="Rate-Table">
+        <app-rate-table></app-rate-table>
+      </tab>
+        <tab heading="Status">
+          <app-status></app-status>
+        </tab>
+        <tab heading="Ticket">
+          <app-ticket></app-ticket>
+        </tab>
+        <tab heading="Travel Table">
+          <app-travel-table></app-travel-table>
+        </tab>
+        <tab heading="Travel Day Typ">
+          <app-travel-day-typ></app-travel-day-typ>
+        </tab>
+      </tabset>
+    </div><!--/.col-->
+  </div><!--/.row-->
+</div>

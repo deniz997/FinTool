@@ -4,6 +4,27 @@ button{
   display: table-row;
 }
 
-.btn-success{
-  margin-top: 8px;
+
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.row.col-6{
+  padding: 16px 10px;
+  width: inherit;
+}
+
+.form-group{
+  margin: 0;
+}
+
+
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+.table tr:hover{
+  background-color: #cccccc;
 }
