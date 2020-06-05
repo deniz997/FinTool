@@ -128,6 +128,7 @@
                         <td *ngFor="let _ of months; let columnNumber = index">
                           <label style="text-align: center">
                             <input type="text" class="form-control"
+                                   [title]="getPlaceHolderForInputFields(columnNumber)"
                                    [placeholder]="getPlaceHolderForInputFields(columnNumber)"
                                    [defaultValue]="getDefaultValueForInput(columnNumber)">
                           </label>
@@ -143,7 +144,7 @@
         </form>
       </div>
       <div class="card-footer input-footer">
-        <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Save</button>
+        <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">SAVE</button>
       </div>
     </div>
     <!--InputFields-->
