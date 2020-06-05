@@ -65,6 +65,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   submit() {
     this.closeInputCard();
+    this.clearClickedRow();
   }
 
   closeInputCard() {

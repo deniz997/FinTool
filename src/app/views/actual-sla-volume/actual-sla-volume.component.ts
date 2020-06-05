@@ -70,6 +70,7 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   submit() {
     this.closeInputCard();
+    this.clearClickedRow();
   }
 
   closeInputCard() {
