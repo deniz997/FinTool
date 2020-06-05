@@ -12,11 +12,14 @@
 
 }
 .card-footer {
-  text-align: right;
   background-color: white;
   border-left: none;
   border-right: none;
   border-top: none;
+}
+
+.input-footer {
+  text-align: right;
 }
 .card-footer button {
 }
