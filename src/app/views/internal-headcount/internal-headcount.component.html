@@ -72,9 +72,6 @@
       </div>
     </div>
 
-
-
-
     <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
       <div id="internalHeadcountTable" class="card">
         <div class="card-header">
@@ -89,19 +86,18 @@
                 <th *ngFor="let month of months">{{month}}</th>
                 <th>Avg</th>
                 <th>PGK</th>
-
               </tr>
               </thead>
               <tbody>
-                <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
-                  <td *ngFor="let column of row">{{column}}</td>
-                </tr>
+              <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+                <td *ngFor="let column of row">{{column}}</td>
+              </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
         </div>
         <div class="card-footer" style="float: left">
-          <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openEditCard()">EDIT</button>
+          <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
         </div>
       </div>
     </div>
@@ -114,10 +110,7 @@
       <div class="card-header">
         <strong>Input</strong>
       </div>
-
       <div class="card-body col-12">
-
-
         <form action="" method="post" class="form-horizontal">
           <div class=" col-12" style="text-align: center">
             <div>
@@ -126,9 +119,9 @@
                   <perfect-scrollbar>
                     <table class="table table-sm">
                       <thead style="border: hidden">
-                        <tr>
-                          <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
-                        </tr>
+                      <tr>
+                        <th style="min-width: 80px" *ngFor="let header of months">{{header}}</th>
+                      </tr>
                       </thead>
                       <tbody>
                       <tr>
@@ -153,15 +146,8 @@
       <div class="card-footer input-footer">
         <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">SUBMIT</button>
       </div>
-
     </div>
     <!--InputFields-->
-
-
   </div>
   <!--/Input!-->
 </div>
-
-
-
-

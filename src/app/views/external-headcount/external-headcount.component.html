@@ -72,9 +72,6 @@
       </div>
     </div>
 
-
-
-
     <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0">
       <div id="internalHeadcountTable" class="card">
         <div class="card-header">
@@ -87,7 +84,6 @@
               <tr>
                 <th>Cost Center</th>
                 <th *ngFor="let month of months">{{month}}</th>
-
               </tr>
               </thead>
               <tbody>
@@ -99,7 +95,7 @@
           </perfect-scrollbar>
         </div>
         <div class="card-footer" style="float: left">
-          <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openEditCard()">EDIT</button>
+          <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
         </div>
       </div>
     </div>
@@ -112,10 +108,7 @@
       <div class="card-header">
         <strong>Input</strong>
       </div>
-
       <div class="card-body col-12">
-
-
         <form action="" method="post" class="form-horizontal">
           <div class=" col-12" style="text-align: center">
             <div>
@@ -151,15 +144,8 @@
       <div class="card-footer input-footer">
         <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">SUBMIT</button>
       </div>
-
     </div>
     <!--InputFields-->
-
-
   </div>
   <!--/Input!-->
 </div>
-
-
-
-

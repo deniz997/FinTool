@@ -111,22 +111,22 @@ export class InternalHeadcountComponent implements OnInit {
   onTableRowClick(i: number) {
     this.saveClickedRow(i);
     this.closeInputCard();
-    this.updateSizeOnEditButtonAppearanceChange();
+    this.updateSizeOnUpdateButtonAppearanceChange();
   }
 
-  updateSizeOnEditButtonAppearanceChange() {
+  updateSizeOnUpdateButtonAppearanceChange() {
     this.tableResized();
     this.sleep(25).subscribe(() => {
       if (this.getYearScrollbarNewHeight() !== document.getElementById('yearScrollbar').style.height) {
         this.sleep(25).subscribe(() => {
-          this.updateSizeOnEditButtonAppearanceChange();
+          this.updateSizeOnUpdateButtonAppearanceChange();
         });
       }
     });
   }
 
 
-  openEditCard() {
+  openUpdateCard() {
     this.openInputCard();
   }
 
@@ -150,6 +150,6 @@ export class InternalHeadcountComponent implements OnInit {
   submit() {
     this.closeInputCard();
     this.clearClickedRow();
-    this.updateSizeOnEditButtonAppearanceChange();
+    this.updateSizeOnUpdateButtonAppearanceChange();
   }
 }

@@ -104,7 +104,7 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     this.openInputCard();
   }
 
-  openEditCard() {
+  openUpdateCard() {
     this.openInputCard();
   }
 

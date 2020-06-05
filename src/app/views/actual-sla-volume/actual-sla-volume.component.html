@@ -10,8 +10,8 @@
         <div class="col-1">
           <div class="d-flex" style="justify-content: flex-end">
             <label>
-            <i class="fa fa-upload icon-large" aria-hidden="true" style="padding-top: 3px" title="Upload data from Excel"></i>
-            <input type="file" hidden="hidden">
+              <i class="fa fa-upload icon-large" aria-hidden="true" style="padding-top: 3px" title="Upload data from Excel"></i>
+              <input type="file" hidden="hidden">
             </label>
           </div>
         </div>
@@ -23,14 +23,14 @@
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
               <thead>
-                <tr>
-                  <th *ngFor="let header of tableHeaders;">{{header}}</th>
-                </tr>
+              <tr>
+                <th *ngFor="let header of tableHeaders;">{{header}}</th>
+              </tr>
               </thead>
               <tbody>
-                <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
-                  <td *ngFor="let data of row">{{data}}</td>
-                </tr>
+              <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+                <td *ngFor="let data of row">{{data}}</td>
+              </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
@@ -39,7 +39,7 @@
     </div>
     <div class="card-footer" style="float: left">
       <button class="btn btn-success" (click)="openAddCard()">ADD</button>
-      <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openEditCard()">EDIT</button>
+      <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
       <button class="btn btn-danger" [hidden]="!validSelectedRowNumber">DELETE</button>
       <span style="float: right">
         <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>

@@ -80,9 +80,9 @@ export class ExternalHeadcountComponent implements OnInit {
     for (let i = 1; i <= 12; i++) {
       this.tableData[this.totalExternHeadcountCostPerClassIndex].push(
         (50 * parseInt(this.tableData[0][i], 10) +
-        45 * parseInt(this.tableData[1][i], 10) +
-        40 * parseInt(this.tableData[2][i], 10) +
-        35 * parseInt(this.tableData[3][i], 10)) + ''
+          45 * parseInt(this.tableData[1][i], 10) +
+          40 * parseInt(this.tableData[2][i], 10) +
+          35 * parseInt(this.tableData[3][i], 10)) + ''
       );
     }
   }
@@ -142,22 +142,22 @@ export class ExternalHeadcountComponent implements OnInit {
   onTableRowClick(i: number) {
     this.saveClickedRow(i);
     this.closeInputCard();
-    this.updateSizeOnEditButtonAppearanceChange();
+    this.updateSizeOnUpdateButtonAppearanceChange();
   }
 
-  updateSizeOnEditButtonAppearanceChange() {
+  updateSizeOnUpdateButtonAppearanceChange() {
     this.tableResized();
     this.sleep(25).subscribe(() => {
       if (this.getYearScrollbarNewHeight() !== document.getElementById('yearScrollbar').style.height) {
         this.sleep(25).subscribe(() => {
-          this.updateSizeOnEditButtonAppearanceChange();
+          this.updateSizeOnUpdateButtonAppearanceChange();
         });
       }
     });
   }
 
 
-  openEditCard() {
+  openUpdateCard() {
     this.openInputCard();
   }
 
@@ -181,7 +181,7 @@ export class ExternalHeadcountComponent implements OnInit {
   submit() {
     this.closeInputCard();
     this.clearClickedRow();
-    this.updateSizeOnEditButtonAppearanceChange();
+    this.updateSizeOnUpdateButtonAppearanceChange();
   }
 
 }

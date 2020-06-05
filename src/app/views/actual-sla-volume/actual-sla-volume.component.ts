@@ -109,7 +109,7 @@ export class ActualSlaVolumeComponent implements OnInit {
     this.openInputCard();
   }
 
-  openEditCard() {
+  openUpdateCard() {
     this.openInputCard();
   }
 
