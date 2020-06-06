@@ -13,6 +13,10 @@ export class TicketComponent implements OnInit {
 
   showAdd = false;
   showUpdate = false;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 3;
 
   constructor() {
     this.data = [
@@ -49,6 +53,30 @@ export class TicketComponent implements OnInit {
   }
   ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
+  }
+
+  showAddCard() {
+    this.showAdd = !this.showAdd;
+  }
+
+  closeAddCard() {
+    this.showAdd = false;
+  }
+
+  showUpdateCard() {
+    this.showUpdate = !this.showUpdate;
+  }
+
+  closeUpdateCard() {
+    this.showUpdate = false;
+  }
+
+  saveAdd() {
+    this.closeAddCard();
+  }
+
+  saveUpdate() {
+    this.closeUpdateCard();
   }
 
 }
