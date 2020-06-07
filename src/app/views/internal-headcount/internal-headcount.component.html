@@ -103,7 +103,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+              <tr  [class.hoverable]="i != tableData.length - 1" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                 <td *ngFor="let column of row">{{column}}</td>
               </tr>
               </tbody>
