@@ -1,84 +1,137 @@
 <div class="animated fadeIn">
-  <!--/.row-->
   <div class="row">
-    <!--/.col-->
+    <!-- row -->
     <div class="col-lg-12">
+      <!-- column -->
       <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Currency
+        </div>
+
         <div class="card-body">
-          <table class="table table-bordered table-striped table-sm">
-            <thead>
-            <tr>
-              <th *ngFor="let Header of RightTableHeaders">{{Header}}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
-              <td>{{row.currency}}</td>
-            </tr>
-            </tbody>
-          </table>
+          <!-- table -->
+          <perfect-scrollbar style="max-height: 750px">
+            <table class="table table-bordered table-striped table-sm">
+              <tbody>
+              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                <td>{{row.currency}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+          <!-- table -->
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
-          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-success" (click)="showAddCard()">ADD</button>
+          <button class="btn btn-primary" (click)="showUpdateCard()">UPDATE</button>
           <button class="btn btn-danger">DELETE</button>
+          <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
+        </div>
+      </div>
+      <!-- column -->
+
+      <!--add-->
+      <div>
+        <div class="card" *ngIf="showAdd">
+          <div class="card-header">
+            <strong>Add New Currency</strong>
+          </div>
+
+          <div class="card-body col-12">
+
+            <form action="" method="post" class="form-horizontal">
+              <div class="col-12" style="text-align: center">
+                <div>
+                  <fieldset class="form-group">
+
+                    <div class="form-group row">
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex ml-0">
+                          <label><b>Currency</b></label>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>
+                                <input class="form-control" type="text" required placeholder="Please enter a Currency">
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+
+            <div class="col">
+              <div class="row d-flex justify-content-end">
+                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                  <button type="button" class="btn btn-success" (click)="saveAdd()">SAVE</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
-      <div class="card" *ngIf="showAdd">
-        <div class="card-header">
-          <strong>Add New Currency</strong>
-        </div>
-        <div class="card-body">
-          <div class="row align-items-center">
+      <!--add-->
 
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-                <label> Currency</label><br>
-                <label>
-                  <input class="form-control" type="text" required placeholder="Please enter">
-                </label>
-              </fieldset>
-            </div>
+      <!--update-->
+      <div>
+        <div class="card" *ngIf="showUpdate">
+          <div class="card-header">
+            <strong>Update Currency</strong>
           </div>
 
-          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-success">SAVE</button>
+          <div class="card-body col-12">
+
+            <form action="" method="post" class="form-horizontal">
+              <div class="col-12" style="text-align: center">
+                <div>
+                  <fieldset class="form-group">
+
+                    <div class="form-group row">
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex ml-0">
+                          <label><b>Currency</b></label>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <ng-select class="bootstrap"
+                                       [placeholder]="data[selectedRow].currency"
+                                       [options]="Currency"
+                                       [allowClear]="false"></ng-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+
+            <div class="col">
+              <div class="row d-flex justify-content-end">
+                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                  <button type="button" class="btn btn-primary" (click)="saveUpdate()">UPDATE</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
       </div>
+      <!--update-->
 
-
-      <div class="card" *ngIf="showUpdate">
-        <div class="card-header">
-          <strong>Update Currency </strong>
-        </div>
-        <div class="card-body">
-          <div class="row align-items-center">
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-                <label> Currency</label>
-                <ng-select
-                  class="bootstrap"
-                  [placeholder]="data[selectedRow].currency"
-                  [options]="Currency"
-                  [allowClear]="true"></ng-select>
-              </fieldset>
-            </div>
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-
-              </fieldset>
-            </div>
-          </div>
-
-          <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0" style="float: right;">
-            <button type="button" class="btn btn-block btn-primary">UPDATE</button>
-          </div>
-        </div>
     </div>
+    <!-- row -->
+
   </div>
-</div>
 </div>
