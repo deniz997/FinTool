@@ -10,9 +10,8 @@ export class UserParameterComponent implements OnInit {
 
   constructor() { }
 
-  rightTableFirstCellHeader = 'Who is Who ID';
-
-  rightTableHeaders = [
+  tableHeaders = [
+    'Who is Who ID',
     'Cost Center',
     'Name',
     'User Typ',
@@ -23,7 +22,7 @@ export class UserParameterComponent implements OnInit {
     'Hiring Time Frame',
   ];
 
-  rightTableData = [
+  tableData = [
     ['ID_001', 'Cost Center 1', 'Yavuz Saka', 'E4', 'FTE Capacity 1', 'Type 1', 'Assignment Status 1', 'Current Level 1', 'Hiring Time Frame 1'],
     ['ID_002', 'Cost Center 2', 'Josef Aksac', 'E4', 'FTE Capacity 2', 'Type 2', 'Assignment Status 2', 'Current Level 2', 'Hiring Time Frame 2'],
   ];
@@ -33,10 +32,20 @@ export class UserParameterComponent implements OnInit {
   itemPerPage: number = 5;
   maxSize: number = 7;
 
-  show = false;
+  selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
 
-  ShowHide(): void {
-    this.show = !this.show;
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
+  }
+
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
   }
 
   ngOnInit(): void {

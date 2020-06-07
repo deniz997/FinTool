@@ -3,11 +3,21 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> User Parameter Table
-          <label class="file-upload btn">
-            <i class="fa fa-download fa-lg "></i> <input accept="application/vnd.ms-excel" type="file" />
-          </label>
-
+          <div class="row">
+            <div class="col-11">
+              <div>
+                <i class="fa fa-align-justify"></i><strong style="text-align: left"> USER PARAMETERS TABLE </strong>
+              </div>
+            </div>
+            <div class="col-1">
+              <div class="d-flex" style="justify-content: flex-end">
+                <label>
+                  <i class="fa fa-upload fa-lg" aria-hidden="true" style="padding-top: 3px" title="Upload data from Excel"></i>
+                  <input type="file" hidden="hidden">
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="card-body">
@@ -15,24 +25,20 @@
             <table class="table table-bordered table-striped table-sm">
               <thead>
               <tr>
-                <th>{{rightTableFirstCellHeader}}</th>
-                <th *ngFor="let header of rightTableHeaders">{{header}}</th>
+                <th *ngFor="let header of tableHeaders">{{header}}</th>
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of rightTableData">
+              <tr *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active]="selectedRowNumber == i">
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
-
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHide()">ADD NEW</button>
-          <button class="btn btn-primary">UPDATE</button>
-          <button class="btn btn-danger">DELETE</button>
+          <button class="btn btn-danger" [disabled]="!validSelectedRowNumber">DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
