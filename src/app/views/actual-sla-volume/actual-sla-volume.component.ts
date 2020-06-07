@@ -53,9 +53,9 @@ export class ActualSlaVolumeComponent implements OnInit {
   itemPerPage: number = 5;
   maxSize: number = 7;
 
-  showInputField: boolean;
+  showAddCard: boolean;
+  showUpdateCard: boolean;
   selectedRowNumber: number;
-  validSelectedRowNumber: boolean = false;
   slaTotal: string = '0';
 
 
@@ -68,9 +68,6 @@ export class ActualSlaVolumeComponent implements OnInit {
   }
 
   isInputDisabled(columnNumber: number): boolean {
-    if (!this.isSelectedRowNumberValid()) {
-      return false;
-    }
     if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
       return true;
     }
@@ -78,72 +75,70 @@ export class ActualSlaVolumeComponent implements OnInit {
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
-  getPlaceHolderForInputFields(columnNumber: number): string {
-    if (!this.isSelectedRowNumberValid()) {
-      if (columnNumber === 0) {
-        return this.getNextSLAName();
-      }
+  getPlaceHolderForAddCardFields(columnNumber: number): string {
+    if (columnNumber === 0) {
+      return this.getNextSLAName();
     }
+  }
+
+  getPlaceHolderForUpdateCardFields(columnNumber: number): string {
     return 'Ex. 4';
   }
 
-  submit() {
-    this.closeInputCard();
+  onAddSubmit() {
+    this.closeAddCard();
+  }
+
+  onUpdateSubmit() {
+    this.closeUpdateCard();
     this.clearClickedRow();
   }
 
-  closeInputCard() {
-    this.showInputField = false;
+  closeAddCard() {
+    this.showAddCard = false;
+  }
+  closeUpdateCard() {
+    this.showUpdateCard = false;
   }
 
-  openInputCard() {
-    this.showInputField = true;
+  openAddCard() {
+    this.showAddCard = true;
+  }
+
+  openUpdateCard() {
+    this.showUpdateCard = true;
   }
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;
-    this.updateValidSelectedRowNumber();
   }
 
   onTableRowClick(i: number) {
     this.saveClickedRow(i);
-    this.closeInputCard();
-  }
-
-  isSelectedRowNumberValid() {
-    this.updateValidSelectedRowNumber();
-    return this.validSelectedRowNumber;
-  }
-
-  updateValidSelectedRowNumber() {
-    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
+    this.closeUpdateCard();
   }
 
   clearClickedRow() {
     this.saveClickedRow(-1);
   }
 
-  openAddCard() {
-    this.saveClickedRow(this.tableData.length);
-    this.clearClickedRow();
-    this.openInputCard();
+  onAddClick() {
+    this.openAddCard();
   }
 
-  openUpdateCard() {
-    this.openInputCard();
+  onUpdateClick() {
+    this.openUpdateCard();
   }
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';
   }
-  getDefaultValueForInput(columnNumber: number) {
-    if (!this.isSelectedRowNumberValid()) {
-      if (columnNumber === 0) {
-        return this.getNextSLAName();
-      } else {
-        return ' ';
-      }
-    }
+
+  getDefaultValueForAddCard(columnNumber: number) {
+      return ' ';
+  }
+
+  getDefaultValueForUpdateCard(columnNumber: number) {
     return this.tableData[this.selectedRowNumber][columnNumber];
   }
 }

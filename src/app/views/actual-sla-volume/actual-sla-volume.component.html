@@ -42,17 +42,17 @@
       </div>
     </div>
     <div class="card-footer" style="float: left">
-      <button class="btn btn-success" (click)="openAddCard()">ADD</button>
-      <button class="btn btn-primary" [disabled]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
-      <button class="btn btn-danger" [disabled]="!validSelectedRowNumber">DELETE</button>
+      <button class="btn btn-success" (click)="onAddClick()">ADD</button>
+      <button class="btn btn-primary" [disabled]="selectedRowNumber < 0" (click)="onUpdateClick()">UPDATE</button>
+      <button class="btn btn-danger" [disabled]="selectedRowNumber < 0">DELETE</button>
       <span style="float: right">
         <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
       </span>
     </div>
   </div>
-  <div *ngIf="showInputField" class="card">
+  <div *ngIf="showAddCard" class="card">
     <div class="card-header">
-      <strong>Input</strong>
+      <strong>Add</strong>
     </div>
 
     <div class="card-body col-12">
@@ -74,9 +74,9 @@
                       <td *ngFor="let _ of tableHeaders; let columnNumber = index">
                         <label style="text-align: center">
                           <input type="text" class="form-control"
-                                 [placeholder]="getPlaceHolderForInputFields(columnNumber)"
+                                 [placeholder]="getPlaceHolderForAddCardFields(columnNumber)"
                                  [disabled]="isInputDisabled(columnNumber)"
-                                 [defaultValue]="getDefaultValueForInput(columnNumber)">
+                                 [defaultValue]="getDefaultValueForAddCard(columnNumber)">
                         </label>
                       </td>
                     </tr>
@@ -90,7 +90,50 @@
       </form>
     </div>
     <div class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
-      <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Save</button>
+      <button type="submit" class="btn btn-sm btn-primary" (click)="onAddSubmit()">Save</button>
+    </div>
+  </div>
+  <div *ngIf="showUpdateCard" class="card">
+    <div class="card-header">
+      <strong>Update</strong>
+    </div>
+
+    <div class="card-body col-12">
+      <form action="" method="post" class="form-horizontal">
+        <div style="text-align: center;">
+          <div>
+            <fieldset id="SLAPicker" class="form-group" style="margin-bottom: 0px">
+
+              <div class="form-group row" style="margin-top: 30px; padding-left: 10px; padding-right: 10px">
+                <perfect-scrollbar>
+                  <table class="table table-sm">
+                    <thead style="border: hidden">
+                    <tr>
+                      <th style="min-width: 110px" *ngFor="let header of tableHeaders">{{header}}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td *ngFor="let _ of tableHeaders; let columnNumber = index">
+                        <label style="text-align: center">
+                          <input type="text" class="form-control"
+                                 [placeholder]="getPlaceHolderForUpdateCardFields(columnNumber)"
+                                 [disabled]="isInputDisabled(columnNumber)"
+                                 [defaultValue]="getDefaultValueForUpdateCard(columnNumber)">
+                        </label>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </perfect-scrollbar>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer" style="padding-top: 0; padding-bottom: 28px; text-align: right">
+      <button type="submit" class="btn btn-sm btn-primary" (click)="onUpdateSubmit()">Save</button>
     </div>
   </div>
 </div>
