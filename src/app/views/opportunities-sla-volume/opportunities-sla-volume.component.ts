@@ -128,12 +128,20 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   }
 
   onAddClick() {
-    this.openAddCard();
+    if (this.showAddCard) {
+      this.closeAddCard();
+    } else {
+      this.openAddCard();
+    }
   }
 
   onUpdateClick() {
     if (this.isSelectedRowNumberValid()) {
-      this.openUpdateCard();
+      if (this.showUpdateCard) {
+        this.closeUpdateCard();
+      } else {
+        this.openUpdateCard();
+      }
     }
   }
 
