@@ -105,4 +105,7 @@ export class ExternalCostsParameterComponent implements OnInit {
   updateValidSelectedRowNumber() {
     this.validSelectedRowNumber = !(this.selectedRowNumber >= this.data.length || this.selectedRowNumber < 0);
   }
+  SetSelectedRow(): void{
+    this.selectedRowNumber = null
+  }
 }

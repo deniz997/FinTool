@@ -98,4 +98,8 @@ export class CostCenterParameterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  SetSelectedRow(): void{
+    this.selectedRowNumber = null
+  }
 }

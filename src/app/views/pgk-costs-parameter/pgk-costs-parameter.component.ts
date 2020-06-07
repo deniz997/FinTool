@@ -107,5 +107,8 @@ export class PgkCostsParameterComponent implements OnInit {
   ShowHideUpdate(): void{
     this.showUpdate = !this.showUpdate;
   }
+  SetSelectedRow(): void{
+    this.selectedRowNumber = null
+  }
 
 }
