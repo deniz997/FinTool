@@ -1,36 +1,90 @@
 
 <div class="animated fadeIn">
-  <div class="col">
-    <div class="card">
-      <div class="card-header">
-        <strong>Department Travel Rate</strong>
-      </div>
-      <div class="card-body">
 
-        <div class="row">
-          <div class="col-sm-4">
-            <label for="selectYear">Year</label>
-            <select class="form-control" name="selectYear" id="selectYear">
-              <option [value]="null">Select Year</option>
-              <option *ngFor="let y of years">{{y}}</option>
-            </select>
-          </div>
-          <div class="col-sm-8">
-            <label for="rate">Department Travel Rate</label>
-            <input id="rate" type="number" class="form-control" [(ngModel)]="rate" (ngModelChange)="saved = false"  placeholder="Enter a Numeric value">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i> Department Travel Rate
+    </div>
+
+    <div class="card-body">
+
+      <perfect-scrollbar style="max-height: 750px">
+        <table class="table table-bordered table-striped table-sm">
+          <thead>
+          <tr>
+            <th *ngFor="let header of headers">{{header}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let row of items; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+            <td>{{row.year}}</td>
+            <td>{{row.validFrom | date: 'yyyy/MM/dd'}}</td>
+            <td>{{row.validTo | date: 'yyyy/MM/dd'}}</td>
+            <td>{{row.rate }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </perfect-scrollbar>
+      </div>
+
+
+    <div class="card-footer" style="float: left">
+      <button class="btn btn-success" (click)="addNewDTR()">ADD NEW</button>
+      <button class="btn btn-primary" (click)="updateDTR()">UPDATE</button>
+      <button class="btn btn-danger" (click)="deleteDTR()" >DELETE</button>
+      <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" name="page" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
+    </div>
+  </div>
+</div>
+
+
+<div class="card" [hidden]="!showField">
+  <div class="card-header">
+    <i class="fa fa-align-justify"></i> Add/Edit Department Travel Rate
+  </div>
+  <div class="card-body">
+
+    <form>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label for="year">Year</label>
+          <input id="year" class="form-control" name="year" type="text" placeholder="Year" [(ngModel)]="newDTR.year">
+        </div>
+
+        <div class="col-md-3">
+          <label for="validFrom">Valid From</label>
+          <div class="input-group">
+            <input id="validFrom" name="validFrom" class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp1" [(ngModel)]="ngbValidFrom" ngbDatepicker #d1="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+            </div>
           </div>
         </div>
 
-
-
-          <div class="float-right my-3">
-
-
-            <button type="button" (click)="onSave()" class="btn my-1 {{saved === true ? 'btn-outline-success' : 'btn-success'}}" [disabled]="saved">{{saved === true ? 'Saved' : 'Save'}}</button>
-
+        <div class="col-md-3">
+          <label for="validTo">Valid To</label>
+          <div class="input-group">
+            <input id="validTo" name="validTo" class="form-control" placeholder="yyyy-mm-dd"
+                   name="dp2" [(ngModel)]="ngbValidTo" ngbDatepicker #d2="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+            </div>
           </div>
+        </div>
 
+        <div class="col-md-3">
+          <label for="numericRate">Rate</label>
+          <input id="numericRate" class="form-control" name="rate" [(ngModel)]="newDTR.rate" type="number" placeholder="Numeric Rate">
+        </div>
       </div>
-    </div>
+    </form>
+
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-success" (click)="save()">Save</button>
   </div>
 </div>
