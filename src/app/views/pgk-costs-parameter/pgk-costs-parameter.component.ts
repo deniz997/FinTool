@@ -12,7 +12,7 @@ export class PgkCostsParameterComponent implements OnInit {
 
   selectedRow : Number;
   setClickedRow : Function;
-  data : [{ Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }];
+  data: [{ Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }, { Status: string; PGK: string; Currency: string; Value: number; PlanningP: string }];
 
   showAdd = false;
   showUpdate = false;
@@ -20,6 +20,7 @@ export class PgkCostsParameterComponent implements OnInit {
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 7;
+  private selectedRowNumber: number;
 
   constructor() {
     this.data = [
@@ -47,7 +48,7 @@ export class PgkCostsParameterComponent implements OnInit {
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;
-    }
+    };
   }
 
   TableHeaders = [
@@ -56,7 +57,7 @@ export class PgkCostsParameterComponent implements OnInit {
     'Planning Period',
     'Currency',
     'Value',
-  ]
+  ];
 
   public PGKCostDefinitionList: Array<IOption> = [
     {label: '0000036140 - Regional Rollout', value: 'Item1'},
@@ -82,16 +83,22 @@ export class PgkCostsParameterComponent implements OnInit {
     {label: 'TL', value: 'Item2'},
   ];
 
-  setPage(pageNo: number): void {
-    this.currentPage = pageNo;
-  }
-
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
-  }
+  validSelectedRowNumber: boolean = false;
 
   ngOnInit(): void {
+  }
+
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
+  }
+
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.data.length || this.selectedRowNumber < 0);
   }
 
   ShowHideAdd(): void{
