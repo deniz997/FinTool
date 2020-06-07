@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> PGK Costs Per Person Parameter Table
+          <i class="fa fa-align-justify"></i><strong> PGK Costs Per Person Parameter Table</strong>
         </div>
         <div class="card-body">
           <perfect-scrollbar style="max-height: 750px">
@@ -16,7 +16,7 @@
               </thead>
 
               <tbody>
-              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
                 <td>{{row.PGK}}</td>
                 <td>{{row.Status}}</td>
                 <td>{{row.PlanningP}}</td>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
-          <button class="btn btn-primary"  (click)="ShowHideUpdate()">UPDATE</button>
-          <button class="btn btn-danger"  >DELETE</button>
+          <button class="btn btn-success"  (click)="ShowHideAdd()">ADD NEW</button>
+          <button class="btn btn-primary" [disabled]="!validSelectedRowNumber" (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-danger" [disabled]="!validSelectedRowNumber" >DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
@@ -97,8 +97,12 @@
             </div>
           </div>
 
-          <div class="card-footer" style="float: left">
-            <button type="button" class="btn btn-block btn-success">SAVE</button>
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="ShowHideAdd()">SAVE</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -118,7 +122,8 @@
                 <label> PGK Cost Definition per Person</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].PGK"
+                  [(ngModel)]="data[selectedRowNumber].PGK"
+                  [placeholder]="data[selectedRowNumber].PGK"
                   [options]="PGKCostDefinitionList"
                   [allowClear]="true"></ng-select>
               </fieldset>
@@ -128,7 +133,8 @@
                 <label> Status</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].Status"
+                  [(ngModel)]="data[selectedRowNumber].Status"
+                  [placeholder]="data[selectedRowNumber].Status"
                   [options]="StatusList"
                   [allowClear]="true"></ng-select>
               </fieldset>
@@ -138,7 +144,8 @@
                 <label> Planning Period</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].PlanningP"
+                  [(ngModel)]="data[selectedRowNumber].PlanningP"
+                  [placeholder]="data[selectedRowNumber].PlanningP"
                   [options]="PlanningPeriods"
                   [allowClear]="true"></ng-select>
               </fieldset>
@@ -148,7 +155,8 @@
                 <label> Currency</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].Currency"
+                  [(ngModel)]="data[selectedRowNumber].Currency"
+                  [placeholder]="data[selectedRowNumber].Currency"
                   [options]="CurrencyList"
                   [allowClear]="true"></ng-select>
               </fieldset>
@@ -157,14 +165,18 @@
               <fieldset class="form-group">
                 <label> Value</label><br>
                 <label>
-                  <input type="number" class="form-control" [placeholder]="data[selectedRow].Value">
+                  <input type="number" class="form-control" [defaultValue]="data[selectedRowNumber].Value">
                 </label>
               </fieldset>
             </div>
           </div>
 
-          <div class="card-footer" style="float: left">
-            <button type="button" class="btn btn-block btn-primary">SAVE</button>
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-primary" (click)="ShowHideUpdate()">SAVE</button>
+              </div>
+            </div>
           </div>
 
         </div>
