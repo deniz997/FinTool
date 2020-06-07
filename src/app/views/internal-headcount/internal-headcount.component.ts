@@ -109,7 +109,9 @@ export class InternalHeadcountComponent implements OnInit {
   }
 
   onTableRowClick(i: number) {
-    this.saveClickedRow(i);
+    if (i !== this.tableData.length - 1) {
+      this.saveClickedRow(i);
+    }
     this.closeInputCard();
     this.updateSizeOnUpdateButtonAppearanceChange();
   }
