@@ -42,6 +42,12 @@ export class ActualSlaVolumeComponent implements OnInit {
     ['SLA20_ITTQT_113', 'EPA Coordination', '0000036140 - Regional Rollout E4',  'Cyber Security', 'RO', '01.01.2020', '31.12.2020', '440', '112.200', '24', '68', '24', '-', '-', '-', '-', '-', '-', '22.972', '0', '135.172'],
   ];
 
+  disabledHeaders = [
+    'Manday Cost',
+    'Travel Expense',
+    'Travel Cost',
+  ];
+
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
@@ -58,6 +64,10 @@ export class ActualSlaVolumeComponent implements OnInit {
     if (!this.isSelectedRowNumberValid()) {
       return false;
     }
+    if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
+      return true;
+    }
+
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 

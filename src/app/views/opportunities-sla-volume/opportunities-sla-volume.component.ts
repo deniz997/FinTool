@@ -45,6 +45,12 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     ['SLA20_ITTQT_OP5', 'EPA Coordination', '0000036140 - Regional Rollout E4', 'Xentry', 'SAP SD',  '01.01.2020', '31.12.2020', '440', '',  '112.200', '5', '20', '5', '1', '5', '1', '2', '2', '2', '111.151', '140.000', '140.000', '136.040', '78%'],
   ];
 
+  disabledHeaders = [
+    'Manday Cost',
+    'Travel Expense',
+    'Travel Cost',
+  ];
+
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
@@ -60,6 +66,10 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     if (!this.isSelectedRowNumberValid()) {
       return false;
     }
+    if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
+      return true;
+    }
+
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
