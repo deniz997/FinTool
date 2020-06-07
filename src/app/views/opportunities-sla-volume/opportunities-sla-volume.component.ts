@@ -60,7 +60,16 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   selectedRowNumber: number;
   validSelectedRowNumber: boolean = false;
 
-  ngOnInit(): void {}
+  slaTotalIndex = -2;
+  slaTotal: string = '0';
+
+  ngOnInit(): void {
+    this.updateSlaTotal();
+  }
+
+  updateSlaTotal() {
+    this.slaTotal = '680.200';
+  }
 
   isInputDisabled(columnNumber: number): boolean {
     if (!this.isSelectedRowNumberValid()) {

@@ -22,14 +22,20 @@
         <div class="col-lg-12">
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
+
               <thead>
-              <tr>
-                <th *ngFor="let header of tableHeaders;">{{header}}</th>
-              </tr>
+                <tr>
+                  <th *ngFor="let header of tableHeaders;">{{header}}</th>
+                </tr>
               </thead>
               <tbody>
               <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                 <td *ngFor="let data of row">{{data}}</td>
+              </tr>
+              <tr>
+                <td class="hiddenData" [colSpan]="tableHeaders.length + slaTotalIndex"></td>
+                <td [colSpan]="1">{{slaTotal}}</td>
+                <td [colSpan]="1"></td>
               </tr>
               </tbody>
             </table>

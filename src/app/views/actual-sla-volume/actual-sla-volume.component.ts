@@ -56,9 +56,16 @@ export class ActualSlaVolumeComponent implements OnInit {
   showInputField: boolean;
   selectedRowNumber: number;
   validSelectedRowNumber: boolean = false;
+  slaTotal: string = '0';
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateSlaTotal();
+  }
+
+  updateSlaTotal() {
+    this.slaTotal = '3.062.505';
+  }
 
   isInputDisabled(columnNumber: number): boolean {
     if (!this.isSelectedRowNumberValid()) {

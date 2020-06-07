@@ -31,6 +31,10 @@
               <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
+              <tr>
+                <td class="hiddenData" [colSpan]="tableHeaders.length - 1"></td>
+                <td [colSpan]="1">{{slaTotal}}</td>
+              </tr>
               </tbody>
             </table>
           </perfect-scrollbar>
