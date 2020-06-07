@@ -32,7 +32,7 @@
                 <td *ngFor="let data of row">{{data}}</td>
               </tr>
               <tr>
-                <td class="hiddenData" [colSpan]="tableHeaders.length - 1"></td>
+                <td class="hiddenData" [colSpan]="tableHeaders.length + slaTotalIndex"></td>
                 <td [colSpan]="1">{{slaTotal}}</td>
               </tr>
               </tbody>

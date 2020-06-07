@@ -58,10 +58,11 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
 
   showAddCard: boolean;
   showUpdateCard: boolean;
-  selectedRowNumber: number;
+  selectedRowNumber: number = -1;
 
   slaTotalIndex = -2;
   slaTotal: string = '0';
+
 
   ngOnInit(): void {
     this.updateSlaTotal();
@@ -131,8 +132,15 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
   }
 
   onUpdateClick() {
-    this.openUpdateCard();
+    if (this.isSelectedRowNumberValid()) {
+      this.openUpdateCard();
+    }
   }
+
+  isSelectedRowNumberValid() {
+    return this.selectedRowNumber >= 0;
+  }
+
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';

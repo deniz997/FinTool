@@ -55,7 +55,9 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   showAddCard: boolean;
   showUpdateCard: boolean;
-  selectedRowNumber: number;
+  selectedRowNumber: number = -1;
+
+  slaTotalIndex = -1;
   slaTotal: string = '0';
 
 
@@ -127,8 +129,15 @@ export class ActualSlaVolumeComponent implements OnInit {
   }
 
   onUpdateClick() {
-    this.openUpdateCard();
+    if (this.isSelectedRowNumberValid()) {
+      this.openUpdateCard();
+    }
   }
+
+  isSelectedRowNumberValid() {
+    return this.selectedRowNumber >= 0;
+  }
+
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';

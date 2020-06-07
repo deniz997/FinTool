@@ -44,8 +44,8 @@
       </div>
     </div>
     <div class="card-footer" style="float: left">
-      <button class="btn btn-success" (click)="openAddCard()">ADD</button>
-      <button class="btn btn-primary" [disabled]="selectedRowNumber < 0" (click)="openUpdateCard()">UPDATE</button>
+      <button class="btn btn-success" (click)="onAddClick()">ADD</button>
+      <button class="btn btn-primary" [disabled]="selectedRowNumber < 0" (click)="onUpdateClick()">UPDATE</button>
       <button class="btn btn-danger" [disabled]="selectedRowNumber < 0">DELETE</button>
       <span style="float: right">
         <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
