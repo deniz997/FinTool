@@ -75,7 +75,21 @@
     <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
       <div id="internalHeadcountTable" class="card">
         <div class="card-header">
-          <strong>Internal Headcount</strong>
+          <div class="row">
+            <div class="col-11">
+              <div>
+                <strong style="text-align: left">Internal Headcount</strong>
+              </div>
+            </div>
+            <div class="col-1">
+              <div class="d-flex" style="justify-content: flex-end">
+                <label>
+                  <i class="fa fa-upload fa-lg" aria-hidden="true" style="padding-top: 3px" title="Upload data from Excel"></i>
+                  <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" hidden="hidden">
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <perfect-scrollbar>
