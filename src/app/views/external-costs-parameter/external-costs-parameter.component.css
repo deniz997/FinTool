@@ -8,7 +8,15 @@
   padding: 16px 10px;
   width: inherit;
 }
-
+button{
+  width: auto;
+  margin: auto;
+  display: table-row;
+}
+.row.col-6{
+  padding: 16px 10px;
+  width: inherit;
+}
 .col-3{
   padding: 16px 10px;
   width: inherit;
