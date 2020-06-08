@@ -3,7 +3,10 @@ button{
   margin: auto;
   display: table-row;
 }
-
+.row.col-6{
+  padding: 16px 10px;
+  width: inherit;
+}
 
 .card-footer {
   background-color: white;
@@ -11,10 +14,7 @@ button{
   border-right: none;
   border-top: none;
 }
-.row.col-6{
-  padding: 16px 10px;
-  width: inherit;
-}
+
 
 .form-group{
   margin: 0;
