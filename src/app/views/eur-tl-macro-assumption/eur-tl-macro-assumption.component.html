@@ -43,9 +43,9 @@
         </div>
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="card-body col-6">
+            <div class="card-body col-lg-4 offset-lg-1 col-md-4">
               <fieldset class="form-group">
-                <label> Planning Period</label>
+                <label>  Planning Period</label>
                 <ng-select
                   class="bootstrap"
                   placeholder="Planning Period"
@@ -53,12 +53,10 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-6">
+            <div class="card-body col-lg-4 offset-lg-1 col-md-4">
               <fieldset class="form-group">
-                <label> Value</label><br>
-                <label>
+                <label>  Value</label><br>
                   <input class="form-control" type="number" required placeholder="Please enter a Value">
-                </label>
               </fieldset>
             </div>
           </div>
@@ -81,24 +79,18 @@
         </div>
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-                <label> Planning Period</label>
-                <ng-select
-                  class="bootstrap"
-                  [(ngModel)]="data[selectedRowNumber].PlanningP"
-                  [placeholder]="data[selectedRowNumber].PlanningP"
-                  [options]="PlanningPeriods"
-                  [allowClear]="true"></ng-select>
-              </fieldset>
+            <div class="card-body col-lg-4 offset-lg-1 col-md-4 ">
+              <label> Planning Period</label>
+              <ng-select
+                class="bootstrap"
+                [(ngModel)]="data[selectedRowNumber].PlanningP"
+                [placeholder]="data[selectedRowNumber].PlanningP"
+                [options]="PlanningPeriods"
+                [allowClear]="true"></ng-select>
             </div>
-            <div class="card-body col-6">
-              <fieldset class="form-group">
-                <label> Value</label><br>
-                <label>
-                  <input class="form-control" type="number" [defaultValue]="data[selectedRowNumber].Rate">
-                </label>
-              </fieldset>
+            <div class="card-body col-lg-4 offset-lg-1 col-md-4">
+              <label> Value</label><br>
+              <input class="form-control" type="number" [defaultValue]="data[selectedRowNumber].Rate">
             </div>
           </div>
 
