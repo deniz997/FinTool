@@ -51,4 +51,8 @@ export class UserParameterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  SetSelectedRow(): void {
+    this.selectedRowNumber = null;
+  }
+
 }
