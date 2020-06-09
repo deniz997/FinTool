@@ -9,16 +9,25 @@ import {IOption} from 'ng-select';
 export class RateTableComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ rate: string, number: number }];
+  data: [{ rate: string; number: number }];
   currency: string[];
   saved: boolean = true;
   rate: number;
 
   showAdd = false;
   showUpdate = false;
+  currentPage: number = 1;
+  totalItems: number = 60;
+  itemPerPage: number = 5;
+  maxSize: number = 3;
 
   constructor() {
-
+    this.data = [
+      {
+        rate : 'EUR',
+        number: 1500
+      }
+    ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;
     };
@@ -29,9 +38,8 @@ export class RateTableComponent implements OnInit {
 
 
   public Rate: Array<IOption> = [
-    {label: 'Regional', value: 'Item1'},
-    {label: 'Domestic', value: 'Item2'},
-    {label: 'Overseas', value: 'Item3'}
+    {label: 'EUR', value: 'Item1'},
+    {label: 'TL', value: 'Item2'}
   ];
 
 
@@ -40,9 +48,6 @@ export class RateTableComponent implements OnInit {
 
   }
 
-  onSave() {
-    this.saved = true;
-  }
 
   ShowHideAdd(): void {
     this.showAdd = !this.showAdd;
@@ -51,4 +56,27 @@ export class RateTableComponent implements OnInit {
     this.showUpdate = !this.showUpdate;
   }
 
+  showAddCard() {
+    this.showAdd = !this.showAdd;
+  }
+
+  closeAddCard() {
+    this.showAdd = false;
+  }
+
+  showUpdateCard() {
+    this.showUpdate = !this.showUpdate;
+  }
+
+  closeUpdateCard() {
+    this.showUpdate = false;
+  }
+
+  saveAdd() {
+    this.closeAddCard();
+  }
+
+  saveUpdate() {
+    this.closeUpdateCard();
+  }
 }
