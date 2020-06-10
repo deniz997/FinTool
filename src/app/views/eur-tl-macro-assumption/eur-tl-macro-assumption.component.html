@@ -16,6 +16,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
+                <td>{{row.Year}}</td>
                 <td>{{row.PlanningP}}</td>
                 <td>{{row.Rate}}</td>
               </tr>
@@ -29,7 +30,7 @@
         <div class="card-footer" style="float: left">
           <button class="btn btn-success"  (click)="ShowHideAdd()">ADD</button>
           <button class="btn btn-primary" [disabled]="!validSelectedRowNumber" (click)="ShowHideUpdate()">UPDATE</button>
-          <button class="btn btn-danger" [disabled]="!validSelectedRowNumber" >DELETE</button>
+          <button class="btn btn-danger" [disabled]="!validSelectedRowNumber" (click)="SetSelectedRow()" >DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
@@ -43,7 +44,16 @@
         </div>
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="card-body col-lg-4 offset-lg-1 col-md-4">
+            <div class="card-body col-lg-4 col-md-4">
+              <div class="d-flex ml-0">
+                <label>Year</label>
+              </div>
+              <ng-select class="bootstrap"
+                         [options]="year"
+                         placeholder="Year"
+                         [allowClear]="false"></ng-select>
+            </div>
+            <div class="card-body col-lg-4 col-md-4">
               <fieldset class="form-group">
                 <label>  Planning Period</label>
                 <ng-select
@@ -53,7 +63,7 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-lg-4 offset-lg-1 col-md-4">
+            <div class="card-body col-lg-4 col-md-4">
               <fieldset class="form-group">
                 <label>  Value</label><br>
                   <input class="form-control" type="number" required placeholder="Please enter a Value">
@@ -79,7 +89,16 @@
         </div>
         <div class="card-body">
           <div class="row align-items-center">
-            <div class="card-body col-lg-4 offset-lg-1 col-md-4 ">
+            <div class="card-body col-lg-4 col-md-4 ">
+              <label>Year</label>
+              <ng-select
+                class="bootstrap"
+                [options]="year"
+                [(ngModel)]="data[selectedRowNumber].Year"
+                [placeholder]="data[selectedRowNumber].Year"
+                [allowClear]="false"></ng-select>
+            </div>
+            <div class="card-body col-lg-4 col-md-4 ">
               <label> Planning Period</label>
               <ng-select
                 class="bootstrap"
@@ -88,7 +107,7 @@
                 [options]="PlanningPeriods"
                 [allowClear]="true"></ng-select>
             </div>
-            <div class="card-body col-lg-4 offset-lg-1 col-md-4">
+            <div class="card-body col-lg-4 col-md-4">
               <label> Value</label><br>
               <input class="form-control" type="number" [defaultValue]="data[selectedRowNumber].Rate">
             </div>

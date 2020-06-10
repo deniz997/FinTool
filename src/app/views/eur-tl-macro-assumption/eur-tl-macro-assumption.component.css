@@ -26,3 +26,6 @@ tr {
 tbody tr:hover{
   background-color: #cccccc;
 }
+th{
+  width: 33%;
+}
