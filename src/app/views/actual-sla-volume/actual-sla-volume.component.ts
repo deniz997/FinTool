@@ -13,31 +13,39 @@ export class ActualSlaVolumeComponent implements OnInit {
   tableHeaders = [
     'SLA No',
     'SLA Name',
+    'Cost Center',
     'Template Name',
-    'Service Department',
-    'SLA Start Date',
-    'SLA End Date',
+    'Service Dept',
+    'SLA Start',
+    'SLA End',
     'Manday Input',
     'Manday Cost',
     'Regional Travel Flight',
-    'Regional Travel Day',
+    'Regional Travel Days',
+    'Travel Expense',
     'Long Distance Travel Flight',
     'Long Distance Travel Day',
-    'Domestic Travel Flight',
-    'Domestic Travel Day',
     'Travel Expense',
-    'Fix Costs',
+    'Dom Travel Flight',
+    'Dom Travel Day',
+    'Travel Expense',
+    'Travel Cost',
+    'One time Costs',
     'SLA Volume',
-    'SLA Consumption',
-    'SLA Consumption in %'
   ];
 
   tableData = [
-    ['SLA20_ITTQT_008', 'Mercedes Me Connect Aftersales Rollout 5', 'MeConnectA', 'RO', '01.01.2020', '31.12.2020', '2.420', '617.100', '185', '740', '9', '46', '-', '-', '194', '70.000', '946.002', '251.554', '30%'],
-    ['SLA20_ITTQT_009', 'Mercedes Me Connect 2', 'MeConnectS', 'RO', '01.01.2020', '31.12.2020', '2.420', '617.100', '168', '504', '24', '120', '-', '-', '192', '70.000', '967.516', '248.241', '25%'],
-    ['SLA20_ITTQT_012', 'Mercedes me connect 1', 'MeConnectS', 'RO', '01.01.2020', '31.12.2020', '1.889', '481.695', '135', '405', '20', '100', '-', '-', '155', '70.000', '780.440', '451.684', '45%'],
-    ['SLA20_ITTQT_106', 'Cyber Security Lighthouse Program', 'Cyber Security', 'RO', '01.01.2020', '31.12.2020', '660', '168.300', '75', '175', '-', '-', '-', '-', '75', '0', '233.375', '201.574', '87%'],
-    ['SLA20_ITTQT_113', 'EPA Coordination', 'Cyber Security', 'RO', '01.01.2020', '31.12.2020', '440', '112.200', '24', '68', '-', '-', '-', '-', '24', '0', '135.172', '101.554', '78%'],
+    ['SLA20_ITTQT_008', 'Mercedes Me Connect Aftersales Rollout 5', '0000036140 - Regional Rollout E4',  'MeConnectA', 'RO', '01.01.2020', '31.12.2020', '2.420', '617.100', '185', '740', '185', '9', '46', '9', '-', '-', '-', '258.922', '70.000', '946.002'],
+    ['SLA20_ITTQT_009', 'Mercedes Me Connect 2', '0000036140 - Regional Rollout E4',  'MeConnectS', 'RO', '01.01.2020', '31.12.2020', '2.420', '617.100', '168', '504', '168', '24', '120', '24', '-', '-', '-', '280.416', '70.000', '967.516'],
+    ['SLA20_ITTQT_012', 'Mercedes me connect 1', '0000036140 - Regional Rollout E4',  'MeConnectS', 'RO', '01.01.2020', '31.12.2020', '1.889', '481.695', '135', '405', '135', '20', '100', '20',  '-', '-', '-', '228.745', '70.000', '780.440'],
+    ['SLA20_ITTQT_106', 'Cyber Security Lighthouse Program', '0000036140 - Regional Rollout E4',  'Cyber Security', 'RO', '01.01.2020', '31.12.2020', '660', '168.300', '75', '175', '75', '-', '-', '-', '-', '-', '-', '65.075', '0', '233.375'],
+    ['SLA20_ITTQT_113', 'EPA Coordination', '0000036140 - Regional Rollout E4',  'Cyber Security', 'RO', '01.01.2020', '31.12.2020', '440', '112.200', '24', '68', '24', '-', '-', '-', '-', '-', '-', '22.972', '0', '135.172'],
+  ];
+
+  disabledHeaders = [
+    'Manday Cost',
+    'Travel Expense',
+    'Travel Cost',
   ];
 
   currentPage: number = 1;
@@ -45,86 +53,109 @@ export class ActualSlaVolumeComponent implements OnInit {
   itemPerPage: number = 5;
   maxSize: number = 7;
 
-  showInputField: boolean;
-  selectedRowNumber: number;
-  validSelectedRowNumber: boolean = false;
+  showAddCard: boolean;
+  showUpdateCard: boolean;
+  selectedRowNumber: number = -1;
+
+  slaTotalIndex = -1;
+  slaTotal: string = '0';
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.updateSlaTotal();
+  }
+
+  updateSlaTotal() {
+    this.slaTotal = '3.062.505';
+  }
 
   isInputDisabled(columnNumber: number): boolean {
-    if (!this.isSelectedRowNumberValid()) {
-      return columnNumber === 0;
+    if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
+      return true;
     }
+
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
   }
 
-  getPlaceHolderForInputFields(columnNumber: number): string {
-    if (!this.isSelectedRowNumberValid()) {
-      if (columnNumber === 0) {
-        return this.getNextSLAName();
-      }
+  getPlaceHolderForAddCardFields(columnNumber: number): string {
+    if (columnNumber === 0) {
+      return this.getNextSLAName();
     }
+  }
+
+  getPlaceHolderForUpdateCardFields(columnNumber: number): string {
     return 'Ex. 4';
   }
 
-  submit() {
-    this.closeInputCard();
+  onAddSubmit() {
+    this.closeAddCard();
+  }
+
+  onUpdateSubmit() {
+    this.closeUpdateCard();
     this.clearClickedRow();
   }
 
-  closeInputCard() {
-    this.showInputField = false;
+  closeAddCard() {
+    this.showAddCard = false;
+  }
+  closeUpdateCard() {
+    this.showUpdateCard = false;
   }
 
-  openInputCard() {
-    this.showInputField = true;
+  openAddCard() {
+    this.showAddCard = true;
+  }
+
+  openUpdateCard() {
+    this.showUpdateCard = true;
   }
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;
-    this.updateValidSelectedRowNumber();
   }
 
   onTableRowClick(i: number) {
     this.saveClickedRow(i);
-    this.closeInputCard();
-  }
-
-  isSelectedRowNumberValid() {
-    this.updateValidSelectedRowNumber();
-    return this.validSelectedRowNumber;
-  }
-
-  updateValidSelectedRowNumber() {
-    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
+    this.closeUpdateCard();
   }
 
   clearClickedRow() {
     this.saveClickedRow(-1);
   }
 
-  openAddCard() {
-    this.saveClickedRow(this.tableData.length);
-    this.clearClickedRow();
-    this.openInputCard();
+  onAddClick() {
+    if (this.showAddCard) {
+      this.closeAddCard();
+    } else {
+      this.openAddCard();
+    }
   }
 
-  openUpdateCard() {
-    this.openInputCard();
+  onUpdateClick() {
+    if (this.isSelectedRowNumberValid()) {
+      if (this.showUpdateCard) {
+        this.closeUpdateCard();
+      } else {
+        this.openUpdateCard();
+      }
+    }
   }
+
+  isSelectedRowNumberValid() {
+    return this.selectedRowNumber >= 0;
+  }
+
 
   getNextSLAName(): string {
     return 'SLA20_ITTQT_114';
   }
-  getDefaultValueForInput(columnNumber: number) {
-    if (!this.isSelectedRowNumberValid()) {
-      if (columnNumber === 0) {
-        return this.getNextSLAName();
-      } else {
-        return ' ';
-      }
-    }
+
+  getDefaultValueForAddCard(columnNumber: number) {
+      return ' ';
+  }
+
+  getDefaultValueForUpdateCard(columnNumber: number) {
     return this.tableData[this.selectedRowNumber][columnNumber];
   }
 }

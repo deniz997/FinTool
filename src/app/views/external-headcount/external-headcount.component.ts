@@ -139,7 +139,9 @@ export class ExternalHeadcountComponent implements OnInit {
   }
 
   onTableRowClick(i: number) {
-    this.saveClickedRow(i);
+    if (i !== this.tableData.length - 2) {
+      this.saveClickedRow(i);
+    }
     this.closeInputCard();
     this.updateSizeOnUpdateButtonAppearanceChange();
   }

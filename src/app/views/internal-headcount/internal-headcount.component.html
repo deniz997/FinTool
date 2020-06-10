@@ -75,7 +75,21 @@
     <div class="col-10" (window:resize)="tableResized()" style="padding-left: 0px">
       <div id="internalHeadcountTable" class="card">
         <div class="card-header">
-          <strong>Internal Headcount</strong>
+          <div class="row">
+            <div class="col-11">
+              <div>
+                <strong style="text-align: left">Internal Headcount</strong>
+              </div>
+            </div>
+            <div class="col-1">
+              <div class="d-flex" style="justify-content: flex-end">
+                <label>
+                  <i class="fa fa-upload fa-lg" aria-hidden="true" style="padding-top: 3px" title="Upload data from Excel"></i>
+                  <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" hidden="hidden">
+                </label>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="card-body">
           <perfect-scrollbar>
@@ -89,7 +103,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr class="hoverable" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+              <tr  [class.hoverable]="i != tableData.length - 1" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                 <td *ngFor="let column of row">{{column}}</td>
               </tr>
               </tbody>
@@ -97,7 +111,7 @@
           </perfect-scrollbar>
         </div>
         <div class="card-footer" style="float: left">
-          <button class="btn btn-primary" [hidden]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
+          <button class="btn btn-primary" [disabled]="!validSelectedRowNumber" (click)="openUpdateCard()">UPDATE</button>
         </div>
       </div>
     </div>
@@ -128,7 +142,6 @@
                         <td *ngFor="let _ of months; let columnNumber = index">
                           <label style="text-align: center">
                             <input type="text" class="form-control"
-                                   [title]="getPlaceHolderForInputFields(columnNumber)"
                                    [placeholder]="getPlaceHolderForInputFields(columnNumber)"
                                    [defaultValue]="getDefaultValueForInput(columnNumber)">
                           </label>
@@ -144,7 +157,7 @@
         </form>
       </div>
       <div class="card-footer input-footer">
-        <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">SUBMIT</button>
+        <button type="submit" class="btn btn-sm btn-primary" (click)="submit()">Save</button>
       </div>
     </div>
     <!--InputFields-->
