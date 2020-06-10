@@ -20,6 +20,8 @@ export class RateTableComponent implements OnInit {
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 3;
+  private selectedRowNumber: number;
+
 
   constructor() {
     this.data = [
@@ -42,12 +44,23 @@ export class RateTableComponent implements OnInit {
     {label: 'TL', value: 'Item2'}
   ];
 
+  validSelectedRowNumber: boolean = false;
 
   ngOnInit(): void {
-    this.currency = ['EUR', 'TL'];
-
   }
 
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
+  }
+
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.data.length || this.selectedRowNumber < 0);
+  }
 
   ShowHideAdd(): void {
     this.showAdd = !this.showAdd;
@@ -55,28 +68,8 @@ export class RateTableComponent implements OnInit {
   ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
   }
-
-  showAddCard() {
-    this.showAdd = !this.showAdd;
+  SetSelectedRow(): void {
+    this.selectedRowNumber = null;
   }
 
-  closeAddCard() {
-    this.showAdd = false;
-  }
-
-  showUpdateCard() {
-    this.showUpdate = !this.showUpdate;
-  }
-
-  closeUpdateCard() {
-    this.showUpdate = false;
-  }
-
-  saveAdd() {
-    this.closeAddCard();
-  }
-
-  saveUpdate() {
-    this.closeUpdateCard();
-  }
 }
