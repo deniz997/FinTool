@@ -17,6 +17,7 @@ export class MandayComponent implements OnInit {
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 3;
+  private selectedRowNumber: number;
 
   constructor() {
     this.data = [
@@ -41,7 +42,22 @@ export class MandayComponent implements OnInit {
   ];
 
 
+  validSelectedRowNumber: boolean = false;
+
   ngOnInit(): void {
+  }
+
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
+  }
+
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.data.length || this.selectedRowNumber < 0);
   }
 
   ShowHideAdd(): void {
@@ -50,29 +66,8 @@ export class MandayComponent implements OnInit {
   ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
   }
-
-  showAddCard() {
-    this.showAdd = !this.showAdd;
-  }
-
-  closeAddCard() {
-    this.showAdd = false;
-  }
-
-  showUpdateCard() {
-    this.showUpdate = !this.showUpdate;
-  }
-
-  closeUpdateCard() {
-    this.showUpdate = false;
-  }
-
-  saveAdd() {
-    this.closeAddCard();
-  }
-
-  saveUpdate() {
-    this.closeUpdateCard();
+  SetSelectedRow(): void {
+    this.selectedRowNumber = null;
   }
 
 }
