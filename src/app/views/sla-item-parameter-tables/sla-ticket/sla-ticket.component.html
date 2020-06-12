@@ -1,0 +1,340 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- row -->
+    <div class="col-lg-12">
+      <!-- column -->
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> SLA ITEM PARAMETERS TABLE
+        </div>
+
+        <div class="card-body">
+          <!-- table -->
+          <perfect-scrollbar style="max-height: 750px">
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
+              <tr>
+                <th colspan="3">Year</th>
+                <th colspan="2">Ticket</th>
+              </tr>
+              </thead>
+              <thead>
+              <tr>
+                <th *ngFor="let Header of tableSubHeaders">{{Header}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+                <td>{{row.Year}}</td>
+                <td>{{row.ValidFrom}}</td>
+                <td>{{row.ValidTo}}</td>
+                <td>{{row.TicketTyp}}</td>
+                <td>{{row.TicketRate}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+          <!-- table -->
+        </div>
+
+        <div class="card-footer" style="float: left">
+          <button class="btn btn-success" (click)="showAddCard()">ADD</button>
+          <button class="btn btn-primary" (click)="showUpdateCard()">UPDATE</button>
+          <button class="btn btn-danger">DELETE</button>
+          <span style="float: right">
+            <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
+          </span>
+        </div>
+      </div>
+      <!-- column -->
+
+      <!--add-->
+      <div>
+        <div class="card" *ngIf="showAdd">
+          <div class="card-header">
+            <strong>Add New SLA Item Parameter</strong>
+          </div>
+
+          <div class="card-body col-12">
+
+            <form action="" method="post" class="form-horizontal">
+              <div class="col-12" style="text-align: center">
+                <div>
+                  <fieldset class="form-group">
+
+                    <div class="form-group row">
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex ml-0">
+                          <label><b>Year</b></label>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Year</label>
+                            </div>
+                            <ng-select class="bootstrap"
+                                       [options]="year"
+                                       [allowClear]="false"></ng-select>
+                          </div>
+                          <!-- date picker -->
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Validation</label>
+                            </div>
+                            <form class="form-inline">
+                              <div class="form-group hidden">
+                                <div class="input-group">
+                                  <input name="datepicker"
+                                         class="form-control"
+                                         ngbDatepicker
+                                         #datepicker="ngbDatepicker"
+                                         [autoClose]="'outside'"
+                                         (dateSelect)="onDateSelection($event)"
+                                         [displayMonths]="2"
+                                         [dayTemplate]="t"
+                                         outsideDays="hidden"
+                                         [startDate]="fromDate!">
+                                  <ng-template #t let-date let-focused="focused">
+                                  <span class="custom-day"
+                                        [class.focused]="focused"
+                                        [class.range]="isRange(date)"
+                                        [class.faded]="isHovered(date) || isInside(date)"
+                                        (mouseenter)="hoveredDate = date"
+                                        (mouseleave)="hoveredDate = null">
+                                    {{ date.day }}
+                                  </span>
+                                  </ng-template>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="form-group ml-2">
+                                  <div class="input-group">
+                                    <input #dpFromDate
+                                           class="form-control" placeholder="yyyy-mm-dd"
+                                           name="dpFromDate"
+                                           [value]="formatter.format(fromDate)"
+                                           (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                                        <i class="cui-calendar icons font d-block"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group ml-2">
+                                  <div class="input-group">
+                                    <input #dpToDate
+                                           class="form-control" placeholder="yyyy-mm-dd"
+                                           name="dpToDate"
+                                           [value]="formatter.format(toDate)"
+                                           (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                                        <i class="cui-calendar icons font d-block"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <!-- date picker -->
+                        </div>
+                      </div>
+                      <hr style="width:100%;" class="ml-0 mr-0">
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex ml-0">
+                          <label><b>Ticket</b></label>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Ticket Typ</label>
+                            </div>
+                            <ng-select
+                              class="bootstrap"
+                              placeholder="Pick Ticket Typ"
+                              [options]="ticketTyp"
+                              [allowClear]="false"></ng-select>
+                          </div>
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Ticket Rate</label>
+                            </div>
+                            <ng-select
+                              class="bootstrap"
+                              placeholder="Pick Ticket Rate"
+                              [options]="ticketRate"
+                              [allowClear]="false"></ng-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+
+            <div class="col">
+              <div class="row d-flex justify-content-end">
+                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                  <button type="button" class="btn btn-block btn-success" (click)="saveAdd()">SAVE</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!--add-->
+
+      <!--update-->
+      <div>
+        <div class="card" *ngIf="showUpdate">
+          <div class="card-header">
+            <strong>Update New SLA Item Parameter</strong>
+          </div>
+
+          <div class="card-body col-12">
+
+            <form action="" method="post" class="form-horizontal">
+              <div class="col-12" style="text-align: center">
+                <div>
+                  <fieldset class="form-group">
+
+                    <div class="form-group row">
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex ml-0">
+                          <label><b>Year</b></label>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Year</label>
+                            </div>
+                            <ng-select class="bootstrap"
+                                       [placeholder]="data[selectedRow].Year"
+                                       [options]="year"
+                                       [allowClear]="false"></ng-select>
+                          </div>
+                          <!-- date picker -->
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Validation</label>
+                            </div>
+                            <form class="form-inline">
+                              <div class="form-group hidden">
+                                <div class="input-group">
+                                  <input name="datepicker"
+                                         class="form-control"
+                                         ngbDatepicker
+                                         #datepicker="ngbDatepicker"
+                                         [autoClose]="'outside'"
+                                         (dateSelect)="onDateSelection($event)"
+                                         [displayMonths]="2"
+                                         [dayTemplate]="t"
+                                         outsideDays="hidden"
+                                         [startDate]="fromDate!">
+                                  <ng-template #t let-date let-focused="focused">
+                                  <span class="custom-day"
+                                        [class.focused]="focused"
+                                        [class.range]="isRange(date)"
+                                        [class.faded]="isHovered(date) || isInside(date)"
+                                        (mouseenter)="hoveredDate = date"
+                                        (mouseleave)="hoveredDate = null">
+                                    {{ date.day }}
+                                  </span>
+                                  </ng-template>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="form-group ml-2">
+                                  <div class="input-group">
+                                    <input #dpFromDate
+                                           class="form-control"
+                                           [placeholder]="data[selectedRow].ValidFrom"
+                                           name="dpFromDate"
+                                           [value]="formatter.format(fromDate)"
+                                           (input)="fromDate = validateInput(fromDate, dpFromDate.value)">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                                        <i class="cui-calendar icons font d-block"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group ml-2">
+                                  <div class="input-group">
+                                    <input #dpToDate
+                                           class="form-control"
+                                           [placeholder]="data[selectedRow].ValidTo"
+                                           name="dpToDate"
+                                           [value]="formatter.format(toDate)"
+                                           (input)="toDate = validateInput(toDate, dpToDate.value)">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button">
+                                        <i class="cui-calendar icons font d-block"></i>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <!-- date picker -->
+                        </div>
+                      </div>
+                      <hr style="width:100%;" class="ml-0 mr-0">
+                      <div class="col-md-6 col-lg-12 mb-5">
+                        <div class="d-flex ml-0">
+                          <label><b>Ticket</b></label>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Ticket Typ</label>
+                            </div>
+                            <ng-select
+                              class="bootstrap"
+                              [placeholder]="data[selectedRow].TicketTyp"
+                              [options]="ticketTyp"
+                              [allowClear]="false"></ng-select>
+                          </div>
+                          <div class="col-md-6 col-lg-6">
+                            <div class="d-flex ml-0">
+                              <label>Ticket Rate</label>
+                            </div>
+                            <ng-select
+                              class="bootstrap"
+                              [placeholder]="data[selectedRow].TicketRate"
+                              [options]="ticketRate"
+                              [allowClear]="false"></ng-select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+
+            <div class="col">
+              <div class="row d-flex justify-content-end">
+                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                  <button type="button" class="btn btn-block btn-primary" (click)="saveUpdate()">SAVE</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!--update-->
+
+    </div>
+    <!-- row -->
+
+  </div>
+</div>

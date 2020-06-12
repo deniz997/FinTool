@@ -1,0 +1,38 @@
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+button{
+  width: auto;
+  margin: auto;
+  display: table-row;
+}
+.row.col-6{
+  padding: 16px 10px;
+  width: inherit;
+}
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+tr {
+  text-align: center;
+  vertical-align: middle;
+}
+th {
+  text-align: center;
+  vertical-align: middle !important;
+}
+table {
+  text-align: center;
+}
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+
+tbody tr:hover{
+  background-color: #cccccc;
+}
