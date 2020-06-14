@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import {IOption} from 'ng-select';
 
 
 @Component({
@@ -12,6 +13,12 @@ export class DepartmentTravelRateComponent implements OnInit {
   rate: number;
   items: any[];
   headers = ['Year', 'Valid From', 'Valid To', 'Rate'];
+  year: Array<IOption> = [
+    {label: '2020', value: '2020'},
+    {label: '2019', value: '2019'},
+    {label: '2018', value: '2018'},
+    {label: '2017', value: '2017'}
+    ];
   private selectedRow: number = -1;
   newDTR: DTR = new DTR();
   showField = false;
