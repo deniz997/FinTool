@@ -3,7 +3,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> External Costs Per Person Parameter Table
+          <i class="fa fa-align-justify"></i><strong> External Costs Per Person Parameter Table</strong>
         </div>
         <div class="card-body">
           <perfect-scrollbar style="max-height: 750px">
@@ -15,7 +15,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr *ngFor="let row of data; let i = index" (click)="setClickedRow(i)" [class.active]="i == selectedRow">
+              <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
                 <td>{{row.ExternalC}}</td>
                 <td>{{row.CurrentL}}</td>
                 <td>{{row.PlanningP}}</td>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="card-footer" style="float: left">
-          <button class="btn btn-success" (click)="ShowHideAdd()">ADD NEW</button>
-          <button class="btn btn-primary" (click)="ShowHideUpdate()">UPDATE</button>
-          <button class="btn btn-danger" >DELETE</button>
+          <button class="btn btn-success"  (click)="ShowHideAdd()">ADD</button>
+          <button class="btn btn-primary" [disabled]="!validSelectedRowNumber" (click)="ShowHideUpdate()">UPDATE</button>
+          <button class="btn btn-danger" [disabled]="!validSelectedRowNumber" (click)="SetSelectedRow()" >DELETE</button>
           <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
@@ -48,7 +48,7 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="card-body col-3">
+            <div class="card-body col-lg-3 col-md-6">
               <fieldset class="form-group">
                 <label> External Cost Definition</label>
                 <ng-select
@@ -58,7 +58,7 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label> Current Level</label>
                 <ng-select
@@ -68,7 +68,7 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label> Planning Period</label>
                 <ng-select
@@ -78,7 +78,7 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label>Currency</label>
                 <ng-select
@@ -88,18 +88,20 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label>Value</label><br>
-                <label>
-                  <input class="form-control" type="number" required placeholder="Please enter a Value">
-                </label>
+                <input class="form-control" type="number" required placeholder="Please enter a Value">
               </fieldset>
             </div>
           </div>
 
-          <div class="card-footer" style="float: left">
-            <button type="button" class="btn btn-block btn-primary">SAVE</button>
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="ShowHideAdd()">SAVE</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -111,58 +113,64 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="card-body col-3">
+            <div class="card-body col-lg-3 col-md-6">
               <fieldset class="form-group">
                 <label> External Cost Definition</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].ExternalC"
+                  [(ngModel)]="data[selectedRowNumber].ExternalC"
+                  [placeholder]="data[selectedRowNumber].ExternalC"
                   [options]="ExternalCostDefinitionList"
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label> Current Level</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].CurrentL"
+                  [(ngModel)]="data[selectedRowNumber].CurrentL"
+                  [placeholder]="data[selectedRowNumber].CurrentL"
                   [options]="CurrentLevel"
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label> Planning Period</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].PlanningP"
+                  [(ngModel)]="data[selectedRowNumber].PlanningP"
+                  [placeholder]="data[selectedRowNumber].PlanningP"
                   [options]="PlanningPeriods"
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label>Currency</label>
                 <ng-select
                   class="bootstrap"
-                  [placeholder]="data[selectedRow].Currency"
+                  [(ngModel)]="data[selectedRowNumber].Currency"
+                  [placeholder]="data[selectedRowNumber].Currency"
                   [options]="CurrencyList"
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
+            <div class="card-body col-lg-2 col-md-6">
               <fieldset class="form-group">
                 <label>Value</label><br>
-                <label>
-                  <input class="form-control" type="number" [placeholder]="data[selectedRow].Value">
-                </label>
+                <input class="form-control" type="number" [defaultValue]="data[selectedRowNumber].Value">
               </fieldset>
             </div>
           </div>
 
-          <div class="card-footer" style="float: left">
-            <button type="button" class="btn btn-block btn-primary">SAVE</button>
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-primary" (click)="ShowHideUpdate(); SetSelectedRow()">SAVE</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

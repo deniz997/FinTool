@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {IOption} from "ng-select";
+import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-external-costs-parameter',
@@ -8,13 +8,15 @@ import {IOption} from "ng-select";
 })
 export class ExternalCostsParameterComponent implements OnInit {
 
+  selectedRow: string;
+  setClickedRow: Function;
 
-  selectedRow : Number = -1;
-  setClickedRow : Function;
-  data : [{ CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }];
+  data: [{ CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }, { CurrentL: string; ExternalC: string; Currency: string; Value: number; PlanningP: string }];
 
   showAdd = false;
   showUpdate = false;
+  selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
 
   currentPage: number = 1;
   totalItems: number = 60;
@@ -47,9 +49,8 @@ export class ExternalCostsParameterComponent implements OnInit {
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;
-    }
+    };
   }
-
 
   TableHeader = [
     'External Cost Definition per Person',
@@ -57,13 +58,6 @@ export class ExternalCostsParameterComponent implements OnInit {
     'Planning Period',
     'Currency',
     'Value',
-  ];
-
-  TableData = [
-    ['Definition 2', 'Regional Rollout P', 'EA1', 'EUR', '30'],
-    ['Definition 3', 'Regional Rollout A', 'EA2', 'TL', '420'],
-    ['Definition 1', 'Regional Rollout B', 'EA2', 'EUR', '20'],
-    ['Definition 4', 'Regional Rollout C', 'EA1', 'EUR', '35'],
   ];
 
   public ExternalCostDefinitionList: Array<IOption> = [
@@ -89,23 +83,29 @@ export class ExternalCostsParameterComponent implements OnInit {
     {label: 'TL', value: 'TL'},
   ];
 
-
-  setPage(pageNo: number): void {
-    this.currentPage = pageNo;
-  }
-
-  pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
-  }
-
   ngOnInit(): void {
   }
 
-  ShowHideAdd(): void{
+  ShowHideAdd(): void {
     this.showAdd = !this.showAdd;
   }
-  ShowHideUpdate(): void{
+  ShowHideUpdate(): void {
     this.showUpdate = !this.showUpdate;
+  }
+
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.data.length || this.selectedRowNumber < 0);
+  }
+  SetSelectedRow(): void{
+    this.selectedRowNumber = null
   }
 }

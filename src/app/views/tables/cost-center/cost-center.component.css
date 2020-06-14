@@ -21,6 +21,10 @@
 .custom-day.faded {
   background-color: rgba(2, 117, 216, 0.5);
 }
+.row.col-6{
+  padding: 16px 10px;
+  width: inherit;
+}
 
 .card-footer {
   background-color: white;
@@ -28,6 +32,12 @@
   border-right: none;
   border-top: none;
 }
+
+
+.form-group{
+  margin: 0;
+}
+
 
 .table tr.active td{
   background-color: #999999 ;

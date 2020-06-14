@@ -8,6 +8,11 @@
   padding: 16px 10px;
   width: inherit;
 }
+button{
+  width: auto;
+  margin: auto;
+  display: table-row;
+}
 .form-group{
   margin: 0;
 }
@@ -20,4 +25,7 @@ tr {
 }
 tbody tr:hover{
   background-color: #cccccc;
+}
+th{
+  width: 33%;
 }

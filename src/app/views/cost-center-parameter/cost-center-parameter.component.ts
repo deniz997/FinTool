@@ -10,7 +10,7 @@ import {ngbAutoClose} from '@ng-bootstrap/ng-bootstrap/util/autoclose';
 export class CostCenterParameterComponent implements OnInit {
 
   constructor() {
-    this.data = [
+    this.tableData = [
       {
         CostCenterID: 'Cost Center ID 1',
         CostCenterName: 'Cost Center Name 1',
@@ -38,13 +38,15 @@ export class CostCenterParameterComponent implements OnInit {
     'Cost Center Typ',
   ];
 
-  data = [];
+  tableData = [];
 
-  selectedRow: Number;
+  selectedRow: string;
   setClickedRow: Function;
 
   showAdd = false;
   showUpdate = false;
+  selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
 
   totalItems: number = 60;
   currentPage: number   = 1;
@@ -55,6 +57,20 @@ export class CostCenterParameterComponent implements OnInit {
     {label: 'Typ 1', value: 'Typ1'},
     {label: 'Typ 2', value: 'Typ2'},
   ];
+
+  saveClickedRow(i: number) {
+    this.selectedRowNumber = i;
+    this.updateValidSelectedRowNumber();
+  }
+
+  onTableRowClick(i: number) {
+    this.saveClickedRow(i);
+    this.closeUpdateCard();
+  }
+
+  updateValidSelectedRowNumber() {
+    this.validSelectedRowNumber = !(this.selectedRowNumber >= this.tableData.length || this.selectedRowNumber < 0);
+  }
 
   showAddCard() {
     this.showAdd = !this.showAdd;
@@ -81,5 +97,9 @@ export class CostCenterParameterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  SetSelectedRow(): void {
+    this.selectedRowNumber = null;
   }
 }
