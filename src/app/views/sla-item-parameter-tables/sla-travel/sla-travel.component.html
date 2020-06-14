@@ -78,7 +78,7 @@
                             </div>
                             <div class="input-group">
                               <input id="validFrom" name="validFrom" class="form-control" placeholder="yyyy-mm-dd"
-                                     name="dp1" [(ngModel)]="fromDate" ngbDatepicker #d1="ngbDatepicker">
+                                     name="dp1" ngbDatepicker #d1="ngbDatepicker">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                               </div>
@@ -91,7 +91,7 @@
                             </div>
                             <div class="input-group">
                               <input id="validTo" name="validTo" class="form-control" placeholder="yyyy-mm-dd"
-                                     name="dp2" [(ngModel)]="toDate" ngbDatepicker #d2="ngbDatepicker">
+                                     name="dp2" #d2="ngbDatepicker">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                               </div>
@@ -197,7 +197,7 @@
                             </div>
                             <div class="input-group">
                               <input name="validFrom" class="form-control" [placeholder]="data[selectedRowNumber].ValidFrom"
-                                     name="dp1" [(ngModel)]="data[selectedRowNumber].ValidFrom" ngbDatepicker #d1="ngbDatepicker">
+                                     name="dp1" ngbDatepicker #d1="ngbDatepicker">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                               </div>
@@ -210,7 +210,7 @@
                             </div>
                             <div class="input-group">
                               <input name="validTo" class="form-control" [placeholder]="data[selectedRowNumber].ValidTo"
-                                     name="dp2" [(ngModel)]="data[selectedRowNumber].ValidTo" ngbDatepicker #d2="ngbDatepicker">
+                                     name="dp2" ngbDatepicker #d2="ngbDatepicker">
                               <div class="input-group-append">
                                 <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
                               </div>
