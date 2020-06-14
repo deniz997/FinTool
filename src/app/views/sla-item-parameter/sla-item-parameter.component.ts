@@ -52,21 +52,6 @@ export class SlaItemParameterComponent implements OnInit {
 
   selectedRow: Function;
 
-  tableSubHeaders = [
-    'Year',
-    'Valid From',
-    'Valid To',
-    'Manday Typ',
-    'Manday Rate',
-    'Travel Typ',
-    'Travel Day Typ',
-    'Travel Rate',
-    'Ticket Typ',
-    'Ticket Rate',
-    'Fix Costs Typ',
-    'Fix Costs Rate',
-  ];
-
   showAdd = false;
   showUpdate = false;
 
@@ -86,50 +71,6 @@ export class SlaItemParameterComponent implements OnInit {
 
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
-
-  public year: Array<IOption> = [
-    {label: '2020', value: 'Year1'},
-    {label: '2019', value: 'Year2'},
-    {label: '2018', value: 'Year3'},
-    {label: '2017', value: 'Year4'},
-    {label: '2016', value: 'Year5'},
-    {label: '2015', value: 'Year6'},
-  ];
-
-  public mandayTyp: Array<IOption> = [
-    {label: 'Manday Typ 1', value: 'MandayTyp1'},
-    {label: 'Manday Typ 2', value: 'MandayTyp2'},
-  ];
-
-  public mandayRate: Array<IOption> = [
-    {label: 'Manday Rate 1', value: 'MandayRate1'},
-    {label: 'Manday Rate 2', value: 'MandayRate2'},
-  ];
-
-  public travelTyp: Array<IOption> = [
-    {label: 'Travel Typ 1', value: 'TravelTyp1'},
-    {label: 'Travel Typ 2', value: 'TravelTyp2'},
-  ];
-
-  public travelDayTyp: Array<IOption> = [
-    {label: 'Travel Day Typ 1', value: 'TravelDayTyp1'},
-    {label: 'Travel Day Typ 2', value: 'TravelDayTyp2'},
-  ];
-
-  public travelRate: Array<IOption> = [
-    {label: 'Travel Rate 1', value: 'TravelRate1'},
-    {label: 'Travel Rate 2', value: 'TravelRate2'},
-  ];
-
-  public ticketTyp: Array<IOption> = [
-    {label: 'Ticket Typ 1', value: 'TicketTyp1'},
-    {label: 'Ticket Typ 2', value: 'TicketTyp2'},
-  ];
-
-  public ticketRate: Array<IOption> = [
-    {label: 'Ticket Rate 1', value: 'TicketRate1'},
-    {label: 'Ticket Rate 2', value: 'TicketRate2'},
-  ];
 
   public fixCostsTyp: Array<IOption> = [
     {label: 'Fix Costs Typ 1', value: 'FixCostsTyp1'},
