@@ -4,14 +4,16 @@
     <div class="col-lg-12">
       <!-- column -->
       <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i> PGK
-        </div>
 
         <div class="card-body">
           <!-- table -->
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
+              <thead>
+              <tr>
+                <th *ngFor="let Header of RightTableHeaders">{{Header}}</th>
+              </tr>
+              </thead>
               <tbody>
               <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
                 <td>{{row.pgktable}}</td>
