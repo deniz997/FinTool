@@ -69,12 +69,18 @@ export class ActualSlaVolumeComponent implements OnInit {
     this.slaTotal = '3.062.505';
   }
 
-  isInputDisabled(columnNumber: number): boolean {
+  isInputDisabled(columnNumber: number, isAddInput = false): boolean {
     if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
       return true;
     }
-
+    if (isAddInput) {
+      return false;
+    }
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
+  }
+
+  isAddInputDisabled(columnNumber: number) {
+    return this.isInputDisabled(columnNumber, true);
   }
 
   getPlaceHolderForAddCardFields(columnNumber: number): string {
@@ -158,4 +164,6 @@ export class ActualSlaVolumeComponent implements OnInit {
   getDefaultValueForUpdateCard(columnNumber: number) {
     return this.tableData[this.selectedRowNumber][columnNumber];
   }
+
+
 }

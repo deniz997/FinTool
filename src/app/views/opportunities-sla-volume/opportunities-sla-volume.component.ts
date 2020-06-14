@@ -72,12 +72,18 @@ export class OpportunitiesSlaVolumeComponent implements OnInit {
     this.slaTotal = '680.200';
   }
 
-  isInputDisabled(columnNumber: number): boolean {
+  isInputDisabled(columnNumber: number, isAddInput = false): boolean {
     if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
       return true;
     }
-
+    if (isAddInput) {
+      return false;
+    }
     return this.tableData[this.selectedRowNumber][columnNumber] === '-';
+  }
+
+  isAddInputDisabled(columnNumber: number) {
+    return this.isInputDisabled(columnNumber, true);
   }
 
   getPlaceHolderForAddCardFields(columnNumber: number): string {
