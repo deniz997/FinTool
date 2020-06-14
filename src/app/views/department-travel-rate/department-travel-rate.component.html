@@ -30,8 +30,8 @@
 
     <div class="card-footer" style="float: left">
       <button class="btn btn-success" (click)="addNewDTR()">ADD NEW</button>
-      <button class="btn btn-primary" (click)="updateDTR()">UPDATE</button>
-      <button class="btn btn-danger" (click)="deleteDTR()" >DELETE</button>
+      <button class="btn btn-primary" [disabled]="selectedRow === -1" (click)="updateDTR()">UPDATE</button>
+      <button class="btn btn-danger" [disabled]="selectedRow === -1"(click)="deleteDTR()" >DELETE</button>
       <span style="float: right">
             <pagination [totalItems]="totalItems" [(ngModel)]="currentPage" name="page" [maxSize]="maxSize" [itemsPerPage]="itemPerPage"></pagination>
           </span>
@@ -40,9 +40,9 @@
 </div>
 
 
-<div class="card" [hidden]="!showField">
+<div class="fadeIn card" [hidden]="!showField">
   <div class="card-header">
-    <i class="fa fa-align-justify"></i> Add/Edit Department Travel Rate
+    Add/Edit Department Travel Rate
   </div>
   <div class="card-body">
 
@@ -51,7 +51,8 @@
       <div class="row">
         <div class="col-md-3">
           <label for="year">Year</label>
-          <input id="year" class="form-control" name="year" type="text" placeholder="Year" [(ngModel)]="newDTR.year">
+          <ng-select id="year" [(ngModel)]="newDTR.year" placeholder="Year" class="bootstrap" [options]="year">
+          </ng-select>
         </div>
 
         <div class="col-md-3">
@@ -85,6 +86,6 @@
 
   </div>
   <div class="card-footer">
-    <button class="btn btn-success" (click)="save()">Save</button>
+    <button class="float-right btn btn-success" (click)="save()">Save</button>
   </div>
 </div>
