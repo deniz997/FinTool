@@ -60,6 +60,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
 import {SelectModule} from 'ng-select';
 import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-typ.component';
+import {MandayRateComponent} from './views/tables/manday-rate/manday-rate.component';
+import {TicketRateComponent} from './views/tables/ticket-rate/ticket-rate.component';
+import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
+import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
 
 @NgModule({
   imports: [
@@ -110,7 +114,11 @@ import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-ty
     TravelTableComponent,
     TicketComponent,
     RateTableComponent,
-    TravelDayTypComponent
+    TravelDayTypComponent,
+    MandayRateComponent,
+    TicketRateComponent,
+    FixCostsComponent,
+    FixCostRateComponent
   ],
   providers: [{
     provide: LocationStrategy,

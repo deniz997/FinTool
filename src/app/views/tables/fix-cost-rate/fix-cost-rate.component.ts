@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-rate-table',
-  templateUrl: './rate-table.component.html',
-  styleUrls: ['./rate-table.component.css']
+  selector: 'app-fix-cost-rate',
+  templateUrl: './fix-cost-rate.component.html',
+  styleUrls: ['./fix-cost-rate.component.css']
 })
-export class RateTableComponent implements OnInit {
+export class FixCostRateComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
   data: [{ currency: string; year: number; rate: string; number: number }];
@@ -26,7 +26,7 @@ export class RateTableComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        currency: 'Regional',
+        currency: 'Silver',
         year: 2020,
         rate : 'EUR',
         number: 1500
@@ -39,14 +39,14 @@ export class RateTableComponent implements OnInit {
   RightTableHeaders = [
     'Currency',
     'Value',
-    'Travel Typ',
+    'Fix Cost Typ',
     'Year'
   ];
 
   public Typ: Array<IOption> = [
-    {label: 'Regional', value: 'Item1'},
-    {label: 'Domestic', value: 'Item2'},
-    {label: 'Overseas', value: 'Item2'}
+    {label: 'Monitoring', value: 'Item1'},
+    {label: 'Licence', value: 'Item2'},
+    {label: 'Fix E5 Cost', value: 'Item1'}
   ];
 
 

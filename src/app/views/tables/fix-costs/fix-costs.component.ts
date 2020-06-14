@@ -2,17 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-rate-table',
-  templateUrl: './rate-table.component.html',
-  styleUrls: ['./rate-table.component.css']
+  selector: 'app-fix-costs',
+  templateUrl: './fix-costs.component.html',
+  styleUrls: ['./fix-costs.component.css']
 })
-export class RateTableComponent implements OnInit {
+export class FixCostsComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ currency: string; year: number; rate: string; number: number }];
-  currency: string[];
-  saved: boolean = true;
-  rate: number;
+  data: [{ currency: string; }, { currency: string; }, { currency: string; }];
 
   showAdd = false;
   showUpdate = false;
@@ -22,14 +19,16 @@ export class RateTableComponent implements OnInit {
   maxSize: number = 3;
   private selectedRowNumber: number;
 
-
   constructor() {
     this.data = [
       {
-        currency: 'Regional',
-        year: 2020,
-        rate : 'EUR',
-        number: 1500
+        currency : 'Monitoring'
+      },
+      {
+        currency : 'Licence'
+      },
+      {
+        currency : 'Fix E5 Costs'
       }
     ];
     this.setClickedRow = function (index) {
@@ -37,32 +36,15 @@ export class RateTableComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Currency',
-    'Value',
-    'Travel Typ',
-    'Year'
+    'Fix Costs'
   ];
 
-  public Typ: Array<IOption> = [
-    {label: 'Regional', value: 'Item1'},
-    {label: 'Domestic', value: 'Item2'},
-    {label: 'Overseas', value: 'Item2'}
+  public Currency: Array<IOption> = [
+    {label: 'Monitoring', value: 'Item1'},
+    {label: 'Licence', value: 'Item2'},
+    {label: 'Fix E5 Cost', value: 'Item2'}
   ];
 
-
-  public Rate: Array<IOption> = [
-    {label: 'EUR', value: 'Item1'},
-    {label: 'TL', value: 'Item2'}
-  ];
-
-  public year: Array<IOption> = [
-    {label: '2020', value: 'Year1'},
-    {label: '2019', value: 'Year2'},
-    {label: '2018', value: 'Year3'},
-    {label: '2017', value: 'Year4'},
-    {label: '2016', value: 'Year5'},
-    {label: '2015', value: 'Year6'},
-  ];
 
   validSelectedRowNumber: boolean = false;
 
