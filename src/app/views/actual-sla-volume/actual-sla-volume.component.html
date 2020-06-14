@@ -73,10 +73,17 @@
                     <tr>
                       <td *ngFor="let _ of tableHeaders; let columnNumber = index">
                         <label style="text-align: center">
-                          <input type="text" class="form-control"
+                          <input *ngIf="tableDataInputType[columnNumber] == this.typeInput" type="text" class="form-control"
                                  [placeholder]="getPlaceHolderForAddCardFields(columnNumber)"
                                  [disabled]="isAddInputDisabled(columnNumber)"
                                  [defaultValue]="getDefaultValueForAddCard(columnNumber)">
+
+                          <select *ngIf="tableDataInputType[columnNumber] == this.typeDropdown"
+                                  class="form-control">
+                            <option *ngFor="let costCenter of costCenters">{{costCenter}}</option>
+                          </select>
+
+                          <input *ngIf="tableDataInputType[columnNumber] == this.typeDatepicker" type="date" class="form-control">
                         </label>
                       </td>
                     </tr>
@@ -116,10 +123,22 @@
                     <tr>
                       <td *ngFor="let _ of tableHeaders; let columnNumber = index">
                         <label style="text-align: center">
-                          <input type="text" class="form-control"
-                                 [placeholder]="getPlaceHolderForUpdateCardFields(columnNumber)"
+                          <input *ngIf="tableDataInputType[columnNumber] == this.typeInput" type="text" class="form-control"
+                                 [placeholder]="getPlaceHolderForAddCardFields(columnNumber)"
                                  [disabled]="isInputDisabled(columnNumber)"
                                  [defaultValue]="getDefaultValueForUpdateCard(columnNumber)">
+
+                          <select *ngIf="tableDataInputType[columnNumber] == this.typeDropdown"
+                                  [disabled]="isInputDisabled(columnNumber)"
+                                  [value]="getDefaultValueForUpdateCard(columnNumber)"
+                                  class="form-control">
+                            <option *ngFor="let costCenter of costCenters">{{costCenter}}</option>
+                          </select>
+
+                          <input *ngIf="tableDataInputType[columnNumber] == this.typeDatepicker"
+                                 type="date" class="form-control"
+                                 [disabled]="isInputDisabled(columnNumber)"
+                                 [defaultValue]="formatDateForInput(getDefaultValueForUpdateCard(columnNumber))">
                         </label>
                       </td>
                     </tr>

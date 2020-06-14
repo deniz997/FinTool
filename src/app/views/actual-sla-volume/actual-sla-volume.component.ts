@@ -42,11 +42,26 @@ export class ActualSlaVolumeComponent implements OnInit {
     ['SLA20_ITTQT_113', 'EPA Coordination', '0000036140 - Regional Rollout E4',  'Cyber Security', 'RO', '01.01.2020', '31.12.2020', '440', '112.200', '24', '68', '24', '-', '-', '-', '-', '-', '-', '22.972', '0', '135.172'],
   ];
 
+  costCenters = [
+    '0000036140 - Regional Rollout E2',
+    '0000036140 - Regional Rollout E3',
+    '0000036140 - Regional Rollout E4',
+    '0000036140 - Regional Rollout E5'
+  ];
+
+  // Input = 0, dropdown = 1, datepicker = 2
+  typeInput = 0;
+  typeDropdown = 1;
+  typeDatepicker = 2;
+  tableDataInputType = [0, 0, 1, 0, 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
   disabledHeaders = [
     'Manday Cost',
     'Travel Expense',
     'Travel Cost',
   ];
+
+
 
   currentPage: number = 1;
   totalItems: number = 60;
@@ -63,6 +78,11 @@ export class ActualSlaVolumeComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateSlaTotal();
+  }
+
+  formatDateForInput(date: string) {
+    const arr = date.split('.');
+    return `${arr[2]}-${arr[1]}-${arr[0]}`;
   }
 
   updateSlaTotal() {
