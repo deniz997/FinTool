@@ -48,6 +48,19 @@ export class ExternalHeadcountComponent implements OnInit {
     ['Total Extern Headcount Cost from Capa Plan', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
   ];
 
+  // Todo:  Temporary input for non-existent years.  Will be removed in final version
+  tableDataTempInput = [
+    ['Regional Rollout P', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Regional Rollout A', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Regional Rollout B', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Regional Rollout C', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Total Extern Headcount Cost per Class', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Total Extern Headcount Cost from Capa Plan', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Total', '', '', '', '', '', '', '', '', '', '', '', ''],
+  ];
+  isShowingNewYear = false;
+  // TODO: END TODO
+
   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   totalExternHeadcountCostPerClassIndex = 4;
@@ -87,7 +100,24 @@ export class ExternalHeadcountComponent implements OnInit {
     }
   }
 
-  showYear(year: string, event) {
+  showYearsTableData(year: string) {
+    const current = new Date(Date.now()).getFullYear();
+    if (!this.isShowingNewYear && parseInt(year, 10) > current
+      || this.isShowingNewYear && parseInt(year, 10) <= current) {
+      let temp: Array<Array<string>>;
+      temp = this.tableData;
+      this.tableData = this.tableDataTempInput;
+      this.tableDataTempInput = temp;
+      this.isShowingNewYear = !this.isShowingNewYear;
+    }
+  }
+
+  onYearClick(year: string, event) {
+    this.changeActiveYear(year, event);
+    this.showYearsTableData(year);
+  }
+
+  changeActiveYear(year: string, event) {
     const myDom = this.getDomElementFromEvent(event);
     const children = myDom.parentElement.parentElement.children;
     for (let i = 0; i < children.length; i++) {
