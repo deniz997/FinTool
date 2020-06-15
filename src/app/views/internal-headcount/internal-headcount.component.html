@@ -51,7 +51,7 @@
               <tbody>
               <ng-container *ngFor="let year of inputtedYears">
                 <tr>
-                  <td id="{{year}}Selector" (click)="showYear(year, $event)">{{year}}</td>
+                  <td id="{{year}}Selector" (click)="onYearClick(year, $event)">{{year}}</td>
                 </tr>
               </ng-container>
               </tbody>

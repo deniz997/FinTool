@@ -49,6 +49,22 @@ export class InternalHeadcountComponent implements OnInit {
     ['Total', '159', '159', '160', '171', '178', '188', '189', '190', '189', '192', '195', '195', '180', '5.462']
   ];
 
+
+  // Todo:  Temporary input for non-existent years.  Will be removed in final version
+  tableDataTempInput = [
+    ['0000036100 - SAP & Rollout Service Delivery Turkey', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036110 - SAP Service Delivery & Operations Turkey', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036120 - SAP Service Delivery & Operations Turkey', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036130 - SAP Service Delivery & Operations Turkey', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036140 - Regional Rollout', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036150 - Strategy & Performance Management', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036160 - CoC PDM/BOM, Change Mgmt. & Engineering Services', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['0000036170 - Analytics & Digital Solutions', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+    ['Total', '', '', '', '', '', '', '', '', '', '', '', '', '', ''],
+  ];
+  isShowingNewYear = false;
+  // TODO: END TODO
+
   showInputField: boolean;
   selectedRowNumber: number;
   validSelectedRowNumber: boolean = false;
@@ -64,9 +80,24 @@ export class InternalHeadcountComponent implements OnInit {
     });
   }
 
-  showYear(year: string, event) {
-    console.log(year);
+  showYearsTableData(year: string) {
+    const current = new Date(Date.now()).getFullYear();
+    if (!this.isShowingNewYear && parseInt(year, 10) > current
+      || this.isShowingNewYear && parseInt(year, 10) <= current) {
+      let temp: Array<Array<string>>;
+      temp = this.tableData;
+      this.tableData = this.tableDataTempInput;
+      this.tableDataTempInput = temp;
+      this.isShowingNewYear = !this.isShowingNewYear;
+    }
+  }
 
+  onYearClick(year: string, event) {
+    this.changeActiveYear(year, event);
+    this.showYearsTableData(year);
+  }
+
+  changeActiveYear(year: string, event) {
     const myDom = this.getDomElementFromEvent(event);
     const children = myDom.parentElement.parentElement.children;
     for (let i = 0; i < children.length; i++) {
