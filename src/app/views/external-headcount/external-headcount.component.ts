@@ -44,7 +44,7 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
     ['Regional Rollout B', '9', '9', '9', '7', '7', '7', '7', '8', '8', '8', '8', '8'],
     ['Regional Rollout C', '10', '11', '12', '12', '12', '12', '12', '12', '12', '12', '12', '12'],
     ['Total Extern Headcount Cost per Class'],
-    ['Total Extern Headcount Cost from Capa Plan', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-', '-']
+    ['Total Extern Headcount Cost from Capa Plan', '', '', '', '', '', '', '', '', '', '', '', '']
   ];
 
   // Todo:  Temporary input for non-existent years.  Will be removed in final version
