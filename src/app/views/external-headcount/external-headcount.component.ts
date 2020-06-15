@@ -55,7 +55,6 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
     ['Regional Rollout C', '', '', '', '', '', '', '', '', '', '', '', ''],
     ['Total Extern Headcount Cost per Class', '', '', '', '', '', '', '', '', '', '', '', ''],
     ['Total Extern Headcount Cost from Capa Plan', '', '', '', '', '', '', '', '', '', '', '', ''],
-    ['Total', '', '', '', '', '', '', '', '', '', '', '', ''],
   ];
   isShowingNewYear = false;
   // TODO: END TODO
