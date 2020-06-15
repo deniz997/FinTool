@@ -74,13 +74,10 @@ export class InternalHeadcountComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngOnInit(): void {
-    this.sleep(150).subscribe(_ => {
-      this.tableResized();
-    });
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
+    this.tableResized();
     this.changeActiveYear(null, this.getCurrentYear().toString(10));
   }
 

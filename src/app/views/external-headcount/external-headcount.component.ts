@@ -67,14 +67,12 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
   validSelectedRowNumber: boolean = false;
 
   ngOnInit(): void {
-    this.sleep(150).subscribe(_ => {
-      this.tableResized();
-    });
     this.fillTable();
     this.fillCards();
   }
 
   ngAfterViewInit() {
+    this.tableResized();
     this.changeActiveYear(null, this.getCurrentYear().toString(10));
   }
 
