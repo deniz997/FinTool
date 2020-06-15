@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import PerfectScrollbar from 'perfect-scrollbar';
 import {Observable, timer} from 'rxjs';
@@ -9,7 +9,7 @@ import {Observable, timer} from 'rxjs';
   templateUrl: './internal-headcount.component.html',
   styleUrls: ['./internal-headcount.component.css']
 })
-export class InternalHeadcountComponent implements OnInit {
+export class InternalHeadcountComponent implements OnInit, AfterViewInit {
 
   constructor(@Inject(DOCUMENT) document) { }
 
@@ -80,8 +80,12 @@ export class InternalHeadcountComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.changeActiveYear(null, this.getCurrentYear().toString(10));
+  }
+
   showYearsTableData(year: string) {
-    const current = new Date(Date.now()).getFullYear();
+    const current = this.getCurrentYear();
     if (!this.isShowingNewYear && parseInt(year, 10) > current
       || this.isShowingNewYear && parseInt(year, 10) <= current) {
       let temp: Array<Array<string>>;
@@ -93,13 +97,27 @@ export class InternalHeadcountComponent implements OnInit {
   }
 
   onYearClick(year: string, event) {
-    this.changeActiveYear(year, event);
+    this.changeActiveYear(this.getYearDom(event));
     this.showYearsTableData(year);
   }
 
-  changeActiveYear(year: string, event) {
-    const myDom = this.getDomElementFromEvent(event);
-    const children = myDom.parentElement.parentElement.children;
+  getCurrentYear() {
+    return new Date(Date.now()).getFullYear();
+  }
+
+  getYearDom(event?, year?: string) {
+    if (event != null) {
+      return this.getDomElementFromEvent(event);
+    }
+    return document.getElementById(year + 'Selector');
+  }
+
+  changeActiveYear(yearButtonDom, year?: string) {
+    if (yearButtonDom == null) {
+      yearButtonDom = this.getYearDom(null, year);
+    }
+    const children = yearButtonDom.parentElement.parentElement.children;
+
     for (let i = 0; i < children.length; i++) {
       const child = children[i];
       if (child.classList.contains('active')) {
@@ -107,7 +125,7 @@ export class InternalHeadcountComponent implements OnInit {
         break;
       }
     }
-    myDom.parentElement.classList.add('active');
+    yearButtonDom.parentElement.classList.add('active');
   }
 
   tableResized() {
