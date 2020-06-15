@@ -8,7 +8,7 @@
             <div class="h1 text-muted text-right mb-4">
               <i class="icon-people"></i>
             </div>
-            <div class="h1 mb-0">65</div>
+            <div class="h1 mb-0">{{tableData[tableData.length - 1][tableData[tableData.length - 1].length - 3]}}</div>
             <small class="text-muted text-uppercase font-weight-bold">Total Count</small>
           </div>
         </div>
@@ -19,7 +19,7 @@
             <div class="h1 text-muted text-right mb-4">
               <i class="icon-people"></i>
             </div>
-            <div class="h1 mb-0">59</div>
+            <div class="h1 mb-0">{{tableData[tableData.length - 1][tableData[tableData.length - 1].length - 2]}}</div>
             <small class="text-muted text-uppercase font-weight-bold">Total Average</small>
           </div>
         </div>
@@ -30,7 +30,7 @@
             <div class="h1 text-muted text-right mb-4">
               <i class="icon-people"></i>
             </div>
-            <div class="h1 mb-0">1335</div>
+            <div class="h1 mb-0">{{tableData[tableData.length - 1][tableData[tableData.length - 1].length - 1]}}</div>
             <small class="text-muted text-uppercase font-weight-bold">Total PGK</small>
           </div>
         </div>
@@ -93,7 +93,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr  [class.hoverable]="i != tableData.length - 1" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
+              <tr [class.hoverable]="i != tableData.length - 1" *ngFor="let row of tableData; let i = index" (click)="onTableRowClick(i)" [class.active] = "selectedRowNumber == i">
                 <td *ngFor="let column of row">{{column}}</td>
               </tr>
               </tbody>
