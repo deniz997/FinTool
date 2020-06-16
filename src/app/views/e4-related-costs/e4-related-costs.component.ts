@@ -21,6 +21,7 @@ export class E4RelatedCostsComponent implements OnInit {
   public subCosts: Array<IOption>;
   public selectedMainCostItem: string;
   public subCostSelectDisabled: boolean;
+  public selectedSubCost: string;
 
   public selectedMainCost(value: IOption): void {
     this.selectedMainCostItem = value.label;
@@ -46,6 +47,9 @@ export class E4RelatedCostsComponent implements OnInit {
     this.mainCostSelectDisabled = false;
   }
 
+  public selectedSubCostCat(value: IOption): void {
+    this.selectedSubCost = value.value;
+  }
   ngOnInit(): void {
     this.mainCostSelectDisabled = true;
     this.subCostSelectDisabled = true;

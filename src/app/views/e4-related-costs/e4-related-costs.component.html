@@ -27,8 +27,24 @@
           placeholder="Sub-Costs"
           [options]="subCosts"
           [disabled]="subCostSelectDisabled"
-          [allowClear]="false"></ng-select>
+          [allowClear]="false"
+          (selected)="selectedSubCostCat($event)"></ng-select>
       </fieldset>
     </div>
   </div>
+</div>
+<div *ngIf="selectedSubCost==='mT'">
+  <app-management-travels></app-management-travels>
+</div>
+<div *ngIf="selectedSubCost==='eB'">
+  <app-external-bench></app-external-bench>
+</div>
+<div *ngIf="selectedSubCost==='tool'">
+  <app-tool></app-tool>
+</div>
+<div *ngIf="selectedSubCost==='ncC'">
+  <app-non-chargeable-consaltancy></app-non-chargeable-consaltancy>
+</div>
+<div *ngIf="selectedSubCost==='iP'">
+  <app-internal-project></app-internal-project>
 </div>
