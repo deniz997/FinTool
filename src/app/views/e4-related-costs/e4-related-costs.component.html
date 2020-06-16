@@ -1,50 +1,56 @@
-<div class="card">
-  <div class="card-header">
-    <strong>E4 Related Costs</strong>
-  </div>
-  <div class="card-body">
-    <div class="row">
-      <fieldset class="form-group col-xs-12 col-md-3">
-        <ng-select
-          class="bootstrap"
-          placeholder="Cost Categories"
-          [options]="costCategories"
-          [allowClear]="false"
-          (selected)="selectedCostCategory($event)"></ng-select>
-      </fieldset>
-      <fieldset class="form-group col-xs-12 col-md-3">
-        <ng-select
-          class="bootstrap"
-          placeholder="Main Costs"
-          [disabled]="mainCostSelectDisabled"
-          [options]="mainCosts"
-          [allowClear]="false"
-          (selected)="selectedMainCost($event)"></ng-select>
-      </fieldset>
-      <fieldset class="form-group col-xs-12 col-md-3">
-        <ng-select
-          class="bootstrap"
-          placeholder="Sub-Costs"
-          [options]="subCosts"
-          [disabled]="subCostSelectDisabled"
-          [allowClear]="false"
-          (selected)="selectedSubCostCat($event)"></ng-select>
-      </fieldset>
+<div class="animated fadeIn">
+<!--  Cost type selection-->
+  <div class="card">
+    <div class="card-header">
+      <strong>E4 Related Costs</strong>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <fieldset class="form-group col-xs-12 col-md-3">
+          <ng-select
+            class="bootstrap"
+            placeholder="Cost Categories"
+            [options]="costCategories"
+            [allowClear]="false"
+            (selected)="selectedCostCategory($event)"></ng-select>
+        </fieldset>
+        <fieldset class="form-group col-xs-12 col-md-3">
+          <ng-select
+            class="bootstrap"
+            placeholder="Main Costs"
+            [disabled]="mainCostSelectDisabled"
+            [options]="mainCosts"
+            [allowClear]="false"
+            (selected)="selectedMainCost($event)"></ng-select>
+        </fieldset>
+        <fieldset class="form-group col-xs-12 col-md-3">
+          <ng-select
+            class="bootstrap"
+            placeholder="Sub-Costs"
+            [options]="subCosts"
+            [disabled]="subCostSelectDisabled"
+            [allowClear]="false"
+            (selected)="selectedSubCostCat($event)"></ng-select>
+        </fieldset>
+      </div>
     </div>
   </div>
-</div>
-<div *ngIf="selectedSubCost==='mT'">
-  <app-management-travels></app-management-travels>
-</div>
-<div *ngIf="selectedSubCost==='eB'">
-  <app-external-bench></app-external-bench>
-</div>
-<div *ngIf="selectedSubCost==='tool'">
-  <app-tool></app-tool>
-</div>
-<div *ngIf="selectedSubCost==='ncC'">
-  <app-non-chargeable-consaltancy></app-non-chargeable-consaltancy>
-</div>
-<div *ngIf="selectedSubCost==='iP'">
-  <app-internal-project></app-internal-project>
+<!--  Operations and components based on cost type-->
+  <div id="subPages">
+    <div *ngIf="selectedSubCost==='mT'">
+      <app-management-travels></app-management-travels>
+    </div>
+    <div *ngIf="selectedSubCost==='eB'">
+      <app-external-bench></app-external-bench>
+    </div>
+    <div *ngIf="selectedSubCost==='tool'">
+      <app-tool></app-tool>
+    </div>
+    <div *ngIf="selectedSubCost==='ncC'">
+      <app-non-chargeable-consaltancy></app-non-chargeable-consaltancy>
+    </div>
+    <div *ngIf="selectedSubCost==='iP'">
+      <app-internal-project></app-internal-project>
+    </div>
+  </div>
 </div>

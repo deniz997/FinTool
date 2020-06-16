@@ -64,6 +64,11 @@ import { SlaMandayComponent } from './views/sla-item-parameter-tables/sla-manday
 import { SlaTravelComponent } from './views/sla-item-parameter-tables/sla-travel/sla-travel.component';
 import { SlaTicketComponent } from './views/sla-item-parameter-tables/sla-ticket/sla-ticket.component';
 import { SlaFixCostsComponent } from './views/sla-item-parameter-tables/sla-fix-costs/sla-fix-costs.component';
+import { ManagementTravelsComponent } from './views/e4-related-costs/management-travels/management-travels.component';
+import { ExternalBenchComponent } from './views/e4-related-costs/external-bench/external-bench.component';
+import { ToolComponent } from './views/e4-related-costs/tool/tool.component';
+import { NonChargeableConsultancyComponent } from './views/e4-related-costs/non-chargeable-consultancy/non-chargeable-consultancy.component';
+import { InternalProjectComponent } from './views/e4-related-costs/internal-project/internal-project.component';
 
 @NgModule({
   imports: [
@@ -118,7 +123,12 @@ import { SlaFixCostsComponent } from './views/sla-item-parameter-tables/sla-fix-
     SlaMandayComponent,
     SlaTravelComponent,
     SlaTicketComponent,
-    SlaFixCostsComponent
+    SlaFixCostsComponent,
+    ManagementTravelsComponent,
+    ExternalBenchComponent,
+    ToolComponent,
+    NonChargeableConsultancyComponent,
+    InternalProjectComponent
   ],
   providers: [{
     provide: LocationStrategy,
