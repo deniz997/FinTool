@@ -146,11 +146,11 @@ export class InternalHeadcountComponent implements OnInit, AfterViewInit {
 
   }
 
-  closeInputCard() {
+  closeUpdateCard() {
     this.showInputField = false;
   }
 
-  openInputCard() {
+  openUpdateCard() {
     this.showInputField = true;
   }
 
@@ -163,7 +163,7 @@ export class InternalHeadcountComponent implements OnInit, AfterViewInit {
     if (i !== this.tableData.length - 1) {
       this.saveClickedRow(i);
     }
-    this.closeInputCard();
+    this.closeUpdateCard();
     this.updateSizeOnUpdateButtonAppearanceChange();
   }
 
@@ -176,10 +176,14 @@ export class InternalHeadcountComponent implements OnInit, AfterViewInit {
     });
   }
 
-
-  openUpdateCard() {
-    this.openInputCard();
+  onUpdateCardClick() {
+    if (this.showInputField) {
+      this.closeUpdateCard();
+    } else {
+      this.openUpdateCard();
+    }
   }
+
 
   clearClickedRow() {
     this.saveClickedRow(-1);
@@ -199,7 +203,7 @@ export class InternalHeadcountComponent implements OnInit, AfterViewInit {
   }
 
   submit() {
-    this.closeInputCard();
+    this.closeUpdateCard();
     this.clearClickedRow();
     this.updateSizeOnUpdateButtonAppearanceChange();
   }
