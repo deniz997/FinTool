@@ -142,7 +142,14 @@ import { InternalProjectComponent } from './views/e4-related-costs/internal-proj
     ExternalBenchComponent,
     ToolComponent,
     NonChargeableConsultancyComponent,
-    InternalProjectComponent
+    InternalProjectComponent,
+    TravelDayTypComponent,
+    MandayRateComponent,
+    TicketRateComponent,
+    FixCostsComponent,
+    FixCostRateComponent,
+    ParametersComponent,
+    RateComponent
   ],
   providers: [{
     provide: LocationStrategy,
