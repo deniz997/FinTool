@@ -40,7 +40,7 @@
       <strong>Add new Tool</strong>
     </div>
     <div class="card-body">
-      <div class="row">
+      <div class="row justify-content-end">
         <fieldset class="form-group col-12">
           <label>Definition</label><br>
           <input type="text" class="form-control" placeholder="Definition">
@@ -68,8 +68,8 @@
           <label>Total (€)</label><br>
           <input type="number" class="form-control" placeholder="Total" [disabled]="true">
         </fieldset>
-        <div class="my-auto pt-3 ml-2 mr-5 ">
-          <button type="button" class="btn btn-block btn-success px-5" (click)="hideContent()">SAVE</button>
+        <div class="my-auto pt-3 ml-2 mr-md-5 mr-sm-3">
+          <button type="button" class="btn btn-block btn-primary px-5" (click)="ShowHideAdd()">SAVE</button>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
       <strong>Update Tool</strong>
     </div>
     <div class="card-body">
-      <div class="row">
+      <div class="row justify-content-end">
         <fieldset class="form-group col-12">
           <label>Definition</label><br>
           <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].Definition">
@@ -107,8 +107,8 @@
           <label>Total (€)</label><br>
           <input type="number" class="form-control" [defaultValue]="data[selectedRowNumber].Total" [disabled]="true">
         </fieldset>
-        <div class="my-auto pt-3 ml-2 mr-5 ">
-          <button type="button" class="btn btn-block btn-success px-5" (click)="hideContent()">SAVE</button>
+        <div class="my-auto pt-3 ml-2 mr-md-5 mr-sm-3">
+          <button type="button" class="btn btn-block btn-primary px-5" (click)="ShowHideUpdate()">SAVE</button>
         </div>
       </div>
     </div>

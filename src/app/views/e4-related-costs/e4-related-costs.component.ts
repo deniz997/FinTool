@@ -44,6 +44,11 @@ export class E4RelatedCostsComponent implements OnInit {
     } else if (value.value === 'project') {
       this.mainCosts = [{label: 'Outsource & Consultancy', value: 'oC'}];
     }
+    if (this.selectedSubCost != null) {
+      this.subCostSelectDisabled = true;
+    } else {
+      this.subCostSelectDisabled = false;
+    }
     this.mainCostSelectDisabled = false;
   }
 

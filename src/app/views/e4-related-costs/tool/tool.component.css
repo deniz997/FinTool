@@ -1,0 +1,14 @@
+.card-footer {
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+.table tr.active td{
+  background-color: #999999 ;
+  color: black;
+}
+
+tbody tr:hover{
+  background-color: #cccccc;
+}

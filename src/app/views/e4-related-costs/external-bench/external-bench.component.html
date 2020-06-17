@@ -41,11 +41,11 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <fieldset class="form-group col-xs-12 col-md-3">
+        <fieldset class="form-group col-md">
           <label>FTE</label><br>
           <input type="number" class="form-control" placeholder="FTE Value">
         </fieldset>
-        <fieldset class="form-group col-xs-12 col-md-3">
+        <fieldset class="form-group col-md">
           <label>Class</label><br>
           <ng-select
             class="bootstrap"
@@ -54,13 +54,14 @@
             [allowClear]="false"
           ></ng-select>
         </fieldset>
-        <fieldset class="form-group col-xs-12 col-md-3">
+        <fieldset class="form-group col-md">
           <label>Total</label><br>
           <input type="number" class="form-control" [placeholder]="'Total Cost'" [disabled]="true">
         </fieldset>
-        <div class="my-auto pt-3 ml-auto mr-5 ">
-          <button type="button" class="btn btn-block btn-success px-5" (click)="hideContent()">SAVE</button>
-        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-sm-3 col-md-2"></div>
+        <button type="button" class="btn btn-primary mr-3" (click)="ShowHideAdd()">SAVE</button>
       </div>
     </div>
   </div>
@@ -70,11 +71,11 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <fieldset class="form-group col-xs-12 col-md-3">
+        <fieldset class="form-group col-md">
           <label>FTE</label><br>
           <input type="number" class="form-control" [defaultValue]="data[selectedRowNumber].FTE">
         </fieldset>
-        <fieldset class="form-group col-xs-12 col-md-3">
+        <fieldset class="form-group col-md">
           <label>Class</label><br>
           <ng-select
             class="bootstrap"
@@ -84,13 +85,14 @@
             [allowClear]="false"
           ></ng-select>
         </fieldset>
-        <fieldset class="form-group col-xs-12 col-md-3">
+        <fieldset class="form-group col-md">
           <label>Total</label><br>
           <input type="number" class="form-control" [defaultValue]="data[selectedRowNumber].Total" [disabled]="true">
         </fieldset>
-        <div class="my-auto pt-3 ml-auto mr-5 ">
-          <button type="button" class="btn btn-block btn-success px-5" (click)="hideContent()">SAVE</button>
-        </div>
+      </div>
+      <div class="row justify-content-end">
+        <div class="col-sm-3 col-md-2"></div>
+          <button type="button" class="btn btn-primary mr-3" (click)="ShowHideUpdate()">SAVE</button>
       </div>
     </div>
   </div>

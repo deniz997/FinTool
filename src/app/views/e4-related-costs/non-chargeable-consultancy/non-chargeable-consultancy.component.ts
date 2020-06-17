@@ -65,13 +65,11 @@ export class NonChargeableConsultancyComponent implements OnInit {
   }
 
   ShowHideAdd(): void {
-    this.showAdd = true;
-    this.showUpdate = false;
+    this.showAdd = !this.showAdd;
   }
 
   ShowHideUpdate(): void {
-    this.showAdd = false;
-    this.showUpdate = true;
+    this.showUpdate = !this.showUpdate;
   }
 
   SetSelectedRow(): void {
