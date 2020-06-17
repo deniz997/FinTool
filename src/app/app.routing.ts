@@ -34,6 +34,8 @@ import {MandayRateComponent} from './views/tables/manday-rate/manday-rate.compon
 import {TicketRateComponent} from './views/tables/ticket-rate/ticket-rate.component';
 import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
 import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
+import {ParametersComponent} from './views/parameters/parameters.component';
+import {RateComponent} from './views/rates/rate.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +57,20 @@ export const routes: Routes = [
       {
         path: 'parameter/dialog',
         component: DialogFieldComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/dialog/parameters',
+        component: ParametersComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/dialog/rate',
+        component: RateComponent,
         data: {
           title: 'Parameter'
         },

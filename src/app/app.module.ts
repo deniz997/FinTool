@@ -64,6 +64,8 @@ import {MandayRateComponent} from './views/tables/manday-rate/manday-rate.compon
 import {TicketRateComponent} from './views/tables/ticket-rate/ticket-rate.component';
 import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
 import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
+import {ParametersComponent} from './views/parameters/parameters.component';
+import {RateComponent} from './views/rates/rate.component';
 import { SlaMandayComponent } from './views/sla-item-parameter-tables/sla-manday/sla-manday.component';
 import { SlaTravelComponent } from './views/sla-item-parameter-tables/sla-travel/sla-travel.component';
 import { SlaTicketComponent } from './views/sla-item-parameter-tables/sla-ticket/sla-ticket.component';
@@ -127,6 +129,9 @@ import { InternalProjectComponent } from './views/e4-related-costs/internal-proj
     MandayRateComponent,
     TicketRateComponent,
     FixCostsComponent,
+    FixCostRateComponent,
+    ParametersComponent,
+    RateComponent
     FixCostRateComponent
     TravelDayTypComponent,
     SlaMandayComponent,
