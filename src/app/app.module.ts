@@ -131,8 +131,8 @@ import { InternalProjectComponent } from './views/e4-related-costs/internal-proj
     FixCostsComponent,
     FixCostRateComponent,
     ParametersComponent,
-    RateComponent
-    FixCostRateComponent
+    RateComponent,
+    FixCostRateComponent,
     TravelDayTypComponent,
     SlaMandayComponent,
     SlaTravelComponent,
