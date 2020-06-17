@@ -64,6 +64,8 @@ import {MandayRateComponent} from './views/tables/manday-rate/manday-rate.compon
 import {TicketRateComponent} from './views/tables/ticket-rate/ticket-rate.component';
 import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
 import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
+import {ParametersComponent} from './views/parameters/parameters.component';
+import {RateComponent} from './views/rates/rate.component';
 
 @NgModule({
   imports: [
@@ -118,7 +120,9 @@ import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.c
     MandayRateComponent,
     TicketRateComponent,
     FixCostsComponent,
-    FixCostRateComponent
+    FixCostRateComponent,
+    ParametersComponent,
+    RateComponent
   ],
   providers: [{
     provide: LocationStrategy,

@@ -4,11 +4,11 @@ import PerfectScrollbar from 'perfect-scrollbar';
 import {DOCUMENT} from '@angular/common';
 
 @Component({
-  selector: 'app-dialog-field',
-  templateUrl: './dialog-field.component.html',
-  styleUrls: ['./dialog-field.component.css']
+  selector: 'app-parameters',
+  templateUrl: './parameters.component.html',
+  styleUrls: ['./parameters.component.css']
 })
-export class DialogFieldComponent implements OnInit {
+export class ParametersComponent implements OnInit {
 
   constructor() { }
 
