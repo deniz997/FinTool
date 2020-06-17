@@ -169,11 +169,11 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
     return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
   }
 
-  closeInputCard() {
+  closeUpdateCard() {
     this.showInputField = false;
   }
 
-  openInputCard() {
+  openUpdateCard() {
     this.showInputField = true;
   }
 
@@ -186,7 +186,7 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
     if (i !== this.tableData.length - 2) {
       this.saveClickedRow(i);
     }
-    this.closeInputCard();
+    this.closeUpdateCard();
     this.updateSizeOnUpdateButtonAppearanceChange();
   }
 
@@ -199,8 +199,12 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openUpdateCard() {
-    this.openInputCard();
+  onUpdateCardClick() {
+    if (this.showInputField) {
+      this.closeUpdateCard();
+    } else {
+      this.openUpdateCard();
+    }
   }
 
   clearClickedRow() {
@@ -221,7 +225,7 @@ export class ExternalHeadcountComponent implements OnInit, AfterViewInit {
   }
 
   submit() {
-    this.closeInputCard();
+    this.closeUpdateCard();
     this.clearClickedRow();
     this.updateSizeOnUpdateButtonAppearanceChange();
   }

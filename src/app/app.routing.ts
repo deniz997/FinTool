@@ -30,6 +30,12 @@ import {TravelTableComponent} from './views/tables/travel-table/travel-table.com
 import {TicketComponent} from './views/tables/ticket/ticket.component';
 import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
 import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-typ.component';
+import {MandayRateComponent} from './views/tables/manday-rate/manday-rate.component';
+import {TicketRateComponent} from './views/tables/ticket-rate/ticket-rate.component';
+import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
+import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
+import {ParametersComponent} from './views/parameters/parameters.component';
+import {RateComponent} from './views/rates/rate.component';
 
 export const routes: Routes = [
   {
@@ -51,6 +57,20 @@ export const routes: Routes = [
       {
         path: 'parameter/dialog',
         component: DialogFieldComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/dialog/parameters',
+        component: ParametersComponent,
+        data: {
+          title: 'Parameter'
+        },
+      },
+      {
+        path: 'parameter/dialog/rate',
+        component: RateComponent,
         data: {
           title: 'Parameter'
         },
@@ -107,6 +127,34 @@ export const routes: Routes = [
       {
         path: 'parameter/dialog/tables/planning',
         component: PlanningComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/manday-rate',
+        component: MandayRateComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/ticket-rate',
+        component: TicketRateComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/fix-costs',
+        component: FixCostsComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/fix-cost-rate',
+        component: FixCostRateComponent,
         data: {
           title: 'Dialog-Field'
         },
@@ -222,7 +270,8 @@ export const routes: Routes = [
         data: {
           title: 'Revenue'
         },
-      }
+      },
+
     ]
   }
 ];
@@ -231,4 +280,5 @@ export const routes: Routes = [
   imports: [ RouterModule.forRoot(routes) ],
   exports: [ RouterModule ]
 })
+
 export class AppRoutingModule {}

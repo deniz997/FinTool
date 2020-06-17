@@ -60,6 +60,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {RateTableComponent} from './views/tables/rate-table/rate-table.component';
 import {SelectModule} from 'ng-select';
 import {TravelDayTypComponent} from './views/tables/travel-day-typ/travel-day-typ.component';
+import {MandayRateComponent} from './views/tables/manday-rate/manday-rate.component';
+import {TicketRateComponent} from './views/tables/ticket-rate/ticket-rate.component';
+import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
+import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
+import {ParametersComponent} from './views/parameters/parameters.component';
+import {RateComponent} from './views/rates/rate.component';
 import { SlaMandayComponent } from './views/sla-item-parameter-tables/sla-manday/sla-manday.component';
 import { SlaTravelComponent } from './views/sla-item-parameter-tables/sla-travel/sla-travel.component';
 import { SlaTicketComponent } from './views/sla-item-parameter-tables/sla-ticket/sla-ticket.component';
@@ -120,6 +126,14 @@ import { InternalProjectComponent } from './views/e4-related-costs/internal-proj
     TicketComponent,
     RateTableComponent,
     TravelDayTypComponent,
+    MandayRateComponent,
+    TicketRateComponent,
+    FixCostsComponent,
+    FixCostRateComponent,
+    ParametersComponent,
+    RateComponent,
+    FixCostRateComponent,
+    TravelDayTypComponent,
     SlaMandayComponent,
     SlaTravelComponent,
     SlaTicketComponent,
@@ -128,7 +142,14 @@ import { InternalProjectComponent } from './views/e4-related-costs/internal-proj
     ExternalBenchComponent,
     ToolComponent,
     NonChargeableConsultancyComponent,
-    InternalProjectComponent
+    InternalProjectComponent,
+    TravelDayTypComponent,
+    MandayRateComponent,
+    TicketRateComponent,
+    FixCostsComponent,
+    FixCostRateComponent,
+    ParametersComponent,
+    RateComponent
   ],
   providers: [{
     provide: LocationStrategy,

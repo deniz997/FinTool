@@ -2,33 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-cost-center',
-  templateUrl: './cost-center.component.html',
-  styleUrls: ['./cost-center.component.css']
+  selector: 'app-fix-costs',
+  templateUrl: './fix-costs.component.html',
+  styleUrls: ['./fix-costs.component.css']
 })
-export class CostCenterComponent implements OnInit {
+export class FixCostsComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ costcenter: string; }, { costcenter: string; }, { costcenter: string; }];
+  data: [{ currency: string; }, { currency: string; }, { currency: string; }];
 
   showAdd = false;
   showUpdate = false;
-
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 3;
   private selectedRowNumber: number;
+
   constructor() {
     this.data = [
       {
-        costcenter : 'Cost Center Typ 1'
+        currency : 'Monitoring'
       },
       {
-        costcenter : 'Cost Center Typ 2'
+        currency : 'Licence'
       },
       {
-        costcenter : 'Cost Center Typ 3'
+        currency : 'Fix E5 Costs'
       }
     ];
     this.setClickedRow = function (index) {
@@ -36,13 +36,13 @@ export class CostCenterComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Cost Center Typ'
+    'Fix Costs'
   ];
 
-  public CostCenter: Array<IOption> = [
-    {label: 'Cost Center 1', value: 'Item1'},
-    {label: 'Cost Center 2', value: 'Item2'},
-    {label: 'Cost Center 3', value: 'Item3'},
+  public Currency: Array<IOption> = [
+    {label: 'Monitoring', value: 'Item1'},
+    {label: 'Licence', value: 'Item2'},
+    {label: 'Fix E5 Cost', value: 'Item2'}
   ];
 
 

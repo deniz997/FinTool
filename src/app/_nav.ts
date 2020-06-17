@@ -19,6 +19,16 @@ export const navItems: INavData[] = [
         name: 'Dialog Fields',
         url: '/parameter/dialog',
         icon: 'icon-puzzle',
+        children: [
+          {
+            name: 'Parameters',
+            url: '/parameter/dialog/parameters'
+          },
+          {
+            name: 'Rate Tables',
+            url: '/parameter/dialog/rate'
+          },
+        ]
       },
       {
         name: 'User',

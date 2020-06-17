@@ -2,33 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-cost-center',
-  templateUrl: './cost-center.component.html',
-  styleUrls: ['./cost-center.component.css']
+  selector: 'app-fix-cost-rate',
+  templateUrl: './fix-cost-rate.component.html',
+  styleUrls: ['./fix-cost-rate.component.css']
 })
-export class CostCenterComponent implements OnInit {
+export class FixCostRateComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ costcenter: string; }, { costcenter: string; }, { costcenter: string; }];
+  data: [{ currency: string; year: number; rate: string; number: number }];
+  currency: string[];
+  saved: boolean = true;
+  rate: number;
 
   showAdd = false;
   showUpdate = false;
-
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 3;
   private selectedRowNumber: number;
+
+
   constructor() {
     this.data = [
       {
-        costcenter : 'Cost Center Typ 1'
-      },
-      {
-        costcenter : 'Cost Center Typ 2'
-      },
-      {
-        costcenter : 'Cost Center Typ 3'
+        currency: 'Silver',
+        year: 2020,
+        rate : 'EUR',
+        number: 1500
       }
     ];
     this.setClickedRow = function (index) {
@@ -36,15 +37,32 @@ export class CostCenterComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Cost Center Typ'
+    'Currency',
+    'Value',
+    'Fix Cost Typ',
+    'Year'
   ];
 
-  public CostCenter: Array<IOption> = [
-    {label: 'Cost Center 1', value: 'Item1'},
-    {label: 'Cost Center 2', value: 'Item2'},
-    {label: 'Cost Center 3', value: 'Item3'},
+  public Typ: Array<IOption> = [
+    {label: 'Monitoring', value: 'Item1'},
+    {label: 'Licence', value: 'Item2'},
+    {label: 'Fix E5 Cost', value: 'Item1'}
   ];
 
+
+  public Rate: Array<IOption> = [
+    {label: 'EUR', value: 'Item1'},
+    {label: 'TL', value: 'Item2'}
+  ];
+
+  public year: Array<IOption> = [
+    {label: '2020', value: 'Year1'},
+    {label: '2019', value: 'Year2'},
+    {label: '2018', value: 'Year3'},
+    {label: '2017', value: 'Year4'},
+    {label: '2016', value: 'Year5'},
+    {label: '2015', value: 'Year6'},
+  ];
 
   validSelectedRowNumber: boolean = false;
 
