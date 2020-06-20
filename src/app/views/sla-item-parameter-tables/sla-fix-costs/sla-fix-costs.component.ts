@@ -37,6 +37,31 @@ export class SlaFixCostsComponent implements OnInit {
     };
   }
 
+  //Years for Scroll
+  public inputtedYears: Array<String> = [
+    '2007',
+    '2008',
+    '2009',
+    '2010',
+    '2011',
+    '2012',
+    '2013',
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    '2020',
+    '2021',
+    '2022',
+    '2023',
+    '2024',
+    '2025',
+    '2026',
+  ];
+
+
   selectedRow: Function;
 
   tableSubHeaders = [
@@ -62,6 +87,8 @@ export class SlaFixCostsComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
+  filterYear: string;
+
   public year: Array<IOption> = [
     {label: '2020', value: 'Year1'},
     {label: '2019', value: 'Year2'},
@@ -82,6 +109,10 @@ export class SlaFixCostsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+  }
+
+  onYearClick(Year: string){
+    this.filterYear = Year;
   }
 
   saveClickedRow(i: number) {
