@@ -9,7 +9,7 @@ import {IOption} from 'ng-select';
 export class PgkTableComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ pgktable: string; }, { pgktable: string; }];
+  data: [{ pgktable: string; }, { pgktable: string; }, { pgktable: string; }];
 
   showAdd = false;
   showUpdate = false;
@@ -22,10 +22,13 @@ export class PgkTableComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        pgktable : 'Definition 1'
+        pgktable : '0000036140 - Regional Rollout'
       },
       {
-        pgktable : 'Definition 2'
+        pgktable : 'SDC'
+      },
+      {
+        pgktable : 'SDC w/o Expat'
       }
     ];
     this.setClickedRow = function (index) {
@@ -37,8 +40,9 @@ export class PgkTableComponent implements OnInit {
   ];
 
   public PGKTable: Array<IOption> = [
-    {label: 'Definition 1', value: 'Item1'},
-    {label: 'Definition 2', value: 'Item2'}
+    {label: '0000036140 - Regional Rollout', value: 'Item1'},
+    {label: 'SDC', value: 'Item2'},
+    {label: 'SDC w/o Expat', value: 'Item2'}
   ];
 
 
