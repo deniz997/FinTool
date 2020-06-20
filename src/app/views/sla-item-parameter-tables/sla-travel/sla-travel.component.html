@@ -1,7 +1,29 @@
 <div class="animated fadeIn">
   <div class="row">
     <!-- row -->
-    <div class="col-lg-12">
+
+    <div class="col-2" style="padding-right: 0;">
+      <div class="card" style="height: inherit">
+        <div id="yearHeader" class="card-header">
+          <strong>Years</strong>
+        </div>
+        <div class="card-body" style="padding: 2px;">
+          <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+            <table class="table table-sm">
+              <tbody>
+              <ng-container *ngFor="let year of inputtedYears">
+                <tr>
+                  <td id="{{year}}Selector" (click)="onYearClick(year)">{{year}}</td>
+                </tr>
+              </ng-container>
+              </tbody>
+            </table>
+          </perfect-scrollbar>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-10">
       <!-- column -->
       <div class="card">
         <div class="card-body">
@@ -16,12 +38,12 @@
               </thead>
               <tbody>
               <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
-                <td>{{row.Year}}</td>
-                <td>{{row.ValidFrom}}</td>
-                <td>{{row.ValidTo}}</td>
-                <td>{{row.TravelTyp}}</td>
-                <td>{{row.TravelDayTyp}}</td>
-                <td>{{row.TravelRate}}</td>
+                <td *ngIf="row.Year == filterYear">{{row.Year}}</td>
+                <td *ngIf="row.Year == filterYear">{{row.ValidFrom}}</td>
+                <td *ngIf="row.Year == filterYear">{{row.ValidTo}}</td>
+                <td *ngIf="row.Year == filterYear">{{row.TravelTyp}}</td>
+                <td *ngIf="row.Year == filterYear">{{row.TravelDayTyp}}</td>
+                <td *ngIf="row.Year == filterYear">{{row.TravelRate}}</td>
               </tr>
               </tbody>
             </table>

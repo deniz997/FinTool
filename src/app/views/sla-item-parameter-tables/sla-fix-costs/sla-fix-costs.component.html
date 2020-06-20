@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="row">
     <!-- row -->
-    <div class="col-2" style="padding-right: 0px;">
+    <div class="col-2" style="padding-right: 0;">
       <div class="card" style="height: inherit">
         <div id="yearHeader" class="card-header">
           <strong>Years</strong>
@@ -37,11 +37,11 @@
               </thead>
               <tbody>
               <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
-                <td>{{row.Year}}</td>
-                <td>{{row.ValidFrom}}</td>
-                <td>{{row.ValidTo}}</td>
-                <td>{{row.FixCostsTyp}}</td>
-                <td>{{row.FixCostsRate}}</td>
+                <td *ngIf="row.Year == filterYear" >{{row.Year}}</td>
+                <td *ngIf="row.Year == filterYear" >{{row.ValidFrom}}</td>
+                <td *ngIf="row.Year == filterYear" >{{row.ValidTo}}</td>
+                <td *ngIf="row.Year == filterYear" >{{row.FixCostsTyp}}</td>
+                <td *ngIf="row.Year == filterYear" >{{row.FixCostsRate}}</td>
               </tr>
               </tbody>
             </table>

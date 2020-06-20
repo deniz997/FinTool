@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
+import PerfectScrollbar from "perfect-scrollbar";
 
 @Component({
   selector: 'app-sla-travel',
@@ -39,6 +40,30 @@ export class SlaTravelComponent implements OnInit {
     };
   }
 
+  //Years for Scroll
+  public inputtedYears: Array<String> = [
+    '2007',
+    '2008',
+    '2009',
+    '2010',
+    '2011',
+    '2012',
+    '2013',
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    '2020',
+    '2021',
+    '2022',
+    '2023',
+    '2024',
+    '2025',
+    '2026',
+  ];
+
   tableSubHeaders = [
     'Year',
     'Valid From',
@@ -72,6 +97,8 @@ export class SlaTravelComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
+  filterYear: string = '2020';
+
   public year: Array<IOption> = [
     {label: '2020', value: 'Year1'},
     {label: '2019', value: 'Year2'},
@@ -104,8 +131,27 @@ export class SlaTravelComponent implements OnInit {
     console.log('Page changed to: ' + event.page);
     console.log('Number items per page: ' + event.itemsPerPage);
   }
+
   ngOnInit(): void {
   }
+
+  onYearClick(Year: string){
+    this.filterYear = Year;
+  }
+
+  tableResized() {
+    const ps = new PerfectScrollbar('#yearScrollbar');
+    document.getElementById('yearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    ps.update();
+  }
+
+  getYearScrollbarNewHeight(): string {
+    const table = document.getElementById('internalHeadcountTable');
+    const tableHeight = table.offsetHeight;
+    const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
+    return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
+  }
+
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;

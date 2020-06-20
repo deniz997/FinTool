@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
+import PerfectScrollbar from "perfect-scrollbar";
 
 @Component({
   selector: 'app-sla-fix-costs',
@@ -87,7 +88,7 @@ export class SlaFixCostsComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
-  filterYear: string;
+  filterYear: string = '2020';
 
   public year: Array<IOption> = [
     {label: '2020', value: 'Year1'},
@@ -111,8 +112,22 @@ export class SlaFixCostsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
   onYearClick(Year: string){
     this.filterYear = Year;
+  }
+
+  tableResized() {
+    const ps = new PerfectScrollbar('#yearScrollbar');
+    document.getElementById('yearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    ps.update();
+  }
+
+  getYearScrollbarNewHeight(): string {
+    const table = document.getElementById('internalHeadcountTable');
+    const tableHeight = table.offsetHeight;
+    const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
+    return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
   }
 
   saveClickedRow(i: number) {
