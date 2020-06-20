@@ -36,3 +36,7 @@ table {
 tbody tr:hover{
   background-color: #cccccc;
 }
+
+.form-group{
+  margin: 0;
+}

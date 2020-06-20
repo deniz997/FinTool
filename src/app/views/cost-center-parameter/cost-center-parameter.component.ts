@@ -14,17 +14,17 @@ export class CostCenterParameterComponent implements OnInit {
       {
         CostCenterID: 'Cost Center ID 1',
         CostCenterName: 'Cost Center Name 1',
-        CostCenterTyp: 'Typ 1'
+        CostCenterTyp: 'Cost Center Typ 1'
       },
       {
         CostCenterID: 'Cost Center ID 2',
         CostCenterName: 'Cost Center Name 2',
-        CostCenterTyp: 'Typ 1'
+        CostCenterTyp: 'Cost Center Typ 1'
       },
       {
         CostCenterID: 'Cost Center ID 3',
         CostCenterName: 'Cost Center Name 3',
-        CostCenterTyp: 'Typ 2'
+        CostCenterTyp: 'Cost Center Typ 2'
       },
     ];
     this.setClickedRow = function (index) {
