@@ -22,10 +22,12 @@ export const navItems: INavData[] = [
         children: [
           {
             name: 'Parameters',
+            icon: 'icon-puzzle',
             url: '/parameter/dialog/parameters'
           },
           {
             name: 'Rate Tables',
+            icon: 'icon-puzzle',
             url: '/parameter/dialog/rate'
           },
         ]

@@ -26,7 +26,7 @@ export class FixCostRateComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        currency: 'Silver',
+        currency: 'Monitoring',
         year: 2020,
         rate : 'EUR',
         number: 1500

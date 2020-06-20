@@ -36,6 +36,7 @@ import {FixCostsComponent} from './views/tables/fix-costs/fix-costs.component';
 import {FixCostRateComponent} from './views/tables/fix-cost-rate/fix-cost-rate.component';
 import {ParametersComponent} from './views/parameters/parameters.component';
 import {RateComponent} from './views/rates/rate.component';
+import {ExternalCostDefinitionComponent} from './views/tables/external-cost-definition/external-cost-definition.component';
 
 export const routes: Routes = [
   {
@@ -120,6 +121,13 @@ export const routes: Routes = [
       {
         path: 'parameter/dialog/tables/pgk-table',
         component: PgkTableComponent,
+        data: {
+          title: 'Dialog-Field'
+        },
+      },
+      {
+        path: 'parameter/dialog/tables/external-cost-definition',
+        component: ExternalCostDefinitionComponent,
         data: {
           title: 'Dialog-Field'
         },

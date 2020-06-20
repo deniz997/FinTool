@@ -39,7 +39,7 @@ export class TicketRateComponent implements OnInit {
   RightTableHeaders = [
     'Currency',
     'Value',
-    'Manday Typ',
+    'Ticket Typ',
     'Year'
   ];
 

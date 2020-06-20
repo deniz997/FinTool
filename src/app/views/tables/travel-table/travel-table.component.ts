@@ -36,7 +36,7 @@ export class TravelTableComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Travel Table'
+    'Travel Typ'
   ];
 
 

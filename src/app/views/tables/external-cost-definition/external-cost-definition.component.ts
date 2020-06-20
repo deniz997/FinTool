@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-pgk-table',
-  templateUrl: './pgk-table.component.html',
-  styleUrls: ['./pgk-table.component.css']
+  selector: 'app-external-cost-definition',
+  templateUrl: './external-cost-definition.component.html',
+  styleUrls: ['./external-cost-definition.component.css']
 })
-export class PgkTableComponent implements OnInit {
+export class ExternalCostDefinitionComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ pgktable: string; }, { pgktable: string; }];
+  data: [{ externalcosttable: string; }, { externalcosttable: string; }, { externalcosttable: string; }];
 
   showAdd = false;
   showUpdate = false;
@@ -22,10 +22,13 @@ export class PgkTableComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        pgktable : 'Definition 1'
+        externalcosttable : 'Definiton 1'
       },
       {
-        pgktable : 'Definition 2'
+        externalcosttable : 'Definition 2'
+      },
+      {
+        externalcosttable : 'Definition 3'
       }
     ];
     this.setClickedRow = function (index) {
@@ -33,12 +36,13 @@ export class PgkTableComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'PGK Cost Definition'
+    'External Cost Definition'
   ];
 
-  public PGKTable: Array<IOption> = [
-    {label: 'Definition 1', value: 'Item1'},
-    {label: 'Definition 2', value: 'Item2'}
+  public ExternalCostDefinition: Array<IOption> = [
+    {label: 'Definiton 1', value: 'Item1'},
+    {label: 'Definiton 2', value: 'Item2'},
+    {label: 'Definiton 3', value: 'Item3'}
   ];
 
 

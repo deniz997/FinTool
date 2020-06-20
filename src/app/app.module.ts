@@ -75,6 +75,7 @@ import { ExternalBenchComponent } from './views/e4-related-costs/external-bench/
 import { ToolComponent } from './views/e4-related-costs/tool/tool.component';
 import { NonChargeableConsultancyComponent } from './views/e4-related-costs/non-chargeable-consultancy/non-chargeable-consultancy.component';
 import { InternalProjectComponent } from './views/e4-related-costs/internal-project/internal-project.component';
+import {ExternalCostDefinitionComponent} from './views/tables/external-cost-definition/external-cost-definition.component';
 
 @NgModule({
   imports: [
@@ -149,7 +150,8 @@ import { InternalProjectComponent } from './views/e4-related-costs/internal-proj
     FixCostsComponent,
     FixCostRateComponent,
     ParametersComponent,
-    RateComponent
+    RateComponent,
+    ExternalCostDefinitionComponent
   ],
   providers: [{
     provide: LocationStrategy,
