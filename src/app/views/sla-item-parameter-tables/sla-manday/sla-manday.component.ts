@@ -45,12 +45,7 @@ export class SlaMandayComponent implements OnInit {
 
   //Years for Scroll
   public inputtedYears: Array<String> = [
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012',
+
     '2013',
     '2014',
     '2015',

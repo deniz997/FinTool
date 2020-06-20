@@ -1,12 +1,12 @@
 <div class="animated fadeIn">
   <div class="row">
     <!-- row -->
-    <div class="col-2" style="padding-right: 0;">
+    <div class="col-2" id="year" style="padding-right: 0;">
       <div class="card" style="height: inherit">
         <div id="yearHeader" class="card-header">
           <strong>Years</strong>
         </div>
-        <div class="card-body" style="padding: 2px;">
+        <div class="card-body">
           <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
             <table class="table table-sm">
               <tbody>
@@ -22,9 +22,9 @@
       </div>
     </div>
 
-    <div class="col-lg-10">
+    <div class="col-lg-10" (window:resize)="tableResized()" style="padding-left: 0;">
       <!-- column -->
-      <div class="card">
+      <div id="slaFixCostTable" class="card">
         <div class="card-body">
 
           <!-- table -->

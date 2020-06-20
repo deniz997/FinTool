@@ -40,12 +40,6 @@ export class SlaFixCostsComponent implements OnInit {
 
   //Years for Scroll
   public inputtedYears: Array<String> = [
-    '2007',
-    '2008',
-    '2009',
-    '2010',
-    '2011',
-    '2012',
     '2013',
     '2014',
     '2015',
@@ -115,6 +109,7 @@ export class SlaFixCostsComponent implements OnInit {
 
   onYearClick(Year: string){
     this.filterYear = Year;
+    this.tableResized();
   }
 
   tableResized() {
@@ -124,7 +119,7 @@ export class SlaFixCostsComponent implements OnInit {
   }
 
   getYearScrollbarNewHeight(): string {
-    const table = document.getElementById('internalHeadcountTable');
+    const table = document.getElementById('slaFixCostTable');
     const tableHeight = table.offsetHeight;
     const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
     return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
