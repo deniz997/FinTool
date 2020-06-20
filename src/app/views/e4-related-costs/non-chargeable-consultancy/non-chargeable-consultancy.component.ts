@@ -17,13 +17,13 @@ export class NonChargeableConsultancyComponent implements OnInit {
   public TableHeader = [
     'Definition',
     'Valid from',
-    'Value (€)',
     'Comments',
-    'Total (€)'
+    'Value (€)',
   ];
   data: [
-    { Definition: string; ValidFrom: Date; Value: number, Comments: string, Total: number},
-    { Definition: string; ValidFrom: Date; Value: number, Comments: string, Total: number}
+    { Definition: string; ValidFrom: Date; Comments: string; Value: number},
+    { Definition: string; ValidFrom: Date; Comments: string; Value: number},
+    { Definition: string; ValidFrom: Date; Comments: string; Value: number}
   ];
 
   constructor() {
@@ -33,14 +33,18 @@ export class NonChargeableConsultancyComponent implements OnInit {
         ValidFrom : new Date('2019-06-07'),
         Value : 0.0,
         Comments : 'Comment 1',
-        Total : 100000.00
       },
       {
         Definition : 'Definition 2',
         ValidFrom : new Date('2019-06-07'),
         Value : 0.0,
         Comments : 'Comment 2',
-        Total : 150000.00
+      },
+      {
+        Definition : 'Total',
+        ValidFrom : null,
+        Value : 40000,
+        Comments : null,
       },
     ];
     this.setClickedRow = function (index) {

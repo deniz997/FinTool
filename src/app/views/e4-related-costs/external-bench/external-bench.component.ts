@@ -27,7 +27,11 @@ export class ExternalBenchComponent implements OnInit {
     'Class',
     'Total (€)'
   ];
-  data: [{ FTE: number; Class: string; Total: number}, { FTE: number; Class: string; Total: number}];
+  data: [
+    { FTE: number; Class: string; Total: number},
+    { FTE: number; Class: string; Total: number},
+    {FTE: number; Class: string; Total: number}
+    ];
 
   constructor() {
     this.data = [
@@ -41,6 +45,11 @@ export class ExternalBenchComponent implements OnInit {
         Class : 'B',
         Total : 15074.46,
       },
+      {
+        FTE : null,
+        Class : null,
+        Total: 30148.92
+      }
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;

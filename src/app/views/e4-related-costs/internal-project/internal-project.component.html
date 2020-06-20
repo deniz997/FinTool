@@ -12,13 +12,12 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)"
-              [class.active]="i == selectedRowNumber">
+          <tr [class.hoverable]="i != data.length-1" *ngFor="let row of data; let i = index" (click)="i != data.length-1 ? onTableRowClick(i) : null"
+              [class.active]="i == selectedRowNumber && i != data.length-1">
             <td>{{row.Definition}}</td>
             <td>{{row.ValidFrom | date: 'yyyy/MM/dd'}}</td>
-            <td>{{row.Value}}</td>
             <td>{{row.Comments}}</td>
-            <td>{{row.Total}}</td>
+            <td>{{row.Value}}</td>
           </tr>
           </tbody>
         </table>
@@ -64,12 +63,8 @@
           <label>Comment</label><br>
           <input type="text" class="form-control" placeholder="Comment">
         </fieldset>
-        <fieldset class="form-group col-xs-12 col-md-3 ml-auto">
-          <label>Total (€)</label><br>
-          <input type="number" class="form-control" placeholder="Total" [disabled]="true">
-        </fieldset>
         <div class="my-auto pt-3 ml-2 mr-md-5 mr-sm-3">
-          <button type="button" class="btn btn-block btn-primary px-5" (click)="ShowHideAdd()">SAVE</button>
+          <button type="button" class="btn btn-block btn-success px-5" (click)="ShowHideAdd()">SAVE</button>
         </div>
       </div>
     </div>
@@ -102,10 +97,6 @@
         <fieldset class="form-group col-12">
           <label>Comment</label><br>
           <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].Comments">
-        </fieldset>
-        <fieldset class="form-group col-xs-12 col-md-3 ml-auto">
-          <label>Total (€)</label><br>
-          <input type="number" class="form-control" [defaultValue]="data[selectedRowNumber].Total" [disabled]="true">
         </fieldset>
         <div class="my-auto pt-3 ml-2 mr-md-5 mr-sm-3">
           <button type="button" class="btn btn-block btn-primary px-5" (click)="ShowHideUpdate()">SAVE</button>

@@ -9,6 +9,6 @@
   color: black;
 }
 
-tbody tr:hover{
+tbody tr.hoverable:hover{
   background-color: #cccccc;
 }

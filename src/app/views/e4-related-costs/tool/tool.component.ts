@@ -19,30 +19,34 @@ export class ToolComponent implements OnInit {
   public TableHeader = [
     'Definition',
     'Valid from',
-    'Value (€)',
     'Comments',
-    'Total (€)'
+    'Value (€)',
   ];
   data: [
-    { Definition: string; ValidFrom: Date; Value: number, Comments: string, Total: number},
-    { Definition: string; ValidFrom: Date; Value: number, Comments: string, Total: number}
-    ];
+    { Definition: string; ValidFrom: Date; Comments: string; Value: number},
+    { Definition: string; ValidFrom: Date; Comments: string; Value: number},
+    { Definition: string; ValidFrom: Date; Comments: string; Value: number}
+  ];
 
   constructor() {
     this.data = [
       {
         Definition : 'Definition 1',
         ValidFrom : new Date('2019-06-07'),
-        Value : 0.0,
+        Value : 16000,
         Comments : 'Comment 1',
-        Total : 40000.00
       },
       {
         Definition : 'Definition 2',
         ValidFrom : new Date('2019-06-07'),
-        Value : 0.0,
+        Value : 16000,
         Comments : 'Comment 2',
-        Total : 30000.00
+      },
+      {
+        Definition : 'Total',
+        ValidFrom : null,
+        Value : 32000,
+        Comments : null,
       },
     ];
     this.setClickedRow = function (index) {

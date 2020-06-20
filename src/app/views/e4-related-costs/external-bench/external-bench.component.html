@@ -13,8 +13,8 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)"
-              [class.active]="i == selectedRowNumber">
+          <tr [class.hoverable]="i != data.length-1" *ngFor="let row of data; let i = index" (click)="i != data.length-1 ? onTableRowClick(i) : null"
+              [class.active]="i == selectedRowNumber && i != data.length-1">
             <td>{{row.FTE}}</td>
             <td>{{row.Class}}</td>
             <td>{{row.Total}}</td>
@@ -61,7 +61,7 @@
       </div>
       <div class="row justify-content-end">
         <div class="col-sm-3 col-md-2"></div>
-        <button type="button" class="btn btn-primary mr-3" (click)="ShowHideAdd()">SAVE</button>
+        <button type="button" class="btn btn-success mr-3 px-5" (click)="ShowHideAdd()">SAVE</button>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
       </div>
       <div class="row justify-content-end">
         <div class="col-sm-3 col-md-2"></div>
-          <button type="button" class="btn btn-primary mr-3" (click)="ShowHideUpdate()">SAVE</button>
+          <button type="button" class="btn btn-primary mr-3 px-5" (click)="ShowHideUpdate()">SAVE</button>
       </div>
     </div>
   </div>

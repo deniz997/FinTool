@@ -18,13 +18,13 @@ export class InternalProjectComponent implements OnInit {
   public TableHeader = [
     'Definition',
     'Valid from',
-    'Value (€)',
     'Comments',
-    'Total (€)'
+    'Value (€)',
   ];
   data: [
-    { Definition: string; ValidFrom: Date; Value: number, Comments: string, Total: number},
-    { Definition: string; ValidFrom: Date; Value: number, Comments: string, Total: number}
+    { Definition: string; ValidFrom: Date; Comments: string, Value: number},
+    { Definition: string; ValidFrom: Date; Comments: string, Value: number},
+    { Definition: string; ValidFrom: Date; Comments: string, Value: number}
   ];
 
   constructor() {
@@ -32,17 +32,21 @@ export class InternalProjectComponent implements OnInit {
       {
         Definition : 'Definition 1',
         ValidFrom : new Date('2018-06-07'),
-        Value : 0.0,
+        Value : 20000.0,
         Comments : 'Comment 1',
-        Total : 10000.00
       },
       {
         Definition : 'Definition 2',
         ValidFrom : new Date('2019-06-07'),
-        Value : 0.0,
+        Value : 10000.0,
         Comments : 'Comment 2',
-        Total : 20000.00
       },
+      {
+        Definition : 'Total',
+        ValidFrom : null,
+        Value : 30000.00,
+        Comments : null,
+      }
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;
