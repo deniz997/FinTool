@@ -119,12 +119,7 @@
                             <div class="d-flex ml-0">
                               <label>Manday Rate</label>
                             </div>
-                            <ng-select
-                              class="bootstrap"
-                              placeholder="Pick Manday Rate"
-                              name="mandayRatePicker"
-                              [options]="mandayRate"
-                              [allowClear]="false"></ng-select>
+                            <input type="text" class="form-control" placeholder="Enter Manday Rate">
                           </div>
                         </div>
                       </div>
@@ -229,13 +224,7 @@
                             <div class="d-flex ml-0">
                               <label>Manday Rate</label>
                             </div>
-                            <ng-select
-                              class="bootstrap"
-                              name="mandayRatePicker"
-                              [(ngModel)]="data[selectedRowNumber].MandayRate"
-                              [placeholder]="data[selectedRowNumber].MandayRate"
-                              [options]="mandayRate"
-                              [allowClear]="false"></ng-select>
+                            <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].MandayRate">
                           </div>
                         </div>
                       </div>
