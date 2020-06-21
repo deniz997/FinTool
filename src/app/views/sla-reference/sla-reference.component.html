@@ -91,9 +91,10 @@
               <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
             </label></td>
           </tr>
-          <button class="btn btn-primary" (click)="hidRef()"> SAVE </button>
+
           </tbody>
         </table>
+        <button class="btn btn-primary" (click)="hidRef()" *ngIf="isSelected" style="margin-left: 890px; width: 165px"> SAVE </button>
         <button class="btn btn-primary" (click)="showRef()" *ngIf="!isSelected">UPDATE</button>
       </div>
     </div>
