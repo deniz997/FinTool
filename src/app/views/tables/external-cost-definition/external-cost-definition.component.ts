@@ -2,17 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {IOption} from 'ng-select';
 
 @Component({
-  selector: 'app-fix-cost-rate',
-  templateUrl: './fix-cost-rate.component.html',
-  styleUrls: ['./fix-cost-rate.component.css']
+  selector: 'app-external-cost-definition',
+  templateUrl: './external-cost-definition.component.html',
+  styleUrls: ['./external-cost-definition.component.css']
 })
-export class FixCostRateComponent implements OnInit {
+export class ExternalCostDefinitionComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ currency: string; year: number; rate: string; number: number }];
-  currency: string[];
-  saved: boolean = true;
-  rate: number;
+  data: [{ externalcosttable: string; }, { externalcosttable: string; }, { externalcosttable: string; }];
 
   showAdd = false;
   showUpdate = false;
@@ -22,14 +19,16 @@ export class FixCostRateComponent implements OnInit {
   maxSize: number = 3;
   private selectedRowNumber: number;
 
-
   constructor() {
     this.data = [
       {
-        currency: 'Monitoring',
-        year: 2020,
-        rate : 'EUR',
-        number: 1500
+        externalcosttable : 'Definiton 1'
+      },
+      {
+        externalcosttable : 'Definition 2'
+      },
+      {
+        externalcosttable : 'Definition 3'
       }
     ];
     this.setClickedRow = function (index) {
@@ -37,32 +36,15 @@ export class FixCostRateComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Currency',
-    'Value',
-    'Fix Cost Typ',
-    'Year'
+    'External Cost Definition'
   ];
 
-  public Typ: Array<IOption> = [
-    {label: 'Monitoring', value: 'Item1'},
-    {label: 'Licence', value: 'Item2'},
-    {label: 'Fix E5 Cost', value: 'Item1'}
+  public ExternalCostDefinition: Array<IOption> = [
+    {label: 'Definiton 1', value: 'Item1'},
+    {label: 'Definiton 2', value: 'Item2'},
+    {label: 'Definiton 3', value: 'Item3'}
   ];
 
-
-  public Rate: Array<IOption> = [
-    {label: 'EUR', value: 'Item1'},
-    {label: 'TL', value: 'Item2'}
-  ];
-
-  public year: Array<IOption> = [
-    {label: '2020', value: 'Year1'},
-    {label: '2019', value: 'Year2'},
-    {label: '2018', value: 'Year3'},
-    {label: '2017', value: 'Year4'},
-    {label: '2016', value: 'Year5'},
-    {label: '2015', value: 'Year6'},
-  ];
 
   validSelectedRowNumber: boolean = false;
 

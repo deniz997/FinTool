@@ -4,6 +4,7 @@
     <div class="col-lg-12">
       <!-- column -->
       <div class="card">
+
         <div class="card-body">
           <!-- table -->
           <perfect-scrollbar style="max-height: 750px">
@@ -15,7 +16,7 @@
               </thead>
               <tbody>
               <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
-                <td>{{row.currency}}</td>
+                <td>{{row.externalcosttable}}</td>
               </tr>
               </tbody>
             </table>
@@ -38,7 +39,7 @@
       <div>
         <div class="card" *ngIf="showAdd">
           <div class="card-header">
-            <strong>Add New Currency</strong>
+            <strong>Add New External Cost Definition</strong>
           </div>
 
           <div class="card-body col-12">
@@ -51,21 +52,24 @@
                     <div class="form-group row">
                       <div class="col-md-6 col-lg-12 mb-5">
                         <div class="d-flex ml-0">
-                          <label><b>Currency</b></label>
+                          <label><b>External Cost Definition</b></label>
                         </div>
+
                         <div class="row">
                           <div class="card-body col-lg-4 col-md-4">
                             <fieldset class="form-group">
-                              <input class="form-control" type="text" required placeholder="Please enter new Currency">
+                              <input class="form-control" type="text" required placeholder="Please enter new External Cost Definition">
                             </fieldset>
                           </div>
                         </div>
+
                       </div>
                     </div>
                   </fieldset>
                 </div>
               </div>
             </form>
+
             <div class="col">
               <div class="row justify-content-end">
                 <div class="col-sm-3 col-md-2"></div>
@@ -83,7 +87,7 @@
       <div>
         <div class="card" *ngIf="showUpdate">
           <div class="card-header">
-            <strong>Update Currency</strong>
+            <strong>Update External Cost Definition</strong>
           </div>
 
           <div class="card-body col-12">
@@ -96,13 +100,13 @@
                     <div class="form-group row">
                       <div class="col-md-6 col-lg-12 mb-5">
                         <div class="d-flex ml-0">
-                          <label><b>Currency</b></label>
+                          <label><b>External Cost Definition</b></label>
                         </div>
                         <div class="row">
                           <div class="col-md-6 col-lg-6">
                             <ng-select class="bootstrap"
-                                       [placeholder]="data[selectedRowNumber].currency"
-                                       [options]="Currency"
+                                       [placeholder]="data[selectedRowNumber].externalcosttable"
+                                       [options]="ExternalCostDefinition"
                                        [allowClear]="false"></ng-select>
                           </div>
                         </div>

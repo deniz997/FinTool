@@ -38,7 +38,7 @@
       <div>
         <div class="card" *ngIf="showAdd">
           <div class="card-header">
-            <strong>Add New Currency</strong>
+            <strong>Add New Fix Cost</strong>
           </div>
 
           <div class="card-body col-12">
@@ -51,15 +51,13 @@
                     <div class="form-group row">
                       <div class="col-md-6 col-lg-12 mb-5">
                         <div class="d-flex ml-0">
-                          <label><b>Currency</b></label>
+                          <label><b>Fix Cost</b></label>
                         </div>
                         <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>
-                                <input class="form-control" type="text" required placeholder="Please enter a Fix Cost">
-                              </label>
-                            </div>
+                          <div class="card-body col-lg-4 col-md-4">
+                            <fieldset class="form-group">
+                              <input class="form-control" type="text" required placeholder="Please enter new Fix Costs">
+                            </fieldset>
                           </div>
                         </div>
                       </div>
@@ -70,10 +68,9 @@
             </form>
 
             <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-success" (click)="ShowHideAdd()">SAVE</button>
-                </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-3 col-md-2"></div>
+                <button type="button" class="btn btn-success mr-3 px-5" (click)="ShowHideAdd(); SetSelectedRow()">SAVE</button>
               </div>
             </div>
 
@@ -87,7 +84,7 @@
       <div>
         <div class="card" *ngIf="showUpdate">
           <div class="card-header">
-            <strong>Update Currency</strong>
+            <strong>Update Fix Cost</strong>
           </div>
 
           <div class="card-body col-12">
@@ -100,7 +97,7 @@
                     <div class="form-group row">
                       <div class="col-md-6 col-lg-12 mb-5">
                         <div class="d-flex ml-0">
-                          <label><b>Currency</b></label>
+                          <label><b>Fix Cost</b></label>
                         </div>
                         <div class="row">
                           <div class="col-md-6 col-lg-6">
@@ -118,10 +115,9 @@
             </form>
 
             <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-primary" (click)="ShowHideUpdate(); SetSelectedRow()">UPDATE</button>
-                </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-3 col-md-2"></div>
+                <button type="button" class="btn btn-primary mr-3 px-5" (click)="ShowHideUpdate(); SetSelectedRow()">SAVE</button>
               </div>
             </div>
 

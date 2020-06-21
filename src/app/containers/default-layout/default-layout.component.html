@@ -1,17 +1,15 @@
 <app-header
   [navbarBrandRouterLink]="['/dashboard']"
   [fixed]="true"
-  [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
-  [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
+  [navbarBrandFull]="{src: 'assets/img/brand/main-logo.png', height:50, alt: 'SDC Turkey'}"
+  [navbarBrandMinimized]="{src: 'assets/img/brand/main-logo-sm.png',height:30,alt: 'SDC Turkey'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="false">
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
     </li>
-    <li class="nav-item px-3">
-      <a class="nav-link" href="#">Settings</a>
-    </li>
+
   </ul>
   <ul class="nav navbar-nav ml-auto">
 
@@ -31,7 +29,6 @@
       <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
-          <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>
         </div>
       </li>
     </cui-breadcrumb>
@@ -53,6 +50,9 @@
   </main>
 </div>
 <app-footer>
-  <span><a href="https://coreui.io/pro/angular/">CoreUI Pro</a> &copy; 2018 creativeLabs.</span>
-  <span class="ml-auto">Powered by <a href="https://coreui.io/pro/angular">CoreUI Pro for Angular</a></span>
+  <span>Financial Planning Tool -</span>
+  <span class="text-muted">&nbsp;Mockup Version</span>
+  <span class="ml-auto"> Created by <a href="https://www.mercedes-benz.com.tr/passengercars/the-brand/sdc-en/sdc-about/about-solution-delivery-center.html">SDC Turkey</a>
+    &
+    <a href="http://www.tau.edu.tr">TGU</a> 2020</span>
 </app-footer>

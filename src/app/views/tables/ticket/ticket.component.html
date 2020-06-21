@@ -55,12 +55,10 @@
                           <label><b>Ticket</b></label>
                         </div>
                         <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>
-                                <input class="form-control" type="text" required placeholder="Please enter a Ticket">
-                              </label>
-                            </div>
+                          <div class="card-body col-lg-4 col-md-4">
+                            <fieldset class="form-group">
+                              <input class="form-control" type="text" required placeholder="Please enter new Ticket">
+                            </fieldset>
                           </div>
                         </div>
                       </div>
@@ -71,10 +69,9 @@
             </form>
 
             <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-success" (click)="ShowHideAdd()">SAVE</button>
-                </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-3 col-md-2"></div>
+                <button type="button" class="btn btn-success mr-3 px-5" (click)="ShowHideAdd(); SetSelectedRow()">SAVE</button>
               </div>
             </div>
 
@@ -119,10 +116,9 @@
             </form>
 
             <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-primary" (click)="ShowHideUpdate(); SetSelectedRow()">UPDATE</button>
-                </div>
+              <div class="row justify-content-end">
+                <div class="col-sm-3 col-md-2"></div>
+                <button type="button" class="btn btn-primary mr-3 px-5" (click)="ShowHideUpdate(); SetSelectedRow()">SAVE</button>
               </div>
             </div>
 
