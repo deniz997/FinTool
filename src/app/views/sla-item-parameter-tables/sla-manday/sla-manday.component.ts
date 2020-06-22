@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
 import PerfectScrollbar from "perfect-scrollbar";
@@ -8,11 +9,11 @@ import PerfectScrollbar from "perfect-scrollbar";
   templateUrl: './sla-manday.component.html',
   styleUrls: ['./sla-manday.component.css']
 })
-export class SlaMandayComponent implements OnInit {
+export class SlaMandayComponent implements OnInit, AfterViewInit {
 
   private data = [];
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(@Inject(DOCUMENT) document, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -103,8 +104,13 @@ export class SlaMandayComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.tableResized();
+  }
+
   onYearClick(Year: string){
     this.filterYear = Year;
+    this.tableResized();
   }
 
   tableResized() {
