@@ -1,13 +1,14 @@
 <div class="animated fadeIn">
   <div class="row">
     <!-- row -->
+
     <div class="col-2" style="padding-right: 0;">
-      <div class="card" id="year" style="height: inherit">
-        <div id="yearHeader" class="card-header">
+      <div class="card" id="mandayCard" style="height: inherit">
+        <div id="mandayYearHeader" class="card-header">
           <strong>Years</strong>
         </div>
         <div class="card-body" style="padding: 2px;">
-          <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+          <perfect-scrollbar id="mandayYearScrollbar" style="max-width: inherit;">
             <table class="table table-sm">
               <tbody>
               <ng-container *ngFor="let year of inputtedYears">
@@ -24,7 +25,7 @@
 
     <div class="col-lg-10" (window:resize)="tableResized()" style="padding-left: 0;">
       <!-- column -->
-      <div class="card" id="internalHeadcountTable" >
+      <div class="card" id="slaMandayTable" >
 
         <div class="card-body">
 
@@ -48,6 +49,7 @@
             </table>
           </perfect-scrollbar>
           <!-- table -->
+
         </div>
 
         <div class="card-footer" style="float: left">
@@ -60,9 +62,6 @@
         </div>
       </div>
       <!-- column -->
-
-
-
     </div>
 
     <!-- row -->
@@ -168,7 +167,6 @@
 
         </div>
       </div>
-
     </div>
     <!--add-->
 

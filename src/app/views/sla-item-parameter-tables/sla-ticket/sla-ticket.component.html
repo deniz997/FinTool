@@ -1,13 +1,14 @@
 <div class="animated fadeIn">
   <div class="row">
     <!-- row -->
+
     <div class="col-2" style="padding-right: 0;">
-      <div class="card" style="height: inherit">
-        <div id="yearHeader" class="card-header">
+      <div class="card" id="ticketCard" style="height: inherit">
+        <div id="ticketYearHeader" class="card-header">
           <strong>Years</strong>
         </div>
         <div class="card-body" style="padding: 2px;">
-          <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+          <perfect-scrollbar id="ticketYearScrollbar" style="max-width: inherit;">
             <table class="table table-sm">
               <tbody>
               <ng-container *ngFor="let year of inputtedYears">
@@ -22,10 +23,12 @@
       </div>
     </div>
 
-    <div class="col-lg-10" style="padding-left: 0;">
+    <div class="col-lg-10" (window:resize)="tableResized()" style="padding-left: 0;">
       <!-- column -->
-      <div class="card">
+      <div class="card" id="slaTicketTable" >
+
         <div class="card-body">
+
           <!-- table -->
           <perfect-scrollbar style="max-height: 750px">
             <table class="table table-bordered table-striped table-sm">
@@ -46,6 +49,7 @@
             </table>
           </perfect-scrollbar>
           <!-- table -->
+
         </div>
 
         <div class="card-footer" style="float: left">
@@ -58,9 +62,14 @@
         </div>
       </div>
       <!-- column -->
+    </div>
+
+    <!-- row -->
+  </div>
+  <div class="row">
 
       <!--add-->
-      <div>
+      <div class="col-12">
         <div class="card" *ngIf="showAdd">
           <div class="card-header">
             <strong>Add New Ticket Parameter</strong>
@@ -163,7 +172,7 @@
       <!--add-->
 
       <!--update-->
-      <div>
+      <div class="col-12">
         <div class="card" *ngIf="showUpdate">
           <div class="card-header">
             <strong>Update Ticket Parameter</strong>
@@ -259,14 +268,10 @@
               </div>
             </div>
 
-          </div>
         </div>
-
       </div>
-      <!--update-->
-
     </div>
-    <!-- row -->
 
+    <!--update-->
   </div>
 </div>

@@ -114,17 +114,18 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
   }
 
   tableResized() {
-    const ps = new PerfectScrollbar('#yearScrollbar');
-    document.getElementById('yearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    const ps = new PerfectScrollbar('#mandayYearScrollbar');
+    document.getElementById('mandayYearScrollbar').style.height = this.getYearScrollbarNewHeight();
     ps.update();
   }
 
   getYearScrollbarNewHeight(): string {
-    const table = document.getElementById('internalHeadcountTable');
+    const table = document.getElementById('slaMandayTable');
     const tableHeight = table.offsetHeight;
-    const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
+    const yearHeaderHeight = document.getElementById('mandayYearHeader').offsetHeight;
     return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
   }
+
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;
