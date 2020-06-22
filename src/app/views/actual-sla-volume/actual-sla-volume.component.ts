@@ -90,7 +90,7 @@ export class ActualSlaVolumeComponent implements OnInit {
   }
 
   isInputDisabled(columnNumber: number, isAddInput = false): boolean {
-    if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) > 0) {
+    if (this.disabledHeaders.indexOf(this.tableHeaders[columnNumber]) >= 0) {
       return true;
     }
     if (isAddInput) {
