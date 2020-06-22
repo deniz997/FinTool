@@ -154,12 +154,7 @@
                             <div class="d-flex ml-0">
                               <label>Travel Rate</label>
                             </div>
-                            <ng-select
-                              class="bootstrap"
-                              placeholder="Pick Travel Rate"
-                              name="travelRatePicker"
-                              [options]="travelRate"
-                              [allowClear]="false"></ng-select>
+                            <input type="text" class="form-control" placeholder="Enter Travel Rate">
                           </div>
                         </div>
                       </div>
@@ -275,13 +270,7 @@
                             <div class="d-flex ml-0">
                               <label>Travel Rate</label>
                             </div>
-                            <ng-select
-                              class="bootstrap"
-                              name="travelRatePicker"
-                              [(ngModel)]="data[selectedRowNumber].TravelRate"
-                              [placeholder]="data[selectedRowNumber].TravelRate"
-                              [options]="travelRate"
-                              [allowClear]="false"></ng-select>
+                            <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].TravelRate">
                           </div>
                         </div>
                       </div>

@@ -11,6 +11,8 @@ export class SlaReferenceComponent implements OnInit {
   constructor() { }
   selectedLevel;
   isSelected: boolean; false;
+  disabled: boolean; true;
+
 
   public SLA: Array<IOption> = [
     {label: 'SLA20_ITTQT_008', value: 'Mercedes Me Connect Aftersales Rollout 5'},
@@ -22,6 +24,7 @@ export class SlaReferenceComponent implements OnInit {
 
   selected() {
     console.log(this.selectedLevel);
+    this.disabled = true;
   }
   showRef() {
     this.isSelected = true;

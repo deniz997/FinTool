@@ -22,15 +22,15 @@ export class SlaFixCostsComponent implements OnInit {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
-        FixCostsTyp: 'Fix Costs Typ 1',
-        FixCostsRate: 'Fix Costs Rate 2'
+        FixCostsTyp: 'Fix E5 Costs',
+        FixCostsRate: '1500'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
-        FixCostsTyp: 'Fix Costs Typ 2',
-        FixCostsRate: 'Fix Costs Rate 1'
+        FixCostsTyp: 'Monitoring',
+        FixCostsRate: '1500'
       },
     ];
     this.setClickedRow = function (index) {
@@ -75,7 +75,7 @@ export class SlaFixCostsComponent implements OnInit {
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
-  maxSize: number = 7;
+  maxSize: number = 3;
 
   hoveredDate: NgbDate | null = null;
 
@@ -94,13 +94,9 @@ export class SlaFixCostsComponent implements OnInit {
   ];
 
   public fixCostsTyp: Array<IOption> = [
-    {label: 'Fix Costs Typ 1', value: 'FixCostsTyp1'},
-    {label: 'Fix Costs Typ 2', value: 'FixCostsTyp2'},
-  ];
-
-  public fixCostsRate: Array<IOption> = [
-    {label: 'Fix Costs Rate 1', value: 'FixCostsRate1'},
-    {label: 'Fix Costs Rate 2', value: 'FixCostsRate2'},
+    {label: 'Monitoring', value: 'Monitoring'},
+    {label: 'Licence', value: 'Licence'},
+    {label: 'Fix E5 Costs', value: 'Fix E5 Costs'},
   ];
 
   ngOnInit(): void {

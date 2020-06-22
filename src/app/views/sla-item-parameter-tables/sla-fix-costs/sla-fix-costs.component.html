@@ -139,12 +139,7 @@
                             <div class="d-flex ml-0">
                               <label>Fix Costs Rate</label>
                             </div>
-                            <ng-select
-                              class="bootstrap"
-                              placeholder="Pick Fix Costs Rate"
-                              name="fixCostsRatePicker"
-                              [options]="fixCostsRate"
-                              [allowClear]="false"></ng-select>
+                            <input type="text" class="form-control" placeholder="Enter Fix Costs Rate">
                           </div>
                         </div>
                       </div>
@@ -248,13 +243,7 @@
                             <div class="d-flex ml-0">
                               <label>Fix Costs Rate</label>
                             </div>
-                            <ng-select
-                              class="bootstrap"
-                              name="fixCostsRatePicker"
-                              [(ngModel)]="data[selectedRowNumber].FixCostsRate"
-                              [placeholder]="data[selectedRowNumber].FixCostsRate"
-                              [options]="fixCostsRate"
-                              [allowClear]="false"></ng-select>
+                            <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].FixCostsRate">
                           </div>
                         </div>
                       </div>

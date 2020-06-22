@@ -21,15 +21,15 @@ export class SlaTicketComponent implements OnInit {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
-        TicketTyp: 'Ticket Typ 2',
-        TicketRate: 'Ticket Rate 2'
+        TicketTyp: 'Gold',
+        TicketRate: '1500'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
-        TicketTyp: 'Ticket Typ 1',
-        TicketRate: 'Ticket Rate 1'
+        TicketTyp: 'Silver',
+        TicketRate: '1500'
       },
     ];
     this.setClickedRow = function (index) {
@@ -74,7 +74,7 @@ export class SlaTicketComponent implements OnInit {
   totalItems: number = 60;
   currentPage: number   = 1;
   itemPerPage: number = 5;
-  maxSize: number = 7;
+  maxSize: number = 3;
 
   hoveredDate: NgbDate | null = null;
 
@@ -93,13 +93,9 @@ export class SlaTicketComponent implements OnInit {
     {label: '2015', value: 'Year6'},
   ];
   public ticketTyp: Array<IOption> = [
-    {label: 'Ticket Typ 1', value: 'TicketTyp1'},
-    {label: 'Ticket Typ 2', value: 'TicketTyp2'},
-  ];
-
-  public ticketRate: Array<IOption> = [
-    {label: 'Ticket Rate 1', value: 'TicketRate1'},
-    {label: 'Ticket Rate 2', value: 'TicketRate2'},
+    {label: 'Silver', value: 'Silver'},
+    {label: 'Gold', value: 'Gold'},
+    {label: 'Platinium', value: 'Platinium'},
   ];
 
   ngOnInit(): void {

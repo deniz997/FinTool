@@ -22,15 +22,15 @@ export class SlaMandayComponent implements OnInit {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
-        MandayTyp: 'Manday Typ 1',
-        MandayRate: 'Manday Rate 1'
+        MandayTyp: 'Special',
+        MandayRate: '1500'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
-        MandayTyp: 'Manday Typ 2',
-        MandayRate: 'Manday Rate 2'
+        MandayTyp: 'Standart',
+        MandayRate: '1500'
       },
     ];
     this.setClickedRow = function (index) {
@@ -76,7 +76,7 @@ export class SlaMandayComponent implements OnInit {
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
-  maxSize: number = 7;
+  maxSize: number = 3;
 
   hoveredDate: NgbDate | null = null;
 
@@ -96,13 +96,8 @@ export class SlaMandayComponent implements OnInit {
   ];
 
   public mandayTyp: Array<IOption> = [
-    {label: 'Manday Typ 1', value: 'MandayTyp1'},
-    {label: 'Manday Typ 2', value: 'MandayTyp2'},
-  ];
-
-  public mandayRate: Array<IOption> = [
-    {label: 'Manday Rate 1', value: 'MandayRate1'},
-    {label: 'Manday Rate 2', value: 'MandayRate2'},
+    {label: 'Special', value: 'Special'},
+    {label: 'Standart', value: 'Standart'},
   ];
 
   ngOnInit(): void {

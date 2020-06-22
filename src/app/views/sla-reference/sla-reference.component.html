@@ -11,7 +11,7 @@
             <ng-select
               class="bootstrap"
               placeholder="SLA No"
-              [(ngModel)]="selectedLevel" (change)="selected()"
+              [(ngModel)]="selectedLevel" (click)="selected()"
               [options]="SLA"
               [allowClear]="true">
             </ng-select>
@@ -91,10 +91,19 @@
               <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
             </label></td>
           </tr>
-          <button class="btn btn-primary" (click)="hidRef()"> SAVE </button>
+
           </tbody>
         </table>
-        <button class="btn btn-primary" (click)="showRef()" *ngIf="!isSelected">UPDATE</button>
+
+        <div class="col">
+          <div class="row d-flex justify-content-end">
+            <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+              <button type="button" class="btn btn-block btn-primary" (click)="hidRef()" *ngIf="isSelected">SAVE</button>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" (click)="showRef()" *ngIf="!isSelected" [disabled]="!disabled" >UPDATE</button>
       </div>
     </div>
   </div>

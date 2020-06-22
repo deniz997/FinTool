@@ -22,17 +22,17 @@ export class SlaTravelComponent implements OnInit {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
-        TravelTyp: 'Travel Typ 1',
-        TravelDayTyp: 'Travel Day Typ 1',
-        TravelRate: 'Travel Rate 2'
+        TravelTyp: 'Regional',
+        TravelDayTyp: 'Regional',
+        TravelRate: '1500'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
-        TravelTyp: 'Travel Typ 2',
-        TravelDayTyp: 'Travel Day Typ 2',
-        TravelRate: 'Travel Rate 1'
+        TravelTyp: 'Domestic',
+        TravelDayTyp: 'Domestic',
+        TravelRate: '1500'
       },
     ];
     this.setClickedRow = function (index) {
@@ -77,7 +77,7 @@ export class SlaTravelComponent implements OnInit {
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
-  maxSize: number = 7;
+  maxSize: number = 3;
 
   // Datepicker
   minDate = new Date(2017, 5, 10);
@@ -103,18 +103,15 @@ export class SlaTravelComponent implements OnInit {
   ];
 
   public travelTyp: Array<IOption> = [
-    {label: 'Travel Typ 1', value: 'TravelTyp1'},
-    {label: 'Travel Typ 2', value: 'TravelTyp2'},
+    {label: 'Regional', value: 'Regional'},
+    {label: 'Domestic', value: 'Domestic'},
+    {label: 'Overseas', value: 'Overseas'},
   ];
 
   public travelDayTyp: Array<IOption> = [
-    {label: 'Travel Day Typ 1', value: 'TravelDayTyp1'},
-    {label: 'Travel Day Typ 2', value: 'TravelDayTyp2'},
-  ];
-
-  public travelRate: Array<IOption> = [
-    {label: 'Travel Rate 1', value: 'TravelRate1'},
-    {label: 'Travel Rate 2', value: 'TravelRate2'},
+    {label: 'Regional', value: 'Regional'},
+    {label: 'Domestic', value: 'Domestic'},
+    {label: 'Overseas', value: 'Overseas'},
   ];
 
   setPage(pageNo: number): void {

@@ -12,18 +12,48 @@ export class CostCenterParameterComponent implements OnInit {
   constructor() {
     this.tableData = [
       {
-        CostCenterID: 'Cost Center ID 1',
-        CostCenterName: 'Cost Center Name 1',
+        CostCenterID: '0000036100',
+        CostCenterName: 'SAP & Rollout Service Delivery Turkey',
         CostCenterTyp: 'Cost Center Typ 1'
       },
       {
-        CostCenterID: 'Cost Center ID 2',
-        CostCenterName: 'Cost Center Name 2',
+        CostCenterID: '0000036110',
+        CostCenterName: 'SAP Service Delivery & Operations Turkey',
         CostCenterTyp: 'Cost Center Typ 1'
       },
       {
-        CostCenterID: 'Cost Center ID 3',
-        CostCenterName: 'Cost Center Name 3',
+        CostCenterID: '0000036120',
+        CostCenterName: 'SAP Service Delivery & Operations Turkey',
+        CostCenterTyp: 'Cost Center Typ 2'
+      },
+      {
+        CostCenterID: '0000036130',
+        CostCenterName: 'SAP Service Delivery & Operations Turkey',
+        CostCenterTyp: 'Cost Center Typ 2'
+      },
+      {
+        CostCenterID: '0000036140',
+        CostCenterName: 'Regional Rollout',
+        CostCenterTyp: 'Cost Center Typ 2'
+      },
+      {
+        CostCenterID: '0000036150',
+        CostCenterName: 'Strategy & Performance Management',
+        CostCenterTyp: 'Cost Center Typ 2'
+      },
+      {
+        CostCenterID: '0000036160',
+        CostCenterName: 'CoC PDM/BOM, Change Mgmt. & Engineering Services',
+        CostCenterTyp: 'Cost Center Typ 2'
+      },
+      {
+        CostCenterID: '0000036170',
+        CostCenterName: 'Analytics & Digital Solutions',
+        CostCenterTyp: 'Cost Center Typ 2'
+      },
+      {
+        CostCenterID: '0000036170',
+        CostCenterName: 'Analytics & Digital Solutions',
         CostCenterTyp: 'Cost Center Typ 2'
       },
     ];
@@ -54,8 +84,8 @@ export class CostCenterParameterComponent implements OnInit {
   maxSize: number = 7;
 
   public costCenterTyp: Array<IOption> = [
-    {label: 'Typ 1', value: 'Typ1'},
-    {label: 'Typ 2', value: 'Typ2'},
+    {label: 'Cost Center Typ 1', value: 'Typ1'},
+    {label: 'Cost Center Typ 2', value: 'Typ2'},
   ];
 
   saveClickedRow(i: number) {
