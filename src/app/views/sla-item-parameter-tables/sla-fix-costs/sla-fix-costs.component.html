@@ -1,13 +1,13 @@
 <div class="animated fadeIn">
   <div class="row">
     <!-- row -->
-    <div class="col-2" id="year" style="padding-right: 0;">
-      <div class="card" style="height: inherit">
-        <div id="yearHeader" class="card-header">
+    <div class="col-2"  style="padding-right: 0;">
+      <div class="card" id="fixCostCard" style="height: inherit">
+        <div id="FixCostYearHeader" class="card-header">
           <strong>Years</strong>
         </div>
-        <div class="card-body">
-          <perfect-scrollbar id="yearScrollbar" style="max-width: inherit;">
+        <div class="card-body" style="padding: 2px;">
+          <perfect-scrollbar id="FixCostYearScrollbar" style="max-width: inherit;">
             <table class="table table-sm">
               <tbody>
               <ng-container *ngFor="let year of inputtedYears">
@@ -24,7 +24,7 @@
 
     <div class="col-lg-10" (window:resize)="tableResized()" style="padding-left: 0;">
       <!-- column -->
-      <div id="slaFixCostTable" class="card">
+      <div class="card" id="slaFixCostTable" >
         <div class="card-body">
 
           <!-- table -->
@@ -59,216 +59,215 @@
         </div>
       </div>
       <!-- column -->
-
-      <!--add-->
-      <div>
-        <div class="card" *ngIf="showAdd">
-          <div class="card-header">
-            <strong>Add New Fix Costs Parameter</strong>
-          </div>
-
-          <div class="card-body col-12">
-
-            <form action="" method="post" class="form-horizontal">
-              <div class="col-12" style="text-align: center">
-                <div>
-                  <fieldset class="form-group">
-
-                    <div class="form-group row">
-                      <div class="col-md-6 col-lg-12 mb-5">
-                        <div class="d-flex ml-0">
-                          <label><b>Year</b></label>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>Year</label>
-                            </div>
-                            <ng-select class="bootstrap"
-                                       placeholder="Pick Year"
-                                       [options]="year"
-                                       [allowClear]="false"></ng-select>
-                          </div>
-                          <!-- date picker -->
-                          <div class="col-md-3">
-                            <div class="d-flex ml-0">
-                              <label for="validFrom">Valid From</label>
-                            </div>
-                            <div class="input-group">
-                              <input id="validFrom" name="validFrom" class="form-control" placeholder="yyyy-mm-dd"
-                                     name="dp1" ngbDatepicker #d1="ngbDatepicker">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="col-md-3">
-                            <div class="d-flex ml-0">
-                              <label for="validTo">Valid To</label>
-                            </div>
-                            <div class="input-group">
-                              <input id="validTo" name="validTo" class="form-control" placeholder="yyyy-mm-dd"
-                                     name="dp2" ngbDatepicker #d2="ngbDatepicker">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- date picker -->
-                        </div>
-                      </div>
-                      <hr style="width:100%;" class="ml-0 mr-0">
-                      <div class="col-md-6 col-lg-12 mb-5">
-                        <div class="d-flex ml-0">
-                          <label><b>Fix Costs</b></label>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>Fix Costs Typ</label>
-                            </div>
-                            <ng-select
-                              class="bootstrap"
-                              placeholder="Pick Fix Costs Typ"
-                              name="fixCostsPicker"
-                              [options]="fixCostsTyp"
-                              [allowClear]="false"></ng-select>
-                          </div>
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>Fix Costs Rate</label>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Enter Fix Costs Rate">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-
-            <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-block btn-success" (click)="saveAdd()">SAVE</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-      <!--add-->
-
-      <!--update-->
-      <div>
-        <div class="card" *ngIf="showUpdate">
-          <div class="card-header">
-            <strong>Update Fix Costs Parameter</strong>
-          </div>
-
-          <div class="card-body col-12">
-
-            <form action="" method="post" class="form-horizontal">
-              <div class="col-12" style="text-align: center">
-                <div>
-                  <fieldset class="form-group">
-
-                    <div class="form-group row">
-                      <div class="col-md-6 col-lg-12 mb-5">
-                        <div class="d-flex ml-0">
-                          <label><b>Year</b></label>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>Year</label>
-                            </div>
-                            <ng-select class="bootstrap"
-                                       [placeholder]="data[selectedRowNumber].Year"
-                                       [options]="year"
-                                       [allowClear]="false"></ng-select>
-                          </div>
-                          <!-- date picker -->
-                          <div class="col-md-3">
-                            <div class="d-flex ml-0">
-                              <label for="validFrom">Valid From</label>
-                            </div>
-                            <div class="input-group">
-                              <input name="validFrom" class="form-control" [placeholder]="data[selectedRowNumber].ValidFrom"
-                                     name="dp1" ngbDatepicker #d1="ngbDatepicker">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                              </div>
-                            </div>
-                          </div>
-
-                          <div class="col-md-3">
-                            <div class="d-flex ml-0">
-                              <label for="validTo">Valid To</label>
-                            </div>
-                            <div class="input-group">
-                              <input name="validTo" class="form-control" [placeholder]="data[selectedRowNumber].ValidTo"
-                                     name="dp2" ngbDatepicker #d2="ngbDatepicker">
-                              <div class="input-group-append">
-                                <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
-                              </div>
-                            </div>
-                          </div>
-                          <!-- date picker -->
-                        </div>
-                      </div>
-                      <hr style="width:100%;" class="ml-0 mr-0">
-                      <div class="col-md-6 col-lg-12 mb-5">
-                        <div class="d-flex ml-0">
-                          <label><b>Fix Costs</b></label>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>Fix Costs Typ</label>
-                            </div>
-                            <ng-select
-                              class="bootstrap"
-                              name="fixCostsTypPicker"
-                              [(ngModel)]="data[selectedRowNumber].FixCostsTyp"
-                              [placeholder]="data[selectedRowNumber].FixCostsTyp"
-                              [options]="fixCostsTyp"
-                              [allowClear]="false"></ng-select>
-                          </div>
-                          <div class="col-md-6 col-lg-6">
-                            <div class="d-flex ml-0">
-                              <label>Fix Costs Rate</label>
-                            </div>
-                            <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].FixCostsRate">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
-              </div>
-            </form>
-
-            <div class="col">
-              <div class="row d-flex justify-content-end">
-                <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
-                  <button type="button" class="btn btn-block btn-primary" (click)="saveUpdate(); SetSelectedRow()">SAVE</button>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-      <!--update-->
-
     </div>
-    <!-- row -->
+  </div>
+
+  <div class="row">
+    <!--add-->
+    <div class="col-12">
+      <div class="card" *ngIf="showAdd">
+        <div class="card-header">
+          <strong>Add New Fix Costs Parameter</strong>
+        </div>
+
+        <div class="card-body col-12">
+
+          <form action="" method="post" class="form-horizontal">
+            <div class="col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
+
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Year</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Year</label>
+                          </div>
+                          <ng-select class="bootstrap"
+                                     placeholder="Pick Year"
+                                     [options]="year"
+                                     [allowClear]="false"></ng-select>
+                        </div>
+                        <!-- date picker -->
+                        <div class="col-md-3">
+                          <div class="d-flex ml-0">
+                            <label for="validFrom">Valid From</label>
+                          </div>
+                          <div class="input-group">
+                            <input id="validFrom" name="validFrom" class="form-control" placeholder="yyyy-mm-dd"
+                                   name="dp1" ngbDatepicker #d1="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="d-flex ml-0">
+                            <label for="validTo">Valid To</label>
+                          </div>
+                          <div class="input-group">
+                            <input id="validTo" name="validTo" class="form-control" placeholder="yyyy-mm-dd"
+                                   name="dp2" ngbDatepicker #d2="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- date picker -->
+                      </div>
+                    </div>
+                    <hr style="width:100%;" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Fix Costs</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            placeholder="Pick Fix Costs Typ"
+                            name="fixCostsPicker"
+                            [options]="fixCostsTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Rate</label>
+                          </div>
+                          <input type="text" class="form-control" placeholder="Enter Fix Costs Rate">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-success" (click)="saveAdd()">SAVE</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--add-->
+
+    <!--update-->
+    <div class="col-12">
+      <div class="card" *ngIf="showUpdate">
+        <div class="card-header">
+          <strong>Update Fix Costs Parameter</strong>
+        </div>
+
+        <div class="card-body col-12">
+
+          <form action="" method="post" class="form-horizontal">
+            <div class="col-12" style="text-align: center">
+              <div>
+                <fieldset class="form-group">
+
+                  <div class="form-group row">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Year</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Year</label>
+                          </div>
+                          <ng-select class="bootstrap"
+                                     [placeholder]="data[selectedRowNumber].Year"
+                                     [options]="year"
+                                     [allowClear]="false"></ng-select>
+                        </div>
+                        <!-- date picker -->
+                        <div class="col-md-3">
+                          <div class="d-flex ml-0">
+                            <label for="validFrom">Valid From</label>
+                          </div>
+                          <div class="input-group">
+                            <input name="validFrom" class="form-control" [placeholder]="data[selectedRowNumber].ValidFrom"
+                                   name="dp1" ngbDatepicker #d1="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-3">
+                          <div class="d-flex ml-0">
+                            <label for="validTo">Valid To</label>
+                          </div>
+                          <div class="input-group">
+                            <input name="validTo" class="form-control" [placeholder]="data[selectedRowNumber].ValidTo"
+                                   name="dp2" ngbDatepicker #d2="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"><i class="fa fa-calendar"></i></button>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- date picker -->
+                      </div>
+                    </div>
+                    <hr style="width:100%;" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Fix Costs</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Typ</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            name="fixCostsTypPicker"
+                            [(ngModel)]="data[selectedRowNumber].FixCostsTyp"
+                            [placeholder]="data[selectedRowNumber].FixCostsTyp"
+                            [options]="fixCostsTyp"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Fix Costs Rate</label>
+                          </div>
+                          <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].FixCostsRate">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+
+          <div class="col">
+            <div class="row d-flex justify-content-end">
+              <div class="col-6 col-sm-4 col-md-2 mb-3 mb-xl-0">
+                <button type="button" class="btn btn-block btn-primary" (click)="saveUpdate(); SetSelectedRow()">SAVE</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--update-->
 
   </div>
+    <!-- row -->
 </div>

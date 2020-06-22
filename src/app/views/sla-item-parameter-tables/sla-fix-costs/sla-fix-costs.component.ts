@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
 import PerfectScrollbar from "perfect-scrollbar";
@@ -8,12 +9,12 @@ import PerfectScrollbar from "perfect-scrollbar";
   templateUrl: './sla-fix-costs.component.html',
   styleUrls: ['./sla-fix-costs.component.css']
 })
-export class SlaFixCostsComponent implements OnInit {
+export class SlaFixCostsComponent implements OnInit, AfterViewInit {
 
   private data = [];
   private setClickedRow: (index) => void;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(@Inject(DOCUMENT) document, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -102,6 +103,9 @@ export class SlaFixCostsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.tableResized();
+  }
 
   onYearClick(Year: string){
     this.filterYear = Year;
@@ -115,7 +119,7 @@ export class SlaFixCostsComponent implements OnInit {
   }
 
   getYearScrollbarNewHeight(): string {
-    const table = document.getElementById('slaFixCostTable');
+    const table = document.getElementById('internalHeadcountTable');
     const tableHeight = table.offsetHeight;
     const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
     return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
