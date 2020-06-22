@@ -25,7 +25,7 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
         ValidTo: '2020/10/01',
         TravelTyp: 'Regional',
         TravelDayTyp: 'Regional',
-        TravelRate: '1500'
+        TravelRate: '199'
       },
       {
         Year: '2020',
@@ -33,7 +33,15 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
         ValidTo: '2020/12/01',
         TravelTyp: 'Domestic',
         TravelDayTyp: 'Domestic',
-        TravelRate: '1500'
+        TravelRate: '99'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/01',
+        TravelTyp: 'Domestic',
+        TravelDayTyp: 'Domestic',
+        TravelRate: '110'
       },
     ];
     this.setClickedRow = function (index) {
@@ -49,7 +57,6 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
   //Years for Scroll
   public inputtedYears: Array<String> = [
 
-    '2013',
     '2014',
     '2015',
     '2016',
@@ -63,6 +70,9 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
     '2024',
     '2025',
     '2026',
+    '2027',
+    '2028',
+    '2029',
   ];
 
   tableSubHeaders = [

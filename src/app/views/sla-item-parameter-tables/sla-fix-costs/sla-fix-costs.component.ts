@@ -23,15 +23,22 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
-        FixCostsTyp: 'Fix E5 Costs',
-        FixCostsRate: '1500'
+        FixCostsTyp: 'Fix E5',
+        FixCostsRate: '100'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         FixCostsTyp: 'Monitoring',
-        FixCostsRate: '1500'
+        FixCostsRate: '90'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/01',
+        FixCostsTyp: 'Monitoring',
+        FixCostsRate: '120'
       },
     ];
     this.setClickedRow = function (index) {
@@ -41,7 +48,7 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
 
   //Years for Scroll
   public inputtedYears: Array<String> = [
-    '2013',
+
     '2014',
     '2015',
     '2016',
@@ -55,6 +62,9 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
     '2024',
     '2025',
     '2026',
+    '2027',
+    '2028',
+    '2029',
   ];
 
 

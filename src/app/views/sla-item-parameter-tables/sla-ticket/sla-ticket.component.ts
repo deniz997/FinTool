@@ -24,14 +24,21 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
         TicketTyp: 'Gold',
-        TicketRate: '1500'
+        TicketRate: '155'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         TicketTyp: 'Silver',
-        TicketRate: '1500'
+        TicketRate: '90'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/01',
+        TicketTyp: 'Basis',
+        TicketRate: '15'
       },
     ];
     this.setClickedRow = function (index) {
@@ -47,7 +54,6 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
   //Years for Scroll
   public inputtedYears: Array<String> = [
 
-    '2013',
     '2014',
     '2015',
     '2016',
@@ -61,6 +67,9 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
     '2024',
     '2025',
     '2026',
+    '2027',
+    '2028',
+    '2029',
   ];
 
   tableSubHeaders = [
