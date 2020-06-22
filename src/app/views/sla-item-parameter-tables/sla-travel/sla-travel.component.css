@@ -36,3 +36,15 @@ table {
 tbody tr:hover{
   background-color: #cccccc;
 }
+
+#travelCard{
+  min-height: 450px;
+}
+
+#slaTravelTable{
+  min-height: 450px;
+}
+
+#travelYearScrollbar{
+  height: 397px;
+}

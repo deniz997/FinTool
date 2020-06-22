@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
 import PerfectScrollbar from "perfect-scrollbar";
@@ -8,14 +9,14 @@ import PerfectScrollbar from "perfect-scrollbar";
   templateUrl: './sla-travel.component.html',
   styleUrls: ['./sla-travel.component.css']
 })
-export class SlaTravelComponent implements OnInit {
+export class SlaTravelComponent implements OnInit, AfterViewInit {
 
   private data = [];
-  private setClickedRow: (index) => void;
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(@Inject(DOCUMENT) document, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
 
     this.data = [
       {
@@ -40,8 +41,14 @@ export class SlaTravelComponent implements OnInit {
     };
   }
 
+  selectedRow: string;
+  setClickedRow: Function;
+  selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
+
   //Years for Scroll
   public inputtedYears: Array<String> = [
+
     '2013',
     '2014',
     '2015',
@@ -67,24 +74,13 @@ export class SlaTravelComponent implements OnInit {
     'Travel Rate',
   ];
 
-  selectedRow: string;
-
   showAdd = false;
   showUpdate = false;
-  selectedRowNumber: number;
-  validSelectedRowNumber: boolean = false;
 
   currentPage: number = 1;
   totalItems: number = 60;
   itemPerPage: number = 5;
   maxSize: number = 3;
-
-  // Datepicker
-  minDate = new Date(2017, 5, 10);
-  maxDate = new Date(2018, 9, 15);
-
-  bsValue: Date = new Date();
-  bsRangeValue: any = [new Date(2017, 7, 4), new Date(2017, 7, 20)];
 
   hoveredDate: NgbDate | null = null;
 
@@ -92,6 +88,7 @@ export class SlaTravelComponent implements OnInit {
   toDate: NgbDate | null;
 
   filterYear: string = '2020';
+
 
   public year: Array<IOption> = [
     {label: '2020', value: 'Year1'},
@@ -126,20 +123,24 @@ export class SlaTravelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.tableResized();
+  }
+
   onYearClick(Year: string){
     this.filterYear = Year;
   }
 
   tableResized() {
-    const ps = new PerfectScrollbar('#yearScrollbar');
-    document.getElementById('yearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    const ps = new PerfectScrollbar('#travelYearScrollbar');
+    document.getElementById('travelYearScrollbar').style.height = this.getYearScrollbarNewHeight();
     ps.update();
   }
 
   getYearScrollbarNewHeight(): string {
-    const table = document.getElementById('internalHeadcountTable');
+    const table = document.getElementById('slaTravelTable');
     const tableHeight = table.offsetHeight;
-    const yearHeaderHeight = document.getElementById('yearHeader').offsetHeight;
+    const yearHeaderHeight = document.getElementById('travelYearHeader').offsetHeight;
     return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
   }
 
@@ -156,10 +157,6 @@ export class SlaTravelComponent implements OnInit {
 
   updateValidSelectedRowNumber() {
     this.validSelectedRowNumber = !(this.selectedRowNumber >= this.data.length || this.selectedRowNumber < 0);
-  }
-
-  SetSelectedRow(): void {
-    this.selectedRowNumber = null;
   }
 
   onDateSelection(date: NgbDate) {
@@ -212,5 +209,9 @@ export class SlaTravelComponent implements OnInit {
 
   saveUpdate() {
     this.closeUpdateCard();
+  }
+
+  SetSelectedRow(): void {
+    this.selectedRowNumber = null;
   }
 }
