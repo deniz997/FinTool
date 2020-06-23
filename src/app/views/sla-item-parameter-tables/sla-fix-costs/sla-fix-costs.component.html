@@ -42,6 +42,7 @@
                 <td *ngIf="row.Year == filterYear" >{{row.ValidTo}}</td>
                 <td *ngIf="row.Year == filterYear" >{{row.FixCostsTyp}}</td>
                 <td *ngIf="row.Year == filterYear" >{{row.FixCostsRate}}</td>
+                <td *ngIf="row.Year == filterYear" >{{row.Currency}}</td>
               </tr>
               </tbody>
             </table>
@@ -146,6 +147,25 @@
                         </div>
                       </div>
                     </div>
+                    <hr style="width:100%;" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Currency</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Currency</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            placeholder="Pick Currency"
+                            name="currencyPicker"
+                            [options]="currency"
+                            [allowClear]="false"></ng-select>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </fieldset>
               </div>
@@ -246,6 +266,25 @@
                             <label>Fix Costs Rate</label>
                           </div>
                           <input type="text" class="form-control" [defaultValue]="data[selectedRowNumber].FixCostsRate">
+                        </div>
+                      </div>
+                    </div>
+                    <hr style="width:100%;" class="ml-0 mr-0">
+                    <div class="col-md-6 col-lg-12 mb-5">
+                      <div class="d-flex ml-0">
+                        <label><b>Currency</b></label>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                          <div class="d-flex ml-0">
+                            <label>Currency</label>
+                          </div>
+                          <ng-select
+                            class="bootstrap"
+                            name="currencyPicker"
+                            [placeholder]="data[selectedRowNumber].Currency"
+                            [options]="currency"
+                            [allowClear]="false"></ng-select>
                         </div>
                       </div>
                     </div>

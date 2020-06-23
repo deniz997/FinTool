@@ -2,7 +2,7 @@ import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
-import PerfectScrollbar from "perfect-scrollbar";
+import PerfectScrollbar from 'perfect-scrollbar';
 
 @Component({
   selector: 'app-sla-travel',
@@ -25,7 +25,8 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
         ValidTo: '2020/10/01',
         TravelTyp: 'Regional',
         TravelDayTyp: 'Regional',
-        TravelRate: '199'
+        TravelRate: '199',
+        Currency: 'EUR'
       },
       {
         Year: '2020',
@@ -33,7 +34,8 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
         ValidTo: '2020/12/01',
         TravelTyp: 'Domestic',
         TravelDayTyp: 'Domestic',
-        TravelRate: '99'
+        TravelRate: '99',
+        Currency: 'EUR'
       },
       {
         Year: '2019',
@@ -41,7 +43,8 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
         ValidTo: '2019/12/01',
         TravelTyp: 'Domestic',
         TravelDayTyp: 'Domestic',
-        TravelRate: '110'
+        TravelRate: '110',
+        Currency: 'EUR'
       },
     ];
     this.setClickedRow = function (index) {
@@ -54,7 +57,7 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
   selectedRowNumber: number;
   validSelectedRowNumber: boolean = false;
 
-  //Years for Scroll
+  // Years for Scroll
   public inputtedYears: Array<String> = [
 
     '2014',
@@ -82,6 +85,7 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
     'Travel Typ',
     'Travel Day Typ',
     'Travel Rate',
+    'Currency',
   ];
 
   showAdd = false;
@@ -121,6 +125,11 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
     {label: 'Overseas', value: 'Overseas'},
   ];
 
+  public currency: Array<IOption> = [
+    {label: 'EUR', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
+  ];
+
   setPage(pageNo: number): void {
     this.currentPage = pageNo;
   }
@@ -137,7 +146,7 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
     this.tableResized();
   }
 
-  onYearClick(Year: string){
+  onYearClick(Year: string) {
     this.filterYear = Year;
   }
 

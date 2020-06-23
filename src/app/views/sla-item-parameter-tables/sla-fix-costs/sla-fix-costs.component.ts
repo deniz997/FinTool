@@ -24,21 +24,24 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
         FixCostsTyp: 'Fix E5',
-        FixCostsRate: '100'
+        FixCostsRate: '100',
+        Currency: 'EUR'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         FixCostsTyp: 'Monitoring',
-        FixCostsRate: '90'
+        FixCostsRate: '90',
+        Currency: 'EUR'
       },
       {
         Year: '2019',
         ValidFrom: '2019/01/01',
         ValidTo: '2019/12/01',
         FixCostsTyp: 'Monitoring',
-        FixCostsRate: '120'
+        FixCostsRate: '120',
+        Currency: 'EUR'
       },
     ];
     this.setClickedRow = function (index) {
@@ -76,6 +79,7 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
     'Valid To',
     'Fix Costs Typ',
     'Fix Costs Rate',
+    'Curency',
   ];
 
   showAdd = false;
@@ -108,6 +112,11 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
     {label: 'Monitoring', value: 'Monitoring'},
     {label: 'Licence', value: 'Licence'},
     {label: 'Fix E5 Costs', value: 'Fix E5 Costs'},
+  ];
+
+  public currency: Array<IOption> = [
+    {label: 'EUR', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
   ];
 
   ngOnInit(): void {

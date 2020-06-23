@@ -2,7 +2,7 @@ import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
-import PerfectScrollbar from "perfect-scrollbar";
+import PerfectScrollbar from 'perfect-scrollbar';
 
 @Component({
   selector: 'app-sla-manday',
@@ -24,21 +24,24 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
         MandayTyp: 'Special',
-        MandayRate: '150'
+        MandayRate: '150',
+        Currency: 'EUR'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         MandayTyp: 'Standart',
-        MandayRate: '199'
+        MandayRate: '199',
+        Currency: 'EUR'
       },
       {
         Year: '2019',
         ValidFrom: '2019/01/01',
         ValidTo: '2019/12/01',
         MandayTyp: 'Standart',
-        MandayRate: '250'
+        MandayRate: '250',
+        Currency: 'EUR'
       },
     ];
     this.setClickedRow = function (index) {
@@ -51,7 +54,7 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
   selectedRowNumber: number;
   validSelectedRowNumber: boolean = false;
 
-  //Years for Scroll
+  // Years for Scroll
   public inputtedYears: Array<String> = [
 
     '2014',
@@ -78,6 +81,7 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
     'Valid To',
     'Manday Typ',
     'Manday Rate',
+    'Currency',
   ];
 
   showAdd = false;
@@ -110,6 +114,11 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
     {label: 'Standart', value: 'Standart'},
   ];
 
+  public currency: Array<IOption> = [
+    {label: 'EUR', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
+  ];
+
   ngOnInit(): void {
   }
 
@@ -117,7 +126,7 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
     this.tableResized();
   }
 
-  onYearClick(Year: string){
+  onYearClick(Year: string) {
     this.filterYear = Year;
     this.tableResized();
   }

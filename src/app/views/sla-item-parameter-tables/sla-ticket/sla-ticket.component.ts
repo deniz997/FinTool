@@ -24,21 +24,24 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
         TicketTyp: 'Gold',
-        TicketRate: '155'
+        TicketRate: '155',
+        Currency: 'EUR'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         TicketTyp: 'Silver',
-        TicketRate: '90'
+        TicketRate: '90',
+        Currency: 'EUR'
       },
       {
         Year: '2019',
         ValidFrom: '2019/01/01',
         ValidTo: '2019/12/01',
         TicketTyp: 'Basis',
-        TicketRate: '15'
+        TicketRate: '15',
+        Currency: 'EUR'
       },
     ];
     this.setClickedRow = function (index) {
@@ -78,6 +81,7 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
     'Valid To',
     'Ticket Typ',
     'Ticket Rate',
+    'Currency',
   ];
 
   showAdd = false;
@@ -109,7 +113,10 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
     {label: 'Gold', value: 'Gold'},
     {label: 'Platinium', value: 'Platinium'},
   ];
-
+  public currency: Array<IOption> = [
+    {label: 'EUR', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
+  ];
   ngOnInit(): void {
   }
 
