@@ -22,13 +22,13 @@ export class StatusComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        status : 'Status 1'
+        status : 'Memur'
       },
       {
-        status : 'Status 2'
+        status : 'E4'
       },
       {
-        status : 'Status 3'
+        status : 'E5'
       }
     ];
     this.setClickedRow = function (index) {
@@ -40,9 +40,9 @@ export class StatusComponent implements OnInit {
   ];
 
   public Status: Array<IOption> = [
-    {label: 'Status 1', value: 'Item1'},
-    {label: 'Status 2', value: 'Item2'},
-    {label: 'Status 3', value: 'Item3'}
+    {label: 'Memur', value: 'Item1'},
+    {label: 'E4', value: 'Item2'},
+    {label: 'E5', value: 'Item3'}
   ];
 
 

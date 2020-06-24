@@ -36,7 +36,7 @@ export class FixCostsComponent implements OnInit {
     };
   }
   RightTableHeaders = [
-    'Fix Costs'
+    'Fix Costs Typ'
   ];
 
   public Currency: Array<IOption> = [
