@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
+import PerfectScrollbar from 'perfect-scrollbar';
 
 @Component({
   selector: 'app-sla-manday',
   templateUrl: './sla-manday.component.html',
   styleUrls: ['./sla-manday.component.css']
 })
-export class SlaMandayComponent implements OnInit {
+export class SlaMandayComponent implements OnInit, AfterViewInit {
 
   private data = [];
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(@Inject(DOCUMENT) document, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
 
@@ -22,14 +24,24 @@ export class SlaMandayComponent implements OnInit {
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
         MandayTyp: 'Special',
-        MandayRate: '1500'
+        MandayRate: '150',
+        Currency: 'EUR'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         MandayTyp: 'Standart',
-        MandayRate: '1500'
+        MandayRate: '199',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/01',
+        MandayTyp: 'Standart',
+        MandayRate: '250',
+        Currency: 'EUR'
       },
     ];
     this.setClickedRow = function (index) {
@@ -42,12 +54,34 @@ export class SlaMandayComponent implements OnInit {
   selectedRowNumber: number;
   validSelectedRowNumber: boolean = false;
 
+  // Years for Scroll
+  public inputtedYears: Array<String> = [
+
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    '2020',
+    '2021',
+    '2022',
+    '2023',
+    '2024',
+    '2025',
+    '2026',
+    '2027',
+    '2028',
+    '2029',
+  ];
+
   tableSubHeaders = [
     'Year',
     'Valid From',
     'Valid To',
     'Manday Typ',
     'Manday Rate',
+    'Currency',
   ];
 
   showAdd = false;
@@ -63,6 +97,9 @@ export class SlaMandayComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
+  filterYear: string = '2020';
+
+
   public year: Array<IOption> = [
     {label: '2020', value: 'Year1'},
     {label: '2019', value: 'Year2'},
@@ -77,8 +114,36 @@ export class SlaMandayComponent implements OnInit {
     {label: 'Standart', value: 'Standart'},
   ];
 
+  public currency: Array<IOption> = [
+    {label: 'EUR', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
+  ];
+
   ngOnInit(): void {
   }
+
+  ngAfterViewInit() {
+    this.tableResized();
+  }
+
+  onYearClick(Year: string) {
+    this.filterYear = Year;
+    this.tableResized();
+  }
+
+  tableResized() {
+    const ps = new PerfectScrollbar('#mandayYearScrollbar');
+    document.getElementById('mandayYearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    ps.update();
+  }
+
+  getYearScrollbarNewHeight(): string {
+    const table = document.getElementById('slaMandayTable');
+    const tableHeight = table.offsetHeight;
+    const yearHeaderHeight = document.getElementById('mandayYearHeader').offsetHeight;
+    return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
+  }
+
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;

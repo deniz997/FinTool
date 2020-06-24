@@ -36,3 +36,19 @@ table {
 tbody tr:hover{
   background-color: #cccccc;
 }
+
+#ticketCard{
+  min-height: 450px;
+}
+
+#slaTicketTable{
+  min-height: 450px;
+}
+
+#ticketYearScrollbar{
+  height: 397px;
+}
+perfect-scrollbar{
+  position: static;
+  display: block;
+}

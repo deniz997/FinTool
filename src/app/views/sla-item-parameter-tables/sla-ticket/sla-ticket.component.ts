@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter} from '@ng-bootstrap/ng-bootstrap';
 import {IOption} from 'ng-select';
+import PerfectScrollbar from "perfect-scrollbar";
 
 @Component({
   selector: 'app-sla-ticket',
   templateUrl: './sla-ticket.component.html',
   styleUrls: ['./sla-ticket.component.css']
 })
-export class SlaTicketComponent implements OnInit {
+export class SlaTicketComponent implements OnInit, AfterViewInit{
 
   private data = [];
 
-  constructor(private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(@Inject(DOCUMENT) document, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+
 
     this.data = [
       {
@@ -21,14 +24,24 @@ export class SlaTicketComponent implements OnInit {
         ValidFrom: '2020/01/01',
         ValidTo: '2020/10/01',
         TicketTyp: 'Gold',
-        TicketRate: '1500'
+        TicketRate: '155',
+        Currency: 'EUR'
       },
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
         ValidTo: '2020/12/01',
         TicketTyp: 'Silver',
-        TicketRate: '1500'
+        TicketRate: '90',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/01',
+        TicketTyp: 'Basis',
+        TicketRate: '15',
+        Currency: 'EUR'
       },
     ];
     this.setClickedRow = function (index) {
@@ -36,24 +49,46 @@ export class SlaTicketComponent implements OnInit {
     };
   }
 
+  selectedRow: string;
+  setClickedRow: Function;
+  selectedRowNumber: number;
+  validSelectedRowNumber: boolean = false;
+
+  //Years for Scroll
+  public inputtedYears: Array<String> = [
+
+    '2014',
+    '2015',
+    '2016',
+    '2017',
+    '2018',
+    '2019',
+    '2020',
+    '2021',
+    '2022',
+    '2023',
+    '2024',
+    '2025',
+    '2026',
+    '2027',
+    '2028',
+    '2029',
+  ];
+
   tableSubHeaders = [
     'Year',
     'Valid From',
     'Valid To',
     'Ticket Typ',
     'Ticket Rate',
+    'Currency',
   ];
-
-  selectedRow: string;
-  setClickedRow: Function;
-  selectedRowNumber: number;
-  validSelectedRowNumber: boolean = false;
 
   showAdd = false;
   showUpdate = false;
 
+  currentPage: number = 1;
   totalItems: number = 60;
-  currentPage: number   = 1;
   itemPerPage: number = 5;
   maxSize: number = 3;
 
@@ -61,6 +96,9 @@ export class SlaTicketComponent implements OnInit {
 
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
+
+  filterYear: string = '2020';
+
 
   public year: Array<IOption> = [
     {label: '2020', value: 'Year1'},
@@ -75,9 +113,34 @@ export class SlaTicketComponent implements OnInit {
     {label: 'Gold', value: 'Gold'},
     {label: 'Platinium', value: 'Platinium'},
   ];
-
+  public currency: Array<IOption> = [
+    {label: 'EUR', value: 'EUR'},
+    {label: 'TL', value: 'TL'},
+  ];
   ngOnInit(): void {
   }
+
+  ngAfterViewInit() {
+    this.tableResized();
+  }
+
+  onYearClick(Year: string){
+    this.filterYear = Year;
+  }
+
+  tableResized() {
+    const ps = new PerfectScrollbar('#ticketYearScrollbar');
+    document.getElementById('ticketYearScrollbar').style.height = this.getYearScrollbarNewHeight();
+    ps.update();
+  }
+
+  getYearScrollbarNewHeight(): string {
+    const table = document.getElementById('slaTicketTable');
+    const tableHeight = table.offsetHeight;
+    const yearHeaderHeight = document.getElementById('ticketYearHeader').offsetHeight;
+    return `${(tableHeight - yearHeaderHeight - 6).toString()}px`;
+  }
+
 
   saveClickedRow(i: number) {
     this.selectedRowNumber = i;
@@ -148,5 +211,4 @@ export class SlaTicketComponent implements OnInit {
   SetSelectedRow(): void {
     this.selectedRowNumber = null;
   }
-
 }
