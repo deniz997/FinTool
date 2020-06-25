@@ -1,6 +1,6 @@
 <div class="animated fadeIn">
-<!--  Cost type selection-->
-  <div class="card">
+  <!--  Cost type selection-->
+  <div class="card ">
     <div class="card-header">
       <i class="fa fa-align-justify"></i><strong>E4 Related Costs</strong>
     </div>
@@ -34,9 +34,15 @@
         </fieldset>
       </div>
     </div>
+    <div class="card-footer bg-info text-white" *ngIf="selectedMainCostItem!=null && !mainCostSelectDisabled">
+      <div class="row mx-2 my-auto">
+        <h5 class="text-muted my-auto font-weight-bold">{{selectedMainCostItem}}</h5>
+        <h4 class="mb-0 ml-auto">Total: € {{mainCostTotal}}</h4>
+      </div>
+    </div>
   </div>
-<!--  Operations and components based on cost type-->
-  <div id="subPages">
+  <!--  Operations and components based on cost type-->
+  <div id="subPages" *ngIf="selectedMainCostItem!=null">
     <div *ngIf="selectedSubCost==='mT'">
       <app-management-travels></app-management-travels>
     </div>

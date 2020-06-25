@@ -29,21 +29,21 @@ export class NonChargeableConsultancyComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        Definition : 'Definition 1',
-        ValidFrom : new Date('2019-06-07'),
-        Value : 0.0,
-        Comments : 'Comment 1',
+        Definition : 'Abc xyz',
+        ValidFrom : new Date('2020-01-01'),
+        Value : 3000.0,
+        Comments : 'Support from company xyz',
       },
       {
         Definition : 'Definition 2',
         ValidFrom : new Date('2019-06-07'),
         Value : 0.0,
-        Comments : 'Comment 2',
+        Comments : null,
       },
       {
         Definition : 'Total',
         ValidFrom : null,
-        Value : 40000,
+        Value : 3000.0,
         Comments : null,
       },
     ];

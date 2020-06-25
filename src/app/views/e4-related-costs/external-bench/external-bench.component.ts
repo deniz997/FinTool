@@ -28,27 +28,27 @@ export class ExternalBenchComponent implements OnInit {
     'Total (€)'
   ];
   data: [
-    { FTE: number; Class: string; Total: number},
-    { FTE: number; Class: string; Total: number},
-    {FTE: number; Class: string; Total: number}
+    { FTE: string; Class: string; Total: number},
+    { FTE: string; Class: string; Total: number},
+    {FTE: string; Class: string; Total: number}
     ];
 
   constructor() {
     this.data = [
       {
-        FTE : 0.16,
-        Class : 'B',
-        Total : 15074.46,
+        FTE : '0,1',
+        Class : 'A',
+        Total : 1000.00,
       },
       {
-        FTE : 0.16,
+        FTE : '0,1',
         Class : 'B',
-        Total : 15074.46,
+        Total : 500,
       },
       {
-        FTE : null,
+        FTE : 'Total',
         Class : null,
-        Total: 30148.92
+        Total: 1500.00
       }
     ];
     this.setClickedRow = function (index) {
