@@ -39,13 +39,13 @@ tbody tr:hover{
 
 
 #fixCostCard{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #slaFixCostTable{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #FixCostYearScrollbar{
-  height: 397px;
+  height: 340px;
 }

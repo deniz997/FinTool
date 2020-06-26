@@ -28,6 +28,7 @@ th {
 table {
   text-align: center;
 }
+
 .table tr.active td{
   background-color: #999999 ;
   color: black;
@@ -39,13 +40,13 @@ tbody tr:hover{
 
 
 #mandayCard{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #slaMandayTable{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #mandayYearScrollbar{
-  height: 380px;
+  height: 340px;
 }

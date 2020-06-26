@@ -20,29 +20,79 @@ export class SlaTicketComponent implements OnInit, AfterViewInit{
 
     this.data = [
       {
-        Year: '2020',
-        ValidFrom: '2020/01/01',
-        ValidTo: '2020/10/01',
-        TicketTyp: 'Gold',
-        TicketRate: '155',
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/31',
+        TicketTyp: 'Basis',
+        TicketRate: '15',
         Currency: 'EUR'
       },
       {
-        Year: '2020',
-        ValidFrom: '2020/01/01',
-        ValidTo: '2020/12/01',
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/31',
         TicketTyp: 'Silver',
+        TicketRate: '50',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/31',
+        TicketTyp: 'Gold',
         TicketRate: '90',
         Currency: 'EUR'
       },
       {
         Year: '2019',
         ValidFrom: '2019/01/01',
-        ValidTo: '2019/12/01',
-        TicketTyp: 'Basis',
-        TicketRate: '15',
+        ValidTo: '2019/12/31',
+        TicketTyp: 'Platinium',
+        TicketRate: '130',
         Currency: 'EUR'
       },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/31',
+        TicketTyp: 'Silver',
+        TicketRate: '80',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/10/01',
+        TicketTyp: 'Gold',
+        TicketRate: '135',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/31',
+        TicketTyp: 'Platinium',
+        TicketRate: '170',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/06/01',
+        TicketTyp: 'Basic',
+        TicketRate: '35',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/06/01',
+        ValidTo: '2020/12/31',
+        TicketTyp: 'Basic',
+        TicketRate: '55',
+        Currency: 'EUR'
+      },
+
+
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;

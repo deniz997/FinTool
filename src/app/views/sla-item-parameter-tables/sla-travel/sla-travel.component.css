@@ -38,13 +38,13 @@ tbody tr:hover{
 }
 
 #travelCard{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #slaTravelTable{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #travelYearScrollbar{
-  height: 397px;
+  height: 340px;
 }

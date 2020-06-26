@@ -2,16 +2,16 @@
   <div class="row">
     <!-- row -->
 
-    <div class="col-2" style="padding-right: 0;">
+    <div class="col-2" style="padding-right: 0; margin-bottom: 15px;">
       <div class="card" id="mandayCard" style="height: inherit">
         <div id="mandayYearHeader" class="card-header">
           <strong>Years</strong>
         </div>
-        <div class="card-body" style="padding: 2px;">
+        <div class="card-body" style="padding: 2px; ">
           <perfect-scrollbar id="mandayYearScrollbar" style="max-width: inherit;">
             <table class="table table-sm">
               <tbody>
-              <ng-container *ngFor="let year of inputtedYears">
+              <ng-container class="year" *ngFor="let year of inputtedYears">
                 <tr>
                   <td id="{{year}}Selector" (click)="onYearClick(year)">{{year}}</td>
                 </tr>
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="col-lg-10" (window:resize)="tableResized()" style="padding-left: 0;">
+    <div class="col-lg-10" (window:resize)="tableResized()" style="padding-left: 0; margin-bottom: 15px;">
       <!-- column -->
       <div class="card" id="slaMandayTable" >
 

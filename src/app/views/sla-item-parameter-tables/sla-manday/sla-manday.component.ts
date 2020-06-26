@@ -20,9 +20,41 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
 
     this.data = [
       {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/05/01',
+        MandayTyp: 'Standart',
+        MandayRate: '250',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/05/01',
+        ValidTo: '2019/08/01',
+        MandayTyp: 'Special',
+        MandayRate: '199',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/08/01',
+        ValidTo: '2019/12/15',
+        MandayTyp: 'Special',
+        MandayRate: '220',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/12/15',
+        ValidTo: '2019/12/31',
+        MandayTyp: 'Special',
+        MandayRate: '299',
+        Currency: 'EUR'
+      },
+      {
         Year: '2020',
         ValidFrom: '2020/01/01',
-        ValidTo: '2020/10/01',
+        ValidTo: '2020/02/01',
         MandayTyp: 'Special',
         MandayRate: '150',
         Currency: 'EUR'
@@ -30,19 +62,44 @@ export class SlaMandayComponent implements OnInit, AfterViewInit {
       {
         Year: '2020',
         ValidFrom: '2020/01/01',
-        ValidTo: '2020/12/01',
+        ValidTo: '2020/04/15',
         MandayTyp: 'Standart',
         MandayRate: '199',
         Currency: 'EUR'
       },
       {
-        Year: '2019',
-        ValidFrom: '2019/01/01',
-        ValidTo: '2019/12/01',
-        MandayTyp: 'Standart',
-        MandayRate: '250',
+        Year: '2020',
+        ValidFrom: '2020/02/01',
+        ValidTo: '2020/06/01',
+        MandayTyp: 'Special',
+        MandayRate: '120',
         Currency: 'EUR'
       },
+      {
+        Year: '2020',
+        ValidFrom: '2020/04/15',
+        ValidTo: '2020/09/01',
+        MandayTyp: 'Standart',
+        MandayRate: '155',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/09/01',
+        ValidTo: '2020/12/31',
+        MandayTyp: 'Standart',
+        MandayRate: '189',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/11/01',
+        ValidTo: '2020/12/31',
+        MandayTyp: 'Special',
+        MandayRate: '220',
+        Currency: 'EUR'
+      },
+
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;

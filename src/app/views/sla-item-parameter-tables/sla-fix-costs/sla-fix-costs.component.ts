@@ -20,17 +20,9 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
 
     this.data = [
       {
-        Year: '2020',
-        ValidFrom: '2020/01/01',
-        ValidTo: '2020/10/01',
-        FixCostsTyp: 'Fix E5',
-        FixCostsRate: '100',
-        Currency: 'EUR'
-      },
-      {
-        Year: '2020',
-        ValidFrom: '2020/01/01',
-        ValidTo: '2020/12/01',
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/12/01',
         FixCostsTyp: 'Monitoring',
         FixCostsRate: '90',
         Currency: 'EUR'
@@ -39,10 +31,51 @@ export class SlaFixCostsComponent implements OnInit, AfterViewInit {
         Year: '2019',
         ValidFrom: '2019/01/01',
         ValidTo: '2019/12/01',
-        FixCostsTyp: 'Monitoring',
+        FixCostsTyp: 'Fix E4',
         FixCostsRate: '120',
         Currency: 'EUR'
       },
+      {
+        Year: '2019',
+        ValidFrom: '2019/01/01',
+        ValidTo: '2019/06/01',
+        FixCostsTyp: 'Fix E5',
+        FixCostsRate: '60',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2019',
+        ValidFrom: '2019/06/01',
+        ValidTo: '2019/12/31',
+        FixCostsTyp: 'Fix E5',
+        FixCostsRate: '75',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/31',
+        FixCostsTyp: 'Fix E5',
+        FixCostsRate: '100',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/31',
+        FixCostsTyp: 'Monitoring',
+        FixCostsRate: '90',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/31',
+        FixCostsTyp: 'Fix E4',
+        FixCostsRate: '150',
+        Currency: 'EUR'
+      },
+
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;

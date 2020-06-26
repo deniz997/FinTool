@@ -38,15 +38,15 @@ tbody tr:hover{
 }
 
 #ticketCard{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #slaTicketTable{
-  min-height: 450px;
+  min-height: 400px;
 }
 
 #ticketYearScrollbar{
-  height: 397px;
+  height: 340px;
 }
 perfect-scrollbar{
   position: static;

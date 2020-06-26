@@ -20,24 +20,6 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
 
     this.data = [
       {
-        Year: '2020',
-        ValidFrom: '2020/01/01',
-        ValidTo: '2020/10/01',
-        TravelTyp: 'Regional',
-        TravelDayTyp: 'Regional',
-        TravelRate: '199',
-        Currency: 'EUR'
-      },
-      {
-        Year: '2020',
-        ValidFrom: '2020/01/01',
-        ValidTo: '2020/12/01',
-        TravelTyp: 'Domestic',
-        TravelDayTyp: 'Domestic',
-        TravelRate: '99',
-        Currency: 'EUR'
-      },
-      {
         Year: '2019',
         ValidFrom: '2019/01/01',
         ValidTo: '2019/12/01',
@@ -46,6 +28,61 @@ export class SlaTravelComponent implements OnInit, AfterViewInit {
         TravelRate: '110',
         Currency: 'EUR'
       },
+      {
+        Year: '2019',
+        ValidFrom: '2019/06/01',
+        ValidTo: '2019/12/01',
+        TravelTyp: 'Overseas',
+        TravelDayTyp: 'Overseas',
+        TravelRate: '99',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/05/01',
+        TravelTyp: 'Regional',
+        TravelDayTyp: 'Regional',
+        TravelRate: '199',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/06/01',
+        TravelTyp: 'Domestic',
+        TravelDayTyp: 'Domestic',
+        TravelRate: '99',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/06/01',
+        ValidTo: '2020/12/01',
+        TravelTyp: 'Domestic',
+        TravelDayTyp: 'Domestic',
+        TravelRate: '150',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/01/01',
+        ValidTo: '2020/12/01',
+        TravelTyp: 'Overseas',
+        TravelDayTyp: 'Overseas',
+        TravelRate: '230',
+        Currency: 'EUR'
+      },
+      {
+        Year: '2020',
+        ValidFrom: '2020/05/01',
+        ValidTo: '2020/12/31',
+        TravelTyp: 'Regional',
+        TravelDayTyp: 'Regional',
+        TravelRate: '199',
+        Currency: 'EUR'
+      },
+
     ];
     this.setClickedRow = function (index) {
       this.selectedRow = index;
