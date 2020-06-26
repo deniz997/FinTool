@@ -42,7 +42,7 @@
     </div>
   </div>
   <!--  Operations and components based on cost type-->
-  <div id="subPages" *ngIf="selectedMainCostItem!=null">
+  <div id="subPages" *ngIf="selectedMainCostItem!=null && selectedSubCost != null">
     <div *ngIf="selectedSubCost==='mT'">
       <app-management-travels></app-management-travels>
     </div>
