@@ -9,7 +9,7 @@ import {IOption} from 'ng-select';
 export class TicketRateComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ currency: string; year: number; rate: string; number: number }];
+  data: [{ currency: string; year: number; rate: string}];
   currency: string[];
   saved: boolean = true;
   rate: number;
@@ -28,8 +28,7 @@ export class TicketRateComponent implements OnInit {
       {
         currency: 'Silver',
         year: 2020,
-        rate : 'EUR',
-        number: 1500
+        rate : 'EUR'
       }
     ];
     this.setClickedRow = function (index) {
@@ -38,7 +37,6 @@ export class TicketRateComponent implements OnInit {
   }
   RightTableHeaders = [
     'Currency',
-    'Value',
     'Ticket Typ',
     'Year'
   ];

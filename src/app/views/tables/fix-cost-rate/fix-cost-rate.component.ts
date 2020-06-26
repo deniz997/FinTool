@@ -9,7 +9,7 @@ import {IOption} from 'ng-select';
 export class FixCostRateComponent implements OnInit {
   selectedRow: Number;
   setClickedRow: Function;
-  data: [{ currency: string; year: number; rate: string; number: number }];
+  data: [{ currency: string; year: number; rate: string }];
   currency: string[];
   saved: boolean = true;
   rate: number;
@@ -28,8 +28,7 @@ export class FixCostRateComponent implements OnInit {
       {
         currency: 'Monitoring',
         year: 2020,
-        rate : 'EUR',
-        number: 1500
+        rate : 'EUR'
       }
     ];
     this.setClickedRow = function (index) {
@@ -38,7 +37,6 @@ export class FixCostRateComponent implements OnInit {
   }
   RightTableHeaders = [
     'Currency',
-    'Value',
     'Fix Cost Typ',
     'Year'
   ];
