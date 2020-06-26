@@ -49,7 +49,7 @@ export class E4RelatedCostsComponent implements OnInit {
     }
     if (this.selectedSubCost != null) {
       this.subCostSelectDisabled = true;
-      this.subCosts = null;
+      this.selectedSubCost = null;
     }
     this.mainCostSelectDisabled = false;
     this.selectedMainCostItem = null;

@@ -17,7 +17,6 @@
               <tbody>
               <tr *ngFor="let row of data; let i = index" (click)="onTableRowClick(i)" [class.active]="i == selectedRowNumber">
                 <td>{{row.rate}}</td>
-                <td>{{row.number}}</td>
                 <td>{{row.currency}}</td>
                 <td>{{row.year}}</td>
               </tr>
@@ -76,14 +75,7 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-3">
-              <fieldset class="form-group">
-                <label> Numeric Value</label><br>
-                <label>
-                  <input type="number" class="form-control" required placeholder="Please enter a Value">
-                </label>
-              </fieldset>
-            </div>
+
           </div>
 
           <div class="col">
@@ -117,14 +109,7 @@
                   [allowClear]="true"></ng-select>
               </fieldset>
             </div>
-            <div class="card-body col-2">
-              <fieldset class="form-group">
-                <label> Value</label><br>
-                <label>
-                  <input type="number" class="form-control" [defaultValue]="data[selectedRowNumber].number">
-                </label>
-              </fieldset>
-            </div>
+
             <div class="card-body col-3">
               <fieldset class="form-group">
                 <label> Fix Cost Typ</label>
