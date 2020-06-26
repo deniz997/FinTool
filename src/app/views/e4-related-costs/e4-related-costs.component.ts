@@ -22,17 +22,20 @@ export class E4RelatedCostsComponent implements OnInit {
   public selectedMainCostItem: string;
   public subCostSelectDisabled: boolean;
   public selectedSubCost: string;
+  public mainCostTotal: string;
 
   public selectedMainCost(value: IOption): void {
     this.selectedMainCostItem = value.label;
     if (value.value === 'dC') {
       this.subCosts = [{label: 'Management Travels', value: 'mT'}];
+      this.mainCostTotal = '1,100';
     } else if (value.value === 'oC') {
       this.subCosts = [
         {label: 'External Bench', value: 'eB'},
         {label: 'Tool', value: 'tool'},
         {label: 'Non-Chargeable Consultancy', value: 'ncC'},
         {label: 'Internal Project', value: 'iP'}];
+      this.mainCostTotal = '11,000';
     }
     this.subCostSelectDisabled = false;
   }
@@ -46,8 +49,10 @@ export class E4RelatedCostsComponent implements OnInit {
     }
     if (this.selectedSubCost != null) {
       this.subCostSelectDisabled = true;
+      this.subCosts = null;
     }
     this.mainCostSelectDisabled = false;
+    this.selectedMainCostItem = null;
   }
 
   public selectedSubCostCat(value: IOption): void {

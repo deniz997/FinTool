@@ -30,21 +30,21 @@ export class InternalProjectComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        Definition : 'Definition 1',
-        ValidFrom : new Date('2018-06-07'),
-        Value : 20000.0,
-        Comments : 'Comment 1',
+        Definition : 'Project ABC',
+        ValidFrom : new Date('2020-01-01'),
+        Value : 2000.0,
+        Comments : 'Consultancy company abc',
       },
       {
-        Definition : 'Definition 2',
-        ValidFrom : new Date('2019-06-07'),
-        Value : 10000.0,
-        Comments : 'Comment 2',
+        Definition : 'Project XYZ',
+        ValidFrom : new Date('2020-02-01'),
+        Value : 2000.0,
+        Comments : null,
       },
       {
         Definition : 'Total',
         ValidFrom : null,
-        Value : 30000.00,
+        Value : 4000.00,
         Comments : null,
       }
     ];

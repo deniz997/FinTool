@@ -6,15 +6,15 @@
     <div class="row">
       <fieldset class="form-group col-md">
         <label>Number of Travels</label><br>
-        <input type="number" class="form-control" [defaultValue]="8">
+        <input type="number" class="form-control" [defaultValue]="5">
       </fieldset>
       <fieldset class="form-group col-md">
-        <label>Extra Travel Cost</label><br>
-        <input type="number" class="form-control">
+        <label>Extra Travel Cost (€)</label><br>
+        <input type="number" class="form-control" [defaultValue]="100">
       </fieldset>
       <fieldset class="form-group col-md">
-        <label>Total Travel Cost</label><br>
-        <input type="text" class="form-control" [defaultValue]="'€ 23,120.00'" [disabled]="true">
+        <label>Total Travel Cost (€)</label><br>
+        <input type="number" class="form-control" [defaultValue]="1100.00" [disabled]="true">
       </fieldset>
     </div>
   </div>

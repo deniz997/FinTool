@@ -31,21 +31,21 @@ export class ToolComponent implements OnInit {
   constructor() {
     this.data = [
       {
-        Definition : 'Definition 1',
-        ValidFrom : new Date('2019-06-07'),
-        Value : 16000,
-        Comments : 'Comment 1',
+        Definition : 'Financial Planning Software',
+        ValidFrom : new Date('2020-01-01'),
+        Value : 1500.00,
+        Comments : null,
       },
       {
-        Definition : 'Definition 2',
-        ValidFrom : new Date('2019-06-07'),
-        Value : 16000,
-        Comments : 'Comment 2',
+        Definition : 'Tool X Licence',
+        ValidFrom : new Date('2020-02-01'),
+        Value : 1000.00,
+        Comments : null,
       },
       {
         Definition : 'Total',
         ValidFrom : null,
-        Value : 32000,
+        Value : 2500.00,
         Comments : null,
       },
     ];
